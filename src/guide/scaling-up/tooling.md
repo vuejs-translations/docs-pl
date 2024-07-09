@@ -194,7 +194,6 @@ Oficjalny loader zapewniający wsparcie SFC dla webpacka. Jeśli używasz Vue CL
 - [Vue + Vite on Repl.it](https://replit.com/@templates/VueJS-with-Vite)
 - [Vue w CodeSandbox](https://codesandbox.io/p/devbox/github/codesandbox/sandbox-templates/tree/main/vue-vite)
 - [Vue w Codepen](https://codepen.io/pen/editor/vue)
-- [Vue w Components.studio](https://components.studio/create/vue3)
 - [Vue w WebComponents.dev](https://webcomponents.dev/create/cevue)
 
 <!-- TODO ## Backend Framework Integrations -->
