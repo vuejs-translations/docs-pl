@@ -305,7 +305,7 @@ Aby dodać wbudowane [modyfikatory `v-on`](/guide/essentials/event-handling#even
 - **Typ**
 
   ```ts
-  function withModifiers(fn: Function, modifiers: string[]): Function
+  function withModifiers(fn: Function, modifiers: ModifierGuardsKeys[]): Function
   ```
 
 - **Przykład**
