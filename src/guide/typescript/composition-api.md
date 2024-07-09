@@ -84,6 +84,10 @@ const props = withDefaults(defineProps<Props>(), {
 
 Zostanie to skompilowane do odpowiadających opcji `default` propsów w czasie wykonania. Dodatkowo, helper `withDefaults` zapewnia sprawdzanie typów dla wartości domyślnych i gwarantuje, że zwrócony typ `props` ma usunięte flagi opcjonalności dla właściwości, które mają zadeklarowane wartości domyślne.
 
+:::info
+Zwróć uwagę że domyślne wartości dla mutowalnych typów (jak tablice czy obiekty) powinny być opakowane funkcjami, aby zapobiec przypadkowym mutacjom czy efektom ubocznym. To działanie zapewnia, że każda instancja komponentu ma swoją własną kopię domyślnej wartości.
+:::
+
 ### Bez `<script setup>` {#without-script-setup}
 
 Jeśli nie używasz `<script setup>`, konieczne jest użycie `defineComponent()`, aby włączyć wnioskowanie typów propsów. Typ obiektu props przekazanego do `setup()` jest wywnioskowany z opcji `props`.

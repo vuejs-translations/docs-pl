@@ -227,6 +227,10 @@ const props = withDefaults(defineProps<Props>(), {
 
 To zostanie skompilowane do równoważnych opcji `default` właściwości środowiska wykonawczego. Ponadto pomocnik `withDefaults` zapewnia sprawdzanie typu dla wartości domyślnych i zapewnia, że ​​zwrócony typ `props` ma usunięte opcjonalne flagi dla właściwości, które mają zadeklarowane wartości domyślne.
 
+:::info
+Zwróć uwagę że domyślne wartości dla mutowalnych typów (jak tablice czy obiekty) powinny być opakowane funkcjami, aby zapobiec przypadkowym mutacjom czy efektom ubocznym. To działanie zapewnia, że każda instancja komponentu ma swoją własną kopię domyślnej wartości.
+:::
+
 ## defineModel() <sup class="vt-badge" data-text="3.4+" /> {#definemodel}
 
 Ta makroinstrukcja może być używana do deklarowania dwukierunkowego wiązania właściwości, które mogą być pobierane przez `v-model` z komponentu nadrzędnego. Przykład użycia jest również omawiany w przewodniku [Komponent `v-model`](/guide/components/v-model).
