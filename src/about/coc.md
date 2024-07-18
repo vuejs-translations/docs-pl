@@ -38,7 +38,7 @@ Przypadki nadużyć, nękania lub innych nieakceptowalnych zachowań mogą być 
 
 Opiekunowie projektu, którzy nie przestrzegają lub nie egzekwują kodeksu postępowania w dobrej wierze, mogą ponieść tymczasowe lub stałe konsekwencje określone przez innych członków kierownictwa projektu.
 
-## Atrybucja {#attribution}
+## Przypis {#attribution}
 
 Ten kodeks postępowania jest adaptacją [Contributor Covenant][homepage], wersja 1.4, dostępnego pod adresem https://www.contributor-covenant.org/version/1/4/code-of-conduct.html
 
