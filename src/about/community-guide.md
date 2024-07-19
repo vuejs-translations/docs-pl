@@ -37,19 +37,19 @@ Nasz [Kodeks postępowania](/about/coc) jest przewodnikiem, który ułatwia wzbo
 - [Made with Vue.js](https://madewithvuejs.com/): Prezentacje projektów i bibliotek stworzonych za pomocą Vue.
 - [Subforum "Show and Tell"](https://github.com/vuejs/core/discussions/categories/show-and-tell): Kolejne świetne miejsce, aby zobaczyć, co inni zbudowali z myślą o rozwijającym się ekosystemie Vue.
 
-## Co moesz zrobić {#what-you-can-do}
+## Co możesz zrobić {#what-you-can-do}
 
 ### Pomagaj innym użytkownikom {#help-fellow-users}
 
 Wkład w kod nie jest jedyną formą wkładu w społeczność Vue. Odpowiadanie na pytania innych użytkowników Vue na Discordzie lub forum również jest uważane za cenny wkład.
 
-### Pomagaj w Triage'u zgłoszeń {#help-triage-issues}
+### Pomagaj w triażu zgłoszeń {#help-triage-issues}
 
-Triaging zgłoszenia oznacza zbieranie brakujących informacji, uruchamianie reprodukcji, weryfikowanie ważności zgłoszenia i badanie przyczyny problemu.
+Triaż zgłoszenia oznacza zbieranie brakujących informacji, uruchamianie reprodukcji, weryfikowanie ważności zgłoszenia i badanie przyczyny problemu.
 
-Codziennie otrzymujemy wiele zgłoszeń w [naszych repozytoriach na GitHubie](https://github.com/vuejs). Nasze zasoby są ograniczone w porównaniu do liczby użytkowników, więc sam triaging zgłoszeń może wymagać ogromnego wysiłku ze strony zespołu. Pomagając nam w triage'u zgłoszeń, pomagasz nam działać bardziej efektywnie, co pozwala nam poświęcać czas na prace o wyższym priorytecie.
+Codziennie otrzymujemy wiele zgłoszeń w [naszych repozytoriach na GitHubie](https://github.com/vuejs). Nasze zasoby są ograniczone w porównaniu do liczby użytkowników, więc sam triaż zgłoszeń może wymagać ogromnego wysiłku ze strony zespołu. Pomagając nam w triażu zgłoszeń, pomagasz nam działać bardziej efektywnie, co pozwala nam poświęcać czas na prace o wyższym priorytecie.
 
-Nie musisz triage'ować zgłoszenia z zamiarem jego naprawienia (choć to też byłoby miłe). Dzielenie się wynikiem Twojego śledztwa, na przykład commitem, który doprowadził do błędu, może już zaoszczędzić nam mnóstwo czasu.
+Nie musisz dokonywać triażu zgłoszenia z zamiarem jego naprawienia (choć to też byłoby miłe). Dzielenie się wynikiem Twojego śledztwa, na przykład commitem, który doprowadził do błędu, może już zaoszczędzić nam mnóstwo czasu.
 
 ### Wkład w kod {#contribute-code}
 
@@ -64,7 +64,7 @@ Poprawki błędów są zawsze mile widziane. W przypadku nowych funkcji najlepie
 Oprócz odpowiadania na pytania i udostępniania zasobów na forum i czacie, istnieje kilka mniej oczywistych sposobów na dzielenie się i poszerzanie wiedzy:
 
 - **Twórz materiały edukacyjne.**  Często mówi się, że najlepszym sposobem na naukę jest nauczanie. Jeśli robisz coś interesującego z Vue, pogłęb swoje umiejętności, pisząc post na blogu, tworząc warsztat czy nawet publikując gist, który udostępnisz w mediach społecznościowych.
-- **Obserwuj repozytorium na który zwracasz uwagę.** Dzięki temu otrzymasz powiadomienia za każdym razem, gdy w repozytorium pojawi się jakaś aktywność, co daje Ci wgląd w trwające dyskusje i nadchodzące funkcje. To fantastyczny sposób na rozwijanie swoich umiejętności, aby móc pomagać w rozwiązywaniu problemów i pull requestów.
+- **Obserwuj repozytorium na którym Ci zależu.** Dzięki temu otrzymasz powiadomienia za każdym razem, gdy w repozytorium pojawi się jakaś aktywność, co daje Ci wgląd w trwające dyskusje i nadchodzące funkcje. To fantastyczny sposób na rozwijanie swoich umiejętności, aby móc pomagać w rozwiązywaniu problemów i pull requestów.
 
 ### Tłumaczenie dokumentacji {#translate-docs}
 
