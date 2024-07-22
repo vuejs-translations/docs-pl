@@ -55,7 +55,7 @@ Nie musisz dokonywać triażu zgłoszenia z zamiarem jego naprawienia (choć to 
 
 Wnoszenie poprawek błędów lub nowych funkcji to najbardziej bezpośrednia forma wkładu, jaką możesz wnieść.
 
-Repozytorium główne Vue zawiera [przewodnik dotyczący wkładu](https://github.com/vuejs/core/blob/main/.github/contributing.md), który zawiera wytyczne dotyczące pull requestów oraz informacje dotyczące konfiguracji budowania i wysokopoziomowej architektury. Inne repozytoria podprojektów mogą również zawierać własne przewodniki dotyczący wkładu - upewnij się, że je przeczytałeś przed złożeniem pull requestów.
+Repozytorium główne Vue zawiera [przewodnik dotyczący wkładu](https://github.com/vuejs/core/blob/main/.github/contributing.md), który zawiera wytyczne dotyczące pull requestów oraz informacje dotyczące konfiguracji budowania wysokopoziomowej architektury. Inne repozytoria podprojektów mogą również zawierać własne przewodniki dotyczący wkładu - upewnij się, że je przeczytałeś przed złożeniem pull requestów.
 
 Poprawki błędów są zawsze mile widziane. W przypadku nowych funkcji najlepiej najpierw omówić przypadek użycia i szczegóły implementacji w [repozytorium RFC](https://github.com/vuejs/rfcs/discussions).
 
@@ -64,7 +64,7 @@ Poprawki błędów są zawsze mile widziane. W przypadku nowych funkcji najlepie
 Oprócz odpowiadania na pytania i udostępniania zasobów na forum i czacie, istnieje kilka mniej oczywistych sposobów na dzielenie się i poszerzanie wiedzy:
 
 - **Twórz materiały edukacyjne.**  Często mówi się, że najlepszym sposobem na naukę jest nauczanie. Jeśli robisz coś interesującego z Vue, pogłęb swoje umiejętności, pisząc post na blogu, tworząc warsztat czy nawet publikując gist, który udostępnisz w mediach społecznościowych.
-- **Obserwuj repozytorium na którym Ci zależu.** Dzięki temu otrzymasz powiadomienia za każdym razem, gdy w repozytorium pojawi się jakaś aktywność, co daje Ci wgląd w trwające dyskusje i nadchodzące funkcje. To fantastyczny sposób na rozwijanie swoich umiejętności, aby móc pomagać w rozwiązywaniu problemów i pull requestów.
+- **Obserwuj repozytorium na którym Ci zależy.** Dzięki temu otrzymasz powiadomienia za każdym razem, gdy w repozytorium pojawi się jakaś aktywność, co daje Ci wgląd w trwające dyskusje i nadchodzące funkcje. To fantastyczny sposób na rozwijanie swoich umiejętności, aby móc pomagać w rozwiązywaniu problemów i pull requestów.
 
 ### Tłumaczenie dokumentacji {#translate-docs}
 
