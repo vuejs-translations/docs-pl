@@ -74,6 +74,6 @@ Proces RFC jest prowadzony w repozytorium [vuejs/rfcs](https://github.com/vuejs/
 
 ## Funkcje eksperymentalne {#experimental-features}
 
-Niektóre funkcje są dostarczane i dokumentowane w stabilnej wersji Vue, ale oznaczone jako eksperymentalne. Funkcje eksperymentalne to zazwyczaj funkcje, które mają związaną dyskusję RFC z większością problemów projektowych rozwiązanych teoretycznie, ale wciąż brakuje im opinii z rzeczywistego użytkowania.
+Niektóre funkcje są dostarczane i dokumentowane w stabilnej wersji Vue, ale oznaczone jako eksperymentalne. Funkcje eksperymentalne to zazwyczaj funkcje, które mają odpowiednią dyskusję RFC z większością problemów projektowych rozwiązanych teoretycznie, ale wciąż brakuje im opinii z rzeczywistego użytkowania.
 
 Celem funkcji eksperymentalnych jest umożliwienie użytkownikom przekazywania opinii na ich temat poprzez testowanie ich w środowisku produkcyjnym, bez konieczności używania niestabilnej wersji Vue. Same funkcje eksperymentalne są uważane za niestabilne i powinny być używane w kontrolowany sposób, z oczekiwaniem, że funkcja może się zmienić pomiędzy różnymi typami wydań.
