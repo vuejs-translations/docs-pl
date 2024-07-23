@@ -469,6 +469,25 @@ defineProps<{
 </script>
 ```
 
+Aby móc użyć referencji do komponentu wykorzystującego `generic` wewnątrz `ref` musisz użyć biblioteki [`vue-component-type-helpers`](https://www.npmjs.com/package/vue-component-type-helpers) gdyż `InstanceType` nie zadziała.
+
+```vue
+<script
+  setup
+  lang="ts"
+>
+import componentWithoutGenerics from '../component-without-generics.vue';
+import genericComponent from '../generic-component.vue';
+
+import type { ComponentExposed } from 'vue-component-type-helpers';
+
+// Działa dla komponentów bez generic
+ref<InstanceType<typeof componentWithoutGenerics>>();
+
+ref<ComponentExposed<typeof genericComponent>>();
+```
+
+
 ## Ograniczenia {#restrictions}
 
 - Ze względu na różnicę w semantyce wykonywania modułów, kod wewnątrz `<script setup>` opiera się na kontekście SFC. Po przeniesieniu do zewnętrznych plików `.js` lub `.ts` może to prowadzić do zamieszania zarówno dla programistów, jak i narzędzi. Dlatego **`<script setup>`** nie można używać z atrybutem `src`.
