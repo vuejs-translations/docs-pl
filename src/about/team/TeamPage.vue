@@ -53,10 +53,10 @@ shuffleMembers(membersPartnerData as Member[])
     </TeamHero>
 
     <TeamList :members="(membersCoreData as Member[])">
-      <template #title>Członkowie głównego zespołu</template>
+      <template #title>Członkowie zespołu głównego</template>
       <template #lead>
         Członkowie zespołu głównego to osoby aktywnie zaangażowane w 
-        utrzymanie jednego lub więcej projektów podstawowych. Wnieśli oni 
+        utrzymanie jednego lub więcej projektów kluczowych. Wnieśli oni 
         znaczący wkład w ekosystem Vue, z długoterminowym 
         zaangażowaniem w sukces projektu i jego użytkowników.
       </template>
@@ -65,7 +65,7 @@ shuffleMembers(membersPartnerData as Member[])
     <TeamList :members="(membersEmeritiData as Member[])">
       <template #title>Emerytowany zespół główny</template>
       <template #lead>
-        W tym miejscu oddajemy cześć nieaktywnym już członkom głównego zespołu, którzy wnieśli 
+        W tym miejscu oddajemy cześć nieaktywnym już członkom zespołu głównego, którzy wnieśli 
         cenny wkład w przeszłości.
       </template>
     </TeamList>
