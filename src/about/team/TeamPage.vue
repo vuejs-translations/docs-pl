@@ -76,7 +76,7 @@ shuffleMembers(membersPartnerData as Member[])
         Niektórzy członkowie społeczności Vue tak ją wzbogacili, że 
         zasługują na specjalne wyróżnienie. Rozwinęliśmy bardziej zażyłe
         relacje z tymi kluczowymi partnerami, często koordynując z nimi 
-        nadchodzące funkcje i nowości.
+        nadchodzące funkcjonalności i nowości.
       </template>
     </TeamList>
   </div>
