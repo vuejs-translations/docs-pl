@@ -43,7 +43,11 @@ Aby zacząć pracę z Vite + Vue, wywołaj polecenie:
   <VTCodeGroupTab label="yarn">
   
   ```sh
+  # Dla Yarn Modern (v2+)
   $ yarn create vue@latest
+  
+  # Dla Yarn ^v4.11
+  $ yarn dlx create-vue@latest
   ```
 
   </VTCodeGroupTab>
