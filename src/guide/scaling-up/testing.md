@@ -216,9 +216,9 @@ await fireEvent.click(button)
   </VTCodeGroupTab>
 </VTCodeGroup>
 
-- **PRZECIWWSKAZANIA**
+**PRZECIWWSKAZANIA**
 
-  Nie sprawdzaj wewnętrznego, prywatnego stanu komponentu czy też jego metod. Testowanie szczegółów implementacyjnych nie jest dobrym pomysłem, gdyż te znacznie częściej ulegają zmianom (które również musimy potem wprowadzać w testach).
+- Nie sprawdzaj wewnętrznego, prywatnego stanu komponentu czy też jego metod. Testowanie szczegółów implementacyjnych nie jest dobrym pomysłem, gdyż te znacznie częściej ulegają zmianom (które również musimy potem wprowadzać w testach).
 
   Fundamentalnym działaniem komponentu, jest wyrenderowanie odpowiednich treści w drzewie DOM, a więc testowanie, które sprawdza DOM dostarcza taki sam stopień pewności co do poprawnego działania (o ile nie większy) podczas gdy dostarcza znacznie większą odporność na zmiany implementacji komponentu.
 
