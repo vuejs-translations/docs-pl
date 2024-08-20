@@ -101,7 +101,12 @@ Kontroluje, czy domyślne zachowanie atrybutu komponentu powinno być włączone
 
   </div>
 
-- **Zobacz również** [Fallthrough Attributes](/guide/components/attrs)
+- **Zobacz również**
+  - [Dziedziczone atrybuty](/guide/components/attrs)
+  <div class="composition-api">
+
+  - [Użycie `inheritAttrs` obok normalnego `<script>`](/api/sfc-script-setup.html#usage-alongside-normal-script)
+  </div>
 
 ## components {#components}
 
