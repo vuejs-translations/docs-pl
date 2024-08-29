@@ -117,6 +117,45 @@ Więcej szczegółów: [Typowanie właściwości komponentu](/guide/typescript/c
 
 </div>
 
+<div class="composition-api">
+
+## Reaktywna destrukturyzacja propsów <sup class="vt-badge" data-text="3.5+" /> \*\* {#reactive-props-destructure}
+
+System reaktywności Vue śledzi wykorzystanie stanu na podstawie dostępów do własności. Na przykład gdy pobierasz wartość `props.foo` wewnątrz computed czy watchera, prop `foo` jest śledzony jako zależność.
+
+Mając poniższy kod:
+
+```js
+const { foo } = defineProps(['foo'])
+
+watchEffect(() => {
+  // wywoła się tylko raz przed wersją 3.5
+  // wywoła się zawsze gdy prop "foo" zmieni swoją wartość w wersji 3.5+
+  console.log(foo)
+})
+```
+
+W wersji 3.4 i niższej, `foo` jest wartością stałą i nigdy nie ulegnie zmianie. W wersji 3.5 i wyżej, kompilator Vue automatycznie doda `props.` gdy kod w tym samym bloku `<script setup>` próbuje pobrać wartość zdestrukturyzowane z `defineProps`. Kod powyższy będzie więc równoznaczny z poniższym:
+
+```js {5}
+const props = defineProps(['foo'])
+
+watchEffect(() => {
+  // `foo` zmienione w `props.foo` przez kompilator
+  console.log(props.foo)
+})
+```
+
+Dodatkowo, możemy wykorzystać natywną składnię JavaScripta by zdefiniować domyślne wartości dla propsów. Jest to bardzo użyteczne gdy używamy deklaracji opartej na typach:
+
+```ts
+const { foo = 'witaj' } = defineProps<{ foo?: string }>()
+```
+
+### Przekazywanie destrukturyzowanych propsów do funkcji
+
+</div>
+
 ## Szczegóły przekazywania właściwości {#prop-passing-details}
 
 ### Konwencja nazywania właściwości {#prop-name-casing}

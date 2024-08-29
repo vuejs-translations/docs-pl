@@ -209,26 +209,62 @@ const emit = defineEmits<{
 
   Ograniczenie to zostało rozwiązane w wersji 3.3. Najnowsza wersja Vue obsługuje odwoływanie się do importowanych i ograniczonego zestawu złożonych typów w pozycji parametru typu. Ponieważ jednak konwersja typu do środowiska uruchomieniowego jest nadal oparta na AST, niektóre typy złożone, które wymagają rzeczywistej analizy typu, np. typy warunkowe, nie są obsługiwane. Można używać typów warunkowych dla typu pojedynczego rekwizytu, ale nie dla całego obiektu rekwizytu.
 
-### Domyślne wartości propsów podczas korzystania z deklaracji typu {#default-props-values-when-using-type-declaration}
+### Reaktywna destrukturyzacja propsów <sup class="vt-badge" data-text="3.5+" /> {#reactive-props-destructure}
 
-Jedną z wad deklaracji `defineProps` typu tylko-type jest to, że nie ma sposobu na podanie wartości domyślnych dla właściwości. Aby rozwiązać ten problem, dostarczono również makro kompilatora `withDefaults`:
+W wersji 3.5 i wyżej, wartości destrukturyzacji tego co zwraca `defineProps` są reaktywne. Kompilator Vue automatycznie dodaje `props.` w tym samym bloku `<script setup>` przed każdym dostępem do destrukturyzowanej wartości z `defineProps`:
 
 ```ts
-export interface Props {
+const { foo } = defineProps(['foo'])
+
+watchEffect(() => {
+  // wywoła się tylko raz przed wersją 3.5
+  // wywoła się zawsze gdy prop "foo" zmieni swoją wartość w wersji 3.5+
+  console.log(foo)
+})
+```
+
+Powyższy kod jest kompilowany do równoznacznego z poniższym:
+
+```js {5}
+const props = defineProps(['foo'])
+
+watchEffect(() => {
+  // `foo` zmienione w `props.foo` przez kompilator
+  console.log(props.foo)
+})
+```
+
+Dodatkowo, możemy wykorzystać natywną składnię JavaScripta by zdefiniować domyślne wartości dla propsów. Jest to bardzo użyteczne gdy używamy deklaracji opartej na typach:
+
+```ts
+interface Props {
+  msg?: string
+  labels?: string[]
+}
+
+const { msg = 'witaj', labels = ['raz', 'dwa'] } = defineProps<Props>()
+```
+
+### Domyślne wartości propsów podczas korzystania z deklaracji typu <sup class="vt-badge ts" /> {#default-props-values-when-using-type-declaration}
+
+W wersji 3.5 i wyżej, domyślne wartości możemy zadeklarować w naturalny sposób używając reaktywnej destrukturyzacji propsów. Jednakże, w wersji 3.4 i niżej, reaktywna destrukturyzacja propsów nie jest domyślnie dostępna. Aby zdefiniować wartości domyślne przy deklaracji z pomocą typów, musimy użyć makra kompilatora `withDefaults`:
+
+```ts
+interface Props {
   msg?: string
   labels?: string[]
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  msg: 'hello',
-  labels: () => ['one', 'two']
+  msg: 'witaj',
+  labels: () => ['raz', 'dwa']
 })
 ```
 
-To zostanie skompilowane do równoważnych opcji `default` właściwości środowiska wykonawczego. Ponadto pomocnik `withDefaults` zapewnia sprawdzanie typu dla wartości domyślnych i zapewnia, że ​​zwrócony typ `props` ma usunięte opcjonalne flagi dla właściwości, które mają zadeklarowane wartości domyślne.
+To zostanie skompilowane do równoważnych opcji `default` właściwości środowiska wykonawczego. Ponadto makro `withDefaults` zapewnia sprawdzanie typu dla wartości domyślnych i zapewnia, że ​​zwrócony typ `props` ma usunięte opcjonalne flagi dla właściwości, które mają zadeklarowane wartości domyślne.
 
 :::info
-Zwróć uwagę że domyślne wartości dla mutowalnych typów (jak tablice czy obiekty) powinny być opakowane funkcjami, aby zapobiec przypadkowym mutacjom czy efektom ubocznym. To działanie zapewnia, że każda instancja komponentu ma swoją własną kopię domyślnej wartości.
+Zwróć uwagę że domyślne wartości dla mutowalnych typów (jak tablice czy obiekty) powinny być opakowane funkcjami, gdy używamy `withDefaults`, aby zapobiec przypadkowym mutacjom czy efektom ubocznym. To działanie zapewnia, że każda instancja komponentu ma swoją własną kopię domyślnej wartości. **Nie jest** to konieczne gdy używamy domyślnych wartości z destrukturyzacją.
 :::
 
 ## defineModel() <sup class="vt-badge" data-text="3.4+" /> {#definemodel}
@@ -486,7 +522,6 @@ ref<InstanceType<typeof componentWithoutGenerics>>();
 
 ref<ComponentExposed<typeof genericComponent>>();
 ```
-
 
 ## Ograniczenia {#restrictions}
 

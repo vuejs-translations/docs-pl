@@ -68,10 +68,21 @@ To ograniczenie zostało rozwiązane w wersji 3.3. Najnowsza wersja Vue obsługu
 
 ### Domyślne Wartości Propsów {#props-default-values}
 
-Podczas używania deklaracji opartej na typach, tracimy możliwość deklarowania domyślnych wartości dla propsów. Można to rozwiązać za pomocą makra kompilatora `withDefaults`:
+Podczas używania deklaracji opartej na typach, tracimy możliwość deklarowania domyślnych wartości dla propsów. Można to rozwiązać za pomocą [reaktywnej destrukturyzacji propsów](/guide/components/props#reactive-props-destructure) <sup class="vt-badge" data-text="3.5+" />:
 
 ```ts
-export interface Props {
+interface Props {
+  msg?: string
+  labels?: string[]
+}
+
+const { msg = 'witaj', labels = ['jeden', 'dwa'] } = defineProps<Props>()
+```
+
+W wersji 3.4 i niżej, reaktywna destrukturyzacja propsów nie jest domyślnie dostępna. Alternatywą jest użycie makra kompilatora `withDefaults`:
+
+```ts
+interface Props {
   msg?: string
   labels?: string[]
 }
@@ -85,7 +96,7 @@ const props = withDefaults(defineProps<Props>(), {
 Zostanie to skompilowane do odpowiadających opcji `default` propsów w czasie wykonania. Dodatkowo, helper `withDefaults` zapewnia sprawdzanie typów dla wartości domyślnych i gwarantuje, że zwrócony typ `props` ma usunięte flagi opcjonalności dla właściwości, które mają zadeklarowane wartości domyślne.
 
 :::info
-Zwróć uwagę że domyślne wartości dla mutowalnych typów (jak tablice czy obiekty) powinny być opakowane funkcjami, aby zapobiec przypadkowym mutacjom czy efektom ubocznym. To działanie zapewnia, że każda instancja komponentu ma swoją własną kopię domyślnej wartości.
+Zwróć uwagę że domyślne wartości dla mutowalnych typów (jak tablice czy obiekty) powinny być opakowane funkcjami, gdy używamy `withDefaults`, aby zapobiec przypadkowym mutacjom czy efektom ubocznym. To działanie zapewnia, że każda instancja komponentu ma swoją własną kopię domyślnej wartości. **Nie jest** to konieczne gdy używamy domyślnych wartości z destrukturyzacją.
 :::
 
 ### Bez `<script setup>` {#without-script-setup}
