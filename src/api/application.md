@@ -90,6 +90,18 @@ Odmontowuje zamontowaną instancję aplikacji, wyzwalając haki cyklu życia odm
   }
   ```
 
+## app.onUnmount() <sup class="vt-badge" data-text="3.5+" /> {#app-onunmount}
+
+Rejestruje callback, który wywoła się gdy aplikacja będzie odmontowywana.
+
+- **Typ**
+
+  ```ts
+  interface App {
+    onUnmount(callback: () => any): void
+  }
+  ```
+
 ## app.component() {#app-component}
 
 Rejestruje komponent globalny, jeśli przekazano zarówno nazwę, jak i definicję komponentu, lub pobiera już zarejestrowany, jeśli przekazano tylko nazwę.
@@ -630,3 +642,21 @@ Konfiguruje prefix dla wszystkich ID generowanych poprzez [useId()](/api/general
   const id1 = useId() // 'my-app:0'
   const id2 = useId() // 'my-app:1'
   ```
+
+## app.config.throwUnhandledErrorInProduction <sup class="vt-badge" data-text="3.5+" /> {#app-config-throwunhandlederrorinproduction}
+
+Wymusza wyrzucanie nieobsłużonych błędów w trybie produkcyjnym.
+
+- **Typ:** `boolean`
+
+- **Domyślnie:** `false`
+
+- **Szczegóły**
+
+  Domyślnie, błędy wyrzucone w środku aplikacji Vue, które nie są nieobsłużone mają inne zachowanie w trybie deweloperskim i produkcyjnym:
+
+  - W trybie deweloperskim, błąd jest wyrzucony i może zatrzymać aplikację. Dzieje się tak po to, by łatwo było zobaczyć wszelkie błędy i naprawić je zanim zostaną wypuszczone na produkcję.
+
+  - W trybie produkcyjnym, błąd będzie jedynie zalogowany w konsoli, aby zminimalizować negatywny wpływ na użytkowników. Jednakże, może to wpłynąć na to, że błędy, które tylko dzieją się na środowisku produkcyjnym nie zostaną zauważone przez usługi monitorowania.
+
+  Ustawiając flagę `app.config.throwUnhandledErrorInProduction` na `true`, nieobsłużone błędy będą również wyrzucane w trybie produkcyjnym.
