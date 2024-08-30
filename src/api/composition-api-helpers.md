@@ -22,11 +22,11 @@ Gdy używasz TypeScript, zamiast tego używaj [`defineSlots()`](/api/sfc-script-
   function useSlots(): Record<string, (...args: any[]) => VNode[]>
   ```
 
-## useModel() <sup class="vt-badge" data-text="3.4+" /> {#usemodel}
+## useModel() {#usemodel}
 
 To helper, który jest używany w [`defineModel()`](/api/sfc-script-setup#definemodel). Jeśli używasz `<script setup>`, zamiast niego używaj `defineModel()`.
 
-`useModel()` może być używany w komponentach niebędących SFC, np. używających funkcji `setup()`. Spodziewa się on obiektu `props` jako pierwszy argument oraz nazwy modelu jako drugi argument. Trzeci, opcjonalny argument może być użyty do zadeklarowania niestandardowego gettera i settera dla zwracanej referencji modelu. Zwróć uwagę, że w przeciwieństwie do `defineModel()`, odpowiedzialność za zadeklarowanie propsów i emitowanych zdarzeń leży na Tobie.
+- Wspierane tylko w 3.4+
 
 - **Typ**
 
@@ -55,6 +55,10 @@ To helper, który jest używany w [`defineModel()`](/api/sfc-script-setup#define
     }
   }
   ```
+
+- **Szczegóły**
+
+  `useModel()` może być używany w komponentach niebędących SFC, np. używających funkcji `setup()`. Spodziewa się on obiektu `props` jako pierwszy argument oraz nazwy modelu jako drugi argument. Trzeci, opcjonalny argument może być użyty do zadeklarowania niestandardowego gettera i settera dla zwracanej referencji modelu. Zwróć uwagę, że w przeciwieństwie do `defineModel()`, odpowiedzialność za zadeklarowanie propsów i emitowanych zdarzeń leży na Tobie.
 
 ## useTemplateRef() <sup class="vt-badge" data-text="3.5+" /> {#usetemplateref}
 

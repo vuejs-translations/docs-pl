@@ -283,9 +283,11 @@ Zapewnia wartość, która może zostać wstrzyknięta do wszystkich komponentó
   - [App-level Provide](/guide/components/provide-inject#app-level-provide)
   - [app.runWithContext()](#app-runwithcontext)
 
-## app.runWithContext()<sup class="vt-badge" data-text="3.3+" /> {#app-runwithcontext}
+## app.runWithContext() {#app-runwithcontext}
 
 Wykonanie wywołania zwrotnego z bieżącą aplikacją jako kontekstem wstrzyknięcia.
+
+- Wspierane tylko w 3.3+
 
 - **Typ**
 

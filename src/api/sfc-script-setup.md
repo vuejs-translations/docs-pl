@@ -267,7 +267,9 @@ To zostanie skompilowane do równoważnych opcji `default` właściwości środo
 Zwróć uwagę że domyślne wartości dla mutowalnych typów (jak tablice czy obiekty) powinny być opakowane funkcjami, gdy używamy `withDefaults`, aby zapobiec przypadkowym mutacjom czy efektom ubocznym. To działanie zapewnia, że każda instancja komponentu ma swoją własną kopię domyślnej wartości. **Nie jest** to konieczne gdy używamy domyślnych wartości z destrukturyzacją.
 :::
 
-## defineModel() <sup class="vt-badge" data-text="3.4+" /> {#definemodel}
+## defineModel() {#definemodel}
+
+- Wspierane tylko w 3.4+
 
 Ta makroinstrukcja może być używana do deklarowania dwukierunkowego wiązania właściwości, które mogą być pobierane przez `v-model` z komponentu nadrzędnego. Przykład użycia jest również omawiany w przewodniku [Komponent `v-model`](/guide/components/v-model).
 

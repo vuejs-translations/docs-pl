@@ -108,11 +108,10 @@ Używa funkcji [getter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/
   })
   ```
 
-- **Zobacz również**
   - [Przewodnik - Właściwości obliczane](/guide/essentials/computed)
   - [Przewodnik - Debugowanie obliczeniowe](/guide/extras/reactivity-in-depth#computed-debugging)
   - [Przewodnik - Wpisywanie `computed()`](/guide/typescript/composition-api#typing-computed) <sup class=„vt-badge ts” />
-  - [Przewodnik - Wydajność - Stabilność obliczeniowa](/guide/best-practices/performance#computed-stability) <sup class=„vt-badge” data-text="3.4+” />
+  - [Przewodnik - Wydajność - Stabilność obliczeniowa](/guide/best-practices/performance#computed-stability)
 
 ## reactive() {#reactive}
 
@@ -441,7 +440,7 @@ Obserwuje jedno lub więcej reaktywnych źródeł danych i wywołuje funkcję zw
   - **`deep`**: wymusza głębokie przeszukiwanie źródła, jeśli jest ono obiektem, tak aby wywołanie zwrotne było uruchamiane przy głębokich mutacjach. W wersji 3.5+, może być to również wartość liczbowa określająca maksymalny stopień zagnieżdżenia do obserwowania. Zobacz [Deep Watchers](/guide/essentials/watchers#deep-watchers).
   - **`flush`**: dostosowuje czas spłukiwania wywołania zwrotnego. Zobacz [Callback Flush Timing](/guide/essentials/watchers#callback-flush-timing) i [`watchEffect()`](/api/reactivity-core#watcheffect).
   - **`onTrack / onTrigger`**: debugowanie zależności watchera. Zobacz [Watcher Debugging](/guide/extras/reactivity-in-depth#watcher-debugging).
-  - **`once`**: uruchamia wywołanie zwrotne tylko raz. Obserwator jest automatycznie zatrzymywany po pierwszym uruchomieniu wywołania zwrotnego. <sup class=„vt-badge” data-text="3.4+” />
+  - **`once`**: (3.4+) uruchamia wywołanie zwrotne tylko raz. Obserwator jest automatycznie zatrzymywany po pierwszym uruchomieniu wywołania zwrotnego.
 
   W porównaniu do [`watchEffect()`](#watcheffect), `watch()` pozwala nam na:
 

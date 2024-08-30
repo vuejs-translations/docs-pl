@@ -132,11 +132,13 @@ Może być również używany do tworzenia referencji dla właściwości w źró
 
   Podczas używania sygnatury właściwości obiektu, `toRef()` zwróci użyteczny ref, nawet jeśli właściwość źródłowa aktualnie nie istnieje. Umożliwia to pracę z opcjonalnymi właściwościami, które nie zostałyby wychwycone przez [`toRefs`](#torefs).
 
-## toValue() <sup class="vt-badge" data-text="3.3+" /> {#tovalue}
+## toValue() {#tovalue}
 
 Normalizuje wartości / referencje / gettery do wartości. Jest to podobne do [unref()](#unref), z wyjątkiem tego, że normalizuje również gettery. Jeśli argument jest getterem, zostanie on wywołany i zwrócona zostanie jego wartość.
 
 Można tego użyć w [Composables](/guide/reusability/composables.html) do normalizacji argumentu, który może być wartością, ref lub getterem.
+
+- Wspierane tylko w 3.3+
 
 - **Typ**
 

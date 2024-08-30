@@ -259,7 +259,7 @@ Dynamicznie powiąż jeden lub więcej atrybutów lub właściwość komponentu 
 
 - **Skrót:**
   - `:` or `.` (when using `.prop` modifier)
-  - Omitting value (when attribute and bound value has the same name) <sup class="vt-badge">3.4+</sup>
+  - Pominięcie wartości (gdy atrybut i przypisywana wartość mają taką samą nazwę, wymaga 3.4+)
 
 - **Oczekuje:** `any (with argument) | Object (without argument)`
 
@@ -268,8 +268,8 @@ Dynamicznie powiąż jeden lub więcej atrybutów lub właściwość komponentu 
 - **Modifiers**
 
   - `.camel` - przekształca nazwę atrybutu kebab-case w camelCase.
-  - `.prop` - wymusza ustawienie powiązania jako właściwości DOM. <sup class=„vt-badge”>3.2+</sup>
-  - `.attr` - wymusza ustawienie powiązania jako atrybutu DOM. <sup class=„vt-badge”>3.2+</sup>
+  - `.prop` - wymusza ustawienie powiązania jako właściwości DOM (3.2+).
+  - `.attr` - wymusza ustawienie powiązania jako atrybutu DOM (3.2+).
 
 - **Użycie**
 
@@ -468,7 +468,9 @@ Renderuj element i komponent tylko raz i pomiń przyszłe aktualizacje.
   - [Data Binding Syntax - interpolations](/guide/essentials/template-syntax#text-interpolation)
   - [v-memo](#v-memo)
 
-## v-memo <sup class="vt-badge" data-text="3.2+" /> {#v-memo}
+## v-memo {#v-memo}
+
+- Wspierane tylko 3.2+
 
 - **Oczekuje:** `any[]`
 

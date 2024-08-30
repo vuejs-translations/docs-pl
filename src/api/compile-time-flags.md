@@ -26,11 +26,13 @@ Zobacz [Configuration Guides](#configuration-guides), aby dowiedzieć się, jak 
 
   Włącz/wyłącz obsługę narzędzi deweloperskich w kompilacjach produkcyjnych. Spowoduje to dołączenie większej ilości kodu do pakietu, dlatego zaleca się włączenie tej opcji tylko w celach debugowania.
 
-## `__VUE_PROD_HYDRATION_MISMATCH_DETAILS__` <sup class="vt-badge" data-text="3.4+" /> {#VUE_PROD_HYDRATION_MISMATCH_DETAILS}
+## `__VUE_PROD_HYDRATION_MISMATCH_DETAILS__` {#VUE_PROD_HYDRATION_MISMATCH_DETAILS}
 
 - **Domyślnie:** `false`
 
   Włącz/wyłącz szczegółowe ostrzeżenia dotyczące niezgodności nawodnienia w kompilacjach produkcyjnych. Spowoduje to dołączenie większej ilości kodu do pakietu, dlatego zaleca się włączenie tej opcji tylko w celach debugowania.
+
+- Wspierane tylko w 3.4+
 
 ## Przewodniki konfiguracji {#configuration-guides}
 

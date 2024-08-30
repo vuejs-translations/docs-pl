@@ -124,9 +124,9 @@ Teraz dla większości komponentów prop `active` pozostanie takie samo, gdy zmi
 
 `v-memo` to wbudowana dyrektywa, której można użyć do warunkowego pominięcia aktualizacji dużych poddrzew lub list `v-for`. Zapoznaj się z [odniesieniem do API](/api/built-in-directives#v-memo) w celu uzyskania szczegółowych informacji.
 
-### Stabilność Computed Property <sup class="vt-badge" data-text="3.4+" /> {#computed-stability}
+### Stabilność Computed Property {#computed-stability}
 
-Od wersji 3.4 Computed Property będzie wyzwalać efekty tylko wtedy, gdy jej obliczona wartość zmieni się od poprzedniej. Na przykład, następujący `isEven` obliczony wyzwala efekty tylko wtedy, gdy zwrócona wartość zmieniła się z `true` na `false` lub odwrotnie:
+Od wersji Vue 3.4 i wyżej, Computed Property będzie wyzwalać efekty tylko wtedy, gdy jej obliczona wartość zmieni się od poprzedniej. Na przykład, następujący `isEven` obliczony wyzwala efekty tylko wtedy, gdy zwrócona wartość zmieniła się z `true` na `false` lub odwrotnie:
 
 ```js
 const count = ref(0)

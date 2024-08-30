@@ -129,7 +129,9 @@ Metody ułatwiająca użycie typów podczas definiowania komponentu.
   type FooInstance = InstanceType<typeof Foo>
   ```
 
-  ### Function Signature <sup class="vt-badge" data-text="3.3+" /> {#function-signature}
+  ### Function Signature {#function-signature}
+
+  - Wspierane tylko w 3.3+
 
  Funkcja `defineComponent()` ma również alternatywną sygnaturę, która jest przeznaczona do użycia z Composition API i [funkcje render lub JSX](/guide/extras/render-function.html).
 
