@@ -371,6 +371,17 @@ const foo = inject('foo') as string
 
 ## Typowanie referencji szablonów {#typing-template-refs}
 
+Razem z Vue 3.5 oraz `@vue/language-tools` 2.1 (wspomagającymi serwis języków IDE oraz `vue-tsc`), typy referencji utworzonych przez `useTemplateRef()` w komponentach jednoplikowych mogą być **automatycznie wywnioskowane** dla statycznych referencji bazując na tym jaki element wykorzystuje dany atrybut `ref`.
+
+W przypadku gdzie automatyczne wnioskowanie nie jest możliwe, nadal możesz narzucić konkretny typ poprzez argument generyczny:
+
+```ts
+const el = useTemplateRef<HTMLInputElement>(null)
+```
+
+<details>
+<summary>Użycie przed 3.5</summary>
+
 Referencje szablonów powinny być tworzone z jawnym argumentem typu generycznego i początkową wartością `null`:
 
 ```vue
@@ -389,50 +400,45 @@ onMounted(() => {
 </template>
 ```
 
+</details>
+
 Aby uzyskać właściwy interfejs DOM, możesz sprawdzić strony takie jak [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#technical_summary).
 
 Należy pamiętać, że dla ścisłego bezpieczeństwa typów, konieczne jest użycie opcjonalnego łańcuchowania lub strażników typów podczas dostępu do `el.value`. Wynika to z faktu, że początkowa wartość referencji to `null` do momentu zamontowania komponentu, a także może zostać ustawiona na `null`, jeśli element, do którego się odwołuje, zostanie odmontowany przez `v-if`.
 
 ## Typowanie referencji szablonów komponentów {#typing-component-template-refs}
 
-Czasami może być konieczne nadanie adnotacji referencji szablonu dla komponentu potomnego w celu wywołania jego publicznej metody. Na przykład, mamy komponent potomny `MyModal` z metodą, która otwiera modal:
+Razem z Vue 3.5 oraz `@vue/language-tools` 2.1 (wspomagającymi serwis języków IDE oraz `vue-tsc`), typy referencji utworzonych przez `useTemplateRef()` w komponentach jednoplikowych mogą być **automatycznie wywnioskowane** dla statycznych referencji bazując na tym jaki element wykorzystuje dany atrybut `ref`.
 
-```vue
-<!-- MyModal.vue -->
-<script setup lang="ts">
-import { ref } from 'vue'
+W przypadku gdzie automatyczne wnioskowanie nie jest możliwe, nadal możesz narzucić konkretny typ poprzez argument generyczny:
 
-const isContentShown = ref(false)
-const open = () => (isContentShown.value = true)
-
-defineExpose({
-  open
-})
-</script>
-```
-
-Aby uzyskać typ instancji `MyModal`, musimy najpierw uzyskać jego typ za pomocą `typeof`, a następnie użyć wbudowanego narzędzia TypeScript `InstanceType` do wyodrębnienia typu instancji:
+Aby uzyskać typ instancji zaimportowanego komponentu, musimy najpierw uzyskać jego typ za pomocą `typeof`, a następnie użyć wbudowanego narzędzia TypeScript `InstanceType` do wyodrębnienia typu instancji:
 
 ```vue{5}
 <!-- App.vue -->
 <script setup lang="ts">
-import MyModal from './MyModal.vue'
+import { useTemplateRef } from 'vue'
+import Foo from './Foo.vue'
+import Bar from './Bar.vue'
 
-const modal = ref<InstanceType<typeof MyModal> | null>(null)
+type FooType = InstanceType<typeof Foo>
+type BarType = InstanceType<typeof Bar>
 
-const openModal = () => {
-  modal.value?.open()
-}
+const compRef = useTemplateRef<FooType | BarType>('comp')
 </script>
+
+<template>
+  <component :is="Math.random() > 0.5 ? Foo : Bar" ref="comp" />
+</template>
 ```
 
 W przypadkach, gdy dokładny typ komponentu nie jest dostępny lub nie jest istotny, można zamiast tego użyć `ComponentPublicInstance`. Będzie to zawierać tylko właściwości wspólne dla wszystkich komponentów, takie jak `$el`:
 
 ```ts
-import { ref } from 'vue'
+import { useTemplateRef } from 'vue'
 import type { ComponentPublicInstance } from 'vue'
 
-const child = ref<ComponentPublicInstance | null>(null)
+const child = useTemplateRef<ComponentPublicInstance | null>(null)
 ```
 
 W przypadkach gdy taki komponent jest [komponentem generycznym](/guide/typescript/overview.html#generic-components), na przykład `MyGenericModal`:
@@ -457,14 +463,16 @@ Odwołanie do niego musi korzystać z `ComponentExposed` z biblioteki [`vue-comp
 ```vue
 <!-- App.vue -->
 <script setup lang="ts">
+import { useTemplateRef } from 'vue'
 import MyGenericModal from './MyGenericModal.vue'
+import type { ComponentExposed } from 'vue-component-type-helpers'
 
-import type { ComponentExposed } from 'vue-component-type-helpers';
-
-const modal = ref<ComponentExposed<typeof MyModal> | null>(null)
+const modal = useTemplateRef<ComponentExposed<typeof MyModal>>(null)
 
 const openModal = () => {
   modal.value?.open('newValue')
 }
 </script>
 ```
+
+Pamiętaj że razem z `@vue/language-tools` 2.1+, typy statycznych referencji szablonów mogą być automatycznie wywnioskowane i powyższe jest jedynie konieczne w przypadkach brzegowych.
