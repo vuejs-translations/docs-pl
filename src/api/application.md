@@ -610,3 +610,23 @@ Obiekt służący do definiowania strategii scalania dla niestandardowych opcji 
   ```
 
 - **Zobacz również** [Instancja komponentu - `$options`](/api/component-instance#options)
+
+## app.config.idPrefix <sup class="vt-badge" data-text="3.5+" /> {#app-config-idprefix}
+
+Konfiguruje prefix dla wszystkich ID generowanych poprzez [useId()](/api/general#useid) wewnątrz tej aplikacji.
+
+- **Typ:** `string`
+
+- **Domyślnie:** `undefined`
+
+- **Przykład:**
+
+  ```js
+  app.config.idPrefix = 'my-app'
+  ```
+
+  ```js
+  // wewnątrz komponentu:
+  const id1 = useId() // 'my-app:0'
+  const id2 = useId() // 'my-app:1'
+  ```
