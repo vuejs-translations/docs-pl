@@ -403,7 +403,7 @@ Obserwuje jedno lub więcej reaktywnych źródeł danych i wywołuje funkcję zw
 
   interface WatchOptions extends WatchEffectOptions {
     immediate?: boolean // default: false
-    deep?: boolean // default: false
+    deep?: boolean | number // default: false
     flush?: 'pre' | 'post' | 'sync' // default: 'pre'
     onTrack?: (event: DebuggerEvent) => void
     onTrigger?: (event: DebuggerEvent) => void
@@ -438,7 +438,7 @@ Obserwuje jedno lub więcej reaktywnych źródeł danych i wywołuje funkcję zw
   Trzecim opcjonalnym argumentem jest obiekt opcji, który obsługuje następujące opcje:
 
   - **`immediate`**: wywołanie zwrotne natychmiast po utworzeniu obserwatora. Stara wartość będzie „niezdefiniowana” przy pierwszym wywołaniu.
-  - **`deep`**: wymusza głębokie przeszukiwanie źródła, jeśli jest ono obiektem, tak aby wywołanie zwrotne było uruchamiane przy głębokich mutacjach. Zobacz [Deep Watchers](/guide/essentials/watchers#deep-watchers).
+  - **`deep`**: wymusza głębokie przeszukiwanie źródła, jeśli jest ono obiektem, tak aby wywołanie zwrotne było uruchamiane przy głębokich mutacjach. W wersji 3.5+, może być to również wartość liczbowa określająca maksymalny stopień zagnieżdżenia do obserwowania. Zobacz [Deep Watchers](/guide/essentials/watchers#deep-watchers).
   - **`flush`**: dostosowuje czas spłukiwania wywołania zwrotnego. Zobacz [Callback Flush Timing](/guide/essentials/watchers#callback-flush-timing) i [`watchEffect()`](/api/reactivity-core#watcheffect).
   - **`onTrack / onTrigger`**: debugowanie zależności watchera. Zobacz [Watcher Debugging](/guide/extras/reactivity-in-depth#watcher-debugging).
   - **`once`**: uruchamia wywołanie zwrotne tylko raz. Obserwator jest automatycznie zatrzymywany po pierwszym uruchomieniu wywołania zwrotnego. <sup class=„vt-badge” data-text="3.4+” />
