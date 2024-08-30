@@ -195,6 +195,19 @@ Wyrenderowany rezultat będzie następujący:
 </div>
 ```
 
+## Odroczony Teleport <sup class="vt-badge" data-text="3.5+" /> {#deferred-teleport}
+
+W Vue 3.5 i wyżej, możemy użyć właściwości `defer` aby odroczyć rozwiązywanie celu Teleportu, do czasu, aż inne części aplikacji się nie zamontują. Pozwala to celować do elementu, który renderowany jest przez Vue, ale w późniejszej części drzewa komponentów:
+
+```vue-html
+<Teleport defer to="#late-div">...</Teleport>
+
+<!-- gdzieś później w szablonie -->
+<div id="late-div"></div>
+```
+
+Zwróć uwagę, że cel teleportu musi być wyrenderowany w tym samym ticku montowania / aktualizacji razem z teleportem - np. jeśli `<div>` jest montowany sekundę później, teleport nadal zaraportuje błąd. Odraczanie działa podobnie do hooka `mounted` z cyklu życia komponentu.
+
 ---
 
 **Powiązane**
