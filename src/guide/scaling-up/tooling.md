@@ -108,17 +108,14 @@ Jeśli szukasz lżejszej, alternatywnej wersji Vue dla projektów bez kroku budo
 
 ## Narzędzia deweloperskie w przeglądarce {#browser-devtools}
 
-<VueSchoolLink href="https://vueschool.io/lessons/using-vue-dev-tools-with-vuejs-3" title="Free Vue.js Devtools Lesson"/>
-
 Narzędzia deweloperskie Vue dla przeglądarek pozwalają przeglądać drzewo komponentów w aplikacji Vue, podejrzeć stan konkretnych komponentów, śledzić zdarzenia zmiany stanu oraz profilować wydajność.
 
-![Zrzut ekranu narzędzi deweloperskich](https://raw.githubusercontent.com/vuejs/devtools/main/media/screenshot-shadow.png)
+![Zrzut ekranu narzędzi deweloperskich](./images/devtools.png)
 
 - [Dokumentacja](https://devtools.vuejs.org/)
-- [Wtyczka dla Chrome](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-- [Wtyczka dla Firefox](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-- [Wtyczka dla Edge](https://microsoftedge.microsoft.com/addons/detail/vuejs-devtools/olofadcdnkkjdfgjcmjaadnlehnnihnl)
-- [Samodzielna aplikacja w Electron](https://devtools.vuejs.org/guide/installation.html#standalone)
+- [Wtyczka dla Chrome](https://chromewebstore.google.com/detail/vuejs-devtools-beta/ljjemllljcmogpfapbkkighbhhppjdbg)
+- [Wtyczka do Vite](https://devtools.vuejs.org/guide/vite-plugin)
+- [Samodzielna aplikacja w Electron](https://devtools.vuejs.org/guide/standalone)
 
 ## TypeScript {#typescript}
 
