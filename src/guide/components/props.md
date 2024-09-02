@@ -152,7 +152,33 @@ Dodatkowo, możemy wykorzystać natywną składnię JavaScripta by zdefiniować 
 const { foo = 'witaj' } = defineProps<{ foo?: string }>()
 ```
 
+Jeśli preferujesz bardziej wizualne rozróżnienie między destrukturyzowanymi propsami a normalnymi zmiennymi w Twoim IDE, wtyczka Vue do VSCode oferuje opcję podpowiedzi dla destrukturyzowanych propsów.
+
 ### Przekazywanie destrukturyzowanych propsów do funkcji
+
+Gdy przekazujemy destrukturyzowany prop do funkcji, np.:
+
+```js
+const { foo } = defineProps(['foo'])
+
+watch(foo, /* ... */)
+```
+
+Nie zadziała to poprawnie, ponieważ jest to odpowiednikiem `watch(props.foo, ...)` - przekazujemy wartość zamiast reaktywnego źródła danych do `watch`. W praktyce, kompilator Vue wyłapie tego typu przypadki i zwróci ostrzeżenie.
+
+Podobnie jak możemy obserwować normalne propsy poprzez `watch(() => props.foo, ...)`, możemy w taki sam sposób obserwować destrukturyzowanego propsa, opakowując go w getter:
+
+```js
+watch(() => foo, /* ... */)
+```
+
+Dodatkowo, jest to również zalecane podejście gdy musi przekazać destrukturyzowanego propa do zewnętrznej funkcji, zachowując przy tym reaktywność:
+
+```js
+useComposable(() => foo)
+```
+
+Zewnętrzna funkcja może wywołać getter (lub znormalizować go z użyciem [toValue](/api/reactivity-utilities.html#tovalue)), gdy potrzebuje śledzić zmiany przekazanego propa, np. wewnątrz computed lub watchera.
 
 </div>
 
