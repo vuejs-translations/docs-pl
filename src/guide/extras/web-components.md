@@ -47,15 +47,15 @@ export default {
 ```js
 // vue.config.js
 module.exports = {
-  chainWebpack: config => {
+  chainWebpack: (config) => {
     config.module
       .rule('vue')
       .use('vue-loader')
-      .tap(options => ({
+      .tap((options) => ({
         ...options,
         compilerOptions: {
           // traktuj wszystkie tagi z myślnikiem jako elementy niestandardowe
-          isCustomElement: tag => tag.startsWith('ion-')
+          isCustomElement: (tag) => tag.startsWith('ion-')
         }
       }))
   }
@@ -81,7 +81,7 @@ Główną zaletą niestandardowych elementów jest to, że mogą być używane z
 
 ### defineCustomElement {#definecustomelement}
 
-Vue wspiera tworzenie niestandardowych elementów przy użyciu dokładnie tych samych API komponentów Vue za pomocą metody [`defineCustomElement`](/api/general#definecustomelement). Metoda przyjmuje ten sam argument co [`defineComponent`](/api/general#definecomponent), ale zamiast tego zwraca konstruktor niestandardowego elementu, który rozszerza `HTMLElement`:
+Vue wspiera tworzenie niestandardowych elementów przy użyciu dokładnie tych samych API komponentów Vue za pomocą metody [`defineCustomElement`](/api/custom-elements#definecustomelement). Metoda przyjmuje ten sam argument co [`defineComponent`](/api/general#definecomponent), ale zamiast tego zwraca konstruktor niestandardowego elementu, który rozszerza `HTMLElement`:
 
 ```vue-html
 <my-vue-element></my-vue-element>
@@ -171,6 +171,20 @@ Wewnątrz komponentu sloty mogą być renderowane przy użyciu elementu `<slot/>
 
 [API Provide / Inject](/guide/components/provide-inject#provide-inject) i jego [odpowiednik w Composition API](/api/composition-api-dependency-injection#provide) działają również między niestandardowymi elementami zdefiniowanymi w Vue. Jednak należy zauważyć, że działa to **tylko między elementami niestandardowymi**. Tzn. niestandardowy element zdefiniowany w Vue nie będzie w stanie wstrzyknąć właściwości dostarczonych przez komponent Vue niebędący elementem niestandardowym.
 
+#### Konfiguracja poziomu aplikacji <sup class="vt-badge" data-text="3.5+" /> {#app-level-config}
+
+Możesz skonfigurować instancję aplikacji niestandardowego elementu Vue przy pomocy opcji `configureApp`:
+
+```js
+defineCustomElement(MyComponent, {
+  configureApp(app) {
+    app.config.errorHandler = (err) => {
+      /* ... */
+    }
+  }
+})
+```
+
 ### SFC jako element niestandardowy {#sfc-as-custom-element}
 
 `defineCustomElement` działa również z komponentami jednoplikowymi Vue (SFC). Jednak przy domyślnej konfiguracji narzędzi, `<style>` wewnątrz SFC nadal będzie wyodrębniony i połączony w jeden plik CSS podczas budowania produkcyjnego. Podczas używania SFC jako elementu niestandardowego, często pożądane jest wstrzyknięcie tagów `<style>` do shadow root elementu niestandardowego.
@@ -242,7 +256,7 @@ export const Counter = defineCustomElement(CounterSFC)
 // zarejestruj globalne typowania
 declare module 'vue' {
   export interface GlobalComponents {
-    'Counter': typeof Counter,
+    Counter: typeof Counter
   }
 }
 ```

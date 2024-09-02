@@ -441,6 +441,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
     {
       text: 'Zaawansowany interfejs API',
       items: [
+        { text: 'Niestandardowe elementy', link: '/api/custom-elements' },
         { text: 'Funkcja render', link: '/api/render-function' },
         {
           text: 'Renderowanie po stronie serwera (SSR)',
