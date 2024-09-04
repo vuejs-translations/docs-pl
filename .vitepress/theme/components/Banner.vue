@@ -23,29 +23,30 @@ function dismiss() {
 <template>
   <div class="banner" v-if="open">
     <p class="vt-banner-text">
-      <span class="vt-text-primary">VueConf US</span>
-      <span class="vt-tagline"> - Weź udział w oficjalnej konferencji Vue.js</span>
-      | Maj 15-17, 2024 <span class="vt-place"> - Nowy Orlean, USA</span>
+      <span class="vt-text-primary">VueConf Toronto</span>
+      <span class="vt-tagline"> - Join the premier Vue.js conference</span>
+      | 18-20 Nov 2024 <span class="vt-place"> - Toronto, Canada</span>
       <a
         target="_blank"
         class="vt-primary-action"
-        href="https://vueconf.us?utm_source=vuejs&utm_content=top_banner"
-      >Zarejestruj się <span class="vt-time-now">teraz</span></a
+        href="https://vuetoronto.com/?utm_source=vuejs&utm_content=top_banner"
       >
+        Register
+      </a>
     </p>
     <button @click="dismiss">
       <VTIconPlus class="close" />
     </button>
     <p class="vt-banner-text vt-coupon">
-      <span class="vt-text-primary">Użyj kodu</span> VUEJSDOCS
-      <span class="vt-text-primary">aby otrzymać $100 zniżki!</span>
+      <span class="vt-text-primary">Use code</span> VUEJS
+      <span class="vt-text-primary">to get 15% off</span>
     </p>
   </div>
 </template>
 
 <style>
 html:not(.banner-dismissed) {
-  --vt-banner-height: 30px;
+  --vt-banner-height: 60px;
 }
 </style>
 
@@ -82,7 +83,7 @@ button {
   position: absolute;
   right: 0;
   top: 0;
-  padding: 5px;
+  padding: 20px 10px;
 }
 
 .close {
