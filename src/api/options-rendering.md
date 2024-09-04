@@ -86,7 +86,9 @@ Konfiguracja opcji kompilatora środowiska uruchomieniowego dla szablonu kompone
 
 ## slots<sup class="vt-badge ts"/> {#slots}
 
-Opcja wspomagająca wnioskowanie o typie podczas programowego używania slotów w funkcjach renderowania. Obsługiwana tylko w wersji 3.3+.
+- Wspierane tylko w 3.3+
+
+Opcja wspomagająca wnioskowanie o typie podczas programowego używania slotów w funkcjach renderowania.
 
 - **Szczegóły**
 

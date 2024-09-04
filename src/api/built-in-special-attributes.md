@@ -93,6 +93,8 @@ Stosowany do wiązania [dynamic components](/guide/essentials/component-basics#d
 
 - **Użycie na elementach natywnych** <sup class="vt-badge">3.1+</sup>
 
+  - Wspierane tylko w 3.1+
+
   Gdy atrybut `is` jest używany w natywnym elemencie HTML, zostanie zinterpretowany jako [Dostosowany wbudowany element](https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-customized-builtin-example), który jest natywną funkcją platformy internetowej.
 
   Istnieje jednak przypadek użycia, w którym możesz potrzebować Vue, aby zastąpić natywny element komponentem Vue, jak wyjaśniono w [In-DOM Template Parsing Caveats](/guide/essentials/component-basics#in-dom-template-parsing-caveats). Możesz dodać prefiks `is` do wartości atrybutu `vue:`, aby Vue renderował element jako komponent Vue:

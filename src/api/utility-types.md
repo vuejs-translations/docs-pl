@@ -34,15 +34,15 @@ Służy do adnotacji właściwości przy użyciu bardziej zaawansowanych typów 
 
 ## MaybeRef\<T> {#mayberef}
 
-Alias ​​dla `T | Ref<T>`. Przydatny do adnotowania argumentów [Composables](/guide/reusability/composables.html).
-
 - Obsługiwane tylko w wersji 3.3+.
+
+Alias dla `T | Ref<T>`. Przydatny do adnotowania argumentów [Composables](/guide/reusability/composables.html).
 
 ## MaybeRefOrGetter\<T> {#maybereforgetter}
 
-Alias ​​dla `T | Ref<T> | (() => T)`. Przydatny do adnotowania argumentów [Composables](/guide/reusability/composables.html).
-
 - Obsługiwane tylko w wersji 3.3+.
+
+Alias dla `T | Ref<T> | (() => T)`. Przydatny do adnotowania argumentów [Composables](/guide/reusability/composables.html).
 
 ## ExtractPropTypes\<T> {#extractproptypes}
 
@@ -77,9 +77,9 @@ Aby wyodrębnić rekwizyty skierowane do publiczności, tj. rekwizyty, które ro
 
 ## ExtractPublicPropTypes\<T> {#extractpublicproptypes}
 
-Wyodrębnij typy rekwizytów z obiektu opcji rekwizytów środowiska wykonawczego. Wyodrębnione typy są publiczne - tj. rekwizyty, które rodzic może przekazać.
-
 - Obsługiwane tylko w wersji 3.3+.
+
+Wyodrębnij typy rekwizytów z obiektu opcji rekwizytów środowiska wykonawczego. Wyodrębnione typy są publiczne - tj. rekwizyty, które rodzic może przekazać.
 
 - **Przykład**
 

@@ -285,9 +285,9 @@ Zapewnia wartość, która może zostać wstrzyknięta do wszystkich komponentó
 
 ## app.runWithContext() {#app-runwithcontext}
 
-Wykonanie wywołania zwrotnego z bieżącą aplikacją jako kontekstem wstrzyknięcia.
-
 - Wspierane tylko w 3.3+
+
+Wykonanie wywołania zwrotnego z bieżącą aplikacją jako kontekstem wstrzyknięcia.
 
 - **Typ**
 

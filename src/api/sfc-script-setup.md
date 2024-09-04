@@ -379,7 +379,9 @@ defineExpose({
 
 Gdy rodzic otrzyma wystąpienie tego komponentu za pośrednictwem odwołań do szablonu, pobrane wystąpienie będzie miało kształt `{ a: liczba, b: liczba }` (odwołania są automatycznie rozpakowywane, tak jak w przypadku normalnych wystąpień).
 
-## defineOptions() <sup class="vt-badge" data-text="3.3+" /> {#defineoptions}
+## defineOptions() {#defineoptions}
+
+- Wspierane tylko w 3.3+
 
 Tego makro można użyć do zadeklarowania opcji komponentu bezpośrednio w `<script setup>` bez konieczności używania oddzielnego bloku `<script>`:
 
@@ -394,7 +396,6 @@ defineOptions({
 </script>
 ```
 
-- Obsługiwane tylko w wersji 3.3+.
 - To jest makro. Opcje zostaną przeniesione do zakresu modułu i nie będą miały dostępu do zmiennych lokalnych w `<script setup>`, które nie są stałymi literalnymi.
 
 ## defineSlots()<sup class="vt-badge ts"/> {#defineslots}
@@ -412,8 +413,6 @@ const slots = defineSlots<{
 }>()
 </script>
 ```
-
-- Obsługiwane tylko w wersji 3.3+.
 
 ## `useSlots()` & `useAttrs()` {#useslots-useattrs}
 

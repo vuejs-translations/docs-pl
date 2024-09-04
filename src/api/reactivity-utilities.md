@@ -134,11 +134,11 @@ Może być również używany do tworzenia referencji dla właściwości w źró
 
 ## toValue() {#tovalue}
 
+- Wspierane tylko w 3.3+
+
 Normalizuje wartości / referencje / gettery do wartości. Jest to podobne do [unref()](#unref), z wyjątkiem tego, że normalizuje również gettery. Jeśli argument jest getterem, zostanie on wywołany i zwrócona zostanie jego wartość.
 
 Można tego użyć w [Composables](/guide/reusability/composables.html) do normalizacji argumentu, który może być wartością, ref lub getterem.
-
-- Wspierane tylko w 3.3+
 
 - **Typ**
 
