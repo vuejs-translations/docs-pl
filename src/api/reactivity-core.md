@@ -277,19 +277,6 @@ Natychmiast uruchamia funkcję, jednocześnie reaktywnie śledząc jej zależno�
   // -> logs 1
   ```
 
-  Usuwanie skutków ubocznych:
-
-  ```js
-  watchEffect(async (onCleanup) => {
-    const { response, cancel } = doAsyncWork(id.value)
-    // `cancel` zostanie wywołane jeśli `id` ulegnie zmianie
-    // poprzednie oczekujące żądanie zostanie anulowane
-    // jeśli nie zostało jeszcze zakończone
-    onCleanup(cancel)
-    data.value = await response
-  })
-  ```
-
   Zatrzymanie obserwatora:
 
   ```js
@@ -527,7 +514,7 @@ Obserwuje jedno lub więcej reaktywnych źródeł danych i wywołuje funkcję zw
   Zatrzymywanie / wznawianie obserwatorów: <sup class="vt-badge" data-text="3.5+" />
 
   ```js
-  const { stop, pause, resume } = watchEffect(() => {})
+  const { stop, pause, resume } = watch(() => {})
 
   // tymczasowo wstrzymaj obserwatora
   pause()
