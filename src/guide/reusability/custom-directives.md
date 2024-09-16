@@ -1,12 +1,23 @@
 # Dyrektywy niestandardowe {#custom-directives}
 
 <script setup>
-const vFocus = {
+const vHighlight = {
   mounted: el => {
-    el.focus()
+    el.classList.add('is-highlight')
   }
 }
 </script>
+
+<style>
+.vt-doc p.is-highlight {
+  margin-bottom: 0;
+}
+
+.is-highlight {
+  background-color: yellow;
+  color: black;
+}
+</style>
 
 ## Wprowadzenie {#introduction}
 
@@ -15,6 +26,96 @@ Oprócz domyślnego zestawu dyrektyw dostarczanych w rdzeniu (takich jak `v-mode
 Wprowadziliśmy dwie formy ponownego wykorzystania kodu w Vue: [komponenty](/guide/essentials/component-basics) i [funkcje kompozycyjne](./composables). Komponenty są głównymi blokami konstrukcyjnymi, podczas gdy funkcje kompozycyjne koncentrują się na ponownym wykorzystaniu logiki stanowej. Z drugiej strony dyrektywy niestandardowe są przeznaczone głównie do ponownego wykorzystania logiki, która obejmuje dostęp do DOM niskiego poziomu w zwykłych elementach.
 
 Dyrektywa niestandardowa jest zdefiniowana jako obiekt zawierający haki cyklu życia podobne do haków komponentu. Haki otrzymują element, do którego dyrektywa jest powiązana. Oto przykład dyrektywy, która skupia dane wejściowe, gdy element jest wstawiany do DOM przez Vue:
+
+<div class="composition-api">
+
+```vue
+<script setup>
+// włącza v-highlight w szablonach
+// enables v-highlight in templates
+const vHighlight = {
+  mounted: (el) => {
+    el.classList.add('is-highlight')
+  }
+}
+</script>
+
+<template>
+  <p v-highlight>This sentence is important!</p>
+</template>
+```
+
+</div>
+
+<div class="options-api">
+
+```js
+const highlight = {
+  mounted: (el) => el.classList.add('is-highlight')
+}
+
+export default {
+  directives: {
+    // włącza v-highlight w szablonach
+    highlight
+  }
+}
+```
+
+```vue-html
+<p v-highlight>This sentence is important!</p>
+```
+
+</div>
+
+<div class="demo">
+  <p v-highlight>This sentence is important!</p>
+</div>
+
+<div class="composition-api">
+
+W `<script setup>`, każda zmienna camelCase zaczynająca się od prefiksu `v` może być używana jako dyrektywa niestandardowa. W powyższym przykładzie `vHighlight` może być używana w szablonie jako `v-highlight`.
+
+Jeśli nie używasz `<script setup>`, dyrektywy niestandardowe można zarejestrować za pomocą opcji `directives`:
+
+```js
+export default {
+  setup() {
+    /*...*/
+  },
+  directives: {
+    // włącza v-highlight w szablonach
+    highlight: {
+      /* ... */
+    }
+  }
+}
+```
+
+</div>
+
+<div class="options-api">
+
+Podobnie jak komponenty, dyrektywy niestandardowe muszą być zarejestrowane, aby można było ich używać w szablonach. W powyższym przykładzie używamy lokalnej rejestracji za pomocą opcji `directives`.
+
+</div>
+
+Powszechną praktyką jest również globalne rejestrowanie dyrektyw niestandardowych na poziomie aplikacji:
+
+```js
+const app = createApp({})
+
+// spraw, aby v-highlight był używalny we wszystkich komponentach
+app.directive('highlight', {
+  /* ... */
+})
+```
+
+## Kiedy używać dyrektyw niestandardowych {#when-to-use}
+
+Niestandardowe dyrektywy powinno być tylko używane, gdy oczekiwaną funkcjonalność możemy osiągnąć jedynie za pomocą bezpośredniej manipulacji drzewem DOM.
+
+Częstym przykładem jest niestandardowa dyrektywa `v-focus`, która nadaje focus elementowi.
 
 <div class="composition-api">
 
@@ -54,54 +155,9 @@ export default {
 
 </div>
 
-<div class="demo">
-  <input v-focus placeholder="To powinno mieć stan focus" />
-</div>
+Ta dyrektywa jest bardziej przydatna niż atrybut `autofocus` ponieważ działa nie tylko na załadowaniu strony, ale również gdy element jest dynamicznie dodawany przez Vue!
 
-Zakładając, że nie kliknąłeś nigdzie indziej na stronie, powyższe dane wejściowe powinny być automatycznie wyostrzone. Ta dyrektywa jest bardziej użyteczna niż atrybut `autofocus`, ponieważ działa nie tylko podczas ładowania strony - działa również, gdy element jest dynamicznie wstawiany przez Vue.
-
-<div class="composition-api">
-
-W `<script setup>`, każda zmienna camelCase zaczynająca się od prefiksu `v` może być używana jako dyrektywa niestandardowa. W powyższym przykładzie `vFocus` może być używana w szablonie jako `v-focus`.
-
-Jeśli nie używasz `<script setup>`, dyrektywy niestandardowe można zarejestrować za pomocą opcji `directives`:
-
-```js
-export default {
-  setup() {
-    /*...*/
-  },
-  directives: {
-    // włącza v-focus w szablonach
-    focus: {
-      /* ... */
-    }
-  }
-}
-```
-
-</div>
-
-<div class="options-api">
-
-Podobnie jak komponenty, dyrektywy niestandardowe muszą być zarejestrowane, aby można było ich używać w szablonach. W powyższym przykładzie używamy lokalnej rejestracji za pomocą opcji `directives`.
-
-</div>
-
-Powszechną praktyką jest również globalne rejestrowanie dyrektyw niestandardowych na poziomie aplikacji:
-
-```js
-const app = createApp({})
-
-// spraw, aby v-focus był używalny we wszystkich komponentach or umożliw używanie v-focus we wszystkich komponentach
-app.directive('focus', {
-  /* ... */
-})
-```
-
-:::tip
-W miarę możliwości należy preferować deklaratywne tworzenie szablonów przy użyciu wbudowanych dyrektyw, takich jak `v-bind`, ponieważ są one bardziej wydajne i przyjazne dla renderowania po stronie serwera.
-:::
+Deklaratywne szablony z wbudowanymi dyrektywami jak `v-bind` są zalecanym podejściem gdy tylko to możliwe, ponieważ są one bardziej wydajne i bardziej przyjazne renderowaniu po stronie serwera.
 
 ## Cykle życia dyrektyw {#directive-hooks}
 
@@ -214,8 +270,12 @@ app.directive('demo', (el, binding) => {
 Nie zaleca się używania dyrektyw niestandardowych w komponentach. Nieoczekiwane zachowanie może wystąpić, gdy komponent ma wiele węzłów głównych.
 :::
 
+<<<<<<< HEAD
 
 Gdy są używane w komponentach, dyrektywy niestandardowe zawsze będą miały zastosowanie do węzła głównego komponentu, podobnie jak [Fallthrough Attributes](/guide/components/attrs).
+=======
+When used on components, custom directives will always apply to a component's root node, similar to [Fallthrough Attributes](/guide/components/attrs).
+>>>>>>> ac7a921f (docs (#2194): fix issue with autofocus on custom directives page (#2994))
 
 ```vue-html
 <MyComponent v-demo="test" />
