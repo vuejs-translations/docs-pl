@@ -118,7 +118,7 @@ W Vue 3.5+, komponenty asynchroniczne mogą kontrolować kiedy mają przejść p
 
 - Zaprojektowane one zostały celowo na niskim poziomie, aby były bardziej elastyczne. W przyszłości może pojawić się cukier syntaktyczny w samym frameworku lub narzędziach wyższego poziomu (jak np. Nuxt).
 
-### Hydratacja gdy przeglądarka jest idle
+### Hydratacja gdy przeglądarka jest idle {#hydrate-on-idle}
 
 Dokonuje hydratacji poprzez `requestIdleCallback`:
 
@@ -131,7 +131,7 @@ const AsyncComp = defineAsyncComponent({
 })
 ```
 
-### Hydratacja gdy widoczny
+### Hydratacja gdy widoczny {#hydrate-on-visible}
 
 Element(y) przejdą hydratację gdy będą uznane za widoczne poprzez `IntersectionObserver`.
 
@@ -150,7 +150,7 @@ Opcjonalnie, możemy przekazać też obiekt z opcjami dla obserwatora:
 hydrateOnVisible({ rootMargin: '100px' })
 ```
 
-### Hydratacja zależna od Media Query
+### Hydratacja zależna od Media Query {#hydrate-on-media-query}
 
 Hydratacja odbędzie się gdy media query zostanie spełnione.
 
@@ -163,7 +163,7 @@ const AsyncComp = defineAsyncComponent({
 })
 ```
 
-### Hydratacja na interakcji
+### Hydratacja na interakcji {#hydrate-on-interaction}
 
 Hydratacja odbędzie się gdy dane zdarzenie (lub zdarzenia) są wywołane przez elementy komponentu. Zdarzenia te zostaną wywołane na nowo, gdy hydratacja się zakończy.
 
@@ -182,7 +182,7 @@ Może to być również lista wielu różnych typów zdarzeń:
 hydrateOnInteraction(['wheel', 'mouseover'])
 ```
 
-### Własna strategia
+### Własna strategia {#custom-strategy}
 
 ```ts
 import { defineAsyncComponent, type HydrationStrategy } from 'vue'

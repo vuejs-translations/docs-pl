@@ -154,7 +154,7 @@ const { foo = 'witaj' } = defineProps<{ foo?: string }>()
 
 Jeśli preferujesz bardziej wizualne rozróżnienie między destrukturyzowanymi propsami a normalnymi zmiennymi w Twoim IDE, wtyczka Vue do VSCode oferuje opcję podpowiedzi dla destrukturyzowanych propsów.
 
-### Przekazywanie destrukturyzowanych propsów do funkcji
+### Przekazywanie destrukturyzowanych propsów do funkcji {#passing-destructured-props-into-functions}
 
 Gdy przekazujemy destrukturyzowany prop do funkcji, np.:
 
