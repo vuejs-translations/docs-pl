@@ -288,9 +288,9 @@ Podczas gdy testy end-to-end (E2E) wykonywane są w ramach pipeline'ów continuo
 
 ### Rekomendacje {#recommendation-2}
 
-- [Cypress](https://www.cypress.io/)
+- [Playwright](https://playwright.dev/) jest dobrym rozwiązaniem do testów E2E, które wspiera wszystkie współczesne silniki renderowania wliczając Chromium, WebKit czy Firefoxa. Umożliwia testy na Windowsie, Linuxie, macOS, lokalnie czy też w ramach CI, headlessowo lub nie oraz z natywną emulacją mobilną Google Chrome dla Androida i Safari w wersji mobilnej. Ma UI pełne informacji, świetną debugowalność, wbudowane asercje, paralelizację, stosy i jest zaprojektowany by eliminować flaky tests. Wsparcie dla [testowania komponentów](https://playwright.dev/docs/component-testing) jest dostępne, ale oznaczone jako eksperymentalne. Playwright jest open source i wspierany przez Microsoft.
 
-  Biorąc wszystko pod uwagę, uważamy, że Cypress dostarcza najbardziej pełne rozwiązanie do testów E2E z funkcjonalnościami takimi jak pełen przydatnych informacji interfejs graficzny, świetne wsparcie w debugowaniu, wbudowane asercje, stuby, flake-resistence, paralelizacja i snapshoty. Jak wspominaliśmy wyżej, dostarcza wsparcie do [testów komponentów](https://docs.cypress.io/guides/component-testing/introduction). Wspiera przeglądarki oparte o Chromium, Firefoxa czy Electron. Support WebKita jest również dostępny, ale wymieniony jako eksperymentalny.
+- [Cypress](https://www.cypress.io/) ma pełen informacji interfejs graficzny, świetne wsparcie w debugowaniu, wbudowane asercje, stuby, flake-resistence, i snapshoty. Jak wspominaliśmy wyżej, dostarcza stabilne wsparcie do [testów komponentów](https://docs.cypress.io/guides/component-testing/introduction). Cypress wspiera przeglądarki oparte o Chromium, Firefoxa czy Electron. Support WebKita jest również dostępny, ale wymieniony jako eksperymentalny. Cypress jest na licencji MIT, ale niektóre funkcjonalności jak paralizacja wymagają subskrybcji do Cypress Cloud.
 
 <div class="lambdatest">
   <a href="https://lambdatest.com" target="_blank">
@@ -303,8 +303,6 @@ Podczas gdy testy end-to-end (E2E) wykonywane są w ramach pipeline'ów continuo
 </div>
 
 ### Inne opcje {#other-options-2}
-
-- [Playwright](https://playwright.dev/) jest również dobrym rozwiązaniem do testów E2E, które wspiera wszystkie współczesne silniki renderowania wliczając Chromium, WebKit czy Firefoxa. Umożliwia testy na Windowsie, Linuxie, macOS, lokalnie czy też w ramach CI, headlessowo lub nie oraz z natywną emulacją mobilną Google Chrome dla Androida i Safari w wersji mobilnej.
 
 - [Nightwatch](https://nightwatchjs.org/) to rozwiązanie do testów E2E oparte o [Selenium WebDriver](https://www.npmjs.com/package/selenium-webdriver). Daje to mu najszersze wsparcie przeglądarek, wliczając również natywne testy mobilne. Rozwiązania oparte o Selenium będą jednak wolniejsze niż Playwright czy Cypress.
 
