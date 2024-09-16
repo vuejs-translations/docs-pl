@@ -26,7 +26,7 @@ const vnode = h(
 )
 ```
 
-`h()` jest skrótem od **hyperscript** - co oznacza "JavaScript, który tworzy HTML (hypertext markup language)". Ta nazwa została odziedziczona z konwencji wspólnych dla wielu implementacji wirtualnego DOM-u. Bardziej opisowa nazwa mogłaby brzmieć `createVnode()`, ale krótsza nazwa pomaga, gdy musisz wielokrotnie wywoływać tę funkcję w funkcji renderującej.
+`h()` jest skrótem od **hyperscript** - co oznacza "JavaScript, który tworzy HTML (hypertext markup language)". Ta nazwa została odziedziczona z konwencji wspólnych dla wielu implementacji wirtualnego DOM-u. Bardziej opisowa nazwa mogłaby brzmieć `createVNode()`, ale krótsza nazwa pomaga, gdy musisz wielokrotnie wywoływać tę funkcję w funkcji renderującej.
 
 Funkcja `h()` została zaprojektowana, aby być bardzo elastyczna:
 
