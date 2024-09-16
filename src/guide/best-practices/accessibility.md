@@ -1,4 +1,4 @@
-# Dostępność {#accessibility}
+z Dostępność {#accessibility}
 
 Dostępność internetowa (znana również jako a11y) odnosi się do praktyki tworzenia stron internetowych, z których może korzystać każdy — osoba niepełnosprawna, z wolnym połączeniem, przestarzałym lub zepsutym sprzętem lub po prostu ktoś w niekorzystnym otoczeniu. Na przykład dodanie napisów do filmu pomogłoby zarówno użytkownikom głuchym i niedosłyszącym, jak i użytkownikom, którzy znajdują się w głośnym otoczeniu i nie słyszą swojego telefonu. Podobnie upewnienie się, że tekst nie ma zbyt niskiego kontrastu, pomoże zarówno użytkownikom słabowidzącym, jak i użytkownikom, którzy próbują korzystać ze swojego telefonu w jasnym świetle słonecznym.
 
@@ -126,10 +126,6 @@ Użytkownicy mogą poruszać się po aplikacji za pomocą nagłówków. Posiadan
 | search          | role="search"        | Ta sekcja zawiera funkcjonalność wyszukiwania dla aplikacji                                               |
 | form            | role="form"          | Zbiór elementów powiązanych z formularzem                                                                           |
 | section         | role="region"        | Treść, która jest istotna i do której użytkownicy prawdopodobnie będą chcieli przejść. Etykieta musi być podana dla tego elementu |
-
-:::tip Tip:
-Zaleca się używanie elementów HTML landmark z redundantnymi atrybutami roli landmark w celu zapewnienia maksymalnej zgodności ze starszymi przeglądarkami, które nie obsługują elementów semantycznych HTML5 (https://caniuse.com/#feat=html5semantic).
-:::
 
 [Przeczytaj więcej o landmarks](https://www.w3.org/TR/wai-aria-1.2/#landmark_roles)
 
