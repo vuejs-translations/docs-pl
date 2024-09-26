@@ -32,7 +32,6 @@ Dyrektywa niestandardowa jest zdefiniowana jako obiekt zawierający haki cyklu �
 ```vue
 <script setup>
 // włącza v-highlight w szablonach
-// enables v-highlight in templates
 const vHighlight = {
   mounted: (el) => {
     el.classList.add('is-highlight')
@@ -270,12 +269,7 @@ app.directive('demo', (el, binding) => {
 Nie zaleca się używania dyrektyw niestandardowych w komponentach. Nieoczekiwane zachowanie może wystąpić, gdy komponent ma wiele węzłów głównych.
 :::
 
-<<<<<<< HEAD
-
 Gdy są używane w komponentach, dyrektywy niestandardowe zawsze będą miały zastosowanie do węzła głównego komponentu, podobnie jak [Fallthrough Attributes](/guide/components/attrs).
-=======
-When used on components, custom directives will always apply to a component's root node, similar to [Fallthrough Attributes](/guide/components/attrs).
->>>>>>> ac7a921f (docs (#2194): fix issue with autofocus on custom directives page (#2994))
 
 ```vue-html
 <MyComponent v-demo="test" />
