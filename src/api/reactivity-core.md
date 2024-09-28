@@ -383,9 +383,7 @@ Obserwuje jedno lub więcej reaktywnych źródeł danych i wywołuje funkcję zw
   type WatchSource<T> =
     | Ref<T> // ref
     | (() => T) // getter
-    | T extends object
-    ? T
-    : never // reactive object
+    | (T extends object ? T : never) // reactive object
 
   interface WatchOptions extends WatchEffectOptions {
     immediate?: boolean // default: false
