@@ -45,7 +45,7 @@ To helper, który jest używany w [`defineModel()`](/api/sfc-script-setup#define
   type ModelRef<T, M extends PropertyKey = string, G = T, S = T> = Ref<G, S> & [
     ModelRef<T, M, G, S>,
     Record<M, true | undefined>
-]
+  ]
   ```
 
 - **Przykład**
