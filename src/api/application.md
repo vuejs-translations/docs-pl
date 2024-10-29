@@ -627,7 +627,7 @@ Obiekt służący do definiowania strategii scalania dla niestandardowych opcji 
 
 ## app.config.idPrefix <sup class="vt-badge" data-text="3.5+" /> {#app-config-idprefix}
 
-Konfiguruje prefix dla wszystkich ID generowanych poprzez [useId()](/api/general#useid) wewnątrz tej aplikacji.
+Konfiguruje prefix dla wszystkich ID generowanych poprzez [useId()](/api/composition-api-helpers.html#useid) wewnątrz tej aplikacji.
 
 - **Typ:** `string`
 
