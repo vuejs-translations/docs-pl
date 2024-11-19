@@ -30,7 +30,7 @@ Vue to darmowy i otwarty projekt wydany na licencji [MIT].(https://opensource.or
 
 ## Jakie przeglądarki wspiera Vue? {#what-browsers-does-vue-support}
 
-Najnowsza wersja Vue (3.x) obsługuje tylko [przeglądarki z natywną obsługą ES2015] (https://caniuse.com/es6). Wyklucza to IE11. Vue 3.x wykorzystuje funkcje ES2015, których nie można zapewnić w starszych przeglądarkach, więc jeśli chcesz obsługiwać starsze przeglądarki, musisz zamiast tego użyć Vue 2.x.
+Najnowsza wersja Vue (3.x) obsługuje tylko [przeglądarki z natywną obsługą ES2016] (https://caniuse.com/es2016). Wyklucza to IE11. Vue 3.x wykorzystuje funkcje ES2016, których nie można zapewnić w starszych przeglądarkach, więc jeśli chcesz obsługiwać starsze przeglądarki, musisz zamiast tego użyć Vue 2.x.
 
 ## Czy Vue jest niezawodne? {#is-vue-reliable}
 
