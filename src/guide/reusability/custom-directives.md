@@ -25,7 +25,7 @@ Oprócz domyślnego zestawu dyrektyw dostarczanych w rdzeniu (takich jak `v-mode
 
 Wprowadziliśmy dwie formy ponownego wykorzystania kodu w Vue: [komponenty](/guide/essentials/component-basics) i [funkcje kompozycyjne](./composables). Komponenty są głównymi blokami konstrukcyjnymi, podczas gdy funkcje kompozycyjne koncentrują się na ponownym wykorzystaniu logiki stanowej. Z drugiej strony dyrektywy niestandardowe są przeznaczone głównie do ponownego wykorzystania logiki, która obejmuje dostęp do DOM niskiego poziomu w zwykłych elementach.
 
-Dyrektywa niestandardowa jest zdefiniowana jako obiekt zawierający haki cyklu życia podobne do haków komponentu. Haki otrzymują element, do którego dyrektywa jest powiązana. Oto przykład dyrektywy, która skupia dane wejściowe, gdy element jest wstawiany do DOM przez Vue:
+Dyrektywa niestandardowa jest zdefiniowana jako obiekt zawierający haki cyklu życia podobne do haków komponentu. Haki otrzymują element, do którego dyrektywa jest powiązana. Oto przykład dyrektywy, która dodaję klasę do elementu gdy ten jest wstawiany do DOM przez Vue:
 
 <div class="composition-api">
 
