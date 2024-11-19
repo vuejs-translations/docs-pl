@@ -220,6 +220,8 @@ Jeśli elementy niestandardowe będą używane w aplikacji, która również uż
 Zaleca się eksportowanie indywidualnych konstruktorów elementów, aby dać użytkownikom elastyczność w importowaniu ich na żądanie i rejestrowaniu ich z pożądanymi nazwami tagów. Możesz również wyeksportować wygodną funkcję do automatycznej rejestracji wszystkich elementów. Oto przykładowy punkt wejścia biblioteki elementów niestandardowych Vue:
 
 ```js
+// elements.js
+
 import { defineCustomElement } from 'vue'
 import Foo from './MyFoo.ce.vue'
 import Bar from './MyBar.ce.vue'
@@ -236,30 +238,276 @@ export function register() {
 }
 ```
 
-Jeśli masz wiele komponentów, możesz również wykorzystać funkcje narzędzi buildowania, takie jak [glob import](https://vitejs.dev/guide/features.html#glob-import) Vite lub [`require.context`](https://webpack.js.org/guides/dependency-management/#requirecontext) webpacka do załadowania wszystkich komponentów z katalogu.
+Następnie możemy wykorzystać te elementy w pliku Vue,
 
-### Web Components i TypeScript {#web-components-and-typescript}
+```vue
+<script setup>
+import { register } from 'path/to/elements.js'
+register()
+</script>
 
-Jeśli tworzysz aplikację lub bibliotekę, możesz chcieć [sprawdzać typy](/guide/scaling-up/tooling.html#typescript) swoich komponentów Vue, włączając te zdefiniowane jako elementy niestandardowe.
+<template>
+  <my-foo ...>
+    <my-bar ...></my-bar>
+  </my-foo>
+</template>
+```
 
-Elementy niestandardowe są rejestrowane globalnie przy użyciu natywnych API, więc domyślnie nie będą miały wnioskowania typów podczas używania w szablonach Vue. Aby zapewnić wsparcie dla typów komponentów Vue zarejestrowanych jako elementy niestandardowe, możemy zarejestrować globalne typowania komponentów używając interfejsu [`GlobalComponents`](https://github.com/vuejs/language-tools/blob/master/packages/vscode-vue/README.md#usage) w szablonach Vue i/lub w [JSX](https://www.typescriptlang.org/docs/handbook/jsx.html#intrinsic-elements):
+lub każdym innym frameworku, nawet z użyciem JSX i niestandardowymi nazwami:
+
+```jsx
+import { MyFoo, MyBar } from 'path/to/elements.js'
+
+customElements.define('some-foo', MyFoo)
+customElements.define('some-bar', MyBar)
+
+export function MyComponent() {
+  return <>
+    <some-foo ...>
+      <some-bar ...></some-bar>
+    </some-foo>
+  </>
+}
+```
+
+### Niestandardowe komponenty Vue i TypeScript {#web-components-and-typescript}
+
+Pisząc szablony komponentów jednoplikowych, możesz chcieć [sprawdzać typy](/guide/scaling-up/tooling.html#typescript) Twoich komponentów Vue, jak i tych, zdefiniowanych jako niestandardowe elementy.
+
+Niestandardowe elementy są rejestrowane globalnie przy użyciu wbudowanych API przeglądarek i domyślnie wnioskowanie ich typów nie będzie działać w szablonach Vue. Aby zapewnić wsparcie dla komponentów Vue rejestrowanych jako niestandardowe elementy, możemy zarejestrować globalne typy rozszerzając [interfejs `GlobalComponents`](https://github.com/vuejs/language-tools/blob/master/packages/vscode-vue/README.md#usage), aby typy były poprawnie sprawdzane w szablonach (użytkownicy JSX mogą rozszerzyć typ [JSX.IntrinsicElements](https://www.typescriptlang.org/docs/handbook/jsx.html#intrinsic-elements), którego tutaj nie pokazujemy).
+
+Oto jak możemy zdefiniować typy dla niestandardowych elementów w Vue:
 
 ```typescript
 import { defineCustomElement } from 'vue'
 
-// komponent vue SFC
-import CounterSFC from './src/components/counter.ce.vue'
+// Zaimportuj komponent Vue.
+import SomeComponent from './src/components/SomeComponent.ce.vue'
 
-// przekształć komponent w web component
-export const Counter = defineCustomElement(CounterSFC)
+// Przekształć komponent w klasę niestandardowego elementu.
+export const SomeElement = defineCustomElement(SomeComponent)
 
-// zarejestruj globalne typowania
+// Pamiętaj by zarejestrować element dla przeglądarki
+customElements.define('some-element', SomeElement)
+
+// Dodaj nowy typ wewnątrz typu GlobalComponents
 declare module 'vue' {
-  export interface GlobalComponents {
-    Counter: typeof Counter
+  interface GlobalComponents {
+    // Pamiętaj by przekazać tu typ komponentu Vue (SomeComponent *a nie* SomeElement).
+    // Niestandardowe elementy wymagają myślnika w nazwie, więc nazwij go w poniższy sposób
+    'some-element': typeof SomeComponent
   }
 }
 ```
+
+## Niestandardowe komponenty spoza Vue i TypeScript
+
+Oto zalecane podejście umożliwiające sprawdzanie typów w szablonach niestandardowych
+elementów, które nie były zbudowane z użyciem Vue.
+
+> [!Note]
+> Te podejście jest tylko jednym z wielu sposobów jak to osiągnąć, podejście może
+> różnić się zależnie od tego jak używany framework pozwala tworzyć niestandardowe elementy.
+
+Załóżmy, że mamy jakiś niestandardowy element z jakimiś własnościami i zdarzeniami zdefiniowanymi
+i dostarczanymi przy pomocy biblioteki `some-lib`:
+
+```ts
+// plik: some-lib/src/SomeElement.ts
+
+// Zdefiniuj klasę z otypowanymi własnościami
+export class SomeElement extends HTMLElement {
+  foo: number = 123
+  bar: string = 'blah'
+
+  lorem: boolean = false
+
+  // Ta metoda nie będzie udostępniona w typach w szablonie
+  someMethod() {
+    /* ... */
+  }
+
+  // ... szczegóły implementacyjne pominięte ...
+  // ... zakładamy że element może wywoływać zdarzenia nazwane "apple-fell" ...
+}
+
+customElements.define('some-element', SomeElement)
+
+// To jest lista własności SomeElement, które będą udostępnione
+// do sprawdzania typów w szablonach frameworka (np. Vue SFC). Wszystkie
+// inne własności nie będą udostępnione.
+export type SomeElementAttributes = 'foo' | 'bar'
+
+// Zdefiniuj typy emitowanych zdarzeń elementu SomeElement.
+export type SomeElementEvents = {
+  'apple-fell': AppleFellEvent
+}
+
+export class AppleFellEvent extends Event {
+  /* ... szczegóły pominięte ... */
+}
+```
+
+Szczegóły implementacji zostały pominięte, ale najważniejszą częścią jest to,
+że mamy definicje typów dla własności oraz emitowanych zdarzeń.
+
+Stwórzmy pomocniczy typ celem szybkiego rejestrowana typów
+niestandardowych elementów w Vue:
+
+```ts
+// plik: some-lib/src/DefineCustomElement.ts
+
+// Możemy reużywać ten typ pomocniczy dla każdego elementu który chcemy zdefiniować
+type DefineCustomElement<
+  ElementType extends HTMLElement,
+  Events extends EventMap = {},
+  SelectedAttributes extends keyof ElementType = keyof ElementType
+> = new () => ElementType & {
+  // Używaj $props by definiować własności udostępniane w szablonach do sprawdzania typów.
+  // Vue odczytuje definicje własności z typu `$props`.
+  // Zwróć uwagę, że łączymy własności elementu razem z globalnymi własnościami HTML
+  // i własnościami specyficznymi dla Vue.
+  /** @deprecated Nie używaj własności $props na referencji niestandardowego elementu, jest to jedynie na potrzeby określenia typów w szablonach */
+  $props: HTMLAttributes &
+    Partial<Pick<ElementType, SelectedAttributes>> &
+    PublicProps
+
+  // Użyj $emit by wyspecyfikować emitowane zdarzenia. Vue odczytuje typy zdarzeń
+  // z typu `$emit`. Zwróć uwagę, że `$emit` oczekuje konkretnego formatu
+  // do którego mapujemy `Events`.
+  /** @deprecated Nie używaj własności $emit na referencji niestandardowego elementu, jest to jedynie na potrzeby określenia typów w szablonach */
+  $emit: VueEmit<Events>
+}
+
+type EventMap = {
+  [event: string]: Event
+}
+
+// Przemapowanie EventMap na format jakiego oczekuje $emit w Vue
+type VueEmit<T extends EventMap> = EmitFn<{
+  [K in keyof T]: (event: T[K]) => void
+}>
+```
+
+> [!Note]
+> Oznaczyliśmy `$props` jak i `$emit` jako deprecated, aby w momencie pobrania `ref` tego
+> niestandardowego elementu, nie będziemy skuszeni użyciem tych własności, gdyż
+> są one uzywane jedynie do sprawdzania typów dla niestandardowych elementów.
+> Własności te w praktyce nie istnieją na instancjach niestandardowych elementów.
+
+Używając tego typu pomocniczego możemy teraz wylistować własności jakie chcemy
+by były sprawdzane pod względem typów w szablonach Vue:
+
+```ts
+// plik: some-lib/src/SomeElement.vue.ts
+
+import {
+  SomeElement,
+  SomeElementAttributes,
+  SomeElementEvents
+} from './SomeElement.js'
+import type { Component } from 'vue'
+import type { DefineCustomElement } from './DefineCustomElement'
+
+// Dodaj typ nowego elementu do typu GlobalComponents
+declare module 'vue' {
+  interface GlobalComponents {
+    'some-element': DefineCustomElement<
+      SomeElement,
+      SomeElementAttributes,
+      SomeElementEvents
+    >
+  }
+}
+```
+
+Załóżmy że `some-lib` buduje swoje pliki źródłowe TypeScript do folderu `dist/`. Użytkownik
+`some-lib` może potem importować `SomeElement` i użyć go w komponentach jednoplikowych Vue jak poniżej:
+
+```vue
+<script setup lang="ts">
+// To utworzy i zarejstruje element w przeglądarce
+import 'some-lib/dist/SomeElement.js'
+
+// Użytkownik używający TypeScript i Vue dodatkowo powinien zaimportować
+// definicje typów utworzone dla Vue (użytkownicy innych frameworków mogą
+// zaimportować typy dla tychże frameworków).
+import type {} from 'some-lib/dist/SomeElement.vue.js'
+
+import { useTemplateRef, onMounted } from 'vue'
+
+const el = useTemplateRef('el')
+
+onMounted(() => {
+  console.log(
+    el.value!.foo,
+    el.value!.bar,
+    el.value!.lorem,
+    el.value!.someMethod()
+  )
+
+  // Nie używaj tych własności, są one `undefined` (IDE pokaże je przekreślone):
+  el.$props
+  el.$emit
+})
+</script>
+
+<template>
+  <!-- Teraz możemy użyć elementu, mając sprawdzanie typów: -->
+  <some-element
+    ref="el"
+    :foo="456"
+    :blah="'hello'"
+    @apple-fell="
+      (event) => {
+        // Typ `event` jest wywnioskowany tutaj jako `AppleFellEvent`
+      }
+    "
+  ></some-element>
+</template>
+```
+
+Jeśli element nie ma definicji typów, możemy własnoręcznie zdefiniować typy dla
+własności i emitowanych zdarzeń:
+
+```vue
+<script setup lang="ts">
+// Załóżmy, że `some-lib` to czysty JS, bez definicji typów, a TypeScript
+// nie jest w stanie wywnioskować typów:
+import { SomeElement } from 'some-lib'
+
+// Użyjemy tego samego typu pomocniczego jak wcześniej
+import { DefineCustomElement } from './DefineCustomElement'
+
+type SomeElementProps = { foo?: number; bar?: string }
+type SomeElementEvents = { 'apple-fell': AppleFellEvent }
+interface AppleFellEvent extends Event {
+  /* ... */
+}
+
+// Dodaj typ nowego elementu w typie GlobalComponents
+declare module 'vue' {
+  interface GlobalComponents {
+    'some-element': DefineCustomElement<
+      SomeElementProps,
+      SomeElementEvents
+    >
+  }
+}
+
+// ... jak poprzednio, używamy referencji do elementu ...
+</script>
+
+<template>
+  <!-- ... jak poprzednio, używamy elementu w szablonie ... -->
+</template>
+```
+
+Autorzy niestandardowych komponentów nie powinni automatycznie eksportować typów
+konkretnych dla danych frameworków ze swoich bibliotek, na przykład nie powinni eksportować
+ich z pliku `index.ts`, który eksportuje również całą resztę biblioteki.
+Skutkiem tego będą nieoczekiwane błędy rozszerzenia modułów. Użytkownicy powinni
+importować typy konkretne dla uzywanego frameworka z odpowiedniego pliku.
 
 ## Web Components vs. Komponenty Vue {#web-components-vs-vue-components}
 
