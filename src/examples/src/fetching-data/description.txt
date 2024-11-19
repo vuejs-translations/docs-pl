@@ -1,2 +1,2 @@
-Ten przykład pobiera dane o najnowszych commitach Vue.js z API GitHuba i wyświetla je jako listę.
-Możesz przełączać się między dwiema gałęziami.
+Ten przykład pobiera dane o najnowszych commitach Vue Core z API GitHuba i wyświetla je jako listę.
+Możesz przełączać się między dwiema głównymi gałęziami.
