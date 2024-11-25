@@ -376,7 +376,7 @@ Razem z Vue 3.5 oraz `@vue/language-tools` 2.1 (wspomagającymi serwis języków
 W przypadku gdzie automatyczne wnioskowanie nie jest możliwe, nadal możesz narzucić konkretny typ poprzez argument generyczny:
 
 ```ts
-const el = useTemplateRef<HTMLInputElement>(null)
+const el = useTemplateRef<HTMLInputElement>('el')
 ```
 
 <details>
@@ -438,7 +438,7 @@ W przypadkach, gdy dokładny typ komponentu nie jest dostępny lub nie jest isto
 import { useTemplateRef } from 'vue'
 import type { ComponentPublicInstance } from 'vue'
 
-const child = useTemplateRef<ComponentPublicInstance | null>(null)
+const child = useTemplateRef<ComponentPublicInstance>('child')
 ```
 
 W przypadkach gdy taki komponent jest [komponentem generycznym](/guide/typescript/overview.html#generic-components), na przykład `MyGenericModal`:
@@ -467,7 +467,7 @@ import { useTemplateRef } from 'vue'
 import MyGenericModal from './MyGenericModal.vue'
 import type { ComponentExposed } from 'vue-component-type-helpers'
 
-const modal = useTemplateRef<ComponentExposed<typeof MyGenericModal>>(null)
+const modal = useTemplateRef<ComponentExposed<typeof MyGenericModal>>('modal')
 
 const openModal = () => {
   modal.value?.open('newValue')
