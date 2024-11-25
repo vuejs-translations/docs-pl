@@ -300,7 +300,7 @@ declare module 'vue' {
 }
 ```
 
-## Niestandardowe komponenty spoza Vue i TypeScript
+## Niestandardowe komponenty spoza Vue i TypeScript {#non-vue-web-components-and-typescript}
 
 Oto zalecane podejście umożliwiające sprawdzanie typów w szablonach niestandardowych
 elementów, które nie były zbudowane z użyciem Vue.
