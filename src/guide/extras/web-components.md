@@ -274,7 +274,7 @@ export function MyComponent() {
 
 Pisząc szablony komponentów jednoplikowych, możesz chcieć [sprawdzać typy](/guide/scaling-up/tooling.html#typescript) Twoich komponentów Vue, jak i tych, zdefiniowanych jako niestandardowe elementy.
 
-Niestandardowe elementy są rejestrowane globalnie przy użyciu wbudowanych API przeglądarek i domyślnie wnioskowanie ich typów nie będzie działać w szablonach Vue. Aby zapewnić wsparcie dla komponentów Vue rejestrowanych jako niestandardowe elementy, możemy zarejestrować globalne typy rozszerzając [interfejs `GlobalComponents`](https://github.com/vuejs/language-tools/blob/master/packages/vscode-vue/README.md#usage), aby typy były poprawnie sprawdzane w szablonach (użytkownicy JSX mogą rozszerzyć typ [JSX.IntrinsicElements](https://www.typescriptlang.org/docs/handbook/jsx.html#intrinsic-elements), którego tutaj nie pokazujemy).
+Niestandardowe elementy są rejestrowane globalnie przy użyciu wbudowanych API przeglądarek i domyślnie wnioskowanie ich typów nie będzie działać w szablonach Vue. Aby zapewnić wsparcie dla komponentów Vue rejestrowanych jako niestandardowe elementy, możemy zarejestrować globalne typy rozszerzając [interfejs `GlobalComponents`](https://github.com/vuejs/language-tools/wiki/Global-Component-Types), aby typy były poprawnie sprawdzane w szablonach (użytkownicy JSX mogą rozszerzyć typ [JSX.IntrinsicElements](https://www.typescriptlang.org/docs/handbook/jsx.html#intrinsic-elements), którego tutaj nie pokazujemy).
 
 Oto jak możemy zdefiniować typy dla niestandardowych elementów w Vue:
 
