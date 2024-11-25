@@ -99,11 +99,15 @@ const model = defineModel({ default: 0 })
 :::warning
 Jeśli masz wartość `default` dla właściwości `defineModel` i nie przekazujesz żadnej wartości dla tej właściwości z komponentu rodzica, może to spowodować desynchronizację między komponentami rodzica i potomka. W poniższym przykładzie, `myRef` rodzica jest niezdefiniowane (undefined), ale `model` potomka ma wartość 1:
 
-```js
-// komponent podrzędny:
-const model = defineModel({ default: 1 })
+**Komponent podrzędny:**
 
-// komponent nadrzędny:
+```js
+const model = defineModel({ default: 1 })
+```
+
+**Komponent nadrzędny:**
+
+```js
 const myRef = ref()
 ```
 
