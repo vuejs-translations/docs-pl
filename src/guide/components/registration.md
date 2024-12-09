@@ -138,4 +138,4 @@ W całym przewodniku używamy nazw w formacie PascalCase podczas rejestrowania k
 
 Jest to zalecany styl podczas pracy z SFC lub szablonami stringowymi. Jednak, jak omówiono w [zastrzeżeniach dotyczących parsowania szablonów w DOM](/guide/essentials/component-basics#in-dom-template-parsing-caveats), tagi w formacie PascalCase nie mogą być używane w szablonach w DOM.
 
-Na szczęście Vue obsługuje rozwiązywanie tagów w formacie kebab-case do komponentów zarejestrowanych przy użyciu PascalCase. Oznacza to, że komponent zarejestrowany jako `MyComponent` może być przywoływany w szablonie zarówno przez `<MyComponent>`, jak i `<my-component>`. Pozwala nam to używać tego samego kodu rejestracji komponentów JavaScript niezależnie od źródła szablonu.
+Na szczęście Vue obsługuje rozwiązywanie tagów w formacie kebab-case do komponentów zarejestrowanych przy użyciu PascalCase. Oznacza to, że komponent zarejestrowany jako `MyComponent` może być przywoływany w szablonie Vue (jak i wewnątrz HTML renderowanym przez Vue) zarówno przez `<MyComponent>`, jak i `<my-component>`. Pozwala nam to używać tego samego kodu rejestracji komponentów JavaScript niezależnie od źródła szablonu.
