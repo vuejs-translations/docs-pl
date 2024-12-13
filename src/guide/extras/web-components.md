@@ -238,7 +238,7 @@ export function register() {
 }
 ```
 
-Następnie możemy wykorzystać te elementy w pliku Vue,
+Następnie możemy wykorzystać te elementy w pliku Vue:
 
 ```vue
 <script setup>
@@ -253,7 +253,7 @@ register()
 </template>
 ```
 
-lub każdym innym frameworku, nawet z użyciem JSX i niestandardowymi nazwami:
+Lub każdym innym frameworku, nawet z użyciem JSX i niestandardowymi nazwami:
 
 ```jsx
 import { MyFoo, MyBar } from 'path/to/elements.js'
@@ -263,8 +263,8 @@ customElements.define('some-bar', MyBar)
 
 export function MyComponent() {
   return <>
-    <some-foo ...>
-      <some-bar ...></some-bar>
+    <some-foo ... >
+      <some-bar ... ></some-bar>
     </some-foo>
   </>
 }
@@ -293,8 +293,10 @@ customElements.define('some-element', SomeElement)
 // Dodaj nowy typ wewnątrz typu GlobalComponents
 declare module 'vue' {
   interface GlobalComponents {
-    // Pamiętaj by przekazać tu typ komponentu Vue (SomeComponent *a nie* SomeElement).
-    // Niestandardowe elementy wymagają myślnika w nazwie, więc nazwij go w poniższy sposób
+    // Pamiętaj by przekazać tu typ komponentu Vue
+    // (SomeComponent *a nie* SomeElement).
+    // Niestandardowe elementy wymagają myślnika w nazwie,
+    // więc nazwij go w poniższy sposób
     'some-element': typeof SomeComponent
   }
 }
@@ -302,15 +304,13 @@ declare module 'vue' {
 
 ## Niestandardowe komponenty spoza Vue i TypeScript {#non-vue-web-components-and-typescript}
 
-Oto zalecane podejście umożliwiające sprawdzanie typów w szablonach niestandardowych
-elementów, które nie były zbudowane z użyciem Vue.
+Oto zalecane podejście umożliwiające sprawdzanie typów w szablonach niestandardowych elementów, które nie były zbudowane z użyciem Vue.
 
 > [!Note]
 > Te podejście jest tylko jednym z wielu sposobów jak to osiągnąć, podejście może
 > różnić się zależnie od tego jak używany framework pozwala tworzyć niestandardowe elementy.
 
-Załóżmy, że mamy jakiś niestandardowy element z jakimiś własnościami i zdarzeniami zdefiniowanymi
-i dostarczanymi przy pomocy biblioteki `some-lib`:
+Załóżmy, że mamy jakiś niestandardowy element z jakimiś własnościami i zdarzeniami zdefiniowanymi i dostarczanymi przy pomocy biblioteki `some-lib`:
 
 ```ts
 // plik: some-lib/src/SomeElement.ts
@@ -348,11 +348,9 @@ export class AppleFellEvent extends Event {
 }
 ```
 
-Szczegóły implementacji zostały pominięte, ale najważniejszą częścią jest to,
-że mamy definicje typów dla własności oraz emitowanych zdarzeń.
+Szczegóły implementacji zostały pominięte, ale najważniejszą częścią jest to, że mamy definicje typów dla własności oraz emitowanych zdarzeń.
 
-Stwórzmy pomocniczy typ celem szybkiego rejestrowana typów
-niestandardowych elementów w Vue:
+Stwórzmy pomocniczy typ celem szybkiego rejestrowana typów niestandardowych elementów w Vue:
 
 ```ts
 // plik: some-lib/src/DefineCustomElement.ts
@@ -367,7 +365,8 @@ type DefineCustomElement<
   // Vue odczytuje definicje własności z typu `$props`.
   // Zwróć uwagę, że łączymy własności elementu razem z globalnymi własnościami HTML
   // i własnościami specyficznymi dla Vue.
-  /** @deprecated Nie używaj własności $props na referencji niestandardowego elementu, jest to jedynie na potrzeby określenia typów w szablonach */
+  /** @deprecated Nie używaj własności $props na referencji niestandardowego elementu,
+    jest to jedynie na potrzeby określenia typów w szablonach */
   $props: HTMLAttributes &
     Partial<Pick<ElementType, SelectedAttributes>> &
     PublicProps
@@ -375,7 +374,8 @@ type DefineCustomElement<
   // Użyj $emit by wyspecyfikować emitowane zdarzenia. Vue odczytuje typy zdarzeń
   // z typu `$emit`. Zwróć uwagę, że `$emit` oczekuje konkretnego formatu
   // do którego mapujemy `Events`.
-  /** @deprecated Nie używaj własności $emit na referencji niestandardowego elementu, jest to jedynie na potrzeby określenia typów w szablonach */
+  /** @deprecated Nie używaj własności $emit na referencji niestandardowego elementu,
+    jest to jedynie na potrzeby określenia typów w szablonach */
   $emit: VueEmit<Events>
 }
 
@@ -395,8 +395,7 @@ type VueEmit<T extends EventMap> = EmitFn<{
 > są one uzywane jedynie do sprawdzania typów dla niestandardowych elementów.
 > Własności te w praktyce nie istnieją na instancjach niestandardowych elementów.
 
-Używając tego typu pomocniczego możemy teraz wylistować własności jakie chcemy
-by były sprawdzane pod względem typów w szablonach Vue:
+Używając tego typu pomocniczego możemy teraz wylistować własności jakie chcemy by były sprawdzane pod względem typów w szablonach Vue:
 
 ```ts
 // plik: some-lib/src/SomeElement.vue.ts
@@ -421,8 +420,7 @@ declare module 'vue' {
 }
 ```
 
-Załóżmy że `some-lib` buduje swoje pliki źródłowe TypeScript do folderu `dist/`. Użytkownik
-`some-lib` może potem importować `SomeElement` i użyć go w komponentach jednoplikowych Vue jak poniżej:
+Załóżmy że `some-lib` buduje swoje pliki źródłowe TypeScript do folderu `dist/`. Użytkownik `some-lib` może potem importować `SomeElement` i użyć go w komponentach jednoplikowych Vue jak poniżej:
 
 ```vue
 <script setup lang="ts">
@@ -446,7 +444,8 @@ onMounted(() => {
     el.value!.someMethod()
   )
 
-  // Nie używaj tych własności, są one `undefined` (IDE pokaże je przekreślone):
+  // Nie używaj tych własności, są one `undefined`
+  // IDE pokaże je przekreślone
   el.$props
   el.$emit
 })
@@ -467,8 +466,7 @@ onMounted(() => {
 </template>
 ```
 
-Jeśli element nie ma definicji typów, możemy własnoręcznie zdefiniować typy dla
-własności i emitowanych zdarzeń:
+Jeśli element nie ma definicji typów, możemy własnoręcznie zdefiniować typy dla własności i emitowanych zdarzeń:
 
 ```vue
 <script setup lang="ts">
@@ -503,11 +501,7 @@ declare module 'vue' {
 </template>
 ```
 
-Autorzy niestandardowych komponentów nie powinni automatycznie eksportować typów
-konkretnych dla danych frameworków ze swoich bibliotek, na przykład nie powinni eksportować
-ich z pliku `index.ts`, który eksportuje również całą resztę biblioteki.
-Skutkiem tego będą nieoczekiwane błędy rozszerzenia modułów. Użytkownicy powinni
-importować typy konkretne dla uzywanego frameworka z odpowiedniego pliku.
+Autorzy niestandardowych komponentów nie powinni automatycznie eksportować typów konkretnych dla danych frameworków ze swoich bibliotek, na przykład nie powinni eksportować ich z pliku `index.ts`, który eksportuje również całą resztę biblioteki. Skutkiem tego będą nieoczekiwane błędy rozszerzenia modułów. Użytkownicy powinni importować typy konkretne dla uzywanego frameworka z odpowiedniego pliku.
 
 ## Web Components vs. Komponenty Vue {#web-components-vs-vue-components}
 
