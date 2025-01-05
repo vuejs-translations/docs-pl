@@ -123,12 +123,12 @@ Rejestruje komponent globalny, jeśli przekazano zarówno nazwę, jak i definicj
   const app = createApp({})
 
   // rejestracja obiekt opcji
-  app.component('my-component', {
+  app.component('MyComponent', {
     /* ... */
   })
 
   // użycie zarejestrowanego komponentu
-  const MyComponent = app.component('my-component')
+  const MyComponent = app.component('MyComponent')
   ```
 
 - **Zobacz również** [Rejestracja komponentów](/guide/components/registration)
@@ -156,17 +156,17 @@ Rejestruje globalną dyrektywę , jeśli przekazano zarówno nazwę, jak i defin
   })
 
   // rejestracja (obiekt dyrektywy)
-  app.directive('my-directive', {
+  app.directive('myDirective', {
     /* custom directive hooks */
   })
 
   // rejestracja (funkcja dyrektywy)
-  app.directive('my-directive', () => {
+  app.directive('myDirective', () => {
     /* ... */
   })
 
   // użycie zarejestrowanej dyrektywy
-  const myDirective = app.directive('my-directive')
+  const myDirective = app.directive('myDirective')
   ```
 
 - **Zobacz również** [niestandardowe dyrektywy](/guide/reusability/custom-directives)
@@ -636,13 +636,13 @@ Konfiguruje prefix dla wszystkich ID generowanych poprzez [useId()](/api/composi
 - **Przykład:**
 
   ```js
-  app.config.idPrefix = 'my-app'
+  app.config.idPrefix = 'myApp'
   ```
 
   ```js
   // wewnątrz komponentu:
-  const id1 = useId() // 'my-app:0'
-  const id2 = useId() // 'my-app:1'
+  const id1 = useId() // 'myApp:0'
+  const id2 = useId() // 'myApp:1'
   ```
 
 ## app.config.throwUnhandledErrorInProduction <sup class="vt-badge" data-text="3.5+" /> {#app-config-throwunhandlederrorinproduction}
