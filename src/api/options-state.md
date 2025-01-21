@@ -93,7 +93,7 @@ Deklaruje właściwości komponentu.
 
   - **`required`**: Określa, czy rekwizyt jest wymagany. W środowisku nieprodukcyjnym zostanie wyświetlone ostrzeżenie konsoli, jeśli ta wartość jest prawdziwa, a właściwość nie zostanie przekazana.
 
-  - **`validator`**: Niestandardowa funkcja walidatora, która przyjmuje wartość właściwości jako jedyny argument. W trybie deweloperskim zostanie wyświetlone ostrzeżenie konsoli, jeśli ta funkcja zwróci fałszywą wartość (tj. walidacja nie powiedzie się).
+  - **`validator`**: Niestandardowa funkcja walidatora, która przyjmuje wartość właściwości oraz obiekt propsów jako argumenty. W trybie deweloperskim zostanie wyświetlone ostrzeżenie konsoli, jeśli ta funkcja zwróci fałszywą wartość (tj. walidacja nie powiedzie się).
 
 - **Przykład**
 
