@@ -10,7 +10,7 @@ Vue jest zaprojektowane tak, aby działać wydajnie w większości typowych przy
 
 Najpierw omówmy dwa główne aspekty wydajności sieci:
 
-- **Wydajność ładowania strony**: jak szybko aplikacja wyświetla zawartość i staje się interaktywna podczas pierwszej wizyty. Zwykle mierzy się to za pomocą wskaźników web vital, takich jak [Largest Contentful Paint (LCP)](https://web.dev/lcp/) i [First Input Delay (FID)](https://web.dev/fid/).
+- **Wydajność ładowania strony**: jak szybko aplikacja wyświetla zawartość i staje się interaktywna podczas pierwszej wizyty. Zwykle mierzy się to za pomocą wskaźników web vital, takich jak [Largest Contentful Paint (LCP)](https://web.dev/lcp/) i [Interaction to Next Paint](https://web.dev/articles/inp).
 
 - **Wydajność aktualizacji**: jak szybko aplikacja aktualizuje się w odpowiedzi na dane wprowadzane przez użytkownika. Na przykład, jak szybko lista aktualizuje się, gdy użytkownik wpisuje dane w polu wyszukiwania lub jak szybko strona przełącza się, gdy użytkownik klika łącze nawigacyjne w aplikacji jednostronicowej (SPA).
 
