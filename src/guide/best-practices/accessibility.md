@@ -13,6 +13,7 @@ Powinieneś dodać link na górze każdej strony, który prowadzi bezpośrednio 
 Zazwyczaj robi się to na górze `App.vue`, ponieważ będzie to pierwszy element, na którym można się skupić na wszystkich stronach:
 
 ```vue-html
+<span ref="backToTop" tabindex="-1" />
 <ul class="skip-links">
   <li>
     <a href="#main" ref="skipLink" class="skip-link">Skip to main content</a>
@@ -23,6 +24,9 @@ Zazwyczaj robi się to na górze `App.vue`, ponieważ będzie to pierwszy elemen
 Aby ukryć link, jeśli nie jest aktywny, możesz dodać następujący styl:
 
 ```css
+.skip-links {
+  list-style: none;
+}
 .skip-link {
   white-space: nowrap;
   margin: 1em auto;
@@ -40,7 +44,7 @@ Aby ukryć link, jeśli nie jest aktywny, możesz dodać następujący styl:
 }
 ```
 
-Gdy użytkownik zmieni adres, przywróć fokus do linku pomijającego. Można to osiągnąć, wywołując focus na szablonie ref linku pomijającego (zakładając użycie `vue-router`):
+Gdy użytkownik zmieni adres, przywróć fokus do samego początku strony, zaraz przed linkiem pomijającym. Można to osiągnąć, wywołując focus na szablonowym ref `backToTop` (zakładając użycie `vue-router`):
 
 <div class="options-api">
 
@@ -49,7 +53,7 @@ Gdy użytkownik zmieni adres, przywróć fokus do linku pomijającego. Można to
 export default {
   watch: {
     $route() {
-      this.$refs.skipLink.focus()
+      this.$refs.backToTop.focus()
     }
   }
 }
@@ -65,12 +69,12 @@ import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
-const skipLink = ref()
+const backToTop = ref()
 
 watch(
   () => route.path,
   () => {
-    skipLink.value.focus()
+    backToTop.value.focus()
   }
 )
 </script>
