@@ -4,7 +4,7 @@
 
 Routing po stronie serwera oznacza, że serwer zwraca response opierając się na URL pod którym użytkownik odwiedza aplikację. Gdy klikamy w link w tradycyjnej aplikacji renderowanej po stronie serwera, przeglądarka pobiera odpowiedź HTML z serwera i przeładowuje całą stronę z nowym kodem HTML.
 
-W aplikacjach [Single-Page](https://developer.mozilla.org/en-US/docs/Glossary/SPA) (SPA), kod JavaScript po stronie klienta może przechwycić nawigację, dynamicznie pobrać nowe dane i zaktualizować stronę bez pełnego odświeżania strony. Zazwyczaj oznacza to lepsze user experience, szczególnie w przypadkach, które są bardziej jak faktyczne "aplikacje" - tj użytkownik wykonuje bardzo wiele interakcji przez dłuższy okres czasu.
+W aplikacjach [Single-Page](https://developer.mozilla.org/en-US/docs/Glossary/SPA) (SPA), kod JavaScript po stronie klienta może przechwycić nawigację, dynamicznie pobrać nowe dane i zaktualizować stronę bez pełnego odświeżania strony. Zazwyczaj oznacza to lepsze user experience, szczególnie w przypadkach, które są bardziej jak faktyczne "aplikacje" - tj użytkownik wykonuje bardzo wiele interakcji przez dłuższy czas.
 
 W takich aplikacjach SPA "routing" dzieje się po stronie klienta, w jego przeglądarce. Router w tym wypadku jest odpowiedzialny za zarządzanie renderowanym widokiem aplikacji wykorzystując API przeglądarek jak [History API](https://developer.mozilla.org/en-US/docs/Web/API/History) lub [event `hashchange`](https://developer.mozilla.org/en-US/docs/Web/API/Window/hashchange_event).
 
