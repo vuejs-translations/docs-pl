@@ -13,9 +13,9 @@ Nie musisz nic instalować na swojej maszynie, aby sprawdzić jak działają SFC
   - Zaprojektowana celem analizy rezultatów kompilacji komponentów jednoplikowych
 - [Starter Vue + Vite na StackBlitz](https://vite.new/vue)
   - Środowisko z wbudowanym IDE, uruchamiające serwer deweloperski Vite w przeglądarce
-  - Bardzo blisko symuluje lokalne środowisko
+  - Zbliżone do środowiska lokalnego
 
-Bardzo zachęcamy również używanie tych narzędzi, aby dostarczać reprodukcje przy zgłaszaniu bugów.
+Zalecane jest również korzystanie z tych piaskownic online do tworzenia reprodukcji podczas zgłaszania błędów.
 
 ## Przygotowywanie Projektu {#project-scaffolding}
 
@@ -122,7 +122,7 @@ Główny artykuł: [Używanie Vue z TypeScriptem](/guide/typescript/overview).
 
 - [Wtyczka Vue - Official](https://github.com/vuejs/language-tools) dostarcza sprawdzanie typów w obrębie SFC przy użyciu bloków `<script lang="ts">`. Tyczy się to również wyrażeń w szablonach i walidacji props między komponentami.
 
-- Użyj [`vue-tsc`](https://github.com/vuejs/language-tools/tree/master/packages/tsc) aby przeprowadzić sprawdzenie typów z poziomu linii poleceń, albo by wygenerować pliki `d.ts` dla komponentów jednoplikowych.
+- Użyj [`vue-tsc`](https://github.com/vuejs/language-tools/tree/master/packages/tsc) aby przeprowadzić sprawdzenie typów z poziomu wiersza poleceń, albo by wygenerować pliki `d.ts` dla komponentów jednoplikowych.
 
 ## Testowanie {#testing}
 
