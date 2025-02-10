@@ -238,6 +238,6 @@ Podczas gdy powyższe podejście jest wystarczające w prostych przypadkach, ist
 
 Użytkownicy z dłuższym stażem, mogą kojarzyć również [Vuex](https://vuex.vuejs.org/), poprzednią oficjalną bibliotekę do zarządzania stanem w Vue. Pinia pełni tę samą rolę w ekosystemie, a Vuex jest obecnie w fazie maintenance. Nadal działa, ale nie otrzyma już żadnych nowych funkcjonalności. Rekomendujemy używanie Pinia w nowych aplikacjach.
 
-Pinia zaczęła się jako eksploracja tego, jak kolejna iteracja Vuexa może wyglądać, wdrażając wiele z pomysłów z dyskusji zespołu co do Vuexa w wersji 5. Z czasem, zdaliśmy sobie sprawę, że Pinia już implementuje większość tego co chcieliśmy dostarczyć w tej wersji Vuexa i zdecydowaliśmy się by Pinia stana się nową rekomendacją.
+Pinia zaczęła się jako eksploracja tego, jak kolejna iteracja Vuexa może wyglądać, wdrażając wiele z pomysłów z dyskusji zespołu co do Vuexa w wersji 5. Z czasem, zdaliśmy sobie sprawę, że Pinia już implementuje większość tego co chcieliśmy dostarczyć w tej wersji Vuexa i zdecydowaliśmy się by Pinia stała się nową rekomendacją.
 
 W porównaniu do Vuexa, Pinia oferuje znacznie prostsze w użyciu API, oferuje API w stylu composition API i co najważniejsze - oferuje dobre wsparcie dla type inference gdy jest używana razem z TypeScript.
