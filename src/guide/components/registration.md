@@ -2,9 +2,10 @@
 
 > Ta strona zakłada, że przeczytałeś już [Podstawy Komponentów](/guide/essentials/component-basics). Przeczytaj je najpierw, jeśli dopiero zaczynasz pracę z komponentami.
 
-<VueSchoolLink href="https://vueschool.io/lessons/vue-3-global-vs-local-vue-components" title="Free Vue.js Component Registration Lesson"/>
+<VueSchoolLink href="https://vueschool.io/lessons/vue-3-global-vs-local-vue-components" title="Darmowa lekcja Vue.js Rejestracja komponentów"/>
 
 Komponent Vue musi zostać "zarejestrowany", aby Vue wiedziało, gdzie znaleźć jego implementację, gdy napotka go w szablonie. Istnieją dwa sposoby rejestrowania komponentów: globalny i lokalny.
+
 ## Rejestracja globalna {#global-registration}
 
 Możemy sprawić, że komponenty będą dostępne globalnie w bieżącej [aplikacji Vue](/guide/essentials/application) używając metody `.component()`:
