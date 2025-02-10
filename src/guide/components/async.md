@@ -1,24 +1,24 @@
-# Async Components {#async-components}
+# Komponenty Asynchroniczne {#async-components}
 
-## Basic Usage {#basic-usage}
+## Podstawowe Użycie {#basic-usage}
 
-In large applications, we may need to divide the app into smaller chunks and only load a component from the server when it's needed. To make that possible, Vue has a [`defineAsyncComponent`](/api/general#defineasynccomponent) function:
+W dużych aplikacjach może zajść potrzeba podzielenia aplikacji na mniejsze części i ładowania komponentów z serwera tylko wtedy, gdy są potrzebne. Aby to umożliwić, Vue posiada funkcję [`defineAsyncComponent`](/api/general#defineasynccomponent):
 
 ```js
 import { defineAsyncComponent } from 'vue'
 
 const AsyncComp = defineAsyncComponent(() => {
   return new Promise((resolve, reject) => {
-    // ...load component from server
-    resolve(/* loaded component */)
+    // ...załaduj komponent z serwera
+    resolve(/* załadowany komponent */)
   })
 })
-// ... use `AsyncComp` like a normal component
+// ... używaj `AsyncComp` jak normalnego komponentu
 ```
 
-As you can see, `defineAsyncComponent` accepts a loader function that returns a Promise. The Promise's `resolve` callback should be called when you have retrieved your component definition from the server. You can also call `reject(reason)` to indicate the load has failed.
+Jak widać, `defineAsyncComponent` przyjmuje funkcję ładującą, która zwraca Promise. Wywołanie funkcji `resolve` w Promise powinno nastąpić, gdy definicja komponentu zostanie pobrana z serwera. Możesz również wywołać `reject(reason)`, aby wskazać, że ładowanie nie powiodło się.
 
-[ES module dynamic import](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import) also returns a Promise, so most of the time we will use it in combination with `defineAsyncComponent`. Bundlers like Vite and webpack also support the syntax (and will use it as bundle split points), so we can use it to import Vue SFCs:
+[Dynamiczny import modułów ES](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import) również zwraca Promise, więc najczęściej będziemy używać go w połączeniu z `defineAsyncComponent`. Bundlery takie jak Vite i webpack również wspierają tę składnię (i będą jej używać jako punktów podziału bundli), dzięki czemu możemy używać jej do importowania komponentów Vue SFC:
 
 ```js
 import { defineAsyncComponent } from 'vue'
@@ -28,9 +28,9 @@ const AsyncComp = defineAsyncComponent(() =>
 )
 ```
 
-The resulting `AsyncComp` is a wrapper component that only calls the loader function when it is actually rendered on the page. In addition, it will pass along any props and slots to the inner component, so you can use the async wrapper to seamlessly replace the original component while achieving lazy loading.
+Powstały `AsyncComp` jest komponentem opakowującym, który wywołuje funkcję ładującą tylko wtedy, gdy jest faktycznie renderowany na stronie. Dodatkowo, przekazuje wszystkie propsy i sloty do wewnętrznego komponentu, dzięki czemu możesz użyć asynchronicznego wrappera do płynnego zastąpienia oryginalnego komponentu, zachowując ładowanie leniwe.
 
-As with normal components, async components can be [registered globally](/guide/components/registration#global-registration) using `app.component()`:
+Podobnie jak w przypadku zwykłych komponentów, komponenty asynchroniczne mogą być [rejestrowane globalnie](/guide/components/registration#global-registration) przy użyciu `app.component()`:
 
 ```js
 app.component('MyComponent', defineAsyncComponent(() =>
@@ -40,7 +40,7 @@ app.component('MyComponent', defineAsyncComponent(() =>
 
 <div class="options-api">
 
-You can also use `defineAsyncComponent` when [registering a component locally](/guide/components/registration#local-registration):
+Możesz również użyć `defineAsyncComponent` podczas [lokalnej rejestracji komponentu](/guide/components/registration#local-registration):
 
 ```vue
 <script>
@@ -64,7 +64,7 @@ export default {
 
 <div class="composition-api">
 
-They can also be defined directly inside their parent component:
+Mogą być również zdefiniowane bezpośrednio wewnątrz komponentu nadrzędnego:
 
 ```vue
 <script setup>
@@ -82,32 +82,32 @@ const AdminPage = defineAsyncComponent(() =>
 
 </div>
 
-## Loading and Error States {#loading-and-error-states}
+## Stany Ładowania i Błędów {#loading-and-error-states}
 
-Asynchronous operations inevitably involve loading and error states - `defineAsyncComponent()` supports handling these states via advanced options:
+Operacje asynchroniczne nieuchronnie wiążą się ze stanami ładowania i błędów - `defineAsyncComponent()` wspiera obsługę tych stanów poprzez zaawansowane opcje:
 
 ```js
 const AsyncComp = defineAsyncComponent({
-  // the loader function
+  // funkcja ładująca
   loader: () => import('./Foo.vue'),
 
-  // A component to use while the async component is loading
+  // Komponent używany podczas ładowania komponentu asynchronicznego
   loadingComponent: LoadingComponent,
-  // Delay before showing the loading component. Default: 200ms.
+  // Opóźnienie przed pokazaniem komponentu ładowania. Domyślnie: 200ms.
   delay: 200,
 
-  // A component to use if the load fails
+  // Komponent używany w przypadku błędu ładowania
   errorComponent: ErrorComponent,
-  // The error component will be displayed if a timeout is
-  // provided and exceeded. Default: Infinity.
+  // Komponent błędu zostanie wyświetlony, jeśli przekroczony
+  // zostanie określony limit czasu. Domyślnie: Infinity.
   timeout: 3000
 })
 ```
 
-If a loading component is provided, it will be displayed first while the inner component is being loaded. There is a default 200ms delay before the loading component is shown - this is because on fast networks, an instant loading state may get replaced too fast and end up looking like a flicker.
+Jeśli dostarczony jest komponent ładowania, będzie on wyświetlany jako pierwszy podczas ładowania komponentu wewnętrznego. Domyślnie występuje 200ms opóźnienia przed pokazaniem komponentu ładowania - dzieje się tak, ponieważ w szybkich sieciach natychmiastowy stan ładowania może zostać zastąpiony zbyt szybko i wyglądać jak migotanie.
 
-If an error component is provided, it will be displayed when the Promise returned by the loader function is rejected. You can also specify a timeout to show the error component when the request is taking too long.
+Jeśli dostarczony jest komponent błędu, zostanie on wyświetlony, gdy Promise zwrócony przez funkcję ładującą zostanie odrzucony. Możesz również określić limit czasu, aby pokazać komponent błędu, gdy żądanie trwa zbyt długo.
 
-## Using with Suspense {#using-with-suspense}
+## Używanie z Suspense {#using-with-suspense}
 
-Async components can be used with the `<Suspense>` built-in component. The interaction between `<Suspense>` and async components is documented in the [dedicated chapter for `<Suspense>`](/guide/built-ins/suspense).
+Komponenty asynchroniczne mogą być używane z wbudowanym komponentem `<Suspense>`. Interakcja między `<Suspense>` a komponentami asynchronicznymi jest udokumentowana w [dedykowanym rozdziale dla `<Suspense>`](/guide/built-ins/suspense).
