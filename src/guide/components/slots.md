@@ -299,12 +299,12 @@ function BaseLayout(slots) {
 
 ## Warunkowe Sloty {#conditional-slots}
 
-Czasami chcesz wyrenderować coś w zależności od tego, czy slot jest obecny czy nie.
+Czasami chcesz wyrenderować coś w zależności od tego, czy treść została przekazana do slotu.
 
 Możesz użyć właściwości [$slots](/api/component-instance.html#slots) w połączeniu z [v-if](/guide/essentials/conditional.html#v-if), aby to osiągnąć.
 
-W poniższym przykładzie definiujemy komponent Card z trzema warunkowymi slotami: `header`, `footer` i `default`.
-Kiedy nagłówek / stopka / domyślna zawartość są obecne, chcemy je opakować, aby zapewnić dodatkowe stylowanie:
+W poniższym przykładzie definiujemy komponent Card z trzema warunkowymi slotami: `header`, `footer` i domyślnym `default`.
+Gdy obecna jest treść dla nagłówka / stopki / domyślnej zawartości, chcemy ją opakować, aby zapewnić dodatkowy styl:
 
 ```vue-html
 <template>
