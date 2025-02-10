@@ -1,8 +1,8 @@
-# State Management {#state-management}
+# Zarządzanie stanem {#state-management}
 
-## What is State Management? {#what-is-state-management}
+## Czym jest zarządzanie stanem? {#what-is-state-management}
 
-Technically, every Vue component instance already "manages" its own reactive state. Take a simple counter component as an example:
+Z praktycznego punktu widzenia, każdy komponent "zarządza" swoim reaktywnym stanem. Weźmy na przykład prosty komponent licznika:
 
 <div class="composition-api">
 
@@ -50,38 +50,38 @@ export default {
 
 </div>
 
-It is a self-contained unit with the following parts:
+Ten komponent to samodzielna jednostka składająca się z następujących części:
 
-- The **state**, the source of truth that drives our app;
-- The **view**, a declarative mapping of the **state**;
-- The **actions**, the possible ways the state could change in reaction to user inputs from the **view**.
+- **Stanu**, źródła prawdy które jest kluczowe dla naszej aplikacji;
+- **Widoku**, deklaratywnie zmapowanego **stanu**;
+- **Akcji**, czyli możliwych sposobów zmiany stanu poprzez akcje użytkownika w warstwie **widoku**.
 
-This is a simple representation of the concept of "one-way data flow":
+Poniższy obrazek ilustruje uproszczoną koncepcję "jednokierunkowego przepływu danych":
 
 <p style="text-align: center">
-  <img alt="state flow diagram" src="./images/state-flow.png" width="252px" style="margin: 40px auto">
+  <img alt="diagram przepływu danych" src="./images/state-flow.png" width="252px" style="margin: 40px auto">
 </p>
 
-However, the simplicity starts to break down when we have **multiple components that share a common state**:
+Jednakże, sytuacja komplikuje się gdy mamy doczynienia z **wieloma komponentami współdzielącymi stan**:
 
-1. Multiple views may depend on the same piece of state.
-2. Actions from different views may need to mutate the same piece of state.
+1. Wiele widoków może polegać na tych samych danych.
+2. Akcje z różnych widoków mogą modyfikować te same dane.
 
-For case one, a possible workaround is by "lifting" the shared state up to a common ancestor component, and then pass it down as props. However, this quickly gets tedious in component trees with deep hierarchies, leading to another problem known as [Prop Drilling](/guide/components/provide-inject#prop-drilling).
+W przypadku pierwszym, obejściem na ten problem jest "wyniesienie" wspólnego stanu do wspólnego komponentu rodzica wyżej, a następnie przekazywanie go do komponentów dzieci przez propsy. Trzeba mieć jednak na uwadze, że to podejście staje się uciążliwe wraz z bardziej skomplikowanymi hierarchiami komponentów, skutkując problemem zwanym ["Prop Drilling"](/guide/components/provide-inject#prop-drilling).
 
-For case two, we often find ourselves resorting to solutions such as reaching for direct parent / child instances via template refs, or trying to mutate and synchronize multiple copies of the state via emitted events. Both of these patterns are brittle and quickly lead to unmaintainable code.
+W drugim przypadku, możemy próbować odwoływać się bezpośrednio do instacji rodzica / dziecka przez template refs, lub modyfikować i synchronizować wiele kopii tego samego stanu poprzez emitowanie eventów. Oba podejścia są jedynie obejściami i bardzo szybko skutkują skomplikowanym i trudnym do utrzymania kodem.
 
-A simpler and more straightforward solution is to extract the shared state out of the components, and manage it in a global singleton. With this, our component tree becomes a big "view", and any component can access the state or trigger actions, no matter where they are in the tree!
+Prostszym i bardziej przejrzystym rozwiązaniem jest wyodrębnienie wspólnego zdanu poza komponenty, i zarządzanie nim z poziomu globalnego singletona. Dzięki temu całe nasze drzewo komponentów możemy uznać za jeden wielki "widok", gdzie każdy komponent ma dostęp do stanu oraz może go modyfikować niezależnie od jego miejsca w drzewie.
 
-## Simple State Management with Reactivity API {#simple-state-management-with-reactivity-api}
+## Proste zarządzanie stanem z użyciem Reactivity API {#simple-state-management-with-reactivity-api}
 
 <div class="options-api">
 
-In Options API, reactive data is declared using the `data()` option. Internally, the object returned by `data()` is made reactive via the [`reactive()`](/api/reactivity-core#reactive) function, which is also available as a public API.
+W Options API, reaktywne dane deklarowane są poprzez opcję `data()`. Następnie, obiekt zwrócony przez `data()` jest reaktywny dzięki wewnętrznemu zastosowaniu funkcji [`reactive()`](/api/reactivity-core#reactive), która jest również dostępna w publicznym API.
 
 </div>
 
-If you have a piece of state that should be shared by multiple instances, you can use [`reactive()`](/api/reactivity-core#reactive) to create a reactive object, and then import it into multiple components:
+Jeśli masz kawałek stanu który musi być współdzielony między wieloma instancjami, możesz użyć funkcji [`reactive()`](/api/reactivity-core#reactive), aby stworzyć reaktywny obiekt a następnie zaimportować go do wielu komponentów:
 
 ```js
 // store.js
@@ -100,7 +100,7 @@ export const store = reactive({
 import { store } from './store.js'
 </script>
 
-<template>From A: {{ store.count }}</template>
+<template>Komponent A: {{ store.count }}</template>
 ```
 
 ```vue
@@ -109,7 +109,7 @@ import { store } from './store.js'
 import { store } from './store.js'
 </script>
 
-<template>From B: {{ store.count }}</template>
+<template>Komponent B: {{ store.count }}</template>
 ```
 
 </div>
@@ -129,7 +129,7 @@ export default {
 }
 </script>
 
-<template>From A: {{ store.count }}</template>
+<template>Komponent A: {{ store.count }}</template>
 ```
 
 ```vue
@@ -146,24 +146,24 @@ export default {
 }
 </script>
 
-<template>From B: {{ store.count }}</template>
+<template>Komponent B: {{ store.count }}</template>
 ```
 
 </div>
 
-Now whenever the `store` object is mutated, both `<ComponentA>` and `<ComponentB>` will update their views automatically - we have a single source of truth now.
+Teraz, gdy `store` zostanie zmodyfikowane, zarówno `<ComponentA>` jak i `<ComponentB>` zaktualizują swoje widoki automatycznie - mamy pojedyncze źródło prawdy.
 
-However, this also means any component importing `store` can mutate it however they want:
+Jednakże, oznacza to również że kazdy komponent importujący `store` może go dowolnie zmieniać:
 
 ```vue-html{2}
 <template>
   <button @click="store.count++">
-    From B: {{ store.count }}
+    Komponent B: {{ store.count }}
   </button>
 </template>
 ```
 
-While this works in simple cases, global state that can be arbitrarily mutated by any component is not going to be very maintainable in the long run. To ensure the state-mutating logic is centralized like the state itself, it is recommended to define methods on the store with names that express the intention of the actions:
+Działa to bez zarzutu w prostych przypadkach, jednakże globalny stan mogący być dowolnie zmieniany przez każdy komponent nie będzie łatwy do utrzymania na dłuższą metę. Aby zapewnić zcentralizowanie modyfikacji stanu tak jak i sam stan, zalecane jest zdefiniowanie metod na stanie, z nazwami jasno określającymi intencje danych akcji:
 
 ```js{6-8}
 // store.js
@@ -180,36 +180,36 @@ export const store = reactive({
 ```vue-html{2}
 <template>
   <button @click="store.increment()">
-    From B: {{ store.count }}
+    Komponent B: {{ store.count }}
   </button>
 </template>
 ```
 
 <div class="composition-api">
 
-[Try it in the Playground](https://play.vuejs.org/#eNrNkk1uwyAQha8yYpNEiUzXllPVrtRTeJNSqtLGgGBsVbK4ewdwnT9FWWSTFczwmPc+xMhqa4uhl6xklRdOWQQvsbfPrVadNQ7h1dCqpcYaPp3pYFHwQyteXVxKm0tpM0krnm3IgAqUnd3vUFIFUB1Z8bNOkzoVny+wDTuNcZ1gBI/GSQhzqlQX3/5Gng81pA1t33tEo+FF7JX42bYsT1BaONlRguWqZZMU4C261CWMk3EhTK8RQphm8Twse/BscoUsvdqDkTX3kP3nI6aZwcmdQDUcMPJPabX8TQphtCf0RLqd1csxuqQAJTxtYnEUGtIpAH4pn1Ou17FDScOKhT+QNAVM)
+[Wypróbuj w Piaskownicy](https://play.vuejs.org/#eNrNkk1uwyAQha8yYpNEiUzXllPVrtRTeJNSqtLGgGBsVbK4ewdwnT9FWWSTFczwmPc+xMhqa4uhl6xklRdOWQQvsbfPrVadNQ7h1dCqpcYaPp3pYFHwQyteXVxKm0tpM0krnm3IgAqUnd3vUFIFUB1Z8bNOkzoVny+wDTuNcZ1gBI/GSQhzqlQX3/5Gng81pA1t33tEo+FF7JX42bYsT1BaONlRguWqZZMU4C261CWMk3EhTK8RQphm8Twse/BscoUsvdqDkTX3kP3nI6aZwcmdQDUcMPJPabX8TQphtCf0RLqd1csxuqQAJTxtYnEUGtIpAH4pn1Ou17FDScOKhT+QNAVM)
 
 </div>
 <div class="options-api">
 
-[Try it in the Playground](https://play.vuejs.org/#eNrdU8FqhDAU/JVHLruyi+lZ3FIt9Cu82JilaTWR5CkF8d8bE5O1u1so9FYQzAyTvJnRTKTo+3QcOMlIbpgWPT5WUnS90gjPyr4ll1jAWasOdim9UMum3a20vJWWqxSgkvzTyRt+rocWYVpYFoQm8wRsJh+viHLBcyXtk9No2ALkXd/WyC0CyDfW6RVTOiancQM5ku+x7nUxgUGlOcwxn8Ppu7HJ7udqaqz3SYikOQ5aBgT+OA9slt9kasToFnb5OiAqCU+sFezjVBHvRUimeWdT7JOKrFKAl8VvYatdI6RMDRJhdlPtWdQf5mdQP+SHdtyX/IftlH9pJyS1vcQ2NK8ZivFSiL8BsQmmpMG1s1NU79frYA1k8OD+/I3pUA6+CeNdHg6hmoTMX9pPSnk=)
+[Wypróbuj w Piaskownicy](https://play.vuejs.org/#eNrdU8FqhDAU/JVHLruyi+lZ3FIt9Cu82JilaTWR5CkF8d8bE5O1u1so9FYQzAyTvJnRTKTo+3QcOMlIbpgWPT5WUnS90gjPyr4ll1jAWasOdim9UMum3a20vJWWqxSgkvzTyRt+rocWYVpYFoQm8wRsJh+viHLBcyXtk9No2ALkXd/WyC0CyDfW6RVTOiancQM5ku+x7nUxgUGlOcwxn8Ppu7HJ7udqaqz3SYikOQ5aBgT+OA9slt9kasToFnb5OiAqCU+sFezjVBHvRUimeWdT7JOKrFKAl8VvYatdI6RMDRJhdlPtWdQf5mdQP+SHdtyX/IftlH9pJyS1vcQ2NK8ZivFSiL8BsQmmpMG1s1NU79frYA1k8OD+/I3pUA6+CeNdHg6hmoTMX9pPSnk=)
 
 </div>
 
 :::tip
-Note the click handler uses `store.increment()` with parentheses - this is necessary to call the method with the proper `this` context since it's not a component method.
+Zwróć uwagę że handler eventu click używa `store.increment()` z nawiasami - jest to konieczne, aby wywołać tą metodę z prawidłowym kontekstem `this` gdyż nie jest to metoda komponentu.
 :::
 
-Although here we are using a single reactive object as a store, you can also share reactive state created using other [Reactivity APIs](/api/reactivity-core) such as `ref()` or `computed()`, or even return global state from a [Composable](/guide/reusability/composables):
+Podczas gdy w tych przypadkach używamy pojedynczego reaktywnego obiektu jako naszego globalnego stanu, warto pamiętać że możemy go równie dobrze utworzyć korzystając z innych [API reaktywności](/api/reactivity-core) takich jak `ref()` czy `computed()`, albo nawet zwrócić stan globalny z utworzonego [composable](/guide/reusability/composables):
 
 ```js
 import { ref } from 'vue'
 
-// global state, created in module scope
+// stan globalny, utworzony w obrębie modułu
 const globalCount = ref(1)
 
 export function useCount() {
-  // local state, created per-component
+  // stan lokalny, tworzony per komponent
   const localCount = ref(1)
 
   return {
@@ -219,25 +219,25 @@ export function useCount() {
 }
 ```
 
-The fact that Vue's reactivity system is decoupled from the component model makes it extremely flexible.
+Fakt, że moduł reaktywności w Vue jest wyodrębniony od samego modelu komponentów sprawia, że jest on bardzo elastyczny.
 
-## SSR Considerations {#ssr-considerations}
+## Rozważania względem SSR {#ssr-considerations}
 
-If you are building an application that leverages [Server-Side Rendering (SSR)](./ssr), the above pattern can lead to issues due to the store being a singleton shared across multiple requests. This is discussed in [more details](./ssr#cross-request-state-pollution) in the SSR guide.
+Jeśli budujesz aplikację, która wykorzystuje [renderowanie po stronie serwera (SSR)](./srr) to powyższe podejście może prowadzić do różnego rodzaju problemów, ponieważ stan będącym takim singletonem jest współdzielony między zapytaniami do serwera. Omawiamy ten problem [dokładniej](./ssr#cross-request-state-pollution) w poradniku odnośnie SSR.
 
 ## Pinia {#pinia}
 
-While our hand-rolled state management solution will suffice in simple scenarios, there are many more things to consider in large-scale production applications:
+Podczas gdy powyższe podejście jest wystarczające w prostych przypadkach, istnieje wiele różnych czynników które warto rozważyć w przypadku produkcyjnych aplikacji o dużej skali:
 
-- Stronger conventions for team collaboration
-- Integrating with the Vue DevTools, including timeline, in-component inspection, and time-travel debugging
+- Ustandaryzowane konwencje dla pracy zespołowej
+- Zintegrowanie z narzędziami deweloperskimi Vue, wliczając timeline, analizę w środku komponentu oraz tzw. "time-travel debugging"
 - Hot Module Replacement
-- Server-Side Rendering support
+- Wsparcie dla renderowania po stronie serwera (SSR)
 
-[Pinia](https://pinia.vuejs.org) is a state management library that implements all of the above. It is maintained by the Vue core team, and works with both Vue 2 and Vue 3.
+[Pinia](https://pinia.vuejs.org) to biblioteka do zarządzania stanem, która adresuje powyższe kwestie. Jest ona wspierana przez główny zespół Vue i wspiera zarówno Vue 2 jak i Vue 3.
 
-Existing users may be familiar with [Vuex](https://vuex.vuejs.org/), the previous official state management library for Vue. With Pinia serving the same role in the ecosystem, Vuex is now in maintenance mode. It still works, but will no longer receive new features. It is recommended to use Pinia for new applications.
+Użytkownicy z dłuższym stażem, mogą kojarzyć również [Vuex](https://vuex.vuejs.org/), poprzednią oficjalną bibliotekę do zarządzania stanem w Vue. Pinia pełni tę samą rolę w ekosystemie, a Vuex jest obecnie w fazie maintenance. Nadal działa, ale nie otrzyma już żadnych nowych funkcjonalności. Rekomendujemy używanie Pinia w nowych aplikacjach.
 
-Pinia started out as an exploration of what the next iteration of Vuex could look like, incorporating many ideas from core team discussions for Vuex 5. Eventually, we realized that Pinia already implements most of what we wanted in Vuex 5, and decided to make it the new recommendation instead.
+Pinia zaczęła się jako eksploracja tego, jak kolejna iteracja Vuexa może wyglądać, wdrażając wiele z pomysłów z dyskusji zespołu co do Vuexa w wersji 5. Z czasem, zdaliśmy sobie sprawę, że Pinia już implementuje większość tego co chcieliśmy dostarczyć w tej wersji Vuexa i zdecydowaliśmy się by Pinia stana się nową rekomendacją.
 
-Compared to Vuex, Pinia provides a simpler API with less ceremony, offers Composition-API-style APIs, and most importantly, has solid type inference support when used with TypeScript.
+W porównaniu do Vuexa, Pinia oferuje znacznie prostsze w użyciu API, oferuje API w stylu composition API i co najważniejsze - oferuje dobre wsparcie dla type inference gdy jest używana razem z TypeScript.
