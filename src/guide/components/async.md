@@ -1,6 +1,6 @@
-# Komponenty Asynchroniczne {#async-components}
+# Komponenty asynchroniczne {#async-components}
 
-## Podstawowe Użycie {#basic-usage}
+## Podstawowe użycie {#basic-usage}
 
 W dużych aplikacjach może zajść potrzeba podzielenia aplikacji na mniejsze części i ładowania komponentów z serwera tylko wtedy, gdy są potrzebne. Aby to umożliwić, Vue posiada funkcję [`defineAsyncComponent`](/api/general#defineasynccomponent):
 
@@ -82,7 +82,7 @@ const AdminPage = defineAsyncComponent(() =>
 
 </div>
 
-## Stany Ładowania i Błędów {#loading-and-error-states}
+## Stany ładowania i błędów {#loading-and-error-states}
 
 Operacje asynchroniczne nieuchronnie wiążą się ze stanami ładowania i błędów - `defineAsyncComponent()` wspiera obsługę tych stanów poprzez zaawansowane opcje:
 
