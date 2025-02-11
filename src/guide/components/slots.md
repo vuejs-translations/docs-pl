@@ -63,7 +63,7 @@ function FancyButton(slotContent) {
 }
 ```
 
-Slot content is not just limited to text. It can be any valid template content. For example, we can pass in multiple elements, or even other components:
+Zawartość slotu nie jest ograniczona tylko do tekstu. Może to być dowolna prawidłowa zawartość szablonu. Na przykład, możemy przekazać wiele elementów, a nawet inne komponenty:
 
 ```vue-html
 <FancyButton>
@@ -158,7 +158,7 @@ Wtedy zostanie wyrenderowana dostarczona zawartość:
 
 </div>
 
-## Slots nazwane {#named-slots}
+## Sloty nazwane {#named-slots}
 
 Czasami przydatne jest posiadanie wielu wyjść slotów w pojedynczym komponencie. Na przykład, w komponencie `<BaseLayout>` z następującym szablonem:
 

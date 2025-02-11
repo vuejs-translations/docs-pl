@@ -102,7 +102,7 @@ Zobacz także: [Typowanie właściwości komponentu](/guide/typescript/options-a
 
 <div class="composition-api">
 
-Jeśli używasz TypeScriptu z `<script setup>`, możliwe jest również deklarowanie właściwości przy użyciu czystych adnotacji typów:
+Jeśli używasz TypeScriptu ze `<script setup>`, możliwe jest również deklarowanie właściwości przy użyciu czystych adnotacji typów:
 
 ```vue
 <script setup lang="ts">

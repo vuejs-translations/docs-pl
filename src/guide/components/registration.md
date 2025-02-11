@@ -65,7 +65,7 @@ Rejestracja lokalna ogranicza dostępność zarejestrowanych komponentów tylko 
 
 <div class="composition-api">
 
-Podczas używania SFC z `<script setup>`, zaimportowane komponenty mogą być używane lokalnie bez rejestracji:
+Podczas używania SFC ze `<script setup>`, zaimportowane komponenty mogą być używane lokalnie bez rejestracji:
 
 ```vue
 <script setup>

@@ -355,7 +355,7 @@ Zobacz także: [Typowanie Provide / Inject (Dostarczanie / Wstrzykiwanie)](/guid
 <div class="options-api">
 
 ```js
-// w komopnencie dostarczającym
+// w komponencie dostarczającym
 import { myInjectionKey } from './keys.js'
 
 export default {
