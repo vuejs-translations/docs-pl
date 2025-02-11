@@ -8,7 +8,7 @@ outline: deep
 
 ## Dziedziczenie atrybutów {#attribute-inheritance}
 
-"Dziedziczony atrybut" to atrybut lub nasłuchujący zdarzenia `v-on`, który jest przekazywany do komponentu, ale nie jest jawnie zadeklarowany w [właściwościach (props)](./props) lub [zdarzeniach emitowanych](./events#declaring-emitted-events) komponentu odbierającego. Typowe przykłady to atrybuty `class`, `style` i `id`.
+"Dziedziczony atrybut" to atrybut lub nasłuchujący zdarzenia `v-on`, który jest przekazywany do komponentu, ale nie jest jawnie zadeklarowany we [właściwościach (props)](./props) lub [zdarzeniach emitowanych](./events#declaring-emitted-events) komponentu odbierającego. Typowe przykłady to atrybuty `class`, `style` i `id`.
 
 Gdy komponent renderuje pojedynczy element główny, dziedziczone atrybuty zostaną automatycznie dodane do atrybutów elementu głównego. Na przykład, mając komponent `<MyButton>` z następującym szablonem:
 
