@@ -10,11 +10,11 @@ Vue jest napisane w TypeScript i zapewnia pierwszorzędne wsparcie dla TypeScrip
 
 ## Ustawienie projektu {#project-setup}
 
-[`create-vue`](https://github.com/vuejs/create-vue), oficjalne narzędzie do tworzenia projektów, oferuje opcję stworzenia projektu na [Vite](https://vitejs.dev/), gotowy na TypeScript projekt Vue.
+[`create-vue`](https://github.com/vuejs/create-vue), oficjalne narzędzie do tworzenia projektów, oferuje opcję stworzenia projektu na [Vite](https://vitejs.dev/), gotowego do użycia z TypeScript.
 
 ### Przegląd {#overview}
 
-In a Vite-based setup, the dev server and build process only perform transpilation and do not perform any type checking. This ensures the Vite dev server stays lightning fast even when using TypeScript.
+W konfiguracji opartej na Vite, serwer deweloperski i proces budowania wykonują tylko transpilację bez sprawdzania typów. Zapewnia to, że serwer deweloperski Vite pozostaje błyskawicznie szybki nawet podczas używania TypeScript.
 
 - Podczas developmentu zalecamy korzystanie z dobrej [konfiguracji IDE](#ide-support) w celu uzyskania natychmiastowej informacji zwrotnej o błędach typów.
 
@@ -22,7 +22,7 @@ In a Vite-based setup, the dev server and build process only perform transpilati
 
 - Vue CLI również zapewnia wsparcie dla TypeScript, ale nie jest już zalecane. Zobacz [uwagi poniżej](#note-on-vue-cli-and-ts-loader).
 
-### Wsparci IDE {#ide-support}
+### Wsparcie IDE {#ide-support}
 
 - [Visual Studio Code](https://code.visualstudio.com/) (VS Code) jest zdecydowanie zalecany ze względu na świetną, wbudowaną obsługę TypeScript.
 
@@ -141,7 +141,7 @@ export default defineComponent({
 </template>
 ```
 
-`lang="ts"` może być również używane z `<script setup>`:
+`lang="ts"` może być również używane ze `<script setup>`:
 
 ```vue
 <script setup lang="ts">
@@ -159,7 +159,7 @@ const count = ref(1)
 
 ### TypeScript w szablonach {#typescript-in-templates}
 
-Znacznik `<template>` również obsługuje TypeScript w wyrażeniach wiążących, gdy używany jest `<script lang="ts"` lub `<script setup lang="ts">`. Jest to przydatne w przypadkach, gdy musisz wykonać rzutowanie typów w wyrażeniach szablonu.
+Znacznik `<template>` również obsługuje TypeScript w wyrażeniach wiążących, gdy używany jest `<script lang="ts">` lub `<script setup lang="ts">`. Jest to przydatne w przypadkach, gdy musisz wykonać rzutowanie typów w wyrażeniach szablonu.
 
 Oto przykład:
 
