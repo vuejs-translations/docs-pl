@@ -15,7 +15,7 @@ Aby uzyskać więcej szczegółów zobacz:
 
 ## makro kompilatora {#compiler-macro}
 
-*Makro kompilatora* to specjalny kod, który jest przetwarzany przez kompilator i konwertowany w coś innego. Są to w rzeczywistości sprytna forma zamiany ciągów znaków.
+*Makro kompilatora* to specjalny kod, który jest przetwarzany przez kompilator i konwertowany w coś innego. Są to w rzeczywistości sprytne formy zamiany ciągów znaków.
 
 Kompilator [SFC](#single-file-component) Vue wspiera różne makra, takie jak `defineProps()`, `defineEmits()` i `defineExpose()`. Makra te są celowo zaprojektowane tak, aby wyglądały jak normalne funkcje JavaScript, dzięki czemu mogą wykorzystywać ten sam parser i narzędzia do wnioskowania typów dla JavaScript / TypeScript. Jednak nie są to rzeczywiste funkcje, które są uruchamiane w przeglądarce. Są to specjalne ciągi znaków, które kompilator wykrywa i zamienia na prawdziwy kod JavaScript, który zostanie faktycznie uruchomiony.
 
