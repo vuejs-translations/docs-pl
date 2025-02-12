@@ -71,7 +71,7 @@ W przypadku pierwszym, obejściem na ten problem jest "wyniesienie" wspólnego s
 
 W drugim przypadku, możemy próbować odwoływać się bezpośrednio do instacji rodzica / dziecka przez template refs, lub modyfikować i synchronizować wiele kopii tego samego stanu poprzez emitowanie eventów. Oba podejścia są jedynie obejściami i bardzo szybko skutkują skomplikowanym i trudnym do utrzymania kodem.
 
-Prostszym i bardziej przejrzystym rozwiązaniem jest wyodrębnienie wspólnego zdanu poza komponenty, i zarządzanie nim z poziomu globalnego singletona. Dzięki temu całe nasze drzewo komponentów możemy uznać za jeden wielki "widok", gdzie każdy komponent ma dostęp do stanu oraz może go modyfikować niezależnie od jego miejsca w drzewie.
+Prostszym i bardziej przejrzystym rozwiązaniem jest wyodrębnienie wspólnego stanu poza komponenty, i zarządzanie nim z poziomu globalnego singletona. Dzięki temu całe nasze drzewo komponentów możemy uznać za jeden wielki "widok", gdzie każdy komponent ma dostęp do stanu oraz może go modyfikować niezależnie od jego miejsca w drzewie.
 
 ## Proste zarządzanie stanem z użyciem Reactivity API {#simple-state-management-with-reactivity-api}
 
@@ -240,4 +240,4 @@ Użytkownicy z dłuższym stażem, mogą kojarzyć również [Vuex](https://vuex
 
 Pinia zaczęła się jako eksploracja tego, jak kolejna iteracja Vuexa może wyglądać, wdrażając wiele z pomysłów z dyskusji zespołu co do Vuexa w wersji 5. Z czasem, zdaliśmy sobie sprawę, że Pinia już implementuje większość tego co chcieliśmy dostarczyć w tej wersji Vuexa i zdecydowaliśmy się by Pinia stała się nową rekomendacją.
 
-W porównaniu do Vuexa, Pinia oferuje znacznie prostsze w użyciu API, oferuje API w stylu composition API i co najważniejsze - oferuje dobre wsparcie dla type inference gdy jest używana razem z TypeScript.
+W porównaniu do Vuexa, Pinia oferuje znacznie prostsze w użyciu API, oferuje API w stylu composition API i co najważniejsze - oferuje dobre wsparcie dla wnioskowania typów gdy jest używana razem z TypeScript.
