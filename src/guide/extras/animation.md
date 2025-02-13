@@ -141,7 +141,7 @@ export default {
 
 <Colors />
 
-IOprócz koloru, możesz również używać powiązań stylów do animowania transform, width lub height. Możesz nawet animować ścieżki SVG używając fizyki sprężynowej - w końcu są to wszystko powiązania danych atrybutów:
+Oprócz koloru, możesz również używać powiązań stylów do animowania transform, width lub height. Możesz nawet animować ścieżki SVG używając fizyki sprężynowej - w końcu są to wszystko powiązania danych atrybutów:
 
 <ElasticHeader />
 
