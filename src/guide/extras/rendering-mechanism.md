@@ -2,17 +2,17 @@
 outline: deep
 ---
 
-# Rendering Mechanism {#rendering-mechanism}
+# Mechanizm renderowania {#rendering-mechanism}
 
-How does Vue take a template and turn it into actual DOM nodes? How does Vue update those DOM nodes efficiently? We will attempt to shed some light on these questions here by diving into Vue's internal rendering mechanism.
+Jak Vue przekształca szablon w rzeczywiste węzły DOM? Jak Vue efektywnie aktualizuje te węzły DOM? Postaramy się rzucić światło na te pytania, zagłębiając się w wewnętrzny mechanizm renderowania Vue.
 
-## Virtual DOM {#virtual-dom}
+## Wirtualny DOM {#virtual-dom}
 
-You have probably heard about the term "virtual DOM", which Vue's rendering system is based upon.
+Prawdopodobnie słyszałeś o terminie "wirtualny DOM", na którym opiera się system renderowania Vue.
 
-The virtual DOM (VDOM) is a programming concept where an ideal, or “virtual”, representation of a UI is kept in memory and synced with the “real” DOM. The concept was pioneered by [React](https://reactjs.org/), and has been adopted in many other frameworks with different implementations, including Vue.
+Wirtualny DOM (VDOM) to koncepcja programistyczna, w której idealne lub "wirtualne" przedstawienie interfejsu użytkownika jest przechowywane w pamięci i synchronizowane z "rzeczywistym" DOM. Koncepcja została zapoczątkowana przez [React](https://reactjs.org/) i została przyjęta w wielu innych frameworkach z różnymi implementacjami, w tym Vue.
 
-Virtual DOM is more of a pattern than a specific technology, so there is no one canonical implementation. We can illustrate the idea using a simple example:
+Wirtualny DOM to bardziej wzorzec niż konkretna technologia, więc nie ma jednej kanonicznej implementacji. Możemy zilustrować tę ideę prostym przykładem:
 
 ```js
 const vnode = {
@@ -21,89 +21,89 @@ const vnode = {
     id: 'hello'
   },
   children: [
-    /* more vnodes */
+    /* więcej vnodes */
   ]
 }
 ```
 
-Here, `vnode` is a plain JavaScript object (a "virtual node") representing a `<div>` element. It contains all the information that we need to create the actual element. It also contains more children vnodes, which makes it the root of a virtual DOM tree.
+Tutaj `vnode` jest zwykłym obiektem JavaScript (węzłem "wirtualnym") reprezentującym element `<div>`. Zawiera wszystkie informacje potrzebne do utworzenia rzeczywistego elementu. Zawiera również więcej węzłów vnode potomnych, co czyni go korzeniem drzewa wirtualnego DOM.
 
-A runtime renderer can walk a virtual DOM tree and construct a real DOM tree from it. This process is called **mount**.
+Renderer środowiska wykonawczego może przejść przez drzewo wirtualnego DOM i zbudować z niego rzeczywiste drzewo DOM. Ten proces nazywa się **montowaniem**.
 
-If we have two copies of virtual DOM trees, the renderer can also walk and compare the two trees, figuring out the differences, and apply those changes to the actual DOM. This process is called **patch**, also known as "diffing" or "reconciliation".
+Jeśli mamy dwie kopie drzew wirtualnego DOM, renderer może również przejść i porównać oba drzewa, ustalając różnice i zastosować te zmiany do rzeczywistego DOM. Ten proces nazywa się **łataniem**, znany również jako "diffing" lub "uzgadnianie".
 
-The main benefit of virtual DOM is that it gives the developer the ability to programmatically create, inspect and compose desired UI structures in a declarative way, while leaving the direct DOM manipulation to the renderer.
+Główną zaletą wirtualnego DOM jest to, że daje programiście możliwość programowego tworzenia, sprawdzania i komponowania pożądanych struktur UI w sposób deklaratywny, pozostawiając bezpośrednią manipulację DOM rendererowi.
 
-## Render Pipeline {#render-pipeline}
+## Potok renderowania {#render-pipeline}
 
-At the high level, this is what happens when a Vue component is mounted:
+Na wysokim poziomie, oto co dzieje się, gdy komponent Vue jest montowany:
 
-1. **Compile**: Vue templates are compiled into **render functions**: functions that return virtual DOM trees. This step can be done either ahead-of-time via a build step, or on-the-fly by using the runtime compiler.
+1. **Kompilacja**: Szablony Vue są kompilowane do **funkcji renderujących**: funkcji, które zwracają drzewa wirtualnego DOM. Ten krok może być wykonany albo z wyprzedzeniem poprzez etap budowania, albo w locie przy użyciu kompilatora środowiska wykonawczego.
 
-2. **Mount**: The runtime renderer invokes the render functions, walks the returned virtual DOM tree, and creates actual DOM nodes based on it. This step is performed as a [reactive effect](./reactivity-in-depth), so it keeps track of all reactive dependencies that were used.
+2. **Montowanie**: Renderer środowiska wykonawczego wywołuje funkcje renderujące, przechodzi przez zwrócone drzewo wirtualnego DOM i tworzy na jego podstawie rzeczywiste węzły DOM. Ten krok jest wykonywany jako [efekt reaktywny](./reactivity-in-depth), więc śledzi wszystkie reaktywne zależności, które zostały użyte.
 
-3. **Patch**: When a dependency used during mount changes, the effect re-runs. This time, a new, updated Virtual DOM tree is created. The runtime renderer walks the new tree, compares it with the old one, and applies necessary updates to the actual DOM.
+3. **Łatanie**: Gdy zależność używana podczas montowania zmienia się, efekt uruchamia się ponownie. Tym razem tworzone jest nowe, zaktualizowane drzewo wirtualnego DOM. Renderer środowiska wykonawczego przechodzi przez nowe drzewo, porównuje je ze starym i stosuje niezbędne aktualizacje do rzeczywistego DOM.
 
 ![render pipeline](./images/render-pipeline.png)
 
 <!-- https://www.figma.com/file/elViLsnxGJ9lsQVsuhwqxM/Rendering-Mechanism -->
 
-## Templates vs. Render Functions {#templates-vs-render-functions}
+## Szablony vs. funkcje renderujące {#templates-vs-render-functions}
 
-Vue templates are compiled into virtual DOM render functions. Vue also provides APIs that allow us to skip the template compilation step and directly author render functions. Render functions are more flexible than templates when dealing with highly dynamic logic, because you can work with vnodes using the full power of JavaScript.
+Szablony Vue są kompilowane do funkcji renderujących wirtualny DOM. Vue udostępnia również API, które pozwalają nam pominąć etap kompilacji szablonu i bezpośrednio tworzyć funkcje renderujące. Funkcje renderujące są bardziej elastyczne niż szablony podczas pracy z wysoce dynamiczną logiką, ponieważ możesz pracować z vnodami używając pełnej mocy JavaScript.
 
-So why does Vue recommend templates by default? There are a number of reasons:
+Dlaczego więc Vue domyślnie zaleca szablony? Jest kilka powodów:
 
-1. Templates are closer to actual HTML. This makes it easier to reuse existing HTML snippets, apply accessibility best practices, style with CSS, and for designers to understand and modify.
+1. Szablony są bliższe rzeczywistemu HTML. Ułatwia to ponowne wykorzystanie istniejących fragmentów HTML, stosowanie najlepszych praktyk dostępności, stylizowanie za pomocą CSS oraz zrozumienie i modyfikowanie przez projektantów.
 
-2. Templates are easier to statically analyze due to their more deterministic syntax. This allows Vue's template compiler to apply many compile-time optimizations to improve the performance of the virtual DOM (which we will discuss below).
+2. Szablony są łatwiejsze do statycznej analizy ze względu na ich bardziej deterministyczną składnię. Pozwala to kompilatorowi szablonów Vue na zastosowanie wielu optymalizacji czasu kompilacji w celu poprawy wydajności wirtualnego DOM (o czym porozmawiamy poniżej).
 
-In practice, templates are sufficient for most use cases in applications. Render functions are typically only used in reusable components that need to deal with highly dynamic rendering logic. Render function usage is discussed in more detail in [Render Functions & JSX](./render-function).
+W praktyce szablony są wystarczające dla większości przypadków użycia w aplikacjach. Funkcje renderujące są zazwyczaj używane tylko w komponentach wielokrotnego użytku, które muszą radzić sobie z wysoce dynamiczną logiką renderowania. Użycie funkcji renderujących jest szczegółowo omówione w [Funkcje Renderujące i JSX](./render-function).
 
-## Compiler-Informed Virtual DOM {#compiler-informed-virtual-dom}
+## Wirtualny DOM wspomagany przez kompilator {#compiler-informed-virtual-dom}
 
-The virtual DOM implementation in React and most other virtual-DOM implementations are purely runtime: the reconciliation algorithm cannot make any assumptions about the incoming virtual DOM tree, so it has to fully traverse the tree and diff the props of every vnode in order to ensure correctness. In addition, even if a part of the tree never changes, new vnodes are always created for them on each re-render, resulting in unnecessary memory pressure. This is one of the most criticized aspect of virtual DOM: the somewhat brute-force reconciliation process sacrifices efficiency in return for declarativeness and correctness.
+Implementacja wirtualnego DOM w React i większości innych implementacji wirtualnego DOM jest czysto środowiskowa: algorytm uzgadniania nie może robić żadnych założeń co do przychodzącego drzewa wirtualnego DOM, więc musi w pełni przejść przez drzewo i porównać właściwości każdego vnode, aby zapewnić poprawność. Ponadto, nawet jeśli część drzewa nigdy się nie zmienia, nowe vnody są zawsze tworzone dla nich przy każdym ponownym renderowaniu, co skutkuje niepotrzebnym obciążeniem pamięci. Jest to jeden z najbardziej krytykowanych aspektów wirtualnego DOM: nieco brutalny proces uzgadniania poświęca wydajność na rzecz deklaratywności i poprawności.
 
-But it doesn't have to be that way. In Vue, the framework controls both the compiler and the runtime. This allows us to implement many compile-time optimizations that only a tightly-coupled renderer can take advantage of. The compiler can statically analyze the template and leave hints in the generated code so that the runtime can take shortcuts whenever possible. At the same time, we still preserve the capability for the user to drop down to the render function layer for more direct control in edge cases. We call this hybrid approach **Compiler-Informed Virtual DOM**.
+Ale nie musi tak być. W Vue framework kontroluje zarówno kompilator, jak i środowisko wykonawcze. Pozwala nam to na implementację wielu optymalizacji czasu kompilacji, które może wykorzystać tylko ściśle powiązany renderer. Kompilator może statycznie analizować szablon i pozostawiać wskazówki w wygenerowanym kodzie, dzięki czemu środowisko wykonawcze może korzystać ze skrótów, gdy tylko jest to możliwe. Jednocześnie zachowujemy możliwość przejścia do warstwy funkcji renderującej dla bardziej bezpośredniej kontroli w przypadkach brzegowych. Nazywamy to hybrydowe podejście **Wirtualnym DOM Wspomaganym Przez Kompilator**.
 
-Below, we will discuss a few major optimizations done by the Vue template compiler to improve the virtual DOM's runtime performance.
+Poniżej omówimy kilka głównych optymalizacji wykonywanych przez kompilator szablonów Vue w celu poprawy wydajności wirtualnego DOM w czasie wykonywania.
 
-### Static Hoisting {#static-hoisting}
+### Wynoszenie statyczne {#static-hoisting}
 
-Quite often there will be parts in a template that do not contain any dynamic bindings:
+Dość często w szablonie będą części, które nie zawierają żadnych dynamicznych wiązań:
 
 ```vue-html{2-3}
 <div>
-  <div>foo</div> <!-- hoisted -->
-  <div>bar</div> <!-- hoisted -->
-  <div>{{ dynamic }}</div>
+ <div>foo</div> <!-- przeniesiony -->
+ <div>bar</div> <!-- przeniesiony -->
+ <div>{{ dynamic }}</div>
 </div>
 ```
 
-[Inspect in Template Explorer](https://template-explorer.vuejs.org/#eyJzcmMiOiI8ZGl2PlxuICA8ZGl2PmZvbzwvZGl2PiA8IS0tIGhvaXN0ZWQgLS0+XG4gIDxkaXY+YmFyPC9kaXY+IDwhLS0gaG9pc3RlZCAtLT5cbiAgPGRpdj57eyBkeW5hbWljIH19PC9kaXY+XG48L2Rpdj5cbiIsIm9wdGlvbnMiOnsiaG9pc3RTdGF0aWMiOnRydWV9fQ==)
+[Sprawdź w Eksploratorze Szablonów](https://template-explorer.vuejs.org/#eyJzcmMiOiI8ZGl2PlxuICA8ZGl2PmZvbzwvZGl2PiA8IS0tIGhvaXN0ZWQgLS0+XG4gIDxkaXY+YmFyPC9kaXY+IDwhLS0gaG9pc3RlZCAtLT5cbiAgPGRpdj57eyBkeW5hbWljIH19PC9kaXY+XG48L2Rpdj5cbiIsIm9wdGlvbnMiOnsiaG9pc3RTdGF0aWMiOnRydWV9fQ==)
 
-The `foo` and `bar` divs are static - re-creating vnodes and diffing them on each re-render is unnecessary. The Vue compiler automatically hoists their vnode creation calls out of the render function, and reuses the same vnodes on every render. The renderer is also able to completely skip diffing them when it notices the old vnode and the new vnode are the same one.
+Divy `foo` i `bar` są statyczne - ponowne tworzenie vnodów i porównywanie ich przy każdym ponownym renderowaniu jest niepotrzebne. Kompilator Vue automatycznie wynosi ich wywołania tworzenia vnode poza funkcję renderującą i ponownie wykorzystuje te same vnody przy każdym renderowaniu. Renderer jest również w stanie całkowicie pominąć ich porównywanie, gdy zauważy, że stary vnode i nowy vnode są tym samym.
 
-In addition, when there are enough consecutive static elements, they will be condensed into a single "static vnode" that contains the plain HTML string for all these nodes ([Example](https://template-explorer.vuejs.org/#eyJzcmMiOiI8ZGl2PlxuICA8ZGl2IGNsYXNzPVwiZm9vXCI+Zm9vPC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJmb29cIj5mb288L2Rpdj5cbiAgPGRpdiBjbGFzcz1cImZvb1wiPmZvbzwvZGl2PlxuICA8ZGl2IGNsYXNzPVwiZm9vXCI+Zm9vPC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJmb29cIj5mb288L2Rpdj5cbiAgPGRpdj57eyBkeW5hbWljIH19PC9kaXY+XG48L2Rpdj4iLCJzc3IiOmZhbHNlLCJvcHRpb25zIjp7ImhvaXN0U3RhdGljIjp0cnVlfX0=)). These static vnodes are mounted by directly setting `innerHTML`. They also cache their corresponding DOM nodes on initial mount - if the same piece of content is reused elsewhere in the app, new DOM nodes are created using native `cloneNode()`, which is extremely efficient.
+Ponadto, gdy jest wystarczająco dużo kolejnych elementów statycznych, zostaną one skondensowane w jeden "statyczny vnode", który zawiera zwykły ciąg HTML dla wszystkich tych węzłów ([Przykład](https://template-explorer.vuejs.org/#eyJzcmMiOiI8ZGl2PlxuICA8ZGl2IGNsYXNzPVwiZm9vXCI+Zm9vPC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJmb29cIj5mb288L2Rpdj5cbiAgPGRpdiBjbGFzcz1cImZvb1wiPmZvbzwvZGl2PlxuICA8ZGl2IGNsYXNzPVwiZm9vXCI+Zm9vPC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJmb29cIj5mb288L2Rpdj5cbiAgPGRpdj57eyBkeW5hbWljIH19PC9kaXY+XG48L2Rpdj4iLCJzc3IiOmZhbHNlLCJvcHRpb25zIjp7ImhvaXN0U3RhdGljIjp0cnVlfX0=)). Te statyczne vnody są montowane przez bezpośrednie ustawienie `innerHTML`. Przechowują one również w pamięci podręcznej swoje odpowiednie węzły DOM przy początkowym montowaniu - jeśli ta sama treść jest ponownie wykorzystywana w innym miejscu aplikacji, nowe węzły DOM są tworzone przy użyciu natywnego `cloneNode()`, co jest niezwykle wydajne.
 
-### Patch Flags {#patch-flags}
+### Flagi łatania {#patch-flags}
 
-For a single element with dynamic bindings, we can also infer a lot of information from it at compile time:
+Dla pojedynczego elementu z dynamicznymi wiązaniami możemy również wywnioskować wiele informacji o nim w czasie kompilacji:
 
 ```vue-html
-<!-- class binding only -->
+<!-- wiązanie tylko klasy -->
 <div :class="{ active }"></div>
 
-<!-- id and value bindings only -->
+<!-- wiązanie tylko id i value -->
 <input :id="id" :value="value">
 
-<!-- text children only -->
+<!-- tylko tekst w dziecku -->
 <div>{{ dynamic }}</div>
 ```
 
-[Inspect in Template Explorer](https://template-explorer.vuejs.org/#eyJzcmMiOiI8ZGl2IDpjbGFzcz1cInsgYWN0aXZlIH1cIj48L2Rpdj5cblxuPGlucHV0IDppZD1cImlkXCIgOnZhbHVlPVwidmFsdWVcIj5cblxuPGRpdj57eyBkeW5hbWljIH19PC9kaXY+Iiwib3B0aW9ucyI6e319)
+[Sprawdź w Eksploratorze Szablonów](https://template-explorer.vuejs.org/#eyJzcmMiOiI8ZGl2IDpjbGFzcz1cInsgYWN0aXZlIH1cIj48L2Rpdj5cblxuPGlucHV0IDppZD1cImlkXCIgOnZhbHVlPVwidmFsdWVcIj5cblxuPGRpdj57eyBkeW5hbWljIH19PC9kaXY+Iiwib3B0aW9ucyI6e319)
 
-When generating the render function code for these elements, Vue encodes the type of update each of them needs directly in the vnode creation call:
+Podczas generowania kodu funkcji renderującej dla tych elementów, Vue koduje typ aktualizacji, którego każdy z nich potrzebuje, bezpośrednio w wywołaniu tworzenia vnode:
 
 ```js{3}
 createElementVNode("div", {
@@ -111,17 +111,17 @@ createElementVNode("div", {
 }, null, 2 /* CLASS */)
 ```
 
-The last argument, `2`, is a [patch flag](https://github.com/vuejs/core/blob/main/packages/shared/src/patchFlags.ts). An element can have multiple patch flags, which will be merged into a single number. The runtime renderer can then check against the flags using [bitwise operations](https://en.wikipedia.org/wiki/Bitwise_operation) to determine whether it needs to do certain work:
+Ostatni argument, `2`, jest [flagą łatania](https://github.com/vuejs/core/blob/main/packages/shared/src/patchFlags.ts). Element może mieć wiele flag łatania, które zostaną połączone w jedną liczbę. Renderer środowiska wykonawczego może następnie sprawdzić flagi za pomocą [operacji bitowych](https://en.wikipedia.org/wiki/Bitwise_operation), aby określić, czy musi wykonać określone zadania:
 
 ```js
 if (vnode.patchFlag & PatchFlags.CLASS /* 2 */) {
-  // update the element's class
+  // aktualizuj klasę elementu
 }
 ```
 
-Bitwise checks are extremely fast. With the patch flags, Vue is able to do the least amount of work necessary when updating elements with dynamic bindings.
+Sprawdzenia bitowe są niezwykle szybkie. Dzięki flagom łatania, Vue jest w stanie wykonać minimalną ilość pracy niezbędną podczas aktualizacji elementów z dynamicznymi powiązaniami.
 
-Vue also encodes the type of children a vnode has. For example, a template that has multiple root nodes is represented as a fragment. In most cases, we know for sure that the order of these root nodes will never change, so this information can also be provided to the runtime as a patch flag:
+Vue koduje również typ potomków, które posiada vnode. Na przykład, szablon który ma wiele węzłów głównych jest reprezentowany jako fragment. W większości przypadków mamy pewność, że kolejność tych węzłów głównych nigdy się nie zmieni, więc ta informacja może zostać również przekazana do runtime'u jako flaga łatania:
 
 ```js{4}
 export function render() {
@@ -131,11 +131,11 @@ export function render() {
 }
 ```
 
-The runtime can thus completely skip child-order reconciliation for the root fragment.
+Runtime może więc całkowicie pominąć uzgadnianie kolejności potomków dla fragmentu głównego.
 
-### Tree Flattening {#tree-flattening}
+### Spłaszczanie drzewa {#tree-flattening}
 
-Taking another look at the generated code from the previous example, you'll notice the root of the returned virtual DOM tree is created using a special `createElementBlock()` call:
+Przyglądając się ponownie wygenerowanemu kodowi z poprzedniego przykładu, zauważysz, że korzeń zwracanego wirtualnego drzewa DOM jest tworzony przy użyciu specjalnego wywołania `createElementBlock()`:
 
 ```js{2}
 export function render() {
@@ -145,48 +145,48 @@ export function render() {
 }
 ```
 
-Conceptually, a "block" is a part of the template that has stable inner structure. In this case, the entire template has a single block because it does not contain any structural directives like `v-if` and `v-for`.
+Koncepcyjnie, "blok" jest częścią szablonu, która ma stabilną wewnętrzną strukturę. W tym przypadku, cały szablon ma pojedynczy blok, ponieważ nie zawiera żadnych dyrektyw strukturalnych takich jak `v-if` i `v-for`.
 
-Each block tracks any descendant nodes (not just direct children) that have patch flags. For example:
+Każdy blok śledzi wszystkie węzły potomne (nie tylko bezpośrednie potomki), które mają flagi łatania. Na przykład:
 
 ```vue-html{3,5}
-<div> <!-- root block -->
-  <div>...</div>         <!-- not tracked -->
-  <div :id="id"></div>   <!-- tracked -->
-  <div>                  <!-- not tracked -->
-    <div>{{ bar }}</div> <!-- tracked -->
+<div> <!-- blok główny -->
+  <div>...</div>         <!-- nieśledzony -->
+  <div :id="id"></div>   <!-- śledzony -->
+  <div>                  <!-- nieśledzony -->
+    <div>{{ bar }}</div> <!-- śledzony -->
   </div>
 </div>
 ```
 
-The result is a flattened array that contains only the dynamic descendant nodes:
+Rezultatem jest spłaszczona tablica, która zawiera tylko dynamiczne węzły potomne:
 
 ```
-div (block root)
-- div with :id binding
-- div with {{ bar }} binding
+div (blok główny)
+- div z wiązaniem :id
+- div z wiązaniem {{ bar }}
 ```
 
-When this component needs to re-render, it only needs to traverse the flattened tree instead of the full tree. This is called **Tree Flattening**, and it greatly reduces the number of nodes that need to be traversed during virtual DOM reconciliation. Any static parts of the template are effectively skipped.
+Kiedy ten komponent musi się przerenderować, musi przejść tylko przez spłaszczone drzewo zamiast pełnego drzewa. Jest to nazywane **Spłaszczaniem Drzewa**, i znacznie redukuje liczbę węzłów, które muszą zostać przeanalizowane podczas uzgadniania wirtualnego DOM-u. Wszystkie statyczne części szablonu są efektywnie pomijane.
 
-`v-if` and `v-for` directives will create new block nodes:
+Dyrektywy `v-if` i `v-for` utworzą nowe węzły blokowe:
 
 ```vue-html
-<div> <!-- root block -->
+<div> <!-- blok główny -->
   <div>
-    <div v-if> <!-- if block -->
+    <div v-if> <!-- blok if -->
       ...
     </div>
   </div>
 </div>
 ```
 
-A child block is tracked inside the parent block's array of dynamic descendants. This retains a stable structure for the parent block.
+Blok potomny jest śledzony wewnątrz tablicy dynamicznych potomków bloku nadrzędnego. Zachowuje to stabilną strukturę dla bloku nadrzędnego.
 
-### Impact on SSR Hydration {#impact-on-ssr-hydration}
+### Wpływ na hydrację SSR {#impact-on-ssr-hydration}
 
-Both patch flags and tree flattening also greatly improve Vue's [SSR Hydration](/guide/scaling-up/ssr#client-hydration) performance:
+Zarówno flagi łatania jak i spłaszczanie drzewa znacznie poprawiają wydajność [Hydracji SSR](/guide/scaling-up/ssr#client-hydration) Vue:
 
-- Single element hydration can take fast paths based on the corresponding vnode's patch flag.
+- Hydracja pojedynczego elementu może wykorzystywać szybkie ścieżki na podstawie odpowiadającej flagi łatania vnode.
 
-- Only block nodes and their dynamic descendants need to be traversed during hydration, effectively achieving partial hydration at the template level.
+- Tylko węzły blokowe i ich dynamiczni potomkowie muszą zostać przeanalizowani podczas hydracji, efektywnie osiągając częściową hydrację na poziomie szablonu.
