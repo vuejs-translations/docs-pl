@@ -45,7 +45,7 @@ Podczas planowania strategii na testowanie swojej aplikacji Vue, warto rozważy�
 
 - **Jednostkowe** (Unit tests): Sprawdzają czy dane wejściowe danej funkcji, klasy czy komponentu odpowiadają oczekiwanym danym wyjściowej lub oczekiwanym skutkom ubocznym.
 - **Komponentów**: Sprawdzają czy Twoje komponenty montują się, renderują się, mogą zachodzić w interakcje i zachowują  się zgodnie z oczekiwaniami. Testy te wymagają większej ilości kodu, są również bardziej złożone i wymagają większej ilości czasu na wykonanie.
-- **End-to-end** (E2E): Sprawdzają czy funkcjonalności, które pokrywają wiele stron i wykonują faktyczne zapytania do serwerów związanych z Twoją aplikacją. Testy te wymagają postawienie bazy danych czy backendu.
+- **End-to-end** (E2E): Sprawdzają czy funkcjonalności, które pokrywają wiele stron i wykonują faktyczne zapytania do serwerów związanych z Twoją aplikacją. Testy te wymagają postawienia bazy danych czy backendu.
 
 Każdy typ testów odgrywa swoją rolę w strategii na testowanie Twojej aplikacji i każdy z nich zabezpiecza Cię przed różnymi typami problemów.
 
@@ -94,7 +94,7 @@ describe('increment', () => {
 })
 ```
 
-Jak mówiliśmy wcześniej, testy jednostkowe są zazwyczaj aplikowane to bardzo niezależnych kawałków logiki biznesowej, komponentów, klas, modułów lub funkcji, które nie mają styczności z renderowaniem UI, zapytaniami do serwerów czy innymi zależnościami związanymi ze środowiskiem.
+Jak mówiliśmy wcześniej, testy jednostkowe są zazwyczaj aplikowane do bardzo niezależnych kawałków logiki biznesowej, komponentów, klas, modułów lub funkcji, które nie mają styczności z renderowaniem UI, zapytaniami do serwerów czy innymi zależnościami związanymi ze środowiskiem.
 
 Są to kawałki kodu najczęściej pisane w prostym JavaScript lub TypeScript, niezależne od samego Vue. W praktyce, pisanie testów jednostkowych dla logiki biznesowej w Vue nie różni się znacząco od aplikacji pisanych w innych frameworkach.
 
@@ -145,7 +145,7 @@ Testy komponentów powinny skupiać się na ich publicznych interfejsach niż s
 - Dla logiki **wizualnej**: sprawdzaj prawidłowo wyrenderowany output na podstawie propsów i slotów.
 - Dla logiki **zachowania**: sprawdzaj prawidłowe aktualizacje treści czy emitowane zdarzenia na podstawie interakcji przychodzący od strony użytkownika.
 
-  W poniższym przykładzie, demonstrujemy przykład testów komponenta "Licznik", który ma element DOM otykietowany jako "inkrementuj", który możemy kliknąć. Przekazujemy propa `max` określającego maksymalną wartość licznika równą `2`, a więc gdy klikniemy w przycisk 3 razy, interfejs powinien pokazywać `2`.
+  W poniższym przykładzie, demonstrujemy przykład testów komponenta "Licznik", który ma element DOM oznaczony jako "inkrementuj", który możemy kliknąć. Przekazujemy propa `max` określającego maksymalną wartość licznika równą `2`, a więc gdy klikniemy w przycisk 3 razy, interfejs powinien pokazywać `2`.
 
   Nie znamy szczegółowej implementacji Licznika, jedynie że możemy przekazać do niego propa `max` oraz "wyjście" jakim jest stan drzewa DOM w taki sposób jaki widzi go użytkownik.
 
@@ -224,7 +224,7 @@ await fireEvent.click(button)
 
   Nie polegaj wyłącznie na testach z wykorzystaniem snapshotów. Asercje dotyczące ciągów znaków HTML nie opisują poprawności. Pisz testy z wyraźnie zdeklarowanymi celami.
 
-  Jeśli dana metoda musi być dokładnie przetestowana, warto rozważyć wyekstraktowanie jej do samodzielnej, reużywalnej funkcji, z własnymi dedykowanymi testami jednostkowymi. Jeśli nie może być łatwo wyekstraktowana, może być przetestowana jako część testu komponentu, integracyjnego lub end-to-end, który ją pokryje.
+  Jeśli dana metoda musi być dokładnie przetestowana, warto rozważyć wyodrębnienie jej do samodzielnej, reużywalnej funkcji, z własnymi dedykowanymi testami jednostkowymi. Jeśli nie może być łatwo wyodrębniona, może być przetestowana jako część testu komponentu, integracyjnego lub end-to-end, który ją pokryje.
 
 ### Rekomendacje {#recommendation-1}
 
@@ -232,13 +232,13 @@ await fireEvent.click(button)
 
 - [Testy komponentów w Cypress](https://on.cypress.io/component) dla komponentów, których zachowanie polega na prawidłowym renderowaniu styli, lub wywoływaniu zdarzeń natywnych DOM. Może być również używany razem z Testing Library poprzez [@testing-library/cypress](https://testing-library.com/docs/cypress-testing-library/intro).
 
-Główną różnicą między Vitestem a narzędziami wykonującymi testy przy użyciu przeglądarki są szybkość i kontekst wykonania. W skrócie, narzędzia oparte o przeglądarkę jak Cyppress, mogą wyłapać problemy których narzędzia oparte o node, jak Vitest, nie potrafią (np. problemy związane ze stylem, prawdziwymi, natywnymi zdarzeniami w DOM, cookies, local storage czy problemami z połączeniem do sieci), ale narzędzie te są _rzędy wielkości wolniejsze niż Vitest_ ponieważ otwierają faktyczną przeglądarkę, kompilują style i więcej. Cypress jest narzędziem opartym o przeglądarkę, które wspiera testy komponentów. Zachęcamy do przeczytania [o porównaniu Vitesta do innych narzędzi](https://vitest.dev/guide/comparisons.html#cypress) w tym również Cypressa.
+Główną różnicą między Vitestem a narzędziami wykonującymi testy przy użyciu przeglądarki są szybkość i kontekst wykonania. W skrócie, narzędzia oparte o przeglądarkę jak Cyppress, mogą wyłapać problemy których narzędzia oparte o node, jak Vitest, nie potrafią (np. problemy związane ze stylem, prawdziwymi, natywnymi zdarzeniami w DOM, cookies, local storage czy problemami z połączeniem do sieci), ale narzędzia te są _rzędy wielkości wolniejsze niż Vitest_ ponieważ otwierają faktyczną przeglądarkę, kompilują style i więcej. Cypress jest narzędziem opartym o przeglądarkę, które wspiera testy komponentów. Zachęcamy do przeczytania [o porównaniu Vitesta do innych narzędzi](https://vitest.dev/guide/comparisons.html#cypress) w tym również Cypressa.
 
 ### Biblioteki do montowania {#mounting-libraries}
 
-Testowanie komponentów często wymaga również montowania komponentu, który będzie testowany w izolowaniu, symulowania wywoływania symulowanych akcji użytkownika czy dokonywanie asercji na wyjściowym stanie DOM. Istnieją dedykowane biblioteki które znacząco ułatwiają te zadania.
+Testowanie komponentów często wymaga również montowania komponentu, który będzie testowany w izolacji, wyzwalania symulowanych akcji użytkownika czy dokonywanie asercji na wyjściowym stanie DOM. Istnieją dedykowane biblioteki które znacząco ułatwiają te zadania.
 
-- [`@vue/test-utils`](https://github.com/vuejs/test-utils) to oficjalna biblioteka niskiego poziomu do testowania komponentów, która napisana była, aby dostarczyć uzytkownikom dostęp do specyficznych API Vue. W oparciu o tą bibliotekę napisana została biblioteka `@testing-library/vue`.
+- [`@vue/test-utils`](https://github.com/vuejs/test-utils) to oficjalna biblioteka niskiego poziomu do testowania komponentów, która napisana była, aby dostarczyć użytkownikom dostęp do specyficznych API Vue. W oparciu o tą bibliotekę napisana została biblioteka `@testing-library/vue`.
 
 - [`@testing-library/vue`](https://github.com/testing-library/vue-testing-library) to biblioteka do testów Vue, skupiona wokół testowania komponentów bez potrzeby znania szczegółów implementacji. Jej fundamentalnym założeniem jest to, że im więcej testów napiszemy w sposób przypominający to w jaki korzystamy z implementowanych funkcjonalności, tym większą pewność będą one dawać co do poprawnego ich działania.
 
@@ -248,23 +248,23 @@ Zalecamy używanie `@vue/test-utils` do testów komponentów w aplikacjach. `@te
 
 - [Nightwatch](https://nightwatchjs.org/) to narzędzie do testów E2E ze wsparciem do testów komponentów Vue. ([Przykładowy projekt](https://github.com/nightwatchjs-community/todo-vue))
 
-- [WebdriverIO](https://webdriver.io/docs/component-testing/vue) to narzędzie do testów komponentów w różnych przeglądarkach, które polega na natywnych interakcjach uzytkownika, opartych o standardową automatyzację. Może być również używane razem z Testing Library.
+- [WebdriverIO](https://webdriver.io/docs/component-testing/vue) to narzędzie do testów komponentów w różnych przeglądarkach, które polega na natywnych interakcjach użytkownika, opartych o standardową automatyzację. Może być również używane razem z Testing Library.
 
 ## Testy E2E {#e2e-testing}
 
 Podczas gdy testy jednostkowe dostarczają nam pewien poziom pewności poprawnego działania, testy jednostkowe i komponentów są ograniczone w swoich możliwościach do jedynie do pokrycia holistycznego aplikacji gdy wypuszczamy ją na produkcję. Skutkiem tego, testy end-to-end (E2E) mają na celu pokrycie w pewnym sensie najważniejszego aspektu aplikacji: co się dzieje gdy użytkownicy faktycznie używają Twojej aplikacji.
 
-Testy end-to-end skupiają się wokół zachowaniu użytkownika na przekroju wielu stron, wykonują zapytania na faktycznej aplikacji Vue zbudowanej pod cele produkcyjne. Wymagają one zatem postawienia właściwej bazy danych czy usług backendowych i mogą być wywołane na aplikacji żyjącej na środowisku stagingowym.
+Testy end-to-end skupiają się wokół zachowania użytkownika na przekroju wielu stron, wykonują zapytania na faktycznej aplikacji Vue zbudowanej pod cele produkcyjne. Wymagają one zatem postawienia właściwej bazy danych czy usług backendowych i mogą być wywołane na aplikacji żyjącej na środowisku stagingowym.
 
 Testy te mogą często wyłapać błędy związane z routerem, biblioteką zarządzania stanem, komponentami najwyższego poziomu (np. App czy Layout), publicznymi assetami czy obsługą zapytań sieciowych. Jak nadmieniliśmy wyżej wykrywają one krytyczne problemy, które mogą być niemożliwe do wychwycenia przez testy jednostkowe czy komponentowe.
 
 Testy end-to-end nie importują w ogóle kodu Twojej aplikacji Vue, a jedynie opierają się kompletnie na testowaniu aplikacji poprzez odwiedzanie stron w rzeczywistej przeglądarce.
 
-Testy end-to-end sprawdzają poprawność wielu wartsw aplikacji na raz. Mogą clować aplikację zbudowaną lokalnie, czy nawet aplikację na środowisku stagingowym. Testowanie aplikacji na środowisku stagingowym testuje nie tylko kod frontendowy czy serwer statyczny ale też również całą infrastrukturę i usługi backendowe.
+Testy end-to-end sprawdzają poprawność wielu wartsw aplikacji na raz. Mogą celować w aplikację zbudowaną lokalnie, czy nawet aplikację na środowisku stagingowym. Testowanie aplikacji na środowisku stagingowym testuje nie tylko kod frontendowy czy serwer statyczny ale też również całą infrastrukturę i usługi backendowe.
 
 > Im więcej testów napiszemy w sposób przypominający to w jaki korzystamy z implementowanych funkcjonalności, tym większą pewność będą one dawać co do poprawnego ich działania. - [Kent C. Dodds](https://twitter.com/kentcdodds/status/977018512689455106) - Autor biblioteki Testing Library
 
-Testy E2E, sprawdzające jak akcje użytkownika wpływają na aplikację są często kluczowe by mieć wysoką pewność co do tego czy nasz aplikacja działa poprawnie lub nie.
+Testy E2E, sprawdzające jak akcje użytkownika wpływają na aplikację są często kluczowe by mieć wysoką pewność co do tego czy nasza aplikacja działa poprawnie lub nie.
 
 ### Wybór rozwiązania do testów E2E {#choosing-an-e2e-testing-solution}
 
@@ -272,13 +272,13 @@ Testy end-to-end (E2E) zbudowały z czasem nieco negatywną reputację z powodu
 
 #### Testowanie cross-browser {#cross-browser-testing}
 
-Jedną z głównych zalet, z których znane są testy end-to-end (E2E) jest możliwość spsrawdzenia jak działa Twoja aplikacja na różnych przeglądarkach. Pomimo, że możemy chcieć mieć 100% pokrycie sprawdzenia jak aplikacja działa na różnych przeglądarkach, istotne jest mieć świadomość, że korzyści maleją wraz z wzrostem kosztów zasobów i czasu koniecznego by wykonywać te testy. Ważnym jest więc mieć rozwagę i świadomość kosztów związanych z ilością testów między różnymi przeglądarkami.
+Jedną z głównych zalet, z których znane są testy end-to-end (E2E) jest możliwość spsrawdzenia jak działa Twoja aplikacja na różnych przeglądarkach. Pomimo, że możemy chcieć mieć 100% pokrycie sprawdzenia jak aplikacja działa na różnych przeglądarkach, istotne jest mieć świadomość, że korzyści maleją wraz ze wzrostem kosztów zasobów i czasu koniecznego by wykonywać te testy. Ważnym jest więc mieć rozwagę i świadomość kosztów związanych z ilością testów między różnymi przeglądarkami.
 
-#### Szybsze sprzężenie zwrotne {#faster-feedback-loops}
+#### Sybsza informacja zwrotna {#faster-feedback-loops}
 
-Głównym problemem testów end-to-end (E2E) jest fakt, że wykonanie pełnego zestawu testów zajmuje dużo czasu. W typowym przypadku, dzieje się to jedynie podczas procesu continuous integration oraz deploymentu (CI/CD). Współczesne frameworki testów E2E pomagają rozwiązać ten problem poprzez funkcjonalności takie jak paralelizacja, która pozwala pipeline'om Ci/CD działać rzędy wielkości szybciej. W dodatku, podczas pracy lokalnej, możliwośc uruchomienia jednego konkretnego testu dla strony nad którą obecnie pracujemy przy jednoczesnym wsparciu hot reloadingu tych testów znacznie usprawniają rytm pracy i produktywność deweloperów.
+Głównym problemem testów end-to-end (E2E) jest fakt, że wykonanie pełnego zestawu testów zajmuje dużo czasu. W typowym przypadku, dzieje się to jedynie podczas procesu continuous integration oraz deploymentu (CI/CD). Współczesne frameworki testów E2E pomagają rozwiązać ten problem poprzez funkcjonalności takie jak paralelizacja, która pozwala pipeline'om CI/CD działać rzędy wielkości szybciej. W dodatku, podczas pracy lokalnej, możliwośc uruchomienia jednego konkretnego testu dla strony nad którą obecnie pracujemy przy jednoczesnym wsparciu hot reloadingu tych testów znacznie usprawniają rytm pracy i produktywność deweloperów.
 
-#### Debugowanie pierwszej klasy {#first-class-debugging-experience}
+#### Pierwszorzędne doświadczenie debugowania {#first-class-debugging-experience}
 
 Podczas gdy zazwyczaj deweloperzy przeszukiwali logi w oknie terminala tekstowego celem analizy co poszło nie tak podczas wykonywania testów, współczesne frameworki testów end-to-end (E2E) pozwalają deweloperom wykorzystać narzędzia z którymi są już zaznajomieni jak np. narzędzia deweloperskie przeglądarek.
 
@@ -353,7 +353,7 @@ Jeśli używasz TypeScript, dodaj `vitest/globals` do pola `types` w Twoim `tsco
 
 :::
 
-Następnie, utwórz plik z nazwą kończącą się na `*.test.js` w Twoim projekcie. Wszystkie plików testów możesz umieścić w folderze test w głównym folderze projektu lub w folderach z testami obok plików z kodem źródłowym. Vitest automatycznie odnajdzie te testy po konwencji nazewnictwa.
+Następnie, utwórz plik z nazwą kończącą się na `*.test.js` w Twoim projekcie. Wszystkie pliki testów możesz umieścić w folderze test w głównym folderze projektu lub w folderach z testami obok plików z kodem źródłowym. Vitest automatycznie odnajdzie te testy po konwencji nazewnictwa.
 
 ```js
 // MyComponent.test.js
