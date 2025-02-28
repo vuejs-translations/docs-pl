@@ -367,7 +367,7 @@ Odbieranie propsów slotu wygląda nieco inaczej w przypadku używania pojedyncz
 </MyComponent>
 ```
 
-![scoped slots diagram](./images/scoped-slots.svg)
+![scoped slots diagram](./images/scoped-slots.png)
 
 <!-- https://www.figma.com/design/d1jT37pWI9h0ytZ8rlGq55/scoped-slot-(Copy)?node-id=0-1&m=dev&t=SibCnvQxw122zbML-1 -->
 
