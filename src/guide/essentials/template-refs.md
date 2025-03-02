@@ -93,8 +93,6 @@ Zobacz także: [Typowanie referencji w szablonie](/guide/typescript/composition-
 
 <div class="composition-api">
 
-When `ref` is used inside `v-for`, the corresponding ref should contain an Array value, which will be populated with the elements after mount:
-
 Gdy `ref` jest używane wewnątrz `v-for`, odpowiednia referencja powinna zawierać wartość tablicy, która zostanie wypełniona elementami po zamontowaniu:
 
 ```vue

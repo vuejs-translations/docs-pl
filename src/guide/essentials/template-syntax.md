@@ -40,7 +40,8 @@ Tutaj napotykamy coś nowego. Atrybut `v-html`, który widzisz jest nazywany **d
 Zawartość elementu `span` zostanie zastąpiona wartością atrybutu `rawHtml`, interpretowanego jako czysty HTML - powiązania danych są ignorowane. Należy pamiętać, że nie można używać `v-html`do komponowania części szablonów, ponieważ Vue nie jest silnikiem szablonów opartym na ciągach znaków. Zamiast tego komponenty są preferowane jako podstawowa jednostka do ponownego używania w interfejsie użytkownika i kompozycji.
 
 :::warning Ostrzeżenie dotyczące bezpieczeństwa
-Dynamiczne renderowanie dowolnego HTML-a może prowadzić do [luk XSS](https://en.wikipedia.org/wiki/Cross-site_scripting). Używaj `v-html` tylko z zaufaną zawartością i **nigdy** z danymi dostarczonymi przez użytkownika. :::
+Dynamiczne renderowanie dowolnego HTML-a może prowadzić do [luk XSS](https://en.wikipedia.org/wiki/Cross-site_scripting). Używaj `v-html` tylko z zaufaną zawartością i **nigdy** z danymi dostarczonymi przez użytkownika.
+:::
 
 ## Wiązanie atrybutów {#attribute-bindings}
 

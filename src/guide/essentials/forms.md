@@ -13,7 +13,7 @@ const selected = ref('')
 const multiSelected = ref([])
 </script>
 
-# Wiązanie z formularzami wejściowymi {#form-input-bindings}
+# Wiązanie z formularzami inputów {#form-input-bindings}
 
 <div class="options-api">
   <VueSchoolLink href="https://vueschool.io/lessons/user-inputs-vue-devtools-in-vue-3" title="Darmowa lekcja Vue.js o inputach użytkownika"/>
@@ -138,8 +138,6 @@ Pojedyncze pole wyboru, wartość boolean:
 [Wypróbuj w playground](https://play.vuejs.org/#eNpVjtEKgzAMRX8l9Gl72Po+OmH/0ZdqI5PVNnSpOEr/fVVREEKSc0kuN4sX0X1KKB5Cfbs4EDfa40whMljsTXIMWXsAa9hcrtsOEJFT9DsBdG/sPmgfwDHhJpZl1FZLycO6AuNIzjAuxGrwlBj4R/jUYrVpw6wFDPbM020MFt0uoq2a3CycadFBH+Lpo8l5jwWlKLle1QcljwCi/AH7gFic)
 
 </div>
-
-We can also bind multiple checkboxes to the same array or [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) value:
 
 Możemy również powiązać wiele pól wyboru z tą samą tablicą lub [ustawić (set)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) wartość:
 
