@@ -273,7 +273,7 @@ Modyfikatory `.capture`, `.once` i `.passive` odpowiadają [opcjom natywnej meto
 <div @scroll.passive="onScroll">...</div>
 ```
 
-The `.passive` modifier is typically used with touch event listeners for [improving performance on mobile devices](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#improving_scroll_performance_using_passive_listeners).
+Modyfikator `.passive` jest zwykle używany w przypadku nasłuchiwaczy zdarzeń dotykowych w celu [poprawy wydajności na urządzeniach mobilnych](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#improving_scroll_performance_using_passive_listeners).
 
 ::: tip
 Nie używaj `.passive` i `.prevent` razem, ponieważ `.passive` informuje przeglądarkę, że nie zamierzasz zapobiegać domyślnemu zachowaniu zdarzenia, co może skutkować ostrzeżeniem.
@@ -323,7 +323,7 @@ Możesz użyć następujących modyfikatorów, aby uruchomić nasłuchiwanie zda
 Na klawiaturach Macintosh meta to klawisz command (⌘). Na klawiaturach Windows meta to klawisz Windows (⊞). Na klawiaturach Sun Microsystems meta jest oznaczone jako pełny romb (◆). Na niektórych klawiaturach, szczególnie na klawiaturach maszyn MIT i Lisp oraz ich następcach, takich jak klawiatura Knight, klawiatura Space-Cadet, meta jest oznaczone jako „META”. Na klawiaturach Symbolics meta jest oznaczone jako „META” lub „Meta”.
 :::
 
-For example:
+Na przykład:
 
 ```vue-html
 <!-- Alt + Enter -->

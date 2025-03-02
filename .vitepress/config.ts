@@ -187,7 +187,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/guide/essentials/event-handling'
         },
         {
-          text: 'Wiązanie elemtów wejściowych formularza',
+          text: 'Wiązanie elementów wejściowych formularza',
           link: '/guide/essentials/forms'
         },
         { text: 'Obserwatorzy', link: '/guide/essentials/watchers' },
