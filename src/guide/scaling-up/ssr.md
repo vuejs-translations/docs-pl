@@ -57,9 +57,9 @@ Przyjrzyjmy się najprostszemu przykładzie działania SSR w Vue.
 5. Utwórz plik `example.js`:
 
 ```js
-// this runs in Node.js on the server.
+// to uruchamia się w Node.js po stronie serwera.
 import { createSSRApp } from 'vue'
-// Vue's server-rendering API is exposed under `vue/server-renderer`.
+// API renderowania po stronie serwera w Vue jest dostępne pod `vue/server-renderer`.
 import { renderToString } from 'vue/server-renderer'
 
 const app = createSSRApp({
@@ -137,16 +137,16 @@ Aby aplikacja po stronie klienta stała się interaktywna, Vue musi wykonać kro
 Aby zamontować aplikację w trybie hydratacji, musimy użyć [`createSSRApp()`](/api/application#createssrapp) zamiast `createApp()`:
 
 ```js{2}
-// this runs in the browser.
+// to uruchamia się w przeglądarce.
 import { createSSRApp } from 'vue'
 
 const app = createSSRApp({
-  // ...same app as on server
+  // ...ta sama aplikacja co na serwerze
 })
 
-// mounting an SSR app on the client assumes
-// the HTML was pre-rendered and will perform
-// hydration instead of mounting new DOM nodes.
+// montowanie aplikacji SSR po stronie klienta zakłada,
+// że HTML został wstępnie wyrenderowany i zamiast
+// tworzyć nowe węzły DOM, przeprowadzi hydrację.
 app.mount('#app')
 ```
 
@@ -182,7 +182,7 @@ createApp().mount('#app')
 A serwer używa tej samej logiki tworzenia aplikacji w obsłudze żądań:
 
 ```js{2,5}
-// server.js (irrelevant code omitted)
+// server.js (pominięto nieistotny kod)
 import { createApp } from './app.js'
 
 server.get('/', (req, res) => {
