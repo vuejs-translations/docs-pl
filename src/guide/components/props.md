@@ -117,6 +117,71 @@ Więcej szczegółów: [Typowanie właściwości komponentu](/guide/typescript/c
 
 </div>
 
+<div class="composition-api">
+
+## Reaktywna destrukturyzacja propsów <sup class="vt-badge" data-text="3.5+" /> \*\* {#reactive-props-destructure}
+
+System reaktywności Vue śledzi wykorzystanie stanu na podstawie dostępów do własności. Na przykład gdy pobierasz wartość `props.foo` wewnątrz computed czy watchera, prop `foo` jest śledzony jako zależność.
+
+Mając poniższy kod:
+
+```js
+const { foo } = defineProps(['foo'])
+
+watchEffect(() => {
+  // wywoła się tylko raz przed wersją 3.5
+  // wywoła się zawsze gdy prop "foo" zmieni swoją wartość w wersji 3.5+
+  console.log(foo)
+})
+```
+
+W wersji 3.4 i niższej, `foo` jest wartością stałą i nigdy nie ulegnie zmianie. W wersji 3.5 i wyżej, kompilator Vue automatycznie doda `props.` gdy kod w tym samym bloku `<script setup>` próbuje pobrać wartość zdestrukturyzowane z `defineProps`. Kod powyższy będzie więc równoznaczny z poniższym:
+
+```js {5}
+const props = defineProps(['foo'])
+
+watchEffect(() => {
+  // `foo` zmienione w `props.foo` przez kompilator
+  console.log(props.foo)
+})
+```
+
+Dodatkowo, możemy wykorzystać natywną składnię JavaScripta by zdefiniować domyślne wartości dla propsów. Jest to bardzo użyteczne gdy używamy deklaracji opartej na typach:
+
+```ts
+const { foo = 'witaj' } = defineProps<{ foo?: string }>()
+```
+
+Jeśli preferujesz bardziej wizualne rozróżnienie między destrukturyzowanymi propsami a normalnymi zmiennymi w Twoim IDE, wtyczka Vue do VSCode oferuje opcję podpowiedzi dla destrukturyzowanych propsów.
+
+### Przekazywanie destrukturyzowanych propsów do funkcji {#passing-destructured-props-into-functions}
+
+Gdy przekazujemy destrukturyzowany prop do funkcji, np.:
+
+```js
+const { foo } = defineProps(['foo'])
+
+watch(foo, /* ... */)
+```
+
+Nie zadziała to poprawnie, ponieważ jest to odpowiednikiem `watch(props.foo, ...)` - przekazujemy wartość zamiast reaktywnego źródła danych do `watch`. W praktyce, kompilator Vue wyłapie tego typu przypadki i zwróci ostrzeżenie.
+
+Podobnie jak możemy obserwować normalne propsy poprzez `watch(() => props.foo, ...)`, możemy w taki sam sposób obserwować destrukturyzowanego propsa, opakowując go w getter:
+
+```js
+watch(() => foo, /* ... */)
+```
+
+Dodatkowo, jest to również zalecane podejście gdy musi przekazać destrukturyzowanego propa do zewnętrznej funkcji, zachowując przy tym reaktywność:
+
+```js
+useComposable(() => foo)
+```
+
+Zewnętrzna funkcja może wywołać getter (lub znormalizować go z użyciem [toValue](/api/reactivity-utilities.html#tovalue)), gdy potrzebuje śledzić zmiany przekazanego propa, np. wewnątrz computed lub watchera.
+
+</div>
+
 ## Szczegóły przekazywania właściwości {#prop-passing-details}
 
 ### Konwencja nazywania właściwości {#prop-name-casing}

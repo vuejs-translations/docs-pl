@@ -64,7 +64,9 @@ Attributes that start with `:` may look a bit different from normal HTML, but it
 
 > For the rest of the guide, we will be using the shorthand syntax in code examples, as that's the most common usage for Vue developers.
 
-### Same-name Shorthand <sup class="vt-badge" data-text="3.4+" /> {#same-name-shorthand}
+### Same-name Shorthand {#same-name-shorthand}
+
+- Only supported in 3.4+
 
 If the attribute has the same name with the JavaScript value being bound, the syntax can be further shortened to omit the attribute value:
 
@@ -191,7 +193,7 @@ Directive attribute values are expected to be single JavaScript expressions (wit
 <p v-if="seen">Now you see me</p>
 ```
 
-Here, the `v-if` directive would remove / insert the `<p>` element based on the truthiness of the value of the expression `seen`.
+Here, the `v-if` directive would remove or insert the `<p>` element based on the truthiness of the value of the expression `seen`.
 
 ### Arguments {#arguments}
 

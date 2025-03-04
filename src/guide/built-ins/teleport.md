@@ -6,9 +6,9 @@
 
 ## Podstawowe użycie {#basic-usage}
 
-Czasami możemy napotkać następujący scenariusz: część szablonu komponentu logicznie do niego należy, ale z wizualnego punktu widzenia powinna być wyświetlana gdzie indziej w strukturze DOM, poza aplikacją Vue.
+Czasami część szablonu komponentu logicznie do niego należy, ale z wizualnego punktu widzenia powinna być wyświetlana gdzie indziej w strukturze DOM, a może nawet poza aplikacją Vue.
 
-Najczęstszym przykładem tego jest budowanie modalu pełnoekranowego. Idealnie byłoby, gdyby przycisk modalu i sam modal znajdowały się w tym samym komponencie, ponieważ oba są powiązane ze stanem otwarcia/zamknięcia modalu. Oznacza to jednak, że modal będzie renderowany obok przycisku, głęboko zagnieżdżony w hierarchii DOM aplikacji. Może to powodować trudności przy pozycjonowaniu modalu za pomocą CSS.
+Najczęstszym przykładem tego jest budowanie modalu pełnoekranowego. Idealnie byłoby, gdyby kod przycisku modalu i sam modal znajdowały się w kodzie tego samego komponentu, ponieważ oba są powiązane ze stanem otwarcia/zamknięcia modalu. Oznacza to jednak, że modal będzie renderowany obok przycisku, głęboko zagnieżdżony w hierarchii DOM aplikacji. Może to powodować trudności przy pozycjonowaniu modalu za pomocą CSS.
 
 Rozważmy następującą strukturę HTML.
 
@@ -169,11 +169,11 @@ W niektórych przypadkach możemy chcieć warunkowo wyłączyć `<Teleport>`. Na
 </Teleport>
 ```
 
-Stan `isMobile` może być dynamicznie aktualizowany poprzez wykrywanie zmian w media queries.
+Następnie możemy dynamicznie zmieniać `isMobile`.
 
 ## Wiele Teleportów do tego samego celu {#multiple-teleports-on-the-same-target}
 
-Częstym przypadkiem użycia byłby wielokrotnego użytku komponent `<Modal>`, z możliwością aktywacji wielu instancji w tym samym czasie. W tego typu scenariuszu, wiele komponentów `<Teleport>` może montować swoją zawartość do tego samego elementu docelowego. Kolejność będzie prostym dołączaniem – później zamontowane elementy zostaną umieszczone za wcześniej zamontowanymi w elemencie docelowym.
+Częstym przypadkiem użycia byłby wielokrotnego użytku komponent `<Modal>`, z możliwością aktywacji wielu instancji w tym samym czasie. W tego typu scenariuszu, wiele komponentów `<Teleport>` może montować swoją zawartość do tego samego elementu docelowego. Kolejność będzie prostym dołączaniem, gdzie później zamontowane elementy zostaną umieszczone za wcześniej zamontowanymi, ale ostatecznie wszystkie w tym samym elemencie docelowym.
 
 Biorąc pod uwagę następujące zastosowanie::
 
@@ -194,6 +194,19 @@ Wyrenderowany rezultat będzie następujący:
   <div>B</div>
 </div>
 ```
+
+## Odroczony Teleport <sup class="vt-badge" data-text="3.5+" /> {#deferred-teleport}
+
+W Vue 3.5 i wyżej, możemy użyć właściwości `defer` aby odroczyć rozwiązywanie celu Teleportu, do czasu, aż inne części aplikacji się nie zamontują. Pozwala to celować do elementu, który renderowany jest przez Vue, ale w późniejszej części drzewa komponentów:
+
+```vue-html
+<Teleport defer to="#late-div">...</Teleport>
+
+<!-- gdzieś później w szablonie -->
+<div id="late-div"></div>
+```
+
+Zwróć uwagę, że cel teleportu musi być wyrenderowany w tym samym ticku montowania / aktualizacji razem z teleportem - np. jeśli `<div>` jest montowany sekundę później, teleport nadal zaraportuje błąd. Odraczanie działa podobnie do hooka `mounted` z cyklu życia komponentu.
 
 ---
 

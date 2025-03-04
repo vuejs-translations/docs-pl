@@ -336,8 +336,10 @@ Rejestruje wywołanie zwrotne usuwania dla bieżącego aktywnego [zakresu efekt�
 
 Metoda ta może być używana jako niepowiązana z komponentem zamiana `onUnmounted` w funkcjach composable wielokrotnego użytku, ponieważ funkcja `setup()` każdego komponentu Vue jest również wywoływana w zakresie efektu.
 
+Ostrzeżenie zostanie podniesione gdy funkcja zostanie wywołana bez aktywnego zakresu efektów. W 3.5+, te ostrzeżenie możemy wyłączyć przekazując `true` jako drugi argument.
+
 - **Typ**
 
   ```ts
-  function onScopeDispose(fn: () => void): void
+  function onScopeDispose(fn: () => void, failSilently?: boolean): void
   ```

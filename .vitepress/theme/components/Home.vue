@@ -37,11 +37,24 @@ onMounted(load)
         </svg>
       </a>
       <a class="setup" href="/guide/quick-start.html">Instalacja</a>
+      <a class="security" href="https://v2.vuejs.org/eol/" target="_blank">
+        Aktualizacje bezpieczeństwa dla Vue 2
+        <svg
+          class="icon"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+        >
+          <path
+            d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h82.7L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3V192c0 17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32H320zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+          />
+        </svg>
+      </a>
     </p>
   </section>
 
-  <section v-if="data && data.special" id="special-sponsor">
+  <section v-if="data && data.special" id="special-spsr">
     <span class="lead">Sponsor Sepcjalny</span>
+    <span class="lead">Special Sponsor</span>
     <template v-for="{ url, img, name, description } of data.special">
       <a :href="url" target="_blank" rel="sponsored noopener">
         <picture v-if="img.endsWith('png')">
@@ -61,6 +74,13 @@ onMounted(load)
       </a>
       <span>{{ description }}</span>
     </template>
+  </section>
+  <section v-else id="special-spsr">
+    <span>
+      <a href="/sponsor/#tier-benefits">
+        Miejsce specjalnego sponsora jest obecnie puste - Dowiedz się więcej teraz
+      </a>
+    </span>
   </section>
 
   <section id="highlights" class="vt-box-container">
@@ -87,7 +107,7 @@ onMounted(load)
     </div>
   </section>
 
-  <section id="sponsors">
+  <section id="spsrs">
     <h2>Sponsorzy Platynowi</h2>
     <SponsorsGroup tier="platinum" placement="landing" />
     <h2>Sponsorzy Złoci</h2>
@@ -144,7 +164,30 @@ html:not(.dark) .accent,
   transition: background-color 0.5s, color 0.5s;
 }
 
-.actions .get-started {
+.actions .security {
+  background: linear-gradient(var(--vt-c-bg-mute), var(--vt-c-bg-mute)) padding-box,
+    linear-gradient(45deg, #42d392, #647eff) border-box;
+  border: 2px solid transparent;
+}
+
+.actions .security:hover {
+  background: linear-gradient(var(--vt-c-gray-light-4), var(--vt-c-gray-light-4)) padding-box,
+    linear-gradient(45deg, #42d392, #647eff) border-box;
+}
+
+.dark .actions .security:hover {
+  background: linear-gradient(var(--vt-c-gray-dark-3), var(--vt-c-gray-dark-3)) padding-box,
+    linear-gradient(45deg, #42d392, #647eff) border-box;
+}
+
+.actions .security .icon {
+  width: 12px;
+  height: 12px;
+  margin-left: 4px;
+}
+
+.actions .get-started,
+.actions .setup {
   margin-right: 18px;
 }
 
@@ -166,22 +209,25 @@ html:not(.dark) .accent,
 }
 
 .actions .get-started,
-.actions .setup {
+.actions .setup,
+.actions .security {
   color: var(--vt-c-text-code);
 }
 
 .actions .get-started:hover,
-.actions .setup:hover {
+.actions .setup:hover,
+.actions .security:hover {
   background-color: var(--vt-c-gray-light-4);
   transition-duration: 0.2s;
 }
 
 .dark .actions .get-started:hover,
-.dark .actions .setup:hover {
+.dark .actions .setup:hover,
+.dark .actions .security:hover {
   background-color: var(--vt-c-gray-dark-3);
 }
 
-#special-sponsor {
+#special-spsr {
   border-top: 1px solid var(--vt-c-divider-light);
   border-bottom: 1px solid var(--vt-c-divider-light);
   padding: 12px 24px;
@@ -189,7 +235,7 @@ html:not(.dark) .accent,
   align-items: center;
 }
 
-#special-sponsor span {
+#special-spsr span {
   color: var(--vt-c-text-2);
   font-weight: 500;
   font-size: 13px;
@@ -197,22 +243,22 @@ html:not(.dark) .accent,
   flex: 1;
 }
 
-#special-sponsor span:first-child {
+#special-spsr span:first-child {
   text-align: right;
 }
 
-#special-sponsor a {
+#special-spsr a {
   display: flex;
   justify-content: center;
   padding: 0 24px;
 }
 
-#special-sponsor img {
+#special-spsr img {
   height: 42px;
   margin: -6px 0;
 }
 
-.dark #special-sponsor img {
+.dark #special-spsr img {
   filter: grayscale(1) invert(1);
 }
 
@@ -240,18 +286,18 @@ html:not(.dark) .accent,
   background-color: transparent;
 }
 
-#sponsors {
+#spsrs {
   max-width: 900px;
   margin: 0px auto;
 }
 
-#sponsors h2 {
+#spsrs h2 {
   font-size: 20px;
   font-weight: 600;
   margin-bottom: 1em;
 }
 
-#sponsors .sponsor-container {
+#spsrs .spsr-container {
   margin-bottom: 3em;
 }
 
@@ -266,10 +312,13 @@ html:not(.dark) .accent,
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 794px) {
   .tagline {
     font-size: 48px;
     letter-spacing: -0.5px;
+  }
+  .actions .security {
+    margin-top: 18px;
   }
 }
 
@@ -281,14 +330,14 @@ html:not(.dark) .accent,
     font-size: 16px;
     margin: 18px 0 30px;
   }
-  #special-sponsor {
+  #special-spsr {
     flex-direction: column;
   }
-  #special-sponsor img {
+  #special-spsr img {
     height: 36px;
     margin: 8px 0;
   }
-  #special-sponsor span {
+  #special-spsr span {
     text-align: center !important;
   }
   #highlights h3 {
@@ -299,6 +348,9 @@ html:not(.dark) .accent,
   }
   .actions a {
     margin: 18px 0;
+  }
+  .actions .security {
+    margin-top: 0;
   }
 }
 

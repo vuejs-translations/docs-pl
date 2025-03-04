@@ -58,9 +58,9 @@ Oznacza [template ref](/guide/essentials/template-refs).
 
   ```vue
   <script setup>
-  import { ref } from 'vue'
+  import { useTemplateRef } from 'vue'
 
-  const p = ref()
+  const pRef = useTemplateRef('p')
   </script>
 
   <template>
@@ -92,6 +92,8 @@ Stosowany do wiązania [dynamic components](/guide/essentials/component-basics#d
 - **Oczekuje:** `string | Component`
 
 - **Użycie na elementach natywnych** <sup class="vt-badge">3.1+</sup>
+
+  - Wspierane tylko w 3.1+
 
   Gdy atrybut `is` jest używany w natywnym elemencie HTML, zostanie zinterpretowany jako [Dostosowany wbudowany element](https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-customized-builtin-example), który jest natywną funkcją platformy internetowej.
 

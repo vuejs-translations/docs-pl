@@ -220,3 +220,23 @@ Interfejs API środowiska wykonawczego używany do pobierania obiektu kontekstu 
   }
   </script>
   ```
+
+## data-allow-mismatch <sup class="vt-badge" data-text="3.5+" /> {#data-allow-mismatch}
+
+Atrybut, który może być użyty by pominąć ostrzeżenia o [niezgodności hydratacji](/guide/scaling-up/ssr#hydration-mismatch).
+
+- **Przykład**
+
+  ```html
+  <div data-allow-mismatch="text">{{ data.toLocaleString() }}</div>
+  ```
+
+  Wartość atrybutu może ograniczyć działanie jedynie do konkretnego typu. Dozwolone wartości to:
+
+  - `text`
+  - `children` (pozwala na nizgodności tylko dla bezpośrednich dzieci)
+  - `class`
+  - `style`
+  - `attribute`
+
+  Gdy nie jest dostarczona wartość, wszystkie typy niezgodności będą dozwolone.

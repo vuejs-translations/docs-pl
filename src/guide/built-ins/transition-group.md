@@ -80,6 +80,10 @@ Teraz wygląda to znacznie lepiej - nawet animacja jest płynna, gdy cała lista
 
 [Pełny przykład](/examples/#list-transition)
 
+### Własne klasy TransitionGroup {#custom-transitiongroup-classes}
+
+Możesz również wyspecyfikować własne klasy przejść dla elementów przekazując prop `moveClass` do `<TransitionGroup>`, tak samo jak [własne klasy przejść na `<Transition>`](/guide/built-ins/transition.html#custom-transition-classes).
+
 ## Rozłożone w czasie przejścia listy {#staggering-list-transitions}
 
 Poprzez komunikację z przejściami JavaScript za pomocą atrybutów danych, możliwe jest również rozłożenie w czasie przejść na liście. Najpierw renderujemy indeks elementu jako atrybut data na elemencie DOM:

@@ -135,6 +135,8 @@ Vue Router posiada wbudowane wsparcie dla [leniwego ładowania komponentów](htt
 
 ## Zagnieżdżony Suspense {#nested-suspense}
 
+- Wspierane tylko w 3.3+
+
 Gdy mamy wiele komponentów asynchronicznych (typowe dla zagnieżdżonych lub opartych na układzie tras) jak tutaj:
 
 ```vue-html

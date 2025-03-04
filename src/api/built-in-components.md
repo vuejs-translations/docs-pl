@@ -286,6 +286,12 @@ Renderuje zawartość slotu do innej części DOM.
      * Może być zmieniana dynamicznie.
      */
     disabled?: boolean
+    /**
+     * Gdy `true`, Teleport będzie odroczony do czasu gdy inne
+     * części aplikacji nie zostaną wcześniej zamontowane
+     * przed rozwiązaniem jego celu. (3.5+)
+     */
+    defer?: boolean
   }
   ```
 
@@ -305,6 +311,15 @@ Renderuje zawartość slotu do innej części DOM.
   <Teleport to="#popup" :disabled="displayVideoInline">
     <video src="./my-movie.mp4">
   </Teleport>
+  ```
+
+  Odroczenie rozwiązania celu <sup class="vt-badge" data-text="3.5+" />:
+
+  ```vue-html
+  <Teleport defer to="#late-div">...</Teleport>
+
+  <!-- gdzieś później w szablonie -->
+  <div id="late-div"></div>
   ```
 
 - **Zobacz również** [Guide - Teleport](/guide/built-ins/teleport)

@@ -108,11 +108,10 @@ Używa funkcji [getter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/
   })
   ```
 
-- **Zobacz również**
   - [Przewodnik - Właściwości obliczane](/guide/essentials/computed)
   - [Przewodnik - Debugowanie obliczeniowe](/guide/extras/reactivity-in-depth#computed-debugging)
   - [Przewodnik - Wpisywanie `computed()`](/guide/typescript/composition-api#typing-computed) <sup class=„vt-badge ts” />
-  - [Przewodnik - Wydajność - Stabilność obliczeniowa](/guide/best-practices/performance#computed-stability) <sup class=„vt-badge” data-text="3.4+” />
+  - [Przewodnik - Wydajność - Stabilność obliczeniowa](/guide/best-practices/performance#computed-stability)
 
 ## reactive() {#reactive}
 
@@ -238,7 +237,7 @@ Natychmiast uruchamia funkcję, jednocześnie reaktywnie śledząc jej zależno�
   function watchEffect(
     effect: (onCleanup: OnCleanup) => void,
     options?: WatchEffectOptions
-  ): StopHandle
+  ): WatchHandle
 
   type OnCleanup = (cleanupFn: () => void) => void
 
@@ -248,7 +247,12 @@ Natychmiast uruchamia funkcję, jednocześnie reaktywnie śledząc jej zależno�
     onTrigger?: (event: DebuggerEvent) => void
   }
 
-  type StopHandle = () => void
+  interface WatchHandle {
+    (): void // callable, same as `stop`
+    pause: () => void
+    resume: () => void
+    stop: () => void
+  }
   ```
 
 - **Sczegóły**
@@ -273,19 +277,6 @@ Natychmiast uruchamia funkcję, jednocześnie reaktywnie śledząc jej zależno�
   // -> logs 1
   ```
 
-  Usuwanie skutków ubocznych:
-
-  ```js
-  watchEffect(async (onCleanup) => {
-    const { response, cancel } = doAsyncWork(id.value)
-    // `cancel` zostanie wywołane jeśli `id` ulegnie zmianie
-    // poprzednie oczekujące żądanie zostanie anulowane
-    // jeśli nie zostało jeszcze zakończone
-    onCleanup(cancel)
-    data.value = await response
-  })
-  ```
-
   Zatrzymanie obserwatora:
 
   ```js
@@ -293,6 +284,47 @@ Natychmiast uruchamia funkcję, jednocześnie reaktywnie śledząc jej zależno�
 
   // gdy obserwator nie jest już potrzebny:
   stop()
+  ```
+
+  Zatrzymywanie / wznawianie obserwatorów: <sup class="vt-badge" data-text="3.5+" />
+
+  ```js
+  const { stop, pause, resume } = watchEffect(() => {})
+
+  // tymczasowo wstrzymaj obserwatora
+  pause()
+
+  // wznów później
+  resume()
+
+  // zatrzymaj
+  stop()
+  ```
+
+  Usuwanie efektów ubocznych:
+
+  ```js
+  watchEffect(async (onCleanup) => {
+    const { response, cancel } = doAsyncWork(newId)
+    // `cancel` zostanie wywołane, jeśli `id` ulegnie zmianie, anulując
+    // poprzednie żądanie, jeśli nie zostało jeszcze zakończone
+    onCleanup(cancel)
+    data.value = await response
+  })
+  ```
+
+  Usuwanie skutków ubocznych w 3.5+:
+
+  ```js
+  import { onWatcherCleanup } from 'vue'
+
+  watchEffect(async () => {
+    const { response, cancel } = doAsyncWork(newId)
+    // `cancel` zostanie wywołane, jeśli `id` ulegnie zmianie, anulując
+    // poprzednie żądanie, jeśli nie zostało jeszcze zakończone
+    onWatcherCleanup(cancel)
+    data.value = await response
+  })
   ```
 
   Opcje:
@@ -333,14 +365,14 @@ Obserwuje jedno lub więcej reaktywnych źródeł danych i wywołuje funkcję zw
     source: WatchSource<T>,
     callback: WatchCallback<T>,
     options?: WatchOptions
-  ): StopHandle
+  ): WatchHandle
 
   // obserwowanie wielu źródeł
   function watch<T>(
     sources: WatchSource<T>[],
     callback: WatchCallback<T[]>,
     options?: WatchOptions
-  ): StopHandle
+  ): WatchHandle
 
   type WatchCallback<T> = (
     value: T,
@@ -351,17 +383,22 @@ Obserwuje jedno lub więcej reaktywnych źródeł danych i wywołuje funkcję zw
   type WatchSource<T> =
     | Ref<T> // ref
     | (() => T) // getter
-    | T extends object
-    ? T
-    : never // reactive object
+    | (T extends object ? T : never) // reactive object
 
   interface WatchOptions extends WatchEffectOptions {
     immediate?: boolean // default: false
-    deep?: boolean // default: false
+    deep?: boolean | number // default: false
     flush?: 'pre' | 'post' | 'sync' // default: 'pre'
     onTrack?: (event: DebuggerEvent) => void
     onTrigger?: (event: DebuggerEvent) => void
     once?: boolean // default: false (3.4+)
+  }
+
+  interface WatchHandle {
+    (): void // callable, same as `stop`
+    pause: () => void
+    resume: () => void
+    stop: () => void
   }
   ```
 
@@ -385,10 +422,10 @@ Obserwuje jedno lub więcej reaktywnych źródeł danych i wywołuje funkcję zw
   Trzecim opcjonalnym argumentem jest obiekt opcji, który obsługuje następujące opcje:
 
   - **`immediate`**: wywołanie zwrotne natychmiast po utworzeniu obserwatora. Stara wartość będzie „niezdefiniowana” przy pierwszym wywołaniu.
-  - **`deep`**: wymusza głębokie przeszukiwanie źródła, jeśli jest ono obiektem, tak aby wywołanie zwrotne było uruchamiane przy głębokich mutacjach. Zobacz [Deep Watchers](/guide/essentials/watchers#deep-watchers).
+  - **`deep`**: wymusza głębokie przeszukiwanie źródła, jeśli jest ono obiektem, tak aby wywołanie zwrotne było uruchamiane przy głębokich mutacjach. W wersji 3.5+, może być to również wartość liczbowa określająca maksymalny stopień zagnieżdżenia do obserwowania. Zobacz [Deep Watchers](/guide/essentials/watchers#deep-watchers).
   - **`flush`**: dostosowuje czas spłukiwania wywołania zwrotnego. Zobacz [Callback Flush Timing](/guide/essentials/watchers#callback-flush-timing) i [`watchEffect()`](/api/reactivity-core#watcheffect).
   - **`onTrack / onTrigger`**: debugowanie zależności watchera. Zobacz [Watcher Debugging](/guide/extras/reactivity-in-depth#watcher-debugging).
-  - **`once`**: uruchamia wywołanie zwrotne tylko raz. Obserwator jest automatycznie zatrzymywany po pierwszym uruchomieniu wywołania zwrotnego. <sup class=„vt-badge” data-text="3.4+” />
+  - **`once`**: (3.4+) uruchamia wywołanie zwrotne tylko raz. Obserwator jest automatycznie zatrzymywany po pierwszym uruchomieniu wywołania zwrotnego.
 
   W porównaniu do [`watchEffect()`](#watcheffect), `watch()` pozwala nam na:
 
@@ -472,6 +509,21 @@ Obserwuje jedno lub więcej reaktywnych źródeł danych i wywołuje funkcję zw
   stop()
   ```
 
+  Zatrzymywanie / wznawianie obserwatorów: <sup class="vt-badge" data-text="3.5+" />
+
+  ```js
+  const { stop, pause, resume } = watch(() => {})
+
+  // tymczasowo wstrzymaj obserwatora
+  pause()
+
+  // wznów później
+  resume()
+
+  // zatrzymaj
+  stop()
+  ```
+
   Usuwanie skutków ubocznych:
 
   ```js
@@ -484,7 +536,45 @@ Obserwuje jedno lub więcej reaktywnych źródeł danych i wywołuje funkcję zw
   })
   ```
 
+  Usuwanie skutków ubocznych 3.5+:
+
+  ```js
+  import { onWatcherCleanup } from 'vue'
+
+  watch(id, async (newId) => {
+    const { response, cancel } = doAsyncWork(newId)
+    onWatcherCleanup(cancel)
+    data.value = await response
+  })
+  ```
+
 - **Zobacz również**
 
   - [Poradnik - Watchers](/guide/essentials/watchers)
   - [Poradnik - Watchers debugowanie](/guide/extras/reactivity-in-depth#watcher-debugging)
+
+## onWatcherCleanup() <sup class="vt-badge" data-text="3.5+" /> {#onwatchercleanup}
+
+Zarejestruj funkcję "czyszczącą", która wywoła się gdy obecny obserwator ma się ponownie wykonać. Może być wywołane jedynie podczas synchronicznego wywołania funkcji `watchEffect` lub `watch` (np. nie może być wywołane po instrukcji `await` w funkcji asynchronizcznej)
+
+- **Typ**
+
+  ```ts
+  function onWatcherCleanup(
+    cleanupFn: () => void,
+    failSilently?: boolean
+  ): void
+  ```
+
+- **Przykład**
+
+  ```ts
+  import { watch, onWatcherCleanup } from 'vue'
+
+  watch(id, (newId) => {
+    const { response, cancel } = doAsyncWork(newId)
+    // `cancel` zostanie wywołane, jeśli `id` ulegnie zmianie, anulując
+    // poprzednie żądanie, jeśli nie zostało jeszcze zakończone
+    onWatcherCleanup(cancel)
+  })
+  ```

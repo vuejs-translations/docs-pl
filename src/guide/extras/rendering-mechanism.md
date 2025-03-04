@@ -68,23 +68,24 @@ Ale nie musi tak być. W Vue framework kontroluje zarówno kompilator, jak i śr
 
 Poniżej omówimy kilka głównych optymalizacji wykonywanych przez kompilator szablonów Vue w celu poprawy wydajności wirtualnego DOM w czasie wykonywania.
 
-### Wynoszenie statyczne {#static-hoisting}
+### Cache'owanie części statycznych {#cache-static}
 
 Dość często w szablonie będą części, które nie zawierają żadnych dynamicznych wiązań:
 
 ```vue-html{2-3}
 <div>
- <div>foo</div> <!-- przeniesiony -->
- <div>bar</div> <!-- przeniesiony -->
+<<<<<<< HEAD
+ <div>foo</div> <!-- cached -->
+ <div>bar</div> <!-- cached -->
  <div>{{ dynamic }}</div>
 </div>
 ```
 
-[Sprawdź w Eksploratorze Szablonów](https://template-explorer.vuejs.org/#eyJzcmMiOiI8ZGl2PlxuICA8ZGl2PmZvbzwvZGl2PiA8IS0tIGhvaXN0ZWQgLS0+XG4gIDxkaXY+YmFyPC9kaXY+IDwhLS0gaG9pc3RlZCAtLT5cbiAgPGRpdj57eyBkeW5hbWljIH19PC9kaXY+XG48L2Rpdj5cbiIsIm9wdGlvbnMiOnsiaG9pc3RTdGF0aWMiOnRydWV9fQ==)
+[Sprawdź w Eksploratorze Szablonów](https://template-explorer.vuejs.org/#eyJzcmMiOiI8ZGl2PlxuICA8ZGl2PmZvbzwvZGl2PiA8IS0tIGNhY2hlZCAtLT5cbiAgPGRpdj5iYXI8L2Rpdj4gPCEtLSBjYWNoZWQgLS0+XG4gIDxkaXY+e3sgZHluYW1pYyB9fTwvZGl2PlxuPC9kaXY+XG4iLCJvcHRpb25zIjp7ImhvaXN0U3RhdGljIjp0cnVlfX0=)
 
-Divy `foo` i `bar` są statyczne - ponowne tworzenie vnodów i porównywanie ich przy każdym ponownym renderowaniu jest niepotrzebne. Kompilator Vue automatycznie wynosi ich wywołania tworzenia vnode poza funkcję renderującą i ponownie wykorzystuje te same vnody przy każdym renderowaniu. Renderer jest również w stanie całkowicie pominąć ich porównywanie, gdy zauważy, że stary vnode i nowy vnode są tym samym.
+Divy `foo` i `bar` są statyczne - ponowne tworzenie vnodów i porównywanie ich przy każdym ponownym renderowaniu jest niepotrzebne. Renderer tworzy te vnody podczas pierwszego renderowania, cache'uje je i ponownie wykorzystuje te same vnody przy każdym ponownym renderowaniu. Renderer jest również w stanie całkowicie pominąć ich porównywanie, gdy zauważy, że stary vnode i nowy vnode są tym samym.
 
-Ponadto, gdy jest wystarczająco dużo kolejnych elementów statycznych, zostaną one skondensowane w jeden "statyczny vnode", który zawiera zwykły ciąg HTML dla wszystkich tych węzłów ([Przykład](https://template-explorer.vuejs.org/#eyJzcmMiOiI8ZGl2PlxuICA8ZGl2IGNsYXNzPVwiZm9vXCI+Zm9vPC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJmb29cIj5mb288L2Rpdj5cbiAgPGRpdiBjbGFzcz1cImZvb1wiPmZvbzwvZGl2PlxuICA8ZGl2IGNsYXNzPVwiZm9vXCI+Zm9vPC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJmb29cIj5mb288L2Rpdj5cbiAgPGRpdj57eyBkeW5hbWljIH19PC9kaXY+XG48L2Rpdj4iLCJzc3IiOmZhbHNlLCJvcHRpb25zIjp7ImhvaXN0U3RhdGljIjp0cnVlfX0=)). Te statyczne vnody są montowane przez bezpośrednie ustawienie `innerHTML`. Przechowują one również w pamięci podręcznej swoje odpowiednie węzły DOM przy początkowym montowaniu - jeśli ta sama treść jest ponownie wykorzystywana w innym miejscu aplikacji, nowe węzły DOM są tworzone przy użyciu natywnego `cloneNode()`, co jest niezwykle wydajne.
+Ponadto, gdy jest wystarczająco dużo kolejnych elementów statycznych, zostaną one skondensowane w jeden "statyczny vnode", który zawiera zwykły ciąg HTML dla wszystkich tych węzłów ([Przykład](https://template-explorer.vuejs.org/#eyJzcmMiOiI8ZGl2PlxuICA8ZGl2IGNsYXNzPVwiZm9vXCI+Zm9vPC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJmb29cIj5mb288L2Rpdj5cbiAgPGRpdiBjbGFzcz1cImZvb1wiPmZvbzwvZGl2PlxuICA8ZGl2IGNsYXNzPVwiZm9vXCI+Zm9vPC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJmb29cIj5mb288L2Rpdj5cbiAgPGRpdj57eyBkeW5hbWljIH19PC9kaXY+XG48L2Rpdj4iLCJzc3IiOmZhbHNlLCJvcHRpb25zIjp7ImhvaXN0U3RhdGljIjp0cnVlfX0=)). Te statyczne vnody są montowane przez bezpośrednie ustawienie `innerHTML`.
 
 ### Flagi łatania {#patch-flags}
 

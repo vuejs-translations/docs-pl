@@ -107,7 +107,9 @@ Wstrzykuje wartość dostarczoną przez komponent nadrzędny lub aplikację (za 
   - [Poradnik - Provide / Inject](/guide/components/provide-inject)
   - [Poradnik - Provide / Inject z TypeScipt](/guide/typescript/composition-api#typing-provide-inject) <sup class="vt-badge ts" />
 
-## hasInjectionContext() <sup class="vt-badge" data-text="3.3+" /> {#has-injection-context}
+## hasInjectionContext() {#has-injection-context}
+
+- Wspierane tylko w 3.3+
 
 Zwraca wartość true, jeśli [inject()](#inject) może zostać użyte bez ostrzeżenia o wywołaniu w niewłaściwym miejscu (np. poza `setup()`). Ta metoda jest przeznaczona do użytku przez biblioteki, które chcą używać `inject()` wewnętrznie bez wywoływania ostrzeżenia u użytkownika końcowego.
 

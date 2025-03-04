@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import { defineConfigWithTheme } from 'vitepress'
+import { defineConfigWithTheme, type HeadConfig } from 'vitepress'
 import type { Config as ThemeConfig } from '@vue/theme'
 import baseConfig from '@vue/theme/config'
 import { headerPlugin } from './headerMdPlugin'
@@ -45,6 +45,7 @@ const nav: ThemeConfig['nav'] = [
         text: 'Materiały',
         items: [
           { text: 'Partnerzy', link: '/partners/' },
+          { text: 'Deweloperzy', link: '/developers/' },
           { text: 'Motywy', link: '/ecosystem/themes' },
           { text: 'Komponenty UI', link: 'https://ui-libs.vercel.app/' },
           {
@@ -131,9 +132,13 @@ const nav: ThemeConfig['nav'] = [
     link: '/sponsor/'
   },
   {
-    text: 'Partnerzy',
-    link: '/partners/',
-    activeMatch: `^/partners/`
+    text: 'Eksperci',
+    badge: { text: 'NEW' },
+    activeMatch: `^/(partners|developers)/`,
+    items: [
+      { text: 'Partnerzy', link: '/partners/' },
+      { text: 'Deweloperzy', link: '/developers/', badge: { text: 'NEW' } }
+    ]
   }
 ]
 
@@ -185,10 +190,6 @@ export const sidebar: ThemeConfig['sidebar'] = {
           text: 'Wiązanie elemtów wejściowych formularza',
           link: '/guide/essentials/forms'
         },
-        {
-          text: 'Cykl życia',
-          link: '/guide/essentials/lifecycle'
-        },
         { text: 'Form Input Bindings', link: '/guide/essentials/forms' },
         { text: 'Obserwatorzy', link: '/guide/essentials/watchers' },
         { text: 'Template Refs', link: '/guide/essentials/template-refs' },
@@ -197,7 +198,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/guide/essentials/component-basics'
         },
         {
-          text: 'Lifecycle Hooks',
+          text: 'Cykl życia',
           link: '/guide/essentials/lifecycle'
         }
       ]
@@ -388,6 +389,10 @@ export const sidebar: ThemeConfig['sidebar'] = {
         {
           text: 'Wstrzykiwanie zależności',
           link: '/api/composition-api-dependency-injection'
+        },
+        {
+          text: 'Helpery',
+          link: '/api/composition-api-helpers'
         }
       ]
     },
@@ -437,6 +442,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
     {
       text: 'Zaawansowany interfejs API',
       items: [
+        { text: 'Niestandardowe elementy', link: '/api/custom-elements' },
         { text: 'Funkcja render', link: '/api/render-function' },
         {
           text: 'Renderowanie po stronie serwera (SSR)',
@@ -617,8 +623,23 @@ const i18n: ThemeConfig['i18n'] = {
   ariaSidebarNav: 'Nawigacja w pasku bocznym'
 }
 
+function inlineScript(file: string): HeadConfig {
+  return [
+    'script',
+    {},
+    fs.readFileSync(
+      path.resolve(__dirname, `./inlined-scripts/${file}`),
+      'utf-8'
+    )
+  ]
+}
+
 export default defineConfigWithTheme<ThemeConfig>({
   extends: baseConfig,
+
+  sitemap: {
+    hostname: 'https://vuejs.org'
+  },
 
   lang: 'en-US',
   title: 'Vue.js',
@@ -651,25 +672,11 @@ export default defineConfigWithTheme<ThemeConfig>({
       'link',
       {
         rel: 'preconnect',
-        href: 'https://sponsors.vuejs.org'
+        href: 'https://automation.vuejs.org'
       }
     ],
-    [
-      'script',
-      {},
-      fs.readFileSync(
-        path.resolve(__dirname, './inlined-scripts/restorePreference.js'),
-        'utf-8'
-      )
-    ],
-    [
-      'script',
-      {},
-      fs.readFileSync(
-        path.resolve(__dirname, './inlined-scripts/uwu.js'),
-        'utf-8'
-      )
-    ],
+    inlineScript('restorePreference.js'),
+    inlineScript('uwu.js'),
     [
       'script',
       {
@@ -685,7 +692,8 @@ export default defineConfigWithTheme<ThemeConfig>({
         src: 'https://vueschool.io/banner.js?affiliate=vuejs&type=top',
         async: 'true'
       }
-    ]
+    ],
+    inlineScript('perfops.js')
   ],
 
   themeConfig: {
@@ -862,7 +870,6 @@ export default defineConfigWithTheme<ThemeConfig>({
       }
     },
     build: {
-      minify: 'terser',
       chunkSizeWarningLimit: Infinity
     },
     json: {

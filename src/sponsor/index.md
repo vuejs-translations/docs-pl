@@ -7,6 +7,10 @@ sponsors: false
 
 <script setup>
 import SponsorsGroup from '@theme/components/SponsorsGroup.vue'
+import { load, data } from '@theme/components/sponsors'
+import { onMounted } from 'vue'
+
+onMounted(load)
 </script>
 
 # Zostań sponsorem Vue.js {#become-a-vue-js-sponsor}
@@ -18,11 +22,11 @@ Ogromny nakład pracy potrzebny do utrzymania tak dużego ekosystemu i opracowyw
 
 Sponsorowanie można realizować poprzez [GitHub Sponsors](https://github.com/sponsors/yyx990803) lub [OpenCollective](https://opencollective.com/vuejs). Faktury można uzyskać za pośrednictwem systemu płatności GitHub. Akceptowane są zarówno comiesięczne, cykliczne sponsoringi, jak i jednorazowe darowizny. Cykliczne sponsoringi uprawniają do umieszczenia logo zgodnie z poziomami sponsoringu określonymi w sekcji [Poziomy Sponsoringu](#tier-benefits).
 
-W przypadku pytań dotyczących poziomów, płatności lub danych dotyczących sponsorów, prosimy o kontakt pod adresem [sponsor@vuejs.org](mailto:sponsor@vuejs.org).
+W przypadku pytań dotyczących poziomów, płatności lub danych dotyczących sponsorów, prosimy o kontakt pod adresem [sponsor@vuejs.org](mailto:sponsor@vuejs.org?subject=Vue.js%20sponsorship%20inquiry).
 
 ## Sponsorowanie Vue jako firma {#sponsoring-vue-as-a-business}
 
-Sponsorowanie Vue zapewnia doskonałą ekspozycję na ponad **1,7 miliona** programistów Vue na całym świecie za pośrednictwem naszej strony internetowej i plików README projektu GitHub. Ponadto, wspieranie Open Source Software (OSS) poprawia reputację marki, co jest ważnym atutem dla każdej firmy, która współpracuje z programistami.
+Sponsorowanie Vue zapewnia doskonałą ekspozycję na ponad **2 milionów** programistów Vue na całym świecie za pośrednictwem naszej strony internetowej i plików README projektu GitHub. Jest to nie tylko źródło generujące leady, ale również zwiększa świadomość Twojej marki jako biznesu, któremu  zależy na Open Source. Jest to niemierzalny ale bardzo ważny atut dla firm budujących produkty dla deweloperów, gdyż zwiększa konwersję.
 
 Jeśli używasz Vue do budowania produktu generującego przychody, sponsorowanie rozwoju Vue ma sens biznesowy: **zapewnia, że projekt, od którego zależy Twój produkt, pozostaje zdrowy i aktywnie utrzymywany**. Ekspozycja i pozytywny wizerunek marki w społeczności Vue ułatwiają również przyciąganie i rekrutację programistów Vue.
 
@@ -37,8 +41,9 @@ Możesz również spróbować przekonać swojego pracodawcę do sponsorowania Vu
 ## Korzyści wynikające z poziomów sponsoringu {#tier-benefits}
 
 - **Globalny sponsor specjalny**:
-  - Ograniczone do jednego sponsora globalnie (obecnie zajęte).
-  - Ekskluzywne umieszczenie logo na pierwszej stronie serwisu [vuejs.org](/).
+  - Ograniczone do **jednego** sponsora globalnie. <span v-if="!data?.special">Obecnie puste. [Skontaktuj się](mailto:sponsor@vuejs.org?subject=Vue.js%20special%20sponsor%20inquiry)!</span><span v-else>(Obecnie zajęte)</span>
+  - (Ekskluzywne) Umieszczenie logo **above the fold** na pierwszej stronie serwisu [vuejs.org](/).
+  - (Ekskluzywne) Specjalny shoutout i regularne podania dalej wszystkich ważnych premier produktów poprzez [oficjalne konto Vue na X](https://twitter.com/vuejs) (320 tyś obserwujących).
   - Najbardziej widoczne logo we wszystkich lokalizacjach na niższych poziomach.
 - **Platynowy (2000 USD/miesiąc)**:
   - Wyraźne umieszczenie logo na pierwszej stronie serwisu [vuejs.org](/).

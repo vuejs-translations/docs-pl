@@ -90,6 +90,18 @@ Odmontowuje zamontowaną instancję aplikacji, wyzwalając haki cyklu życia odm
   }
   ```
 
+## app.onUnmount() <sup class="vt-badge" data-text="3.5+" /> {#app-onunmount}
+
+Rejestruje callback, który wywoła się gdy aplikacja będzie odmontowywana.
+
+- **Typ**
+
+  ```ts
+  interface App {
+    onUnmount(callback: () => any): void
+  }
+  ```
+
 ## app.component() {#app-component}
 
 Rejestruje komponent globalny, jeśli przekazano zarówno nazwę, jak i definicję komponentu, lub pobiera już zarejestrowany, jeśli przekazano tylko nazwę.
@@ -111,12 +123,12 @@ Rejestruje komponent globalny, jeśli przekazano zarówno nazwę, jak i definicj
   const app = createApp({})
 
   // rejestracja obiekt opcji
-  app.component('my-component', {
+  app.component('MyComponent', {
     /* ... */
   })
 
   // użycie zarejestrowanego komponentu
-  const MyComponent = app.component('my-component')
+  const MyComponent = app.component('MyComponent')
   ```
 
 - **Zobacz również** [Rejestracja komponentów](/guide/components/registration)
@@ -144,17 +156,17 @@ Rejestruje globalną dyrektywę , jeśli przekazano zarówno nazwę, jak i defin
   })
 
   // rejestracja (obiekt dyrektywy)
-  app.directive('my-directive', {
+  app.directive('myDirective', {
     /* custom directive hooks */
   })
 
   // rejestracja (funkcja dyrektywy)
-  app.directive('my-directive', () => {
+  app.directive('myDirective', () => {
     /* ... */
   })
 
   // użycie zarejestrowanej dyrektywy
-  const myDirective = app.directive('my-directive')
+  const myDirective = app.directive('myDirective')
   ```
 
 - **Zobacz również** [niestandardowe dyrektywy](/guide/reusability/custom-directives)
@@ -271,7 +283,9 @@ Zapewnia wartość, która może zostać wstrzyknięta do wszystkich komponentó
   - [App-level Provide](/guide/components/provide-inject#app-level-provide)
   - [app.runWithContext()](#app-runwithcontext)
 
-## app.runWithContext()<sup class="vt-badge" data-text="3.3+" /> {#app-runwithcontext}
+## app.runWithContext() {#app-runwithcontext}
+
+- Wspierane tylko w 3.3+
 
 Wykonanie wywołania zwrotnego z bieżącą aplikacją jako kontekstem wstrzyknięcia.
 
@@ -610,3 +624,41 @@ Obiekt służący do definiowania strategii scalania dla niestandardowych opcji 
   ```
 
 - **Zobacz również** [Instancja komponentu - `$options`](/api/component-instance#options)
+
+## app.config.idPrefix <sup class="vt-badge" data-text="3.5+" /> {#app-config-idprefix}
+
+Konfiguruje prefix dla wszystkich ID generowanych poprzez [useId()](/api/composition-api-helpers.html#useid) wewnątrz tej aplikacji.
+
+- **Typ:** `string`
+
+- **Domyślnie:** `undefined`
+
+- **Przykład:**
+
+  ```js
+  app.config.idPrefix = 'myApp'
+  ```
+
+  ```js
+  // wewnątrz komponentu:
+  const id1 = useId() // 'myApp:0'
+  const id2 = useId() // 'myApp:1'
+  ```
+
+## app.config.throwUnhandledErrorInProduction <sup class="vt-badge" data-text="3.5+" /> {#app-config-throwunhandlederrorinproduction}
+
+Wymusza wyrzucanie nieobsłużonych błędów w trybie produkcyjnym.
+
+- **Typ:** `boolean`
+
+- **Domyślnie:** `false`
+
+- **Szczegóły**
+
+  Domyślnie, błędy wyrzucone w środku aplikacji Vue, które nie są nieobsłużone mają inne zachowanie w trybie deweloperskim i produkcyjnym:
+
+  - W trybie deweloperskim, błąd jest wyrzucony i może zatrzymać aplikację. Dzieje się tak po to, by łatwo było zobaczyć wszelkie błędy i naprawić je zanim zostaną wypuszczone na produkcję.
+
+  - W trybie produkcyjnym, błąd będzie jedynie zalogowany w konsoli, aby zminimalizować negatywny wpływ na użytkowników. Jednakże, może to wpłynąć na to, że błędy, które tylko dzieją się na środowisku produkcyjnym nie zostaną zauważone przez usługi monitorowania.
+
+  Ustawiając flagę `app.config.throwUnhandledErrorInProduction` na `true`, nieobsłużone błędy będą również wyrzucane w trybie produkcyjnym.
