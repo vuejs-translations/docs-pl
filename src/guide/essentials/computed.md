@@ -5,7 +5,7 @@
 </div>
 
 <div class="composition-api">
-  <VueSchoolLink href="https://vueschool.io/lessons/vue-fundamentals-capi-computed-properties-in-vue-with-the-composition-api" title="Darmowa lekcja o właściwościach cpmputed w Vue.js"/>
+  <VueSchoolLink href="https://vueschool.io/lessons/vue-fundamentals-capi-computed-properties-in-vue-with-the-composition-api" title="Darmowa lekcja o właściwościach computed w Vue.js"/>
 </div>
 
 ## Podstawowy przykład {#basic-example}
@@ -118,7 +118,7 @@ const author = reactive({
 
 // computed ref
 const publishedBooksMessage = computed(() => {
-  return author.books.length > 0 ? 'Yes' : 'No'
+  return author.books.length > 0 ? 'Tak' : 'Nie'
 })
 </script>
 
@@ -138,7 +138,7 @@ Zobacz także: [Typowanie właściwości computed](/guide/typescript/composition
 
 </div>
 
-## Buforowanie computed vs. metody {#computed-caching-vs-methods}
+## Computed caching vs. metody {#computed-caching-vs-methods}
 
 Być może zauważyłeś, że ten sam rezultat możemy osiągnąć, wywołując metodę w wyrażeniu:
 
@@ -152,7 +152,7 @@ Być może zauważyłeś, że ten sam rezultat możemy osiągnąć, wywołując 
 // w komponencie
 methods: {
   calculateBooksMessage() {
-    return this.author.books.length > 0 ? 'Yes' : 'No'
+    return this.author.books.length > 0 ? 'Tak' : 'Nie'
   }
 }
 ```
@@ -164,13 +164,13 @@ methods: {
 ```js
 // w komponencie
 function calculateBooksMessage() {
-  return author.books.length > 0 ? 'Yes' : 'No'
+  return author.books.length > 0 ? 'Tak' : 'Nie'
 }
 ```
 
 </div>
 
-Zamiast właściwości computed możemy zdefiniować tę samą funkcję jako metodę. W ostatecznym wyniku oba podejścia dają dokładnie ten sam efekt. Jednak różnica polega na tym, że **właściwości computed są buforowane na podstawie ich reaktywnych zależności**. Właściwość computed zostanie ponownie obliczona tylko wtedy, gdy zmienią się jej reaktywne zależności. Oznacza to, że tak długo, jak `author.books` nie ulegnie zmianie, każde kolejne odwołanie do `publishedBooksMessage` zwróci natychmiast wcześniej obliczony wynik, bez konieczności ponownego uruchamiania funkcji zwracającej wartość.
+Zamiast właściwości computed możemy zdefiniować tę samą funkcję jako metodę. W ostatecznym wyniku oba podejścia dają dokładnie ten sam efekt. Jednak różnica polega na tym, że **właściwości computed są cache'owane na podstawie ich reaktywnych zależności**. Właściwość computed zostanie ponownie obliczona tylko wtedy, gdy zmienią się jej reaktywne zależności. Oznacza to, że tak długo, jak `author.books` nie ulegnie zmianie, każde kolejne odwołanie do `publishedBooksMessage` zwróci natychmiast wcześniej obliczony wynik, bez konieczności ponownego uruchamiania funkcji zwracającej wartość.
 
 To także oznacza, że następująca obliczona właściwość nigdy się nie zaktualizuje, ponieważ `Date.now()` nie jest reaktywną zależnością:
 
@@ -196,7 +196,7 @@ const now = computed(() => Date.now())
 
 Dla porównania, wywołanie metody **zawsze** uruchomi funkcję za każdym razem, gdy nastąpi ponowne renderowanie.
 
-Dlaczego potrzebujemy buforowania? Wyobraź sobie, że mamy kosztowną właściwość computed `list`, która wymaga przetworzenia ogromnej tablicy i wykonania wielu operacji obliczeniowych. Jeśli inne obliczone właściwości zależą od `list`, to bez buforowania musielibyśmy uruchamiać funkcję zwracającą wartość `list` wiele razy więcej niż jest to konieczne! W przypadkach, w których nie chcesz korzystać z buforowania, zamiast tego użyj wywołania metody.
+Dlaczego potrzebujemy cache'owania? Wyobraź sobie, że mamy kosztowną właściwość computed `list`, która wymaga przetworzenia ogromnej tablicy i wykonania wielu operacji obliczeniowych. Jeśli inne obliczone właściwości zależą od `list`, to bez cache'owania musielibyśmy uruchamiać funkcję zwracającą wartość `list` wiele razy więcej niż jest to konieczne! W przypadkach, w których nie chcesz korzystać z cache'owania, zamiast tego użyj wywołania metody.
 
 ## Zapisywalne właściwości computed {#writable-computed}
 
@@ -221,7 +221,7 @@ export default {
       // setter
       set(newValue) {
         // Zwróć uwagę, że używamy tutaj składni destrukturyzacji.
-        ;[this.firstName, this.lastName] = newValue.split(' ')
+        [this.firstName, this.lastName] = newValue.split(' ')
       }
     }
   }

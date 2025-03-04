@@ -1,6 +1,6 @@
 # Składnia szablonów {#template-syntax}
 
-Vue używa składni szablonów opartej na HTML, która pozwala deklaratywnie powiązać renderowany DOM z danymi w instancji komponentu. Wszystkie szablony Vue są składniowo poprawnym HTML, który może być parsowany przez zgodne z przepisami przeglądarki i analizatory HTML.
+Vue wykorzystuje składnię szablonów opartą na HTML, która pozwala deklaratywnie powiązać renderowany DOM z danymi bazowej instancji komponentu. Wszystkie szablony Vue są składniowo poprawnym kodem HTML, który może być analizowany przez przeglądarki i parsery HTML zgodne ze specyfikacją.
 
 "Pod spodem" Vue kompiluje szablony do wysoko zoptymalizowanego kodu JavaScript. W połączeniu z systemem reaktywności Vue inteligentnie określa minimalną liczbę komponentów do ponownego renderowania i stosuje minimalne manipulacje DOM przy zmianie stanu aplikacji.
 
@@ -18,7 +18,6 @@ Znacznik podwójnych nawiasów klamrowych zostanie zastąpiony wartością wła�
 
 ## Surowy HTML {#raw-html}
 
-The double mustaches interpret the data as plain text, not HTML. In order to output real HTML, you will need to use the [`v-html` directive](/api/built-in-directives#v-html):
 Podwójne nawiasy klamrowe interpretują dane jako zwykły tekst, a nie HTML. Aby wyrenderować rzeczywisty HTML, użyj dyrektywy [`v-html`](/api/built-in-directives#v-html):
 
 ```vue-html
@@ -40,7 +39,8 @@ Tutaj napotykamy coś nowego. Atrybut `v-html`, który widzisz jest nazywany **d
 Zawartość elementu `span` zostanie zastąpiona wartością atrybutu `rawHtml`, interpretowanego jako czysty HTML - powiązania danych są ignorowane. Należy pamiętać, że nie można używać `v-html`do komponowania części szablonów, ponieważ Vue nie jest silnikiem szablonów opartym na ciągach znaków. Zamiast tego komponenty są preferowane jako podstawowa jednostka do ponownego używania w interfejsie użytkownika i kompozycji.
 
 :::warning Ostrzeżenie dotyczące bezpieczeństwa
-Dynamiczne renderowanie dowolnego HTML-a może prowadzić do [luk XSS](https://en.wikipedia.org/wiki/Cross-site_scripting). Używaj `v-html` tylko z zaufaną zawartością i **nigdy** z danymi dostarczonymi przez użytkownika. :::
+Dynamiczne renderowanie dowolnego HTML-a może prowadzić do [luk XSS](https://en.wikipedia.org/wiki/Cross-site_scripting). Używaj `v-html` tylko z zaufaną zawartością i **nigdy** z danymi dostarczonymi przez użytkownika.
+:::
 
 ## Wiązanie atrybutów {#attribute-bindings}
 
@@ -74,7 +74,7 @@ Jeśli atrybut ma tę samą nazwę co wartość JavaScript, do której jest przy
 <!-- to samo co :id="id" -->
 <div :id></div>
 
-<!-- to również działą -->
+<!-- to również działa -->
 <div v-bind:id></div>
 ```
 
@@ -159,7 +159,7 @@ Dlatego poniższe przykłady **NIE** będą działać:
 <!-- to jest stwierdzenie, a nie wyrażenie: -->
 {{ var a = 1 }}
 
-<!-- kontrola przepływu również nie będzie działać, użyj wyrażeń ternary -->
+<!-- sterowanie przepływem nie zadziała, użyj wyrażeń warunkowych (trójargumentowych) -->
 {{ if (ok) { return message } }}
 ```
 

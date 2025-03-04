@@ -246,15 +246,14 @@ Można to naprawić, przenosząc `v-for` do opakowującego tagu `<template>` (co
 ```
 
 :::warning Note
-It's **not** recommended to use `v-if` and `v-for` on the same element due to implicit precedence.
 **Nie** zaleca się używania `v-if` i `v-for` na tym samym elemencie ze względu na niejawne pierwszeństwo.
 
 Istnieją dwa popularne przypadki, w których może się to wydawać kuszące:
 
 - Filtrowanie elementów w liście (np. `v-for="user in users" v-if="user.isActive"`). W tych przypadkach, zamiast filtrować w szablonie, lepiej zastąpić `users` nową właściwością computed, która zwraca przefiltrowaną listę (np. `activeUsers`).
 
-- Unikanie renderowania listy, jeśli ma być ukryta (np. `v-for="user in users" v-if="shouldShowUsers"`). W takich przypadkach przenieś `v-if` do elementu kontenerowego (np. `ul`, `ol`). :::
-  :::
+- Unikanie renderowania listy, jeśli ma być ukryta (np. `v-for="user in users" v-if="shouldShowUsers"`). W takich przypadkach przenieś `v-if` do elementu kontenerowego (np. `ul`, `ol`).
+:::
 
 ## Utrzymywanie stanu za pomocą `key` {#maintaining-state-with-key}
 

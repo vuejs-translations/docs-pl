@@ -43,7 +43,7 @@ W kolejnych sekcjach przewodnika omówimy, jak definiować i komponować wiele k
 
 ## Montowanie aplikacji {#mounting-the-app}
 
-Instancja aplikacji nie wyrenderuje niczego, dopóki nie zostanie wywołana jej metoda `.mount()`. Oczekuje ona argumentu „kontener”, którym może być rzeczywisty element DOM lub selektor:
+Instancja aplikacji nie wyrenderuje niczego, dopóki nie zostanie wywołana jej metoda `.mount()`. Oczekuje ona argumentu „container”, którym może być rzeczywisty element DOM lub selektor:
 
 ```html
 <div id="app"></div>
@@ -63,7 +63,7 @@ Szablon dla komponentu głównego jest zazwyczaj częścią samego komponentu, a
 
 ```html
 <div id="app">
-  <button @click="licznik++">{{ licznik }}</button>
+  <button @click="count++">{{ count }}</button>
 </div>
 ```
 
@@ -113,12 +113,12 @@ Nie jesteś ograniczony do jednej instancji aplikacji na stronie. API `createApp
 const app1 = createApp({
   /* ... */
 })
-app1.mount('#kontener-1')
+app1.mount('#container-1')
 
 const app2 = createApp({
   /* ... */
 })
-app2.mount('#kontener-2')
+app2.mount('#container-2')
 ```
 
-Jeśli używasz Vue do wzbogacenia renderowanego po stronie serwera HTML i chcesz, aby Vue kontrolowało tylko określone części dużej strony, unikaj montowania jednej instancji Vue na całej stronie. Zamiast tego utwórz wiele małych instancji aplikacji i zamontuj je na elementach, za które są odpowiedzialne.
+Jeśli używasz Vue do wzbogacenia HTML renderowanego po stronie serwera i potrzebujesz Vue tylko do kontrolowania określonych części dużej strony, unikaj montowania jednej instancji Vue na całej stronie. Zamiast tego utwórz wiele małych instancji aplikacji i zamontuj je na elementach, za które są odpowiedzialne.
