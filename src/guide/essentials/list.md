@@ -179,7 +179,7 @@ Możesz także podać drugi alias dla nazwy właściwości (tzw. klucza):
 </li>
 ```
 
-And another for the index:
+I jeszcze jedno do indeksu:
 
 ```vue-html
 <li v-for="(value, key, index) in myObject">
@@ -282,8 +282,6 @@ Podczas korzystania z `<template v-for>`, `key` należy umieścić na kontenerze
 :::
 
 Zaleca się podanie atrybutu `key` z `v-for` zawsze, gdy to możliwe, chyba że iterowany DOM jest prosty (tzn. nie zawiera komponentów ani stanu DOM), lub jeśli celowo polegasz na domyślnej wydajności.
-
-The `key` binding expects primitive values - i.e. strings and numbers. Do not use objects as `v-for` keys. For detailed usage of the `key` attribute, please see the [`key` API documentation](/api/built-in-special-attributes#key).
 
 Atrybut `key` oczekuje wartości prymitywnych — tzn. ciągów znaków i liczb. Nie używaj obiektów jako kluczy w `v-for`. Szczegółowe informacje o używaniu atrybutu `ke`y można znaleźć w [dokumentacji API `key`](/api/built-in-special-attributes#key).
 
