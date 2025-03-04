@@ -215,17 +215,11 @@ Wywoływana po przechwyceniu błędu propagującego się z komponentu potomnego.
 
   - Metoda `errorCaptured` może zwrócić `false`, aby zapobiec dalszemu rozprzestrzenianiu się błędu. Jest to zasadniczo powiedzenie „ten błąd został obsłużony i powinien zostać zignorowany”. Zapobiegnie to wywołaniu dodatkowych metod `errorCaptured` lub `app.config.errorHandler` dla tego błędu.
 
-  **Error Capturing Caveats**
+  **Zastrzeżenia przechwytywania błędów**
   
-  - In components with async `setup()` function (with top-level `await`) Vue **will always** try to render component template, even if `setup()` throwed error. This will likely cause more errors because during render component's template might try to access non-existing properties of failed `setup()` context. When capturing errors in such components, be ready to handle errors from both failed async `setup()` (they will always come first) and failed render process.
+  - W komponentach z asynchroniczną funkcją `setup()` (z instrukcją `await` na najwyższym poziomie) Vue **zawsze** będzie próbować renderować szablon, nawet jeśli `setup()` wyrzuci błąd. Przyczyni się to prawdopodobnie do kolejnych błędów, gdyż podczas renderowania szablonu byćmoże będziemy próbowali odnieść się do nieistniejących własności z nieudanego kontekstu `setup()`. Gdy przechwytujemy błędy z takich komponentów, bądź gotów na obsłużenie błędów zarówno z nieudanego asynchronicznego `setup()` (tam zawsze będą pierwsze) jak i również nieudanego renderowania.
 
-  - <sup class="vt-badge" data-text="SSR only"></sup> Replacing errored child component in parent component deep inside `<Suspense>` will cause hydration mismatches in SSR. Instead, try to separate logic that can possibly throw from child `setup()` into separate function and execute it in the parent component's `setup()`, where you can safely `try/catch` the execution process and make replacement if needed before rendering the actual child component.
-
-  **Error Capturing Caveats**
-  
-  - In components with async `setup()` function (with top-level `await`) Vue **will always** try to render component template, even if `setup()` throwed error. This will likely cause more errors because during render component's template might try to access non-existing properties of failed `setup()` context. When capturing errors in such components, be ready to handle errors from both failed async `setup()` (they will always come first) and failed render process.
-
-  - <sup class="vt-badge" data-text="SSR only"></sup> Replacing errored child component in parent component deep inside `<Suspense>` will cause hydration mismatches in SSR. Instead, try to separate logic that can possibly throw from child `setup()` into separate function and execute it in the parent component's `setup()`, where you can safely `try/catch` the execution process and make replacement if needed before rendering the actual child component.
+  - <sup class="vt-badge" data-text="tylko dla SSR"></sup> Podmienianie dziecka (którego renderowanie nie powiodło się) wewnątrz `<Suspense>` z poziomu komponentu rodzica sprawi, że będziemy mieli problemy niedopasowanej hydratacji na SSR. Zamiast tego spróbuj odseparować logikę, która może wyrzucić błąd z `setup()` dziecka do osobnej funkcji i wywołaj ją w `setup()` komponentu rodzica, gdzie możemy bezpiecznie obsłużyć ją poprzez `try/catch` i dokonać zamiany jeśli potrzeba przed faktycznym renderowaniem komponentu dziecka.
 
 ## renderTracked <sup class="vt-badge dev-only" /> {#rendertracked}
 
