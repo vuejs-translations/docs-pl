@@ -53,8 +53,7 @@ onMounted(load)
   </section>
 
   <section v-if="data && data.special" id="special-spsr">
-    <span class="lead">Sponsor Sepcjalny</span>
-    <span class="lead">Special Sponsor</span>
+    <span class="lead">Sponsor Specjalny</span>
     <template v-for="{ url, img, name, description } of data.special">
       <a :href="url" target="_blank" rel="sponsored noopener">
         <picture v-if="img.endsWith('png')">
