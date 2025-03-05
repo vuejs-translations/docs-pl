@@ -639,7 +639,6 @@ import { watchEffect } from 'vue'
 watchEffect(() => {})
 
 // ...ten nie będzie!
-
 setTimeout(() => {
   watchEffect(() => {})
 }, 100)
