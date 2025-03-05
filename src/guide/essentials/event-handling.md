@@ -10,7 +10,7 @@
 
 ## Nasłuchiwanie zdarzeń {#listening-to-events}
 
-Możemy użyć dyrektywy `v-on`, którą zazwyczaj skracamy do symbolu `@`, aby nasłuchiwać zdarzeń DOM i uruchamiać JavaScript, gdy zostaną one wywołane. Użycie wyglądałoby tak: `v-on:click="handler"` lub przy użyciu skrótu: `@click="handler"`.
+Możemy użyć dyrektywy `v-on`, którą zazwyczaj skracamy do symbolu `@`, aby nasłuchiwać zdarzeń DOM i uruchamiać jakiś kod JavaScript, gdy zostaną one wywołane. Użycie wyglądałoby tak: `v-on:click="handler"` lub przy użyciu skrótu: `@click="handler"`.
 
 Wartość handler może być jedną z następujących:
 
@@ -69,7 +69,7 @@ Na przykład:
 const name = ref('Vue.js')
 
 function greet(event) {
-  alert(`Hello ${name.value}!`)
+  alert(`Witaj ${name.value}!`)
   // `event` to natywne zdarzenie DOM
   if (event) {
     alert(event.target.tagName)
@@ -90,7 +90,7 @@ methods: {
   greet(event) {
     // `this` wewnątrz metod odnosi się do aktualnej instancji komponentu
 
-    alert(`Cześć ${this.name}!`)
+    alert(`Witaj ${this.name}!`)
     // `event` to natywne zdarzenie DOM
     if (event) {
       alert(event.target.tagName)
@@ -132,7 +132,7 @@ Zobacz także: [Typowanie obsługi zdarzeń](/guide/typescript/options-api#typin
 
 ### Metoda vs. wykrywanie inline {#method-vs-inline-detection}
 
-Kompilator szablonów Vue wykrywa obsługę metod poprzez sprawdzanie, czy wartość w `v-on` jest poprawnym identyfikatorem JavaScript lub ścieżką dostępu do właściwości. Na przykład `foo`, `foo.bar` oraz `foo['bar']` są traktowane jako metody obsługi zdarzeń, natomiast `foo()` i `count++` są traktowane jako obsługa inline.
+Kompilator szablonów Vue wykrywa metody poprzez sprawdzanie, czy wartość w `v-on` jest poprawnym identyfikatorem JavaScript lub ścieżką dostępu do właściwości. Na przykład `foo`, `foo.bar` oraz `foo['bar']` są traktowane jako metody obsługi zdarzeń, natomiast `foo()` i `count++` są traktowane jako obsługa inline.
 
 ## Wywoływanie metod w obsłudze inline {#calling-methods-in-inline-handlers}
 
@@ -160,8 +160,8 @@ methods: {
 </div>
 
 ```vue-html
-<button @click="say('hello')">Powiedz cześć</button>
-<button @click="say('bye')">Powiedz pa</button>
+<button @click="say('cześć')">Powiedz cześć</button>
+<button @click="say('pa')">Powiedz pa</button>
 ```
 
 <div class="composition-api">
@@ -175,7 +175,7 @@ methods: {
 
 </div>
 
-## Dostęp do argumentu zdarzenia w obsłudze inline{#accessing-event-argument-in-inline-handlers}
+## Dostęp do argumentu zdarzenia w obsłudze inline {#accessing-event-argument-in-inline-handlers}
 
 Czasami musimy uzyskać dostęp do oryginalnego zdarzenia DOM w obsłudze inline. Można to zrobić, przekazując je do metody za pomocą specjalnej zmiennej `$event` lub używając funkcji strzałkowej inline:
 
@@ -255,7 +255,7 @@ Aby rozwiązać ten problem, Vue udostępnia **modyfikatory zdarzeń** dla `v-on
 Kolejność ma znaczenie przy stosowaniu modyfikatorów, ponieważ odpowiedni kod jest generowany w tej samej kolejności. Dlatego użycie `@click.prevent.self` zapobiegnie **domyślnej akcji kliknięcia zarówno na elemencie, jak i jego elementach potomnych**, natomiast `@click.self.prevent` zapobiegnie tylko domyślnej akcji kliknięcia na samym elemencie.
 :::
 
-Modyfikatory `.capture`, `.once` i `.passive` odpowiadają [opcjom natywnej metody addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#options):
+Modyfikatory `.capture`, `.once` i `.passive` odpowiadają [opcjom natywnej metody `addEventListener`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#options):
 
 ```vue-html
 
@@ -267,9 +267,9 @@ Modyfikatory `.capture`, `.once` i `.passive` odpowiadają [opcjom natywnej meto
 <!-- zdarzenie kliknięcia zostanie wywołane co najwyżej raz -->
 <a @click.once="doThis"></a>
 
-<!-- nastąpi domyślne zachowanie zdarzenia (przewijanie)         -->
-<!-- natychmiast, zamiast czekać na zakończenie `onScroll`       -->
-<!-- w przypadku, gdy zawiera `event.preventDefault()`           -->
+<!-- nastąpi domyślne zachowanie zdarzenia (przewijanie)   -->
+<!-- natychmiast, zamiast czekać na zakończenie `onScroll` -->
+<!-- w przypadku, gdy zawiera `event.preventDefault()`     -->
 <div @scroll.passive="onScroll">...</div>
 ```
 
@@ -288,7 +288,7 @@ Podczas nasłuchiwania zdarzeń klawiatury często chcemy sprawdzać, czy naciś
 <input @keyup.enter="submit" />
 ```
 
-Możesz używać dowolnych nazw klawiszy zgodnych z [`KeyboardEvent.key`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values) jako modyfikatorów, konwertując je do kebab-case.
+Możesz używać dowolnych nazw klawiszy zgodnych z [`KeyboardEvent.key`](https://developer.mozilla.org/en-US/docs/Web/API/UI_Events/Keyboard_event_key_values) jako modyfikatorów, konwertując je do kebab-case.
 
 ```vue-html
 <input @keyup.page-down="onPageDown" />
@@ -343,11 +343,9 @@ Modyfikator `.exact` pozwala kontrolować dokładną kombinację modyfikatorów 
 
 ```vue-html
 <!-- to zostanie wywołane nawet jeśli naciśnięty zostanie również klawisz Alt lub Shift -->
-
 <button @click.ctrl="onClick">A</button>
 
 <!-- to zostanie wywołane tylko wtedy, gdy naciśnięty zostanie klawisz Ctrl i nie zostanie naciśnięty żaden inny klawisz -->
-
 <button @click.ctrl.exact="onCtrlClick">A</button>
 
 <!-- to zostanie wywołane tylko wtedy, gdy nie zostaną naciśnięte żadne modyfikatory systemowe -->

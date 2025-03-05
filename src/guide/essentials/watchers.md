@@ -1,8 +1,8 @@
-# Obserwatory {#watchers}
+# Obserwatrozy {#watchers}
 
 ## Podstawowy przykład {#basic-example}
 
-Właściwości computed pozwalają nam deklaratywnie obliczać wartości pochodne. Istnieją jednak przypadki, w których musimy wykonywać "skutki uboczne" w reakcji na zmiany stanu – na przykład mutując DOM lub zmieniając inny element stanu na podstawie wyniku operacji asynchronicznej.
+Właściwości computed pozwalają nam deklaratywnie obliczać wartości pochodne. Istnieją jednak przypadki, w których musimy wykonać jakieś "skutki uboczne" w reakcji na zmiany stanu – na przykład mutując DOM lub zmieniając inny element stanu na podstawie wyniku operacji asynchronicznej.
 
 <div class="options-api">
 
@@ -18,7 +18,7 @@ export default {
     }
   },
   watch: {
-    // za każdym razem, gdy pytanie ulegnie zmianie, ta funkcja zostanie    uruchomiona
+    // za każdym razem, gdy pytanie ulegnie zmianie, ta funkcja zostanie uruchomiona
     question(newQuestion, oldQuestion) {
       if (newQuestion.includes('?')) {
         this.getAnswer()
@@ -44,7 +44,7 @@ export default {
 
 ```vue-html
 <p>
-  Ask a yes/no question:
+  Zadaj pytanie tak/nie:
   <input v-model="question" :disabled="loading" />
 </p>
 <p>{{ answer }}</p>
@@ -109,7 +109,7 @@ watch(question, async (newQuestion, oldQuestion) => {
 
 ### Obserwowanie typów źródłowych {#watch-source-types}
 
-Pierwszy argument `watch` może być różnymi typami reaktywnych „źródeł”: może to być odwołanie (w tym odwołania obliczeniowe (computed refs)), obiekt reaktywny, [funkcja getter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get#description) lub tablica wielu źródeł:
+Pierwszy argument `watch` może być różnymi typami reaktywnych „źródeł”: może to być ref (w tym i computed ref), obiekt reaktywny, [funkcja getter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get#description) lub tablica wielu źródeł:
 
 ```js
 const x = ref(0)
@@ -159,11 +159,11 @@ watch(
 
 </div>
 
-## Głębokie obserwatory (deep watchers) {#deep-watchers}
+## "Głębocy" obserwatorzy (deep watchers) {#deep-watchers}
 
 <div class="options-api">
 
-`watch` jest domyślnie płytki: funkcja zwrotna (callback) zostanie wywołana tylko wtedy, gdy obserwowana właściwość otrzyma nową wartość – nie zostanie wywołana przy zmianach w zagnieżdżonych właściwościach. Jeśli chcesz, aby funkcja zwrotna była wywoływana na wszystkich zagnieżdżonych mutacjach, musisz użyć głębokiego obserwatora:
+`watch` jest domyślnie "płytki": funkcja zwrotna (callback) zostanie wywołana tylko wtedy, gdy obserwowana właściwość otrzyma nową wartość – nie zostanie wywołana przy zmianach w zagnieżdżonych właściwościach. Jeśli chcesz, aby funkcja zwrotna była wywoływana na wszystkich zagnieżdżonych mutacjach, musisz użyć "głębokiego" obserwatora:
 
 ```js
 export default {
@@ -184,7 +184,7 @@ export default {
 
 <div class="composition-api">
 
-Gdy wywołasz `watch()` bezpośrednio na reaktywnym obiekcie, zostanie automatycznie stworzony głęboki obserwator – funkcja zwrotna zostanie wywołana przy każdej zmianie w zagnieżdżonych właściwościach:
+Gdy wywołasz `watch()` bezpośrednio na reaktywnym obiekcie, zostanie automatycznie stworzony "głęboki" obserwator – funkcja zwrotna zostanie wywołana przy każdej zmianie w zagnieżdżonych właściwościach:
 
 ```js
 const obj = reactive({ count: 0 })
@@ -209,7 +209,7 @@ watch(
 )
 ```
 
-Możesz jednak wymusić, aby drugi przypadek działał jako głęboki watcher, używając opcji `deep`:
+Możesz jednak wymusić, aby drugi przypadek działał jako "głęboki" obserwator, używając opcji `deep`:
 
 ```js
 watch(
@@ -230,7 +230,7 @@ W Vue 3.5+, opcja `deep` może również być również wartością liczbową ok
 Głębokie obserwowanie wymaga przejścia przez wszystkie zagnieżdżone właściwości w obserwowanym obiekcie i może być kosztowny w przypadku dużych struktur danych. Używaj go tylko wtedy, gdy jest to konieczne i uważaj na implikacje wydajnościowe.
 :::
 
-## Obserwatory natychmiastowe {#eager-watchers}
+## Obserwatorzy natychmiastowi {#eager-watchers}
 
 `watch` jest domyślnie leniwy (lazy): wywołanie zwrotne nie zostanie wywołane, dopóki obserwowane źródło nie ulegnie zmianie. Jednak w niektórych przypadkach możemy chcieć, aby ta sama logika wywołania zwrotnego była uruchamiana natychmiast — na przykład, gdy chcemy pobrać początkowe dane, a następnie ponownie pobrać je, gdy stan się zmieni.
 
@@ -274,7 +274,7 @@ watch(
 
 </div>
 
-## Obserwatory jednorazowe {#once-watchers}
+## Obserwatorzy jednorazowi {#once-watchers}
 
 - Wsparcie tylko w 3.4+
 
@@ -350,7 +350,7 @@ Tutaj funkcja zwrotna wykona się natychmiast, nie trzeba używać `immediate: t
 
 Możesz zapoznać się z [tym przykładem](/examples/#fetching-data) użycia `watchEffect()` i reaktywnego pobierania danych w akcji.
 
-Dla przykładów takich jak ten, z jedną zależnością, korzyści z użycia `watchEffect()` są stosunkowo niewielkie. Jednak w przypadku obserwatorów, które mają wiele zależności, użycie `watchEffect()` eliminuje konieczność ręcznego utrzymywania listy zależności. Ponadto, jeśli musisz śledzić wiele właściwości w zagnieżdżonej strukturze danych, `watchEffect()` może okazać się bardziej wydajny niż głęboki obserwator, ponieważ będzie śledził tylko te właściwości, które są używane w funkcji zwrotnej, zamiast rekurencyjnie śledzić wszystkie z nich.
+Dla przykładów takich jak ten, z jedną zależnością, korzyści z użycia `watchEffect()` są stosunkowo niewielkie. Jednak w przypadku obserwatorów, które mają wiele zależności, użycie `watchEffect()` eliminuje konieczność ręcznego utrzymywania listy zależności. Ponadto, jeśli musisz śledzić wiele właściwości w zagnieżdżonej strukturze danych, `watchEffect()` może okazać się bardziej wydajny niż "głęboki" obserwator, ponieważ będzie śledził tylko te właściwości, które są używane w funkcji zwrotnej, zamiast rekurencyjnie śledzić wszystkie z nich.
 
 :::tip
 `watchEffect` śledzi zależności tylko podczas swojego **synchronicznego** wykonania. Podczas używania go z asynchronicznym wywołaniem zwrotnym, śledzone będą tylko właściwości, do których uzyskano dostęp przed pierwszym znacznikiem `await`.
@@ -362,7 +362,7 @@ Dla przykładów takich jak ten, z jedną zależnością, korzyści z użycia `w
 
 - `watch` śledzi tylko jawnie obserwowane źródło. Nie śledzi niczego, co jest używane wewnątrz funkcji zwrotnej. Ponadto funkcja zwrotna wywołuje się tylko wtedy, gdy źródło faktycznie się zmieni. `watch` oddziela śledzenie zależności od efektów ubocznych, dając większą kontrolę nad tym, kiedy funkcja zwrotna powinna być wywołana.
 
-- z kolei `watchEffect` łączy śledzenie zależności i efekt uboczny w jednej fazie. Automatycznie śledzi każdą reaktywną właściwość dostępną podczas swojej synchronizowanej egzekucji. Jest to wygodniejsze i zazwyczaj skutkuje zwięzłym kodem, ale sprawia, że ​​jego reaktywne zależności są mniej jednoznaczne.
+- z kolei `watchEffect` łączy śledzenie zależności i efekt uboczny w jednej fazie. Automatycznie śledzi każdą reaktywną właściwość dostępną podczas swojego synchronicznego wykonania. Jest to wygodniejsze i zazwyczaj skutkuje zwięzłym kodem, ale sprawia, że jego reaktywne zależności są mniej jednoznaczne.
 
 </div>
 
@@ -496,7 +496,7 @@ Podobnie jak w przypadku aktualizacji komponentów, wywołania zwrotne obserwato
 
 Domyślnie funkcja zwrotna obserwatora jest wywoływana **po** aktualizacjach komponentu nadrzędnego (jeśli takie są), a **przed** aktualizacjami DOM komponentu właściciela. Oznacza to, że jeśli spróbujesz uzyskać dostęp do DOM komponentu właściciela w wywołaniu zwrotnym obserwatora, DOM będzie w stanie przed aktualizacją.
 
-### Obserwatory post {#post-watchers}
+### Obserwatorzy post {#post-watchers}
 
 Jeśli chcesz uzyskać dostęp do DOM komponentu właściciela w wywołaniu zwrotnym obserwatora **po** jego zaktualizowaniu przez Vue, musisz określić opcję `flush: 'post'`:
 
@@ -540,7 +540,7 @@ watchPostEffect(() => {
 
 </div>
 
-### Obserwatory synchroniczne {#sync-watchers}
+### Obserwatorzy synchroniczni {#sync-watchers}
 
 Można również utworzyć obserwator, który będzie uruchamiany synchronicznie, przed jakimikolwiek aktualizacjami zarządzanymi przez Vue:
 
@@ -572,7 +572,7 @@ watchEffect(callback, {
 })
 ```
 
-Synchroniczny `watchEffect()` ma również wygodny alias, `watchPostEffect()`:
+Synchroniczny `watchEffect()` ma również wygodny alias, `watchSyncEffect()`:
 
 ```js
 import { watchSyncEffect } from 'vue'
@@ -585,7 +585,7 @@ watchSyncEffect(() => {
 </div>
 
 :::warning Używaj ostrożnie
-Synchroniczne obserwatory nie mają dozowania i wyzwalają się za każdym razem, gdy zostanie wykryta reaktywna mutacja. Można ich używać do obserwowania prostych wartości logicznych, ale należy unikać używania ich w źródłach danych, które mogą być wielokrotnie mutowane synchronicznie, takich jak tablice.
+Synchroniczni obserwatorzy nie mają "porcjowania" i wyzwalają się za każdym razem, gdy zostanie wykryta reaktywna mutacja. Można ich używać do obserwowania prostych wartości logicznych, ale należy unikać używania ich w źródłach danych, które mogą być wielokrotnie mutowane synchronicznie, takich jak tablice.
 :::
 
 <div class="options-api">
@@ -612,7 +612,7 @@ Jest to przydatne, gdy musisz warunkowo ustawić obserwator lub obserwować coś
 
 <div class="options-api">
 
-Obserwatory zadeklarowane za pomocą opcji `watch` lub metody instancji `$watch()` są automatycznie zatrzymywane, gdy komponent właściciela jest usuwany, więc w większości przypadków nie musisz martwić się o zatrzymywanie obserwatora samodzielnie.
+Obserwatorzy zadeklarowani za pomocą opcji `watch` lub metody instancji `$watch()` są automatycznie zatrzymywani, gdy komponent właściciela jest usuwany, więc w większości przypadków nie musisz martwić się o zatrzymywanie obserwatora samodzielnie.
 
 W rzadkich przypadkach, gdy musisz zatrzymać obserwator przed usunięciem komponentu właściciela, API `$watch()` zwraca w tym celu funkcję:
 
@@ -627,7 +627,7 @@ unwatch()
 
 <div class="composition-api">
 
-Obserwatory zadeklarowane synchronicznie w `setup()` lub `<script setup>` są związane z instancją komponentu właściciela i będą automatycznie zatrzymywane, gdy komponent właściciela zostanie usunięty. W większości przypadków nie musisz martwić się o zatrzymywanie obserwatora samodzielnie.
+Obserwatorzy zadeklarowani synchronicznie w `setup()` lub `<script setup>` są związani z instancją komponentu właściciela i będą automatycznie zatrzymywane, gdy komponent właściciela zostanie usunięty. W większości przypadków nie musisz martwić się o zatrzymywanie obserwatora samodzielnie.
 
 Kluczowe jest to, że obserwator musi być tworzony **synchronicznie**: jeśli obserwator zostanie stworzony w asynchronicznej funkcji zwrotnej, nie będzie związany z komponentem właściciela i będzie musiał zostać zatrzymany ręcznie, aby uniknąć wycieków pamięci. Oto przykład:
 
@@ -655,7 +655,7 @@ const unwatch = watchEffect(() => {})
 unwatch()
 ```
 
-Należy zauważyć, że przypadków, w których trzeba tworzyć obserwatory asynchronicznie, powinno być bardzo mało, a tworzenie synchroniczne powinno być preferowane, gdy tylko to możliwe. Jeśli musisz poczekać na jakieś dane asynchroniczne, możesz zamiast tego sprawić, by logika obserwatora była warunkowa:
+Należy zauważyć, że przypadków, w których trzeba tworzyć obserwatorów asynchronicznych, powinno być bardzo mało, a tworzenie synchroniczne powinno być preferowane, gdy tylko to możliwe. Jeśli musisz poczekać na jakieś dane asynchroniczne, możesz zamiast tego sprawić, by logika obserwatora była warunkowa:
 
 ```js
 // dane do załadowania asynchronicznie

@@ -1,4 +1,4 @@
-# Haki cyklu życia {#lifecycle-hooks}
+# Cykl życia {#lifecycle-hooks}
 
 Każda instancja komponentu Vue przechodzi przez serię etapów inicjalizacji podczas jej tworzenia – na przykład musi ustawić obserwację danych, skompilować szablon, zamontować instancję w DOM i aktualizować DOM, gdy dane ulegną zmianie. W trakcie tego procesu uruchamiane są również funkcje zwane hakami cyklu życia (lifecycle hooks), które dają użytkownikom możliwość dodania własnego kodu na określonych etapach.
 
@@ -41,8 +41,6 @@ Wszystkie haki cyklu życia są wywoływane z kontekstem `this` wskazującym na 
 
 <div class="composition-api">
 
-When calling `onMounted`, Vue automatically associates the registered callback function with the current active component instance. This requires these hooks to be registered **synchronously** during component setup. For example, do not do this:
-
 Podczas wywoływania `onMounted` Vue automatycznie kojarzy zarejestrowaną funkcję zwrotną z aktualnie aktywną instancją komponentu. Wymaga to, aby te haki były rejestrowane **synchronicznie** podczas konfiguracji komponentu. Na przykład, nie rób tego:
 
 ```js
@@ -59,7 +57,7 @@ Należy pamiętać, że nie oznacza to, że wywołanie musi zostać umieszczone 
 
 ## Diagram cyklu życia {#lifecycle-diagram}
 
-Poniżej znajduje się diagram przedstawiający cykl życia instancji. Nie musisz od razu w pełni rozumieć wszystkich szczegółów, ale w miarę nauki i tworzenia kolejnych komponentów może to okazać się przydatnym odniesieniem.
+Poniżej znajduje się diagram przedstawiający cykl życia instancji. Nie musisz od razu w pełni rozumieć wszystkich szczegółów, ale w miarę nauki i tworzenia kolejnych komponentów może się okazać przydatnym odniesieniem.
 
 ![Diagram cyklu życia komponentu](./images/lifecycle.png)
 

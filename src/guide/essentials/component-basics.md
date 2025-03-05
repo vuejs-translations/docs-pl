@@ -6,7 +6,7 @@ Komponenty pozwalają nam podzielić interfejs użytkownika na niezależne czę�
 
 <!-- https://www.figma.com/file/qa7WHDQRWuEZNRs7iZRZSI/components -->
 
-Jest to bardzo podobne do sposobu, w jaki zagnieżdżamy natywne elementy HTML, ale Vue implementuje swój własny model komponentów, który pozwala hermetyzować niestandardową niestandardowej zawartości i logiki w każdym komponencie. Vue dobrze współpracuje również z natywnymi komponentami sieciowymi (Web Components). Jeśli jesteś ciekawy relacji między komponentami Vue a natywnymi komponentami sieciowymi, [przeczytaj więcej tutaj](/guide/extras/web-components).
+Jest to bardzo podobne do sposobu, w jaki zagnieżdżamy natywne elementy HTML, ale Vue implementuje swój własny model komponentów, który pozwala hermetyzować niestandardową zawartość i logikę w każdym komponencie. Vue dobrze współpracuje również z natywnymi komponentami sieciowymi (Web Components). Jeśli jesteś ciekawy relacji między komponentami Vue a natywnymi komponentami sieciowymi, [przeczytaj więcej tutaj](/guide/extras/web-components).
 
 ## Definiowanie komponentu {#defining-a-component}
 
@@ -46,8 +46,6 @@ const count = ref(0)
 ```
 
 </div>
-
-When not using a build step, a Vue component can be defined as a plain JavaScript object containing Vue-specific options:
 
 Kiedy nie używamy procesu budowania, komponent Vue może być zdefiniowany jako zwykły obiekt JavaScript zawierający opcje specyficzne dla Vue:
 
@@ -180,9 +178,9 @@ Zobacz [zagadnienia związane z analizą szablonów w DOM](#in-dom-template-pars
 
 ## Przekazywanie właściwości (props) {#passing-props}
 
-Jeśli budujemy bloga, prawdopodobnie będziemy potrzebować komponentu reprezentującego post blogowy. Chcemy, aby wszystkie posty blogowe miały ten sam układ wizualny, ale różną zawartość. Taki komponent nie będzie użyteczny, jeśli nie będziesz mógł przekazać do niego danych, takich jak tytuł i treść konkretnego posta, który chcemy wyświetlić. Właśnie do tego służą właściwości (props).
+Jeśli budujemy bloga, prawdopodobnie będziemy potrzebować komponentu reprezentującego post. Chcemy, aby wszystkie posty miały ten sam układ wizualny, ale różną zawartość. Taki komponent nie będzie użyteczny, jeśli nie będziesz mógł przekazać do niego danych, takich jak tytuł i treść konkretnego posta, który chcemy wyświetlić. Właśnie do tego służą właściwości (props).
 
-Właściwości (props) to niestandardowe atrybuty, które można zarejestrować w komponencie. Aby przekazać tytuł do naszego komponentu posta blogowego, musimy zadeklarować go na liście właściwości, które ten komponent akceptuje, używając opcji <span class="options-api">[`props`](/api/options-state#props)</span><span class="composition-api">[`defineProps`](/api/sfc-script-setup#defineprops-defineemits) makro</span>:
+Właściwości (props) to niestandardowe atrybuty, które można zarejestrować w komponencie. Aby przekazać tytuł do naszego komponentu posta blogowego, musimy zadeklarować go na liście właściwości, które ten komponent akceptuje, używając <span class="options-api">opcji [`props`](/api/options-state#props)</span><span class="composition-api">makra [`defineProps`](/api/sfc-script-setup#defineprops-defineemits)</span>:
 
 <div class="options-api">
 
@@ -308,7 +306,7 @@ To wszystko, co na razie musisz wiedzieć o właściwościach (props), ale gdy s
 
 Podczas tworzenia komponentu `<BlogPost>` niektóre funkcjonalności mogą wymagać komunikacji z komponentem nadrzędnym. Przykładowo można dodać funkcję zwiększania rozmiaru tekstu w postach, zachowując resztę strony w domyślnym rozmiarze.
 
-W komponencie nadrzędnym można obsłużyć tę funkcjonalność, dodając właściwość `postFontSize` <span class="options-api">właściwość danych</span><span class="composition-api">odniesienie (ref)</span>:
+W komponencie nadrzędnym można obsłużyć tę funkcjonalność, dodając <span class="options-api">właściwość danych</span><span class="composition-api">odniesienie (ref)</span> `postFontSize` :
 
 <div class="options-api">
 
@@ -394,7 +392,7 @@ Dzięki nasłuchiwaczowi `@enlarge-text="postFontSize += 0.1"` element nadrzędn
 
 </div>
 
-Opcjonalnie możemy zadeklarować emitowane wydarzenia za pomocą opcji <span class="options-api">[`emits`](/api/options-state#emits)</span><span class="composition-api">[`defineEmits`](/api/sfc-script-setup#defineprops-defineemits)</span>:
+Opcjonalnie możemy zadeklarować emitowane wydarzenia za pomocą <span class="options-api">opcji [`emits`](/api/options-state#emits)</span><span class="composition-api">makra [`defineEmits`](/api/sfc-script-setup#defineprops-defineemits)</span>:
 
 <div class="options-api">
 
@@ -592,7 +590,7 @@ W szablonach in-DOM musimy jednak zawsze uwzględniać wyraźne znaczniki zamyka
 <my-component></my-component>
 ```
 
-Dzieje się tak, ponieważ specyfikacja HTML zezwala tylko [kilku konkretnym elementom](https://html.spec.whatwg.org/multipage/syntax.html#void-elements) na pominięcie znaczników zamykających, z których najczęstszymi są `<input>` i `<img>`. W przypadku wszystkich innych elementów, jeśli pominiesz znacznik zamykający, natywny parser HTML uzna, że ​​nigdy nie zakończyłeś znacznika otwierającego. Przykładem jest poniższy fragment kodu:
+Dzieje się tak, ponieważ specyfikacja HTML zezwala tylko [kilku konkretnym elementom](https://html.spec.whatwg.org/multipage/syntax.html#void-elements) na pominięcie znaczników zamykających, z których najczęstszymi są `<input>` i `<img>`. W przypadku wszystkich innych elementów, jeśli pominiesz znacznik zamykający, natywny parser HTML uzna, że nigdy nie zakończyłeś znacznika otwierającego. Przykładem jest poniższy fragment kodu:
 
 ```vue-html
 <my-component /> <!-- zamierzamy zamknąć tutaj tag... -->
