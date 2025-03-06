@@ -19,13 +19,13 @@ aside: false
 - [Русский / Rosyjski](https://ru.vuejs.org/) [[źródło](https://github.com/vuejs-translations/docs-ru)]
 - [Čeština / Czeski](https://cs.vuejs.org/) [[źródło](https://github.com/vuejs-translations/docs-cs)]
 - [繁體中文 / Chiński tradycyjny](https://zh-hk.vuejs.org/) [[źródło](https://github.com/vuejs-translations/docs-zh-hk)]
-- [Polski / Polish](https://pl.vuejs.org/) [[source](https://github.com/vuejs-translations/docs-pl)]
+- [Polski / Polish](https://pl.vuejs.org/) [[źródło](https://github.com/vuejs-translations/docs-pl)]
 
 ## Języki w toku prac {#work-in-progress-languages}
 
-- [العربية / Arabic](https://ar.vuejs.org/) [[source](https://github.com/vuejs-translations/docs-ar)]
-- [Español / Spanish](https://vue3-spanish-docs.netlify.app/) [[source](https://github.com/icarusgk/vuejs-spanish-docs)]
-- [Deutsch / German](https://de.vuejs.org/) [[source](https://github.com/vuejs-translations/docs-de)]
+- [العربية / Arabski](https://ar.vuejs.org/) [[źródło](https://github.com/vuejs-translations/docs-ar)]
+- [Español / Hiszpański](https://vue3-spanish-docs.netlify.app/) [[źródło](https://github.com/icarusgk/vuejs-spanish-docs)]
+- [Deutsch / Niemiecki](https://de.vuejs.org/) [[źródło](https://github.com/vuejs-translations/docs-de)]
 
 ## Rozpoczęcie nowego tłumaczenia {#starting-a-new-translation}
 
