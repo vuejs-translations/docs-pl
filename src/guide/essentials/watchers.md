@@ -1,4 +1,4 @@
-# Obserwatrozy {#watchers}
+# Obserwatorzy {#watchers}
 
 ## Podstawowy przykład {#basic-example}
 
