@@ -769,7 +769,7 @@ export default defineConfigWithTheme<ThemeConfig>({
       },
       {
         link: '/translations/',
-        text: 'Help Us Translate!',
+        text: 'Pomóż nam w tłumaczeniach!',
         isTranslationsDesc: true
       }
     ],
