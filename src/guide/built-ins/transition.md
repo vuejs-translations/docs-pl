@@ -300,7 +300,7 @@ Możemy nawet dodać opóźnienie przejścia dla zagnieżdżonego elementu podcz
 
 Jednakże, tworzy to niewielki problem. Domyślnie komponent `<Transition>` próbuje automatycznie ustalić, kiedy przejście się zakończyło, nasłuchując **pierwszego** zdarzenia `transitionend` lub `animationend` na głównym elemencie przejścia. W przypadku zagnieżdżonego przejścia, pożądanym zachowaniem powinno być oczekiwanie, aż zakończą się przejścia wszystkich wewnętrznych elementów.
 
-W takich przypadkach możesz określić jawny czas trwania przejścia (w milisekundach) używając propa `duration` w komponencie `<transition>`. Całkowity czas trwania powinien odpowiadać sumie opóźnienia i czasu trwania przejścia elementu wewnętrznego:
+W takich przypadkach możesz określić jawny czas trwania przejścia (w milisekundach) używając propa `duration` w komponencie `<Transition>`. Całkowity czas trwania powinien odpowiadać sumie opóźnienia i czasu trwania przejścia elementu wewnętrznego:
 
 ```vue-html
 <Transition :duration="550">...</Transition>
