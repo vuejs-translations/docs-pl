@@ -330,7 +330,7 @@ W porównaniu, właściwości takie jak `height` lub `margin` będą wyzwalać p
 
 Możesz wpięć się w proces przejścia za pomocą JavaScriptu, nasłuchując zdarzeń na komponencie `<Transition>`:
 
-```html
+```vue-html
 <Transition
   @before-enter="onBeforeEnter"
   @enter="onEnter"
