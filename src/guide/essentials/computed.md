@@ -279,7 +279,7 @@ export default {
     // Ten computed zawsze zwraca wartość count gdy jest mniejsza lub równa 3.
     // Gdy count >= 4, ostatnia wartość, która spełniła nasz warunek zostanie zwrócona
     // dopóki count będzie mniejsze lub większe 3
-    alwaysSmall(previous) {
+    alwaysSmall(_, previous) {
       if (this.count <= 3) {
         return this.count
       }
