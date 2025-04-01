@@ -306,9 +306,10 @@ declare module 'vue' {
 
 Oto zalecane podejście umożliwiające sprawdzanie typów w szablonach niestandardowych elementów, które nie były zbudowane z użyciem Vue.
 
-> [!Note]
-> Te podejście jest tylko jednym z wielu sposobów jak to osiągnąć, podejście może
-> różnić się zależnie od tego jak używany framework pozwala tworzyć niestandardowe elementy.
+:::tip Note
+- Te podejście jest tylko jednym z wielu sposobów jak to osiągnąć, podejście może
+- różnić się zależnie od tego jak używany framework pozwala tworzyć niestandardowe elementy.
+:::
 
 Załóżmy, że mamy jakiś niestandardowy element z jakimiś własnościami i zdarzeniami zdefiniowanymi i dostarczanymi przy pomocy biblioteki `some-lib`:
 
@@ -389,11 +390,12 @@ type VueEmit<T extends EventMap> = EmitFn<{
 }>
 ```
 
-> [!Note]
-> Oznaczyliśmy `$props` jak i `$emit` jako deprecated, aby w momencie pobrania `ref` tego
-> niestandardowego elementu, nie będziemy skuszeni użyciem tych własności, gdyż
-> są one uzywane jedynie do sprawdzania typów dla niestandardowych elementów.
-> Własności te w praktyce nie istnieją na instancjach niestandardowych elementów.
+:::tip Note
+- Oznaczyliśmy `$props` jak i `$emit` jako deprecated, aby w momencie pobrania `ref` tego
+- niestandardowego elementu, nie będziemy skuszeni użyciem tych własności, gdyż
+- są one uzywane jedynie do sprawdzania typów dla niestandardowych elementów.
+- Własności te w praktyce nie istnieją na instancjach niestandardowych elementów.
+:::
 
 Używając tego typu pomocniczego możemy teraz wylistować własności jakie chcemy by były sprawdzane pod względem typów w szablonach Vue:
 
