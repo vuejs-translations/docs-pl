@@ -113,7 +113,7 @@ Narzędzia deweloperskie Vue dla przeglądarek pozwalają przeglądać drzewo ko
 ![Zrzut ekranu narzędzi deweloperskich](./images/devtools.png)
 
 - [Dokumentacja](https://devtools.vuejs.org/)
-- [Wtyczka dla Chrome](https://chromewebstore.google.com/detail/vuejs-devtools-beta/ljjemllljcmogpfapbkkighbhhppjdbg)
+- [Wtyczka dla Chrome](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
 - [Wtyczka do Vite](https://devtools.vuejs.org/guide/vite-plugin)
 - [Samodzielna aplikacja w Electron](https://devtools.vuejs.org/guide/standalone)
 
