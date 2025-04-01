@@ -706,7 +706,25 @@ Jeśli dyrektywa jest zarejestrowana po nazwie i nie może być bezpośrednio za
 
 <div class="composition-api">
 
-W Composition API referencje szablonu są tworzone poprzez przekazanie samego `ref()` jako props do vnode:
+W Composition API, gdy używamy [`useTemplateRef()`](/api/composition-api-helpers#usetemplateref) <sup class="vt-badge" data-text="3.5+" /> referencje szablonu są tworzone poprzez przekazanie odpowiedniej wartości string jako props do vnode:
+
+```js
+import { h, useTemplateRef } from 'vue'
+
+export default {
+  setup() {
+    const divEl = useTemplateRef('my-div')
+
+    // <div ref="my-div">
+    return () => h('div', { ref: 'my-div' })
+  }
+}
+```
+
+<details>
+<summary>Użycie przed 3.5</summary>
+
+W wersjach przed 3.5, gdzie useTemplateRef() nie jest dostępne, referencje szablonu tworzone są poprzez przekazywanie ref() jako props do vnode:
 
 ```js
 import { h, ref } from 'vue'
@@ -720,22 +738,7 @@ export default {
   }
 }
 ```
-
-lub (w wersji >= 3.5)
-
-```js
-import { h, useTemplateRef } from 'vue'
-
-export default {
-  setup() {
-    const divEl = useTemplateRef('my-div')
-
-    // <div ref="divEl">
-    return () => h('div', { ref: 'my-div' })
-  }
-}
-```
-
+</details>
 </div>
 <div class="options-api">
 
