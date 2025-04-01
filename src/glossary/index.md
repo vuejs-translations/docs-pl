@@ -153,10 +153,20 @@ Termin *hoisting* jest używany do opisania uruchamiania sekcji kodu przed jej o
 
 JavaScript używa hoistingu dla niektórych konstrukcji, takich jak `var`, `import` i deklaracje funkcji.
 
-W kontekście Vue, kompilator szablonów stosuje *static hoisting* w celu poprawy wydajności. Podczas konwertowania szablonu na funkcję renderującą, VNodes odpowiadające statycznej zawartości mogą być utworzone raz i następnie ponownie użyte. Te statyczne VNodes są opisywane jako hoisted, ponieważ są tworzone poza funkcją renderującą, przed jej uruchomieniem. Podobna forma hoistingu jest stosowana do statycznych obiektów lub tablic, które są generowane przez kompilator szablonów.
+W kontekście Vue, kompilator szablonów stosuje *static hoisting* w celu poprawy wydajności. Podczas kompilowania komponentu, statyczne wartości są wynoszone poza scope komponentu. Te statyczne wartości opisujemy jako "hoisted", ponieważ są tworzone poza komponentem.
+
+- [Przewodnik - Mechanizm Renderowania - Static Hoisting](/guide/extras/rendering-mechanism.html#static-hoisting)
+=======
+In a Vue context, the compiler applies *hoisting* to improve performance. When compiling a component, static values are moved out of the component's scope. These static values are described as 'hoisted' because they are created outside the component.
+
+## cache static {#cache-static}
+
+Termin *cache* jest używany, aby opisać tymczasowe przechowywanie często pobieranych danych, aby ulepszyć performance.
+
+Kompilator szablonów Vue identyfikuje te statyczne VNody, cache'uje je podczas pierwotnego renderowania, a następnie reużywa tych samych VNodów podczas każdego kolejnego re-renderowania.
 
 Aby uzyskać więcej szczegółów zobacz:
-- [Przewodnik - Mechanizm Renderowania - Static Hoisting](/guide/extras/rendering-mechanism.html#static-hoisting)
+- [Przewodnik - Mechanizm Renderowania - Cache Static](/guide/extras/rendering-mechanism.html#cache-static)
 
 ## szablon w-DOM {#in-dom-template}
 

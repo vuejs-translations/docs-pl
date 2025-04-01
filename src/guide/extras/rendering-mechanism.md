@@ -74,7 +74,6 @@ Dość często w szablonie będą części, które nie zawierają żadnych dynam
 
 ```vue-html{2-3}
 <div>
-<<<<<<< HEAD
  <div>foo</div> <!-- cached -->
  <div>bar</div> <!-- cached -->
  <div>{{ dynamic }}</div>
