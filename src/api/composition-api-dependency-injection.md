@@ -64,7 +64,7 @@ Wstrzykuje wartość dostarczoną przez komponent nadrzędny lub aplikację (za 
 
 - **Szczegóły**
 
-  Pierwszy argument to klucz wstrzykiwania. Vue przejdzie w górę łańcucha nadrzędnego, aby zlokalizować podaną wartość z pasującym kluczem. Jeśli wiele komponentów w łańcuchu nadrzędnym dostarcza ten sam klucz, ten najbliższy komponentowi wstrzykiwania „przyćmi" te wyżej w łańcuchu. Jeśli nie znaleziono wartości z pasującym kluczem, `inject()` zwraca `undefined`, chyba że podano wartość domyślną.
+  Pierwszy argument to klucz wstrzykiwania. Vue przejdzie w górę łańcucha nadrzędnego, aby zlokalizować podaną wartość z pasującym kluczem. Jeśli wiele komponentów w łańcuchu nadrzędnym dostarcza ten sam klucz, ten najbliższy komponentowi wstrzykiwania „przyćmi" te wyżej w łańcuchu i jego wartości będą użyte. Jeśli nie znaleziono wartości z pasującym kluczem, `inject()` zwraca `undefined`, chyba że podano wartość domyślną.
 
   Drugi argument jest opcjonalny i jest wartością domyślną, która ma być używana, gdy nie znaleziono pasującej wartości.
 
