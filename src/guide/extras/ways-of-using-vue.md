@@ -53,7 +53,7 @@ Zespół Vue utrzymuje również generator stron statycznych o nazwie [VitePress
 
 Chociaż Vue jest głównie zaprojektowane do budowania aplikacji internetowych, nie jest w żaden sposób ograniczone tylko do przeglądarki. Możesz:
 
-- Budować aplikacje desktopowe z [Electron](https://www.electronjs.org/)
+- Budować aplikacje desktopowe z [Electron](https://www.electronjs.org/) lub [Wails](https://wails.io)
 - Budować aplikacje mobilne z [Ionic Vue](https://ionicframework.com/docs/vue/overview)
 - Budować aplikacje desktopowe i mobilne z tego samego kodu źródłowego z [Quasar](https://quasar.dev/) lub [Tauri](https://tauri.app)
 - Budować doświadczenia 3D WebGL z [TresJS](https://tresjs.org/)
