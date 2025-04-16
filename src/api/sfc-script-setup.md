@@ -511,10 +511,10 @@ Możesz użyć dyrektywy `@vue-generic`, aby przekazać typy, gdy typ nie może 
 ```vue
 <template>
   <!-- @vue-generic {import('@/api').Actor} -->
-  <ApiSelect v-model="selectedPeopleIds" endpoint="/api/actors" id-prop="actorId" />
+  <ApiSelect v-model="peopleIds" endpoint="/api/actors" id-prop="actorId" />
 
   <!-- @vue-generic {import('@/api').Genre} -->
-  <ApiSelect v-model="selectedGenreIds" endpoint="/api/genres" id-prop="genreId" />
+  <ApiSelect v-model="genreIds" endpoint="/api/genres" id-prop="genreId" />
 </template>
 ```
 
