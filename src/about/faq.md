@@ -20,7 +20,7 @@ Jeśli zamierzasz przeprowadzić migrację istniejącej aplikacji Vue 2 do Vue 3
 
 ## Czy Vue 2 jest nadal wspierane? {#is-vue-2-still-supported}
 
-Vue 2.7, który został dostarczony w lipcu 2022 r., jest ostatnią mniejszą wersją z zakresu wersji Vue 2. Vue 2 weszło teraz w tryb utrzymania: nie będzie już dostarczać nowych funkcji, ale będzie nadal otrzymywać krytyczne poprawki błędów i aktualizacje zabezpieczeń przez 18 miesięcy, począwszy od daty wydania 2.7. Oznacza to, że **Vue 2 osiągnie koniec życia 31 grudnia 2023 roku**.
+Vue 2.7, który został dostarczony w lipcu 2022 r., jest ostatnią mniejszą wersją z zakresu wersji Vue 2. Vue 2 weszło w tryb utrzymania: nie będzie już dostarczać nowych funkcji, ale będzie nadal otrzymywać krytyczne poprawki błędów i aktualizacje zabezpieczeń przez 18 miesięcy, począwszy od daty wydania 2.7. Oznacza to, że **Vue 2 osiągnęło koniec życia 31 grudnia 2023 roku**.
 
 Uważamy, że powinno to zapewnić większości ekosystemu wystarczająco dużo czasu na migrację do Vue 3. Rozumiemy jednak również, że mogą istnieć zespoły lub projekty, które nie mogą dokonać aktualizacji w tym terminie, a jednocześnie muszą spełniać wymogi bezpieczeństwa i zgodności. Współpracujemy z ekspertami branżowymi, aby zapewnić rozszerzone wsparcie dla Vue 2 dla zespołów o takich potrzebach - jeśli Twój zespół spodziewa się korzystać z Vue 2 po zakończeniu 2023 roku, zaplanuj to z wyprzedzeniem i dowiedz się więcej o [Vue 2 Extended LTS].(https://v2.vuejs.org/lts/).
 
