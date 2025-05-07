@@ -1,2 +1,0 @@
-W pełni zgodna ze specyfikacją implementacja TodoMVC
-https://todomvc.com/

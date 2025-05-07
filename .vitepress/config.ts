@@ -518,10 +518,6 @@ export const sidebar: ThemeConfig['sidebar'] = {
           text: 'Lista z animacjami',
           link: '/examples/#list-transition'
         },
-        {
-          text: 'TodoMVC',
-          link: '/examples/#todomvc'
-        }
       ]
     },
     {
