@@ -97,7 +97,7 @@ Należy rzadko używać właściwości globalnych, ponieważ może to szybko sta
 
 ### Dostarcz/wstrzyknij (Provide/Inject) za pomocą wtyczek {#provide-inject-with-plugins}
 
-Wtyczki pozwalają nam również używać `inject`, aby zapewnić funkcję lub atrybut użytkownikom wtyczki. Na przykład możemy zezwolić aplikacji na dostęp do parametru `options`, aby móc używać obiektu translations.
+Wtyczki pozwalają nam również używać `provide`, aby zapewnić funkcję lub atrybut użytkownikom wtyczki. Na przykład możemy zezwolić aplikacji na dostęp do parametru `options`, aby móc używać obiektu translations.
 
 ```js{10}
 // plugins/i18n.js
