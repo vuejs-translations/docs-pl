@@ -1,5 +1,9 @@
 # v-model w komponentach {#component-v-model}
 
+<ScrimbaLink href="https://scrimba.com/links/vue-component-v-model" title="Darmowa lekcja o v-model w komponentach Vue.js" type="scrimba">
+  Obejrzyj interaktywną lekcję w Scrimba
+</ScrimbaLink>
+
 ## Podstawowe użycie {#basic-usage}
 
 `v-model` może być używany w komponencie do implementacji dwukierunkowego wiązania danych.

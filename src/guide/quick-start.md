@@ -16,6 +16,8 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 - Jeśli znasz już Node.js i koncepcję narzędzi do kompilacji, możesz również wypróbować pełną konfigurację kompilacji bezpośrednio w przeglądarce na [StackBlitz](https://vite.new/vue).
 
+- Aby posłuchać o rekomendowanej konfiguracji, obejrz ten interaktywny poradnik w [Scrimba](http://scrimba.com/links/vue-quickstart), który pokaże Ci jak uruchomić, edytować i zdeployować swoją pierwszą aplikację Vue.
+
 ## Tworzenie aplikacji Vue {#creating-a-vue-application}
 
 :::tip Wymagania wstępne

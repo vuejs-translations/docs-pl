@@ -1,5 +1,9 @@
 # Podstawy komponentów {#components-basics}
 
+<ScrimbaLink href="https://scrimba.com/links/vue-component-basics" title="Darmowa lekcja o podstawach komponentów w Vue.js" type="scrimba">
+  Objerzyj interaktywną lekcję w Scrimba
+</ScrimbaLink>
+
 Komponenty pozwalają nam podzielić interfejs użytkownika na niezależne części wielokrotnego użytku oraz myśleć o każdej z nich w izolacji. Często aplikacja jest organizowana w strukturę komponentów zagnieżdżonych w drzewie:
 
 ![Drzewo komponentów](./images/components.png)
