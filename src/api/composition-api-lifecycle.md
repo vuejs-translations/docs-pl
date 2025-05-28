@@ -210,7 +210,7 @@ Rejestruje funkcje, która ma zostać wywołana, gdy zostanie przechwycony błą
   W produkcji, 3. argument (`info`) będzie skróconym kodem zamiast pełnego ciągu informacyjnego. Mapowanie kodu do ciągu można znaleźć w [Odniesienie do kodu błędu produkcyjnego](/error-reference/#runtime-errors).
   :::
 
-  Możesz zmodyfikować stan komponentu w `errorCaptured()`, aby wyświetlić użytkownikowi stan błędu. Ważne jest jednak, aby stan błędu nie renderował oryginalnej zawartości, która spowodowała błąd; w przeciwnym razie komponent zostanie wrzucony do nieskończonej pętli renderowania.
+  Możesz zmodyfikować stan komponentu w `onErrorCaptured()`, aby wyświetlić użytkownikowi stan błędu. Ważne jest jednak, aby stan błędu nie renderował oryginalnej zawartości, która spowodowała błąd; w przeciwnym razie komponent zostanie wrzucony do nieskończonej pętli renderowania.
 
   Funkcja może zwrócić `false`, aby zatrzymać dalsze rozprzestrzenianie się błędu. Zobacz szczegóły propagacji błędu poniżej.
 
