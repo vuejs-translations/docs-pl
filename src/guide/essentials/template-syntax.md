@@ -1,5 +1,9 @@
 # Składnia szablonów {#template-syntax}
 
+<ScrimbaLink href="https://scrimba.com/links/vue-template-syntax" title="Darmowa lekcja o składni szablonów w Vue.js" type="scrimba">
+  Objerzyj interaktywną lekcję w Scrimba
+</ScrimbaLink>
+
 Vue wykorzystuje składnię szablonów opartą na HTML, która pozwala deklaratywnie powiązać renderowany DOM z danymi bazowej instancji komponentu. Wszystkie szablony Vue są składniowo poprawnym kodem HTML, który może być analizowany przez przeglądarki i parsery HTML zgodne ze specyfikacją.
 
 "Pod spodem" Vue kompiluje szablony do wysoko zoptymalizowanego kodu JavaScript. W połączeniu z systemem reaktywności Vue inteligentnie określa minimalną liczbę komponentów do ponownego renderowania i stosuje minimalne manipulacje DOM przy zmianie stanu aplikacji.
