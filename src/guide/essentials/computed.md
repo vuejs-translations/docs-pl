@@ -263,8 +263,15 @@ Teraz, gdy wykonasz `fullName.value = 'Jan Kowalski'`, wywołany zostanie setter
 
 - Wsparcie tylko w 3.4+
 
+<p class="options-api">
+Jeśli tego potrzebujesz, możesz pobrać poprzednią wartość zwróconą przez computed poprzez
+drugi argument z gettera:
+</p>
+
+<p class="composition-api">
 Jeśli tego potrzebujesz, możesz pobrać poprzednią wartość zwróconą przez computed poprzez
 pierwszy argument z gettera:
+</p>
 
 <div class="options-api">
 
@@ -326,7 +333,7 @@ export default {
   },
   computed: {
     alwaysSmall: {
-      get(previous) {
+      get(_, previous) {
         if (this.count <= 3) {
           return this.count
         }
