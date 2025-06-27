@@ -30,43 +30,31 @@ W tej sekcji przedstawimy, jak zbudować szkielet Vue [Single Page Application](
 
 Upewnij się, że masz zainstalowaną aktualną wersję [Node.js](https://nodejs.org/) i że Twój bieżący katalog roboczy to ten, w którym zamierzasz utworzyć projekt. Uruchom następujące polecenie w wierszu poleceń (bez znaku `$`):
 
-<VTCodeGroup>
-  <VTCodeGroupTab label="npm">
+::: code-group
 
-  ```sh
-  $ npm create vue@latest
-  ```
+```sh [npm]
+$ npm create vue@latest
+```
 
-  </VTCodeGroupTab>
-  <VTCodeGroupTab label="pnpm">
+```sh [pnpm]
+$ pnpm create vue@latest
+```
 
-  ```sh
-  $ pnpm create vue@latest
-  ```
+```sh [yarn]
+# Dla Yarn (v1+)
+$ yarn create vue
 
-  </VTCodeGroupTab>
-  <VTCodeGroupTab label="yarn">
+# Dla Yarn Modern (v2+)
+$ yarn create vue@latest
 
-  ```sh
-  # Dla Yarn (v1+)
-  $ yarn create vue
+# Dla Yarn ^v4.11
+$ yarn dlx create-vue@latest
+```
 
-  # Dla Yarn Modern (v2+)
-  $ yarn create vue@latest
-
-  # Dla Yarn ^v4.11
-  $ yarn dlx create-vue@latest
-  ```
-
-  </VTCodeGroupTab>
-  <VTCodeGroupTab label="bun">
-
-  ```sh
-  $ bun create vue@latest
-  ```
-
-  </VTCodeGroupTab>
-</VTCodeGroup>
+```sh [bun]
+$ bun create vue@latest
+```
+:::
 
 To polecenie zainstaluje i uruchomi [create-vue](https://github.com/vuejs/create-vue), oficjalne narzędzie do tworzenia szkieletów projektów Vue. Zostaną wyświetlone monity dotyczące kilku opcjonalnych funkcji, takich jak obsługa TypeScript i testowania:
 
@@ -86,44 +74,34 @@ To polecenie zainstaluje i uruchomi [create-vue](https://github.com/vuejs/create
 
 Jeśli nie jesteś pewien opcji, po prostu wybierz „Nie”, naciskając Enter. Po utworzeniu projektu postępuj zgodnie z instrukcjami, aby zainstalować zależności i uruchomić serwer deweloperski:
 
-<VTCodeGroup>
-  <VTCodeGroupTab label="npm">
+::: code-group
 
-  ```sh-vue
-  $ cd {{'<twoja-nazwa-projektu>'}}
-  $ npm install
-  $ npm run dev
-  ```
+```sh-vue [npm]
+$ cd {{'<twoja-nazwa-projektu>'}}
+$ npm install
+$ npm run dev
+```
 
-  </VTCodeGroupTab>
-  <VTCodeGroupTab label="pnpm">
+```sh-vue [pnpm]
+$ cd {{'<twoja-nazwa-projektu>'}}
+$ pnpm install
+$ pnpm run dev
+```
 
-  ```sh-vue
-  $ cd {{'<twoja-nazwa-projektu>'}}
-  $ pnpm install
-  $ pnpm run dev
-  ```
+```sh-vue [yarn]
+$ cd {{'<twoja-nazwa-projektu>'}}
+$ yarn
+$ yarn dev
+```
 
-  </VTCodeGroupTab>
-  <VTCodeGroupTab label="yarn">
+```sh-vue [bun]
+$ cd {{'<twoja-nazwa-projektu>'}}
+$ bun install
+$ bun run dev
+```
 
-  ```sh-vue
-  $ cd {{'<twoja-nazwa-projektu>'}}
-  $ yarn
-  $ yarn dev
-  ```
+:::
 
-  </VTCodeGroupTab>
-  <VTCodeGroupTab label="bun">
-
-  ```sh-vue
-  $ cd {{'<twoja-nazwa-projektu>'}}
-  $ bun install
-  $ bun run dev
-  ```
-
-  </VTCodeGroupTab>
-</VTCodeGroup>
 
 Powinieneś teraz uruchomić swój pierwszy projekt Vue! Zwróć uwagę, że przykładowe komponenty w wygenerowanym projekcie są pisane przy użyciu [Composition API](/guide/introduction#composition-api) i `<script setup>`, a nie [Options API](/guide/introduction#options-api). Oto kilka dodatkowych wskazówek:
 
@@ -134,36 +112,26 @@ Powinieneś teraz uruchomić swój pierwszy projekt Vue! Zwróć uwagę, że prz
 
 Gdy będziesz gotowy do wysłania aplikacji do produkcji, uruchom następujące polecenie:
 
-<VTCodeGroup>
-  <VTCodeGroupTab label="npm">
+::: code-group
 
-  ```sh
-  $ npm run build
-  ```
+```sh [npm]
+$ npm run build
+```
 
-  </VTCodeGroupTab>
-  <VTCodeGroupTab label="pnpm">
+```sh [pnpm]
+$ pnpm run build
+```
 
-  ```sh
-  $ pnpm run build
-  ```
+```sh [yarn]
+$ yarn build
+```
 
-  </VTCodeGroupTab>
-  <VTCodeGroupTab label="yarn">
+```sh [bun]
+$ bun run build
+```
 
-  ```sh
-  $ yarn build
-  ```
+:::
 
-  </VTCodeGroupTab>
-  <VTCodeGroupTab label="bun">
-
-  ```sh
-  $ bun run build
-  ```
-
-  </VTCodeGroupTab>
-</VTCodeGroup>
 
 Spowoduje to utworzenie gotowej do produkcji kompilacji Twojej aplikacji w katalogu `./dist` projektu. Zapoznaj się z [Production Deployment Guide](/guide/best-practices/production-deployment), aby dowiedzieć się więcej o wysyłaniu aplikacji do produkcji.
 
@@ -383,8 +351,7 @@ Chociaż możliwe jest używanie Vue bez systemu kompilacji, alternatywnym podej
 
 W miarę jak zagłębiamy się w przewodnik, może zaistnieć potrzeba podzielenia naszego kodu na oddzielne pliki JavaScript, aby łatwiej nimi zarządzać. Na przykład:
 
-```html
-<!-- index.html -->
+```html [index.html]
 <div id="app"></div>
 
 <script type="module">
@@ -397,8 +364,7 @@ W miarę jak zagłębiamy się w przewodnik, może zaistnieć potrzeba podzielen
 
 <div class="options-api">
 
-```js
-// my-component.js
+```js [my-component.js]
 export default {
   data() {
     return { count: 0 }
@@ -410,8 +376,7 @@ export default {
 </div>
 <div class="composition-api">
 
-```js
-// my-component.js
+```js [my-component.js]
 import { ref } from 'vue'
 export default {
   setup() {

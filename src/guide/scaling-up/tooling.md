@@ -25,40 +25,29 @@ Zalecane jest również korzystanie z tych piaskownic online do tworzenia reprod
 
 Aby zacząć pracę z Vite + Vue, wywołaj polecenie:
 
-<VTCodeGroup>
-  <VTCodeGroupTab label="npm">
+::: code-group
 
-  ```sh
-  $ npm create vue@latest
-  ```
+```sh [npm]
+$ npm create vue@latest
+```
 
-  </VTCodeGroupTab>
-  <VTCodeGroupTab label="pnpm">
+```sh [pnpm]
+$ pnpm create vue@latest
+```
   
-  ```sh
-  $ pnpm create vue@latest
-  ```
-
-  </VTCodeGroupTab>
-  <VTCodeGroupTab label="yarn">
+```sh [yarn]
+# Dla Yarn Modern (v2+)
+$ yarn create vue@latest
   
-  ```sh
-  # Dla Yarn Modern (v2+)
-  $ yarn create vue@latest
+# Dla Yarn ^v4.11
+$ yarn dlx create-vue@latest
+```
   
-  # Dla Yarn ^v4.11
-  $ yarn dlx create-vue@latest
-  ```
+```sh [bun]
+$ bun create vue@latest
+```
 
-  </VTCodeGroupTab>
-  <VTCodeGroupTab label="bun">
-  
-  ```sh
-  $ bun create vue@latest
-  ```
-
-  </VTCodeGroupTab>
-</VTCodeGroup>
+:::
 
 To polecenie zainstaluje i wywoła [create-vue](https://github.com/vuejs/create-vue), oficjalne narzędzie do setupowania projektów.
 

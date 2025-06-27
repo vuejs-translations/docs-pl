@@ -40,8 +40,7 @@ Zobacz [Configuration Guides](#configuration-guides), aby dowiedzieć się, jak 
 
 `@vitejs/plugin-vue` automatycznie podaje wartości domyślne dla tych flag. Aby zmienić wartości domyślne, użyj opcji konfiguracyjnej [`define`](https://vitejs.dev/config/shared-options.html#define) Vite:
 
-```js
-// vite.config.js
+```js [vite.config.js]
 import { defineConfig } from 'vite'
 
 export default defineConfig({
@@ -56,8 +55,7 @@ export default defineConfig({
 
 `@vue/cli-service` automatycznie dostarcza wartości domyślne dla niektórych z tych flag. Aby skonfigurować/zmienić wartości:
 
-```js
-// vue.config.js
+```js [vue.config.js]
 module.exports = {
   chainWebpack: (config) => {
     config.plugin('define').tap((definitions) => {
@@ -76,8 +74,7 @@ module.exports = {
 
 Flagi należy definiować za pomocą [DefinePlugin](https://webpack.js.org/plugins/define-plugin/) pakietu webpack:
 
-```js
-// webpack.config.js
+```js [webpack.config.js]
 module.exports = {
   // ...
   plugins: [
@@ -94,8 +91,7 @@ module.exports = {
 
 Flagi należy definiować za pomocą [@rollup/plugin-replace](https://github.com/rollup/plugins/tree/master/packages/replace):
 
-```js
-// rollup.config.js
+```js [rollup.config.js]
 import replace from '@rollup/plugin-replace'
 
 export default {
