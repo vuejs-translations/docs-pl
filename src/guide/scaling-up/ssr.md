@@ -172,8 +172,7 @@ Ten plik i jego zależności są współdzielone między serwerem a klientem –
 
 Plik wejściowy klienta importuje kod uniwersalny, tworzy aplikację i wykonuje montowanie:
 
-```js
-// client.js
+```js [client.js]
 import { createApp } from './app.js'
 
 createApp().mount('#app')
@@ -181,8 +180,8 @@ createApp().mount('#app')
 
 A serwer używa tej samej logiki tworzenia aplikacji w obsłudze żądań:
 
-```js{2,5}
-// server.js (pominięto nieistotny kod)
+```js{2,5} [server.js]
+// (pominięto nieistotny kod)
 import { createApp } from './app.js'
 
 server.get('/', (req, res) => {

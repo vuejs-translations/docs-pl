@@ -40,8 +40,7 @@ Aby lepiej zrozumieć, jak tworzyć własne wtyczki Vue.js, utworzymy bardzo upr
 
 Zacznijmy od skonfigurowania obiektu wtyczki. Zaleca się utworzenie go w osobnym pliku i wyeksportowanie, jak pokazano poniżej, aby zachować logikę zamkniętą i oddzieloną.
 
-```js
-// plugins/i18n.js
+```js [plugins/i18n.js]
 export default {
   install: (app, options) => {
     // Kod wtyczki
@@ -99,8 +98,7 @@ Należy rzadko używać właściwości globalnych, ponieważ może to szybko sta
 
 Wtyczki pozwalają nam również używać `provide`, aby zapewnić funkcję lub atrybut użytkownikom wtyczki. Na przykład możemy zezwolić aplikacji na dostęp do parametru `options`, aby móc używać obiektu translations.
 
-```js{10}
-// plugins/i18n.js
+```js{10} [plugins/i18n.js]
 export default {
   install: (app, options) => {
     app.provide('i18n', options)
