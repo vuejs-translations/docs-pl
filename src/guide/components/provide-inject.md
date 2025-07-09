@@ -297,7 +297,7 @@ provide('read-only-count', readonly(count))
 
 Aby powiązać reaktywnie wstrzyknięcia z dostawcą, musimy dostarczyć właściwość obliczaną przy użyciu funkcji [computed()](/api/reactivity-core#computed):
 
-```js{10}
+```js{12}
 import { computed } from 'vue'
 
 export default {
@@ -327,8 +327,7 @@ Do tej pory używaliśmy w przykładach kluczy wstrzykiwania jako ciągów znak�
 
 Zalecane jest eksportowanie Symboli w dedykowanym pliku:
 
-```js
-// keys.js
+```js [keys.js]
 export const myInjectionKey = Symbol()
 ```
 

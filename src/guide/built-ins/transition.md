@@ -469,8 +469,7 @@ Oto przykład wykorzystujący bibliotekę [GSAP](https://gsap.com/) do wykonywan
 
 Przejścia mogą być używane wielokrotnie dzięki systemowi komponentów Vue. Aby stworzyć przejście wielokrotnego użytku, możemy utworzyć komponent, który opakowuje komponent `<Transition>` i przekazuje zawartość slotu:
 
-```vue{5}
-<!-- MyTransition.vue -->
+```vue{6} [MyTransition.vue]
 <script>
 // Logika hooków JavaScript...
 </script>
