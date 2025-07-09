@@ -83,8 +83,7 @@ W Options API, reaktywne dane deklarowane są poprzez opcję `data()`. Następni
 
 Jeśli masz kawałek stanu który musi być współdzielony między wieloma instancjami, możesz użyć funkcji [`reactive()`](/api/reactivity-core#reactive), aby stworzyć reaktywny obiekt a następnie zaimportować go do wielu komponentów:
 
-```js
-// store.js
+```js [store.js]
 import { reactive } from 'vue'
 
 export const store = reactive({
@@ -94,8 +93,7 @@ export const store = reactive({
 
 <div class="composition-api">
 
-```vue
-<!-- ComponentA.vue -->
+```vue [ComponentA.vue]
 <script setup>
 import { store } from './store.js'
 </script>
@@ -103,8 +101,7 @@ import { store } from './store.js'
 <template>Komponent A: {{ store.count }}</template>
 ```
 
-```vue
-<!-- ComponentB.vue -->
+```vue [ComponentB.vue]
 <script setup>
 import { store } from './store.js'
 </script>
@@ -115,8 +112,7 @@ import { store } from './store.js'
 </div>
 <div class="options-api">
 
-```vue
-<!-- ComponentA.vue -->
+```vue [ComponentA.vue]
 <script>
 import { store } from './store.js'
 
@@ -132,8 +128,7 @@ export default {
 <template>Komponent A: {{ store.count }}</template>
 ```
 
-```vue
-<!-- ComponentB.vue -->
+```vue [ComponentB.vue]
 <script>
 import { store } from './store.js'
 
@@ -165,8 +160,7 @@ Jednakże, oznacza to również że kazdy komponent importujący `store` może g
 
 Działa to bez zarzutu w prostych przypadkach, jednakże globalny stan mogący być dowolnie zmieniany przez każdy komponent nie będzie łatwy do utrzymania na dłuższą metę. Aby zapewnić zcentralizowanie modyfikacji stanu tak jak i sam stan, zalecane jest zdefiniowanie metod na stanie, z nazwami jasno określającymi intencje danych akcji:
 
-```js{6-8}
-// store.js
+```js{5-7} [store.js]
 import { reactive } from 'vue'
 
 export const store = reactive({

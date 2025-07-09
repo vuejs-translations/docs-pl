@@ -188,8 +188,7 @@ Właściwości (props) to niestandardowe atrybuty, które można zarejestrować 
 
 <div class="options-api">
 
-```vue
-<!-- BlogPost.vue -->
+```vue [BlogPost.vue]
 <script>
 export default {
   props: ['title']
@@ -206,8 +205,7 @@ Gdy wartość jest przekazywana do atrybutu prop, staje się ona właściwości�
 </div>
 <div class="composition-api">
 
-```vue
-<!-- BlogPost.vue -->
+```vue [BlogPost.vue]
 <script setup>
 defineProps(['title'])
 </script>
@@ -352,8 +350,8 @@ Którego można użyć w szablonie do kontrolowania rozmiaru czcionki wszystkich
 
 Teraz dodajmy przycisk do szablonu komponentu `<BlogPost>`:
 
-```vue{5}
-<!-- BlogPost.vue, pomijając <script> -->
+```vue{5} [BlogPost.vue]
+<!-- pomijając <script> -->
 <template>
   <div class="blog-post">
     <h4>{{ title }}</h4>
@@ -373,8 +371,8 @@ Przycisk nie wykonuje jeszcze żadnej akcji - chcemy, aby kliknięcie przycisku 
 
 Następnie komponent podrzędny może wyemitować wydarzenie na sobie samym, wywołując wbudowaną metodę [**`$emit`**](/api/component-instance#emit), przekazując nazwę wydarzenia:
 
-```vue{5}
-<!-- BlogPost.vue, pomijając <script> -->
+```vue{5} [BlogPost.vue]
+<!-- pomijając <script> -->
 <template>
   <div class="blog-post">
     <h4>{{ title }}</h4>
@@ -400,8 +398,7 @@ Opcjonalnie możemy zadeklarować emitowane wydarzenia za pomocą <span class="o
 
 <div class="options-api">
 
-```vue{5}
-<!-- BlogPost.vue -->
+```vue{4} [BlogPost.vue]
 <script>
 export default {
   props: ['title'],
@@ -413,8 +410,7 @@ export default {
 </div>
 <div class="composition-api">
 
-```vue{4}
-<!-- BlogPost.vue -->
+```vue{3} [BlogPost.vue]
 <script setup>
 defineProps(['title'])
 defineEmits(['enlarge-text'])
@@ -472,8 +468,7 @@ Coś złego się stało.
 
 Aby to osiągnąć, w Vue używa się niestandardowego elementu `<slot>`:
 
-```vue{5}
-<!-- AlertBox.vue -->
+```vue{4} [AlertBox.vue]
 <template>
   <div class="alert-box">
     <strong>To jest błąd demonstracyjny</strong>

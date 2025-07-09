@@ -56,8 +56,7 @@ Chcemy utworzyć funkcję tłumaczenia. Ta funkcja otrzyma ciąg `key` rozdzielo
 
 Ponieważ ta funkcja powinna być globalnie dostępna we wszystkich szablonach, umoliwimy to, dołączając ją do `app.config.globalProperties` w naszej wtyczce:
 
-```js{4-11}
-// plugins/i18n.js
+```js{3-10} [plugins/i18n.js]
 export default {
   install: (app, options) => {
     // wstrzyknij globalnie dostępną metodę $translate()
@@ -98,7 +97,7 @@ Należy rzadko używać właściwości globalnych, ponieważ może to szybko sta
 
 Wtyczki pozwalają nam również używać `provide`, aby zapewnić funkcję lub atrybut użytkownikom wtyczki. Na przykład możemy zezwolić aplikacji na dostęp do parametru `options`, aby móc używać obiektu translations.
 
-```js{10} [plugins/i18n.js]
+```js{3} [plugins/i18n.js]
 export default {
   install: (app, options) => {
     app.provide('i18n', options)
@@ -110,7 +109,7 @@ Użytkownicy wtyczek będą teraz mogli wstrzykiwać opcje wtyczki do swoich kom
 
 <div class="composition-api">
 
-```vue
+```vue{4}
 <script setup>
 import { inject } from 'vue'
 
@@ -123,7 +122,7 @@ console.log(i18n.greetings.hello)
 </div>
 <div class="options-api">
 
-```js
+```js{2}
 export default {
   inject: ['i18n'],
   created() {

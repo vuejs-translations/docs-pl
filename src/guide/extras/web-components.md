@@ -43,8 +43,7 @@ export default {
 
 #### Przykładowa konfiguracja Vue CLI {#example-vue-cli-config}
 
-```js
-// vue.config.js
+```js [vue.config.js]
 module.exports = {
   chainWebpack: (config) => {
     config.module
@@ -218,8 +217,7 @@ Jeśli elementy niestandardowe będą używane w aplikacji, która również uż
 
 Zaleca się eksportowanie indywidualnych konstruktorów elementów, aby dać użytkownikom elastyczność w importowaniu ich na żądanie i rejestrowaniu ich z pożądanymi nazwami tagów. Możesz również wyeksportować wygodną funkcję do automatycznej rejestracji wszystkich elementów. Oto przykładowy punkt wejścia biblioteki elementów niestandardowych Vue:
 
-```js
-// elements.js
+```js [elements.js]
 
 import { defineCustomElement } from 'vue'
 import Foo from './MyFoo.ce.vue'
@@ -311,9 +309,7 @@ Te podejście jest tylko jednym z wielu sposobów jak to osiągnąć, podejście
 
 Załóżmy, że mamy jakiś niestandardowy element z jakimiś własnościami i zdarzeniami zdefiniowanymi i dostarczanymi przy pomocy biblioteki `some-lib`:
 
-```ts
-// plik: some-lib/src/SomeElement.ts
-
+```ts [some-lib/src/SomeElement.ts]
 // Zdefiniuj klasę z otypowanymi własnościami
 export class SomeElement extends HTMLElement {
   foo: number = 123
@@ -351,9 +347,7 @@ Szczegóły implementacji zostały pominięte, ale najważniejszą częścią je
 
 Stwórzmy pomocniczy typ celem szybkiego rejestrowana typów niestandardowych elementów w Vue:
 
-```ts
-// plik: some-lib/src/DefineCustomElement.ts
-
+```ts [some-lib/src/DefineCustomElement.ts]
 // Możemy reużywać ten typ pomocniczy dla każdego elementu który chcemy zdefiniować
 type DefineCustomElement<
   ElementType extends HTMLElement,
@@ -394,9 +388,7 @@ Oznaczyliśmy `$props` jak i `$emit` jako deprecated, aby w momencie pobrania `r
 
 Używając tego typu pomocniczego możemy teraz wylistować własności jakie chcemy by były sprawdzane pod względem typów w szablonach Vue:
 
-```ts
-// plik: some-lib/src/SomeElement.vue.ts
-
+```ts [some-lib/src/SomeElement.vue.ts]
 import {
   SomeElement,
   SomeElementAttributes,
@@ -419,7 +411,7 @@ declare module 'vue' {
 
 Załóżmy że `some-lib` buduje swoje pliki źródłowe TypeScript do folderu `dist/`. Użytkownik `some-lib` może potem importować `SomeElement` i użyć go w komponentach jednoplikowych Vue jak poniżej:
 
-```vue
+```vue [SomeElementImpl.vue]
 <script setup lang="ts">
 // To utworzy i zarejstruje element w przeglądarce
 import 'some-lib/dist/SomeElement.js'
@@ -465,7 +457,7 @@ onMounted(() => {
 
 Jeśli element nie ma definicji typów, możemy własnoręcznie zdefiniować typy dla własności i emitowanych zdarzeń:
 
-```vue
+```vue [SomeElementImpl.vue]
 <script setup lang="ts">
 // Załóżmy, że `some-lib` to czysty JS, bez definicji typów, a TypeScript
 // nie jest w stanie wywnioskować typów:

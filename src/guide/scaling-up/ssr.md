@@ -156,8 +156,8 @@ Zauważ, że musimy ponownie używać tej samej implementacji aplikacji, co na s
 
 Tutaj pokażemy najprostsze możliwe ustawienie. Na początek, podzielmy logikę tworzenia aplikacji na dedykowany plik, `app.js`:
 
-```js
-// app.js (współdzielony między serwerem a klientem)
+```js [app.js]
+// (współdzielony między serwerem a klientem)
 import { createSSRApp } from 'vue'
 
 export function createApp() {
@@ -266,8 +266,8 @@ Technicznie rzecz biorąc, możemy ponownie zainicjować wszystkie moduły JavaS
 
 Zalecanym rozwiązaniem jest tworzenie nowej instancji całej aplikacji – w tym routera i globalnych magazynów – przy każdym żądaniu. Następnie, zamiast bezpośredniego importowania stanu w komponentach, udostępniamy współdzielony stan za pomocą [provide na poziomie aplikacji](/guide/components/provide-inject#app-level-provide) i wstrzykujemy go w komponentach, które go potrzebują:
 
-```js
-// app.js (współdzielony między serwerem a klientem)
+```js [app.js]
+// (współdzielony między serwerem a klientem)
 import { createSSRApp } from 'vue'
 import { createStore } from './store.js'
 

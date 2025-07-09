@@ -5,8 +5,7 @@ Komponent podrzędny może akceptować dane wejściowe od komponentu nadrzędneg
 <div class="composition-api">
 <div class="sfc">
 
-```vue
-<!-- ChildComp.vue -->
+```vue [ChildComp.vue]
 <script setup>
 const props = defineProps({
   msg: String

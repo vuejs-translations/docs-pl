@@ -298,16 +298,20 @@ function inc() {
 :::warning
 Jeśli masz wartość `default` dla prop `defineModel` i nie podasz żadnej wartości dla tej prop z komponentu nadrzędnego, może to spowodować desynchronizację między komponentami nadrzędnymi i podrzędnymi. W poniższym przykładzie `myRef` rodzica jest niezdefiniowane, ale `model` dziecka jest 1:
 
-```js
-// child component:
+```vue [Child.vue]
+<script setup>
 const model = defineModel({ default: 1 })
-
-// parent component:
-const myRef = ref()
+</script>
 ```
 
-```html
-<Child v-model="myRef"></Child>
+```vue [Parent.vue]
+<script setup>
+const myRef = ref()
+</script>
+
+<template>
+  <Child v-model="myRef"></Child>
+</template>
 ```
 
 :::

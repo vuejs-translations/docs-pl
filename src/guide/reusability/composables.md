@@ -21,7 +21,7 @@ Natomiast logika stanowa obejmuje zarządzanie stanem, który zmienia się w cza
 
 Gdybyśmy chcieli zaimplementować funkcjonalność śledzenia myszy bezpośrednio w komponencie za pomocą interfejsu API kompozycji, wyglądałoby to następująco:
 
-```vue
+```vue [MouseComponent.vue]
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 
@@ -42,8 +42,7 @@ onUnmounted(() => window.removeEventListener('mousemove', update))
 
 Ale co w przypadku jeśli chcemy ponownie wykorzystać tę samą logikę w wielu komponentach? Możemy wyodrębnić logikę do pliku zewnętrznego, jako funkcję kompozycyjną:
 
-```js
-// mouse.js
+```js [mouse.js]
 import { ref, onMounted, onUnmounted } from 'vue'
 
 // zgodnie z konwencją nazwy funkcje kompozycyjne zaczynają się od „use”
@@ -70,7 +69,7 @@ export function useMouse() {
 
 A oto jak można go wykorzystać w komponentach:
 
-```vue
+```vue [MouseComponent.vue]
 <script setup>
 import { useMouse } from './mouse.js'
 
@@ -92,8 +91,7 @@ Najfajniejszą częścią obiektów kompozycyjnych jest to, że można je równi
 
 Na przykład możemy wyodrębnić logikę dodawania i usuwania nasłuchiwacza zdarzeń DOM do jego własnego obiektu kompozycyjnego:
 
-```js
-// event.js
+```js [event.js]
 import { onMounted, onUnmounted } from 'vue'
 
 export function useEventListener(target, event, callback) {
@@ -106,8 +104,7 @@ export function useEventListener(target, event, callback) {
 
 A teraz naszą funkcje kompozycyjną `useMouse()` można uprościć do:
 
-```js{3,9-12}
-// mouse.js
+```js{2,8-11} [mouse.js]
 import { ref } from 'vue'
 import { useEventListener } from './event'
 
@@ -157,8 +154,7 @@ fetch('...')
 
 Byłoby żmudne powtarzanie tego wzorca w każdym komponencie, który musi pobierać dane. Wyodrębnijmy go do composable:
 
-```js
-// fetch.js
+```js [fetch.js]
 import { ref } from 'vue'
 
 export function useFetch(url) {
@@ -208,8 +204,7 @@ const { data, error } = useFetch(() => `/posts/${props.id}`)
 
 Możemy przebudować naszą obecną implementację za pomocą interfejsów API [`watchEffect()`](/api/reactivity-core.html#watcheffect) i [`toValue()`](/api/reactivity-utilities.html#tovalue):
 
-```js{8,13}
-// fetch.js
+```js{7,12} [fetch.js]
 import { ref, watchEffect, toValue } from 'vue'
 
 export function useFetch(url) {

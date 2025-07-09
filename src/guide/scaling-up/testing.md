@@ -74,7 +74,7 @@ Ponieważ jest ona bardzo niezależna, łatwo wywołać funkcję `increment` i s
 
 Jeśli któraś asercja nie powiedzie się, będzie to oznaczało jasny i wyraźny problem zlokalizowany w funkcji `increment`.
 
-```js{4-16} [helpers.spec.js]
+```js{3-15} [helpers.spec.js]
 import { increment } from './helpers'
 
 describe('increment', () => {
@@ -431,7 +431,7 @@ export function withSetup(composable) {
 }
 ```
 
-```js
+```js [foo.test.js]
 import { withSetup } from './test-utils'
 import { useFoo } from './foo'
 
