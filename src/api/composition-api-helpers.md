@@ -132,3 +132,7 @@ Używane do generowania identyfikatorów unikalnych w danej aplikacji.
   Identyfikatory generowane przez `useId()` mają gwarancję stabilności między renderowaniem po stronie serwera jak i klienta, więc możemy ich bezpiecznie używać w aplikacjach SSR bez obaw o problemy z hydracją.
 
   Jeśli mamy więcej niż jedną instancję aplikacji Vue na tej samej stronie, możemy ominąć problem konfilktów identyfikatorów przez skonfigurowanie w każdej z aplikacji odpowiedniego prefixu poprzez [`app.config.idPrefix`](/api/application#app-config-idprefix).
+
+  :::warning Uwaga
+  `useId()` nie powinno być używane wewnątrz własności `computed()`, gdyż może spowodować konflikty instancji. Zamiast tego, zadeklaruj ID poza `computed()` i odwołaj się do niego wewnątrz funkcji.
+  :::
