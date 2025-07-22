@@ -91,7 +91,7 @@ Jeśli podczas początkowego renderowania nie napotkano żadnych zależności as
 
 Po przejściu w stan rozwiązany, `<Suspense>` powróci do stanu oczekiwania tylko wtedy, gdy główny węzeł slotu `#default` zostanie zastąpiony. Nowe zależności asynchroniczne zagnieżdżone głębiej w drzewie **nie** spowodują powrotu `<Suspense>` do stanu oczekiwania.
 
-Gdy nastąpi powrót, zawartość fallback nie zostanie natychmiast wyświetlona. Zamiast tego, `<Suspense>` wyświetli poprzednią zawartość `#default` podczas oczekiwania na rozwiązanie nowej zawartości i jej zależności asynchronicznych. To zachowanie można skonfigurować za pomocą właściwości `timeout`: `<Suspense>` przełączy się na zawartość fallback, jeśli renderowanie nowej zawartości domyślnej zajmie dłużej niż `timeout`. Wartość `timeout` równa `0` spowoduje natychmiastowe wyświetlenie zawartości fallback po zastąpieniu zawartości domyślnej.
+Gdy nastąpi powrót, zawartość fallback nie zostanie natychmiast wyświetlona. Zamiast tego, `<Suspense>` wyświetli poprzednią zawartość `#default` podczas oczekiwania na rozwiązanie nowej zawartości i jej zależności asynchronicznych. To zachowanie można skonfigurować za pomocą właściwości `timeout`: `<Suspense>` przełączy się na zawartość fallback, jeśli renderowanie nowej zawartości domyślnej zajmie dłużej niż ilość milisekund `timeout`. Wartość `timeout` równa `0` spowoduje natychmiastowe wyświetlenie zawartości fallback po zastąpieniu zawartości domyślnej.
 
 ## Zdarzenia {#events}
 
