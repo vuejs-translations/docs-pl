@@ -6,7 +6,7 @@ Wierzymy, że nie istnieje uniwersalne rozwiązanie dla sieci. Dlatego Vue zosta
 
 Vue może być używane jako samodzielny plik skryptu - bez konieczności budowania! Jeśli masz już backend renderujący większość HTML-a lub Twoja logika frontendowa nie jest wystarczająco złożona, aby uzasadnić etap budowania, jest to najłatwiejszy sposób na integrację Vue ze stosem technologicznym. W takich przypadkach możesz myśleć o Vue jako o bardziej deklaratywnym zamienniku jQuery.
 
-Vue oferuje również alternatywną dystrybucję o nazwie [petite-vue](https://github.com/vuejs/petite-vue), która jest specjalnie zoptymalizowana do progresywnego ulepszania istniejącego HTML-a. Ma mniejszy zestaw funkcji, ale jest niezwykle lekka i wykorzystuje implementację, która jest bardziej wydajna w scenariuszach bez etapu budowania.
+Poprzednio oferowaliśmy również alternatywną dystrybucję o nazwie [petite-vue](https://github.com/vuejs/petite-vue), która była specjalnie zoptymalizowana do progresywnego ulepszania istniejącego HTML-a. petite-vue nie jest już jednak aktywnie wspierane, a ostatnia wersja była opublikowana z Vue 3.2.27.
 
 ## Osadzone Web Components {#embedded-web-components}
 
