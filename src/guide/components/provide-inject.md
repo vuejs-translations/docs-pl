@@ -323,7 +323,7 @@ Funkcja `computed()` jest zazwyczaj używana w komponentach Composition API, ale
 
 ## Praca z Symbolami jako kluczami {#working-with-symbol-keys}
 
-Do tej pory używaliśmy w przykładach kluczy wstrzykiwania jako ciągów znaków. Jeśli pracujesz nad dużą aplikacją z wieloma dostawcami zależności lub tworzysz komponenty, które będą używane przez innych programistów, najlepiej jest używać kluczy wstrzykiwania typu Symbol, aby uniknąć potencjalnych kolizji.
+Do tej pory używaliśmy w przykładach kluczy wstrzykiwania jako ciągów znaków. Jeśli pracujesz nad dużą aplikacją z wieloma dostawcami zależności lub tworzysz komponenty, które będą używane przez innych programistów, najlepiej jest używać kluczy wstrzykiwania typu [Symbol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol), aby uniknąć potencjalnych kolizji.
 
 Zalecane jest eksportowanie Symboli w dedykowanym pliku:
 
