@@ -110,6 +110,10 @@ app.directive('highlight', {
 })
 ```
 
+Możliwe jest również nadanie typów globalnym niestandardowym dyrektywom rozszerzając interfejs `ComponentCustomProperties` z `vue`.
+
+Więcej szczegółów: [Typowanie globalnych dyrektyw niestandardowych](/guide/typescript/composition-api#typing-global-custom-directives) <sup class="vt-badge ts" />
+
 ## Kiedy używać dyrektyw niestandardowych {#when-to-use}
 
 Niestandardowe dyrektywy powinno być tylko używane, gdy oczekiwaną funkcjonalność możemy osiągnąć jedynie za pomocą bezpośredniej manipulacji drzewem DOM.
