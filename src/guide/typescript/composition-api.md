@@ -468,7 +468,8 @@ import { useTemplateRef } from 'vue'
 import MyGenericModal from './MyGenericModal.vue'
 import type { ComponentExposed } from 'vue-component-type-helpers'
 
-const modal = useTemplateRef<ComponentExposed<typeof MyGenericModal>>('modal')
+const modal =
+  useTemplateRef<ComponentExposed<typeof MyGenericModal>>('modal')
 
 const openModal = () => {
   modal.value?.open('newValue')
@@ -477,3 +478,41 @@ const openModal = () => {
 ```
 
 Pamiętaj że razem z `@vue/language-tools` 2.1+, typy statycznych referencji szablonów mogą być automatycznie wywnioskowane i powyższe jest jedynie konieczne w przypadkach brzegowych.
+
+## Typowanie globalnych dyrektyw niestandardowych {#typing-global-custom-directives}
+
+Aby uzyskać podpowiedzi typów i sprawdzanie typów dla globalnych dyrektyw niestandardowych, zadeklarowanych przez `app.directive()`, możesz rozszerzyć `ComponentCustomProperties`
+
+```ts [src/directives/highlight.ts]
+import type { Directive } from 'vue'
+
+export type HighlightDirective = Directive<HTMLElement, string>
+
+declare module 'vue' {
+  export interface ComponentCustomProperties {
+    // prefiksowane z v (v-highlight)
+    vHighlight: HighlightDirective
+  }
+}
+
+export default {
+  mounted: (el, binding) => {
+    el.style.backgroundColor = binding.value
+  }
+} satisfies HighlightDirective
+```
+
+```ts [main.ts]
+import highlight from './directives/highlight'
+// ...inny kod
+const app = createApp(App)
+app.directive('highlight', highlight)
+```
+
+Używanie w komponencie
+
+```vue [App.vue]
+<template>
+  <p v-highlight="'blue'">To zdanie jest ważne!</p>
+</template>
+```

@@ -291,3 +291,7 @@ Umiejscowienie tego rozszerzenia podlega [tym samym ograniczeniom](#type-augment
 Zobacz także:
 
 - [Testy jednostkowe TypeScript dla rozszerzeń typów komponentów](https://github.com/vuejs/core/blob/main/packages-private/dts-test/componentTypeExtensions.test-d.tsx)
+
+## Typowanie globalnych dyrektyw niestandardowych {#typing-global-custom-directives}
+
+Zobacz: [Typowanie globalnych dyrektyw niestandardowych](/guide/typescript/composition-api#typing-global-custom-directives) <sup class="vt-badge ts" />
