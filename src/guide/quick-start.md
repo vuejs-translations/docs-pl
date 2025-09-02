@@ -23,7 +23,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 :::tip Wymagania wstępne
 
 - Znajomość wiersza poleceń
-- Instalacja [Node.js](https://nodejs.org/) wersji 18.3 lub wyższej
+- Instalacja [Node.js](https://nodejs.org/) wersji `^20.19.0 || >=22.12.0`
   :::
 
 W tej sekcji przedstawimy, jak zbudować szkielet Vue [Single Page Application](/guide/extras/ways-of-using-vue#single-page-application-spa) na komputerze lokalnym. Utworzony projekt będzie korzystał z konfiguracji kompilacji opartej na [Vite](https://vitejs.dev) i umożliwi nam korzystanie z Vue [Single-File Components](/guide/scaling-up/sfc) (SFC).
