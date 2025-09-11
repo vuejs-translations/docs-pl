@@ -1,11 +1,18 @@
 import fs from 'fs'
 import path from 'path'
-import { defineConfigWithTheme, type HeadConfig } from 'vitepress'
+import {
+  defineConfigWithTheme,
+  type HeadConfig,
+  type Plugin
+} from 'vitepress'
 import type { Config as ThemeConfig } from '@vue/theme'
 import baseConfig from '@vue/theme/config'
 import { headerPlugin } from './headerMdPlugin'
 // import { textAdPlugin } from './textAdMdPlugin'
-import { groupIconMdPlugin,groupIconVitePlugin } from 'vitepress-plugin-group-icons'
+import {
+  groupIconMdPlugin,
+  groupIconVitePlugin
+} from 'vitepress-plugin-group-icons'
 
 const nav: ThemeConfig['nav'] = [
   {
@@ -49,7 +56,10 @@ const nav: ThemeConfig['nav'] = [
           { text: 'Deweloperzy', link: '/developers/' },
           { text: 'Motywy', link: '/ecosystem/themes' },
           { text: 'Komponenty UI', link: 'https://ui-libs.vercel.app/' },
-          { text: 'Kolekcja wtyczek', link: 'https://www.vue-plugins.org/' },
+          {
+            text: 'Kolekcja wtyczek',
+            link: 'https://www.vue-plugins.org/'
+          },
           {
             text: 'Certyfikacja',
             link: 'https://certificates.dev/vuejs/?ref=vuejs-nav'
@@ -514,7 +524,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
         {
           text: 'Lista z animacjami',
           link: '/examples/#list-transition'
-        },
+        }
       ]
     },
     {
@@ -685,8 +695,7 @@ export default defineConfigWithTheme<ThemeConfig>({
         src: 'https://media.bitterbrains.com/main.js?from=vuejs&type=top',
         async: 'true'
       }
-    ],
-    inlineScript('perfops.js')
+    ]
   ],
 
   themeConfig: {
@@ -843,8 +852,7 @@ export default defineConfigWithTheme<ThemeConfig>({
   markdown: {
     theme: 'github-dark',
     config(md) {
-      md.use(headerPlugin)
-        .use(groupIconMdPlugin)
+      md.use(headerPlugin).use(groupIconMdPlugin)
       // .use(textAdPlugin)
     }
   },
