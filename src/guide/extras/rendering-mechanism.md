@@ -10,7 +10,7 @@ Jak Vue przekształca szablon w rzeczywiste węzły DOM? Jak Vue efektywnie aktu
 
 Prawdopodobnie słyszałeś o terminie "wirtualny DOM", na którym opiera się system renderowania Vue.
 
-Wirtualny DOM (VDOM) to koncepcja programistyczna, w której idealne lub "wirtualne" przedstawienie interfejsu użytkownika jest przechowywane w pamięci i synchronizowane z "rzeczywistym" DOM. Koncepcja została zapoczątkowana przez [React](https://reactjs.org/) i została przyjęta w wielu innych frameworkach z różnymi implementacjami, w tym Vue.
+Wirtualny DOM (VDOM) to koncepcja programistyczna, w której idealne lub "wirtualne" przedstawienie interfejsu użytkownika jest przechowywane w pamięci i synchronizowane z "rzeczywistym" DOM. Koncepcja została zapoczątkowana przez [React](https://react.dev/) i została przyjęta w wielu innych frameworkach z różnymi implementacjami, w tym Vue.
 
 Wirtualny DOM to bardziej wzorzec niż konkretna technologia, więc nie ma jednej kanonicznej implementacji. Możemy zilustrować tę ideę prostym przykładem:
 
