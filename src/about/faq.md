@@ -2,7 +2,7 @@
 
 ## Kto utrzymuje Vue? {#who-maintains-vue}
 
-Vue to niezależny projekt prowadzony przez społeczność. Został on stworzony przez [Evana You](https://twitter.com/youyuxi) w 2014 jako osobisty projekt poboczny. Obecnie Vue jest aktywnie utrzymywane przez [zespół zarówno pełnoetatowych członków zespołu, jak i wolontariuszy z całego świata](/about/team), gdzie Evan pełni rolę lidera projektu. Możesz dowiedzieć się więcej o historii Vue w tym [dokumencie](https://www.youtube.com/watch?v=OrxmtDw4pVI).
+Vue to niezależny projekt prowadzony przez społeczność. Został on stworzony przez [Evana You](https://x.com/youyuxi) w 2014 jako osobisty projekt poboczny. Obecnie Vue jest aktywnie utrzymywane przez [zespół zarówno pełnoetatowych członków zespołu, jak i wolontariuszy z całego świata](/about/team), gdzie Evan pełni rolę lidera projektu. Możesz dowiedzieć się więcej o historii Vue w tym [dokumencie](https://www.youtube.com/watch?v=OrxmtDw4pVI).
 
 Rozwój Vue jest finansowany głównie przez sponsorów i od 2016 roku jesteśmy stabilni finansowo. Jeśli Ty lub Twoja firma czerpiecie korzyści z Vue, rozważ [sponsorowanie nas](/sponsor/) aby wesprzeć rozwój Vue!
 

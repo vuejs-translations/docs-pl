@@ -16,7 +16,7 @@ Nasz [Kodeks postępowania](/about/coc) jest przewodnikiem, który ułatwia wzbo
 
 ### Bądź na bieżąco {#stay-in-the-know}
 
-- Śledź nasze [oficjalne konto na Twitterze](https://twitter.com/vuejs).
+- Śledź nasze [oficjalne konto na Twitterze](https://x.com/vuejs).
 - Obserwuj naszych [członków zespołu](./team) na Twitterze lub GitHubie.
 - Śledź [dyskuje RFC](https://github.com/vuejs/rfcs).
 - Subskrybuj [oficjalnego bloga](https://blog.vuejs.org/).
@@ -28,7 +28,7 @@ Nasz [Kodeks postępowania](/about/coc) jest przewodnikiem, który ułatwia wzbo
 - [DEV Community](https://dev.to/t/vue): Udostępniaj i dyskutuj na tematy związane z Vue na Dev.to.
 - [Meetupy](https://events.vuejs.org/meetups): Chcesz znaleźć lokalnych entuzjastów Vue takich jak Ty? Interesuje Cię zostanie liderem społeczności? Mamy potrzebną pomoc i wsparcie, którego potrzebujesz!
 - [GitHub](https://github.com/vuejs): Jeśli masz błąd do zgłoszenia lub funkcję do zażądania, do tego służą zgłoszenia na GitHubie. Proszę, przestrzegaj zasad określonych w szablonie zgłoszenia każdego repozytorium.
-- [Społeczność na Twitterze (nieoficjalna)](https://twitter.com/i/communities/1516368750634840064): Społeczność na Twitterze, gdzie możesz spotkać innych entuzjastów Vue, uzyskać pomoc lub po prostu porozmawiać o Vue.
+- [Społeczność na Twitterze (nieoficjalna)](https://x.com/i/communities/1516368750634840064): Społeczność na Twitterze, gdzie możesz spotkać innych entuzjastów Vue, uzyskać pomoc lub po prostu porozmawiać o Vue.
 
 ### Odkrywaj ekosystem {#explore-the-ecosystem}
 
@@ -80,4 +80,4 @@ Jest wiele rzeczy, które możesz zrobić, aby pomóc w rozwoju Vue w Twojej spo
 - **Załóż własne spotkanie.** Jeśli nie ma jeszcze spotkań Vue w Twojej okolicy, możesz założyć własne! Skorzystaj z [materiałow dostępnych na events.vuejs.org](https://events.vuejs.org/resources/#getting-started) aby uzyskać suckes!
 - **Pomóż organizatorom spotkań.** Zawsze jest miejsce na dodatkową pomoc przy organizacji wydarzeń, dlatego zaoferuj pomoc lokalnym organizatorom, aby każde spotkanie było udane.
 
-Jeśli masz pytania dotyczące zaangażowania się w lokalną społeczność Vue, skontaktuj się z nami na Twitterze pod adresem [@vuejs_events](https://www.twitter.com/vuejs_events)!
+Jeśli masz pytania dotyczące zaangażowania się w lokalną społeczność Vue, skontaktuj się z nami na Twitterze pod adresem [@vuejs_events](https://www.x.com/vuejs_events)!
