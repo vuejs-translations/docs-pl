@@ -252,7 +252,7 @@ Testy end-to-end nie importują w ogóle kodu Twojej aplikacji Vue, a jedynie op
 
 Testy end-to-end sprawdzają poprawność wielu wartsw aplikacji na raz. Mogą celować w aplikację zbudowaną lokalnie, czy nawet aplikację na środowisku stagingowym. Testowanie aplikacji na środowisku stagingowym testuje nie tylko kod frontendowy czy serwer statyczny ale też również całą infrastrukturę i usługi backendowe.
 
-> Im więcej testów napiszemy w sposób przypominający to w jaki korzystamy z implementowanych funkcjonalności, tym większą pewność będą one dawać co do poprawnego ich działania. - [Kent C. Dodds](https://twitter.com/kentcdodds/status/977018512689455106) - Autor biblioteki Testing Library
+> Im więcej testów napiszemy w sposób przypominający to w jaki korzystamy z implementowanych funkcjonalności, tym większą pewność będą one dawać co do poprawnego ich działania. - [Kent C. Dodds](https://x.com/kentcdodds/status/977018512689455106) - Autor biblioteki Testing Library
 
 Testy E2E, sprawdzające jak akcje użytkownika wpływają na aplikację są często kluczowe by mieć wysoką pewność co do tego czy nasza aplikacja działa poprawnie lub nie.
 

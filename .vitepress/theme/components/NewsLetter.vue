@@ -45,7 +45,7 @@ import { VTLink } from '@vue/theme'
           href="https://news.vuejs.org/"
           no-icon
         >news.vuejs.org</VTLink>. Możesz także wejść na stronę społecznościową na
-        <VTLink class="link" href="https://twitter.com/vuejs" no-icon>Twitter</VTLink>, lub dołączyć do nas na
+        <VTLink class="link" href="https://x.com/vuejs" no-icon>Twitter</VTLink>, lub dołączyć do nas na
         <VTLink class="link" href="https://discord.com/invite/vue" no-icon>Discord</VTLink>.
       </p>
     </div>

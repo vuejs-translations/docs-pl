@@ -43,7 +43,7 @@ Możesz również spróbować przekonać swojego pracodawcę do sponsorowania Vu
 - **Globalny sponsor specjalny**:
   - Ograniczone do **jednego** sponsora globalnie. <span v-if="!data?.special">Obecnie puste. [Skontaktuj się](mailto:sponsor@vuejs.org?subject=Vue.js%20special%20sponsor%20inquiry)!</span><span v-else>(Obecnie zajęte)</span>
   - (Ekskluzywne) Umieszczenie logo **above the fold** na pierwszej stronie serwisu [vuejs.org](/).
-  - (Ekskluzywne) Specjalny shoutout i regularne podania dalej wszystkich ważnych premier produktów poprzez [oficjalne konto Vue na X](https://twitter.com/vuejs) (320 tyś obserwujących).
+  - (Ekskluzywne) Specjalny shoutout i regularne podania dalej wszystkich ważnych premier produktów poprzez [oficjalne konto Vue na X](https://x.com/vuejs) (320 tyś obserwujących).
   - Najbardziej widoczne logo we wszystkich lokalizacjach na niższych poziomach.
 - **Platynowy (2000 USD/miesiąc)**:
   - Wyraźne umieszczenie logo na pierwszej stronie serwisu [vuejs.org](/).
