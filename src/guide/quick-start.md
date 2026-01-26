@@ -107,7 +107,7 @@ Powinieneś teraz uruchomić swój pierwszy projekt Vue! Zwróć uwagę, że prz
 
 - Zalecana konfiguracja IDE to [Visual Studio Code](https://code.visualstudio.com/) + [Vue - Oficjalne rozszerzenie](https://marketplace.visualstudio.com/items?itemName=Vue.volar). Jeśli używasz innych edytorów, sprawdź [sekcję wsparcia IDE](/guide/scaling-up/tooling#ide-support).
 - Więcej szczegółów na temat narzędzi, w tym integracji z frameworkami zaplecza, omówiono w [Tooling Guide](/guide/scaling-up/tooling).
-- Aby dowiedzieć się więcej o podstawowym narzędziu do kompilacji Vite, zapoznaj się z [dokumentacją Vite](https://vitejs.dev).
+- Aby dowiedzieć się więcej o podstawowym narzędziu do kompilacji Vite, zapoznaj się z [dokumentacją Vite](https://vite.dev).
 - Jeśli zdecydujesz się na użycie TypeScript, zapoznaj się z [Przewodnikiem po użyciu TypeScript](typescript/overview).
 
 Gdy będziesz gotowy do wysłania aplikacji do produkcji, uruchom następujące polecenie:
