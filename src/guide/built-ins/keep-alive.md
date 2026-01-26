@@ -79,7 +79,7 @@ Od wersji 3.2.34, komponent jednoplikowy używający `<script setup>` będzie au
 
 ## Maksymalna liczba buforowanych instancji {#max-cached-instances}
 
-Możemy ograniczyć maksymalną liczbę instancji komponentów, które mogą być buforowane za pomocą właściwości `max`. Kiedy `max` jest określone, `<KeepAlive>` zachowuje się jak [pamięć podręczna LRU](<https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_recently_used_(LRU)>): jeśli liczba buforowanych instancji ma przekroczyć określoną maksymalną wartość, najmniej ostatnio używana buforowana instancja zostanie zniszczona, aby zrobić miejsce dla nowej.
+Możemy ograniczyć maksymalną liczbę instancji komponentów, które mogą być buforowane za pomocą właściwości `max`. Kiedy `max` jest określone, `<KeepAlive>` zachowuje się jak [pamięć podręczna LRU](<https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_Recently_Used_(LRU)>): jeśli liczba buforowanych instancji ma przekroczyć określoną maksymalną wartość, najmniej ostatnio używana buforowana instancja zostanie zniszczona, aby zrobić miejsce dla nowej.
 
 ```vue-html
 <KeepAlive :max="10">
