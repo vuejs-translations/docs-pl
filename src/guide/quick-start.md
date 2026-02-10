@@ -26,7 +26,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 - Instalacja [Node.js](https://nodejs.org/) wersji `^20.19.0 || >=22.12.0`
   :::
 
-W tej sekcji przedstawimy, jak zbudować szkielet Vue [Single Page Application](/guide/extras/ways-of-using-vue#single-page-application-spa) na komputerze lokalnym. Utworzony projekt będzie korzystał z konfiguracji kompilacji opartej na [Vite](https://vitejs.dev) i umożliwi nam korzystanie z Vue [Single-File Components](/guide/scaling-up/sfc) (SFC).
+W tej sekcji przedstawimy, jak zbudować szkielet Vue [Single Page Application](/guide/extras/ways-of-using-vue#single-page-application-spa) na komputerze lokalnym. Utworzony projekt będzie korzystał z konfiguracji kompilacji opartej na [Vite](https://vite.dev) i umożliwi nam korzystanie z Vue [Single-File Components](/guide/scaling-up/sfc) (SFC).
 
 Upewnij się, że masz zainstalowaną aktualną wersję [Node.js](https://nodejs.org/) i że Twój bieżący katalog roboczy to ten, w którym zamierzasz utworzyć projekt. Uruchom następujące polecenie w wierszu poleceń (bez znaku `$`):
 
@@ -107,7 +107,7 @@ Powinieneś teraz uruchomić swój pierwszy projekt Vue! Zwróć uwagę, że prz
 
 - Zalecana konfiguracja IDE to [Visual Studio Code](https://code.visualstudio.com/) + [Vue - Oficjalne rozszerzenie](https://marketplace.visualstudio.com/items?itemName=Vue.volar). Jeśli używasz innych edytorów, sprawdź [sekcję wsparcia IDE](/guide/scaling-up/tooling#ide-support).
 - Więcej szczegółów na temat narzędzi, w tym integracji z frameworkami zaplecza, omówiono w [Tooling Guide](/guide/scaling-up/tooling).
-- Aby dowiedzieć się więcej o podstawowym narzędziu do kompilacji Vite, zapoznaj się z [dokumentacją Vite](https://vite.dev).
+- Aby dowiedzieć się więcej o podstawowym narzędziu do kompilacji Vite, zapoznaj się z [dokumentacją Vite](https://vite.dev/).
 - Jeśli zdecydujesz się na użycie TypeScript, zapoznaj się z [Przewodnikiem po użyciu TypeScript](typescript/overview).
 
 Gdy będziesz gotowy do wysłania aplikacji do produkcji, uruchom następujące polecenie:

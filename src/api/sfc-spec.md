@@ -105,7 +105,7 @@ p {{ msg }}
 
 Należy pamiętać, że integracja z różnymi preprocesorami może się różnić w zależności od łańcucha narzędzi. Przykłady można znaleźć w odpowiedniej dokumentacji:
 
-- [Vite](https://vitejs.dev/guide/features.html#css-pre-processors)
+- [Vite](https://vite.dev/guide/features.html#css-pre-processors)
 - [Vue CLI](https://cli.vuejs.org/guide/css.html#pre-processors)
 - [webpack + vue-loader](https://vue-loader.vuejs.org/guide/pre-processors.html#using-pre-processors)
 

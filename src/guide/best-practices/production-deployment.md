@@ -32,8 +32,8 @@ Jeśli używasz niestandardowej konfiguracji, upewnij się, że:
 
 Dodatkowe odniesienia:
 
-- [Przewodnik po kompilacji produkcyjnej Vite](https://vitejs.dev/guide/build.html)
-- [Przewodnik wdrażania Vite](https://vitejs.dev/guide/static-deploy.html)
+- [Przewodnik po kompilacji produkcyjnej Vite](https://vite.dev/guide/build.html)
+- [Przewodnik wdrażania Vite](https://vite.dev/guide/static-deploy.html)
 - [Przewodnik wdrażania Vue CLI](https://cli.vuejs.org/guide/deployment.html)
 
 ## Śledzenie błędów w czasie wykonywania {#tracking-runtime-errors}

@@ -122,7 +122,7 @@ Komponent może być przetestowany na dwa sposoby:
 
 - [Vitest](https://vitest.dev/)
 
-  Oficjalne, rekomendowane konfigurowanie nowych projektów przez `create-vue` korzysta z [Vite](https://vitejs.dev/), w związku z czym zalecamy również framework do testów jednostkowych, który wykorzystuje tę samą konfigurację i pipeline transformacji kodu bezpośrednio z Vite. [Vitest](https://vitest.dev/) jest frameworkiem testów jednostkowych zaprojektowanym dokładnie w tym celu, został on utworzony i jest wspierany przez członków zespołów Vue i Vite. Integruje się z projektami Vite z minimum potrzebnej konfiguracji oraz jest on bardzo szybki.
+  Oficjalne, rekomendowane konfigurowanie nowych projektów przez `create-vue` korzysta z [Vite](https://vite.dev/), w związku z czym zalecamy również framework do testów jednostkowych, który wykorzystuje tę samą konfigurację i pipeline transformacji kodu bezpośrednio z Vite. [Vitest](https://vitest.dev/) jest frameworkiem testów jednostkowych zaprojektowanym dokładnie w tym celu, został on utworzony i jest wspierany przez członków zespołów Vue i Vite. Integruje się z projektami Vite z minimum potrzebnej konfiguracji oraz jest on bardzo szybki.
 
 ### Inne opcje {#other-options}
 

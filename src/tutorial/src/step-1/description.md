@@ -30,7 +30,7 @@ Jeśli zamierzasz używać trybu HTML bez kroku kompilacji we własnych aplikacj
 import { ... } from 'vue/dist/vue.esm-bundler.js'
 ```
 
-wewnątrz skryptów lub skonfiguruj narzędzie kompilacji, aby odpowiednio rozumiało `vue`. Przykładowa konfiguracja dla [Vite](https://vitejs.dev/):
+wewnątrz skryptów lub skonfiguruj narzędzie kompilacji, aby odpowiednio rozumiało `vue`. Przykładowa konfiguracja dla [Vite](https://vite.dev/):
 
 ```js [vite.config.js]
 export default {
