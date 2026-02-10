@@ -481,7 +481,7 @@ Pamiętaj że razem z `@vue/language-tools` 2.1+, typy statycznych referencji sz
 
 ## Typowanie globalnych dyrektyw niestandardowych {#typing-global-custom-directives}
 
-Aby uzyskać podpowiedzi typów i sprawdzanie typów dla globalnych dyrektyw niestandardowych, zadeklarowanych przez `app.directive()`, możesz rozszerzyć `ComponentCustomProperties`
+Aby uzyskać podpowiedzi typów i sprawdzanie typów dla globalnych dyrektyw niestandardowych, zadeklarowanych przez `app.directive()`, możesz rozszerzyć `GlobalDirectives`
 
 ```ts [src/directives/highlight.ts]
 import type { Directive } from 'vue'
@@ -489,7 +489,7 @@ import type { Directive } from 'vue'
 export type HighlightDirective = Directive<HTMLElement, string>
 
 declare module 'vue' {
-  export interface ComponentCustomProperties {
+  export interface GlobalDirectives {
     // prefiksowane z v (v-highlight)
     vHighlight: HighlightDirective
   }
