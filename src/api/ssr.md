@@ -213,7 +213,7 @@ Interfejs API środowiska wykonawczego używany do pobierania obiektu kontekstu 
   import { useSSRContext } from 'vue'
 
   // pamiętaj, aby wywołać go tylko podczas SSR
-  // https://vitejs.dev/guide/ssr.html#conditional-logic
+  // https://vite.dev/guide/ssr.html#conditional-logic
   if (import.meta.env.SSR) {
     const ctx = useSSRContext()
     // ...dołącz właściwości do kontekstu

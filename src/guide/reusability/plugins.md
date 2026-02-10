@@ -1,4 +1,4 @@
-﻿# Wtyczki (Plugins) {#plugins}
+# Wtyczki (Plugins) {#plugins}
 
 ## Wprowadzenie {#introduction}
 
@@ -135,4 +135,4 @@ export default {
 
 ### Bundlowanie dla NPM
 
-Jeśli dalej chcesz zbudować i opublikować swoją wtyczkę do użycia przez innych, zobacz [sekcję Vite o trybie Library](https://vitejs.dev/guide/build.html#library-mode).
+Jeśli dalej chcesz zbudować i opublikować swoją wtyczkę do użycia przez innych, zobacz [sekcję Vite o trybie Library](https://vite.dev/guide/build.html#library-mode).

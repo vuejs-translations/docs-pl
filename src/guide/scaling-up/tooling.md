@@ -21,7 +21,7 @@ Zalecane jest również korzystanie z tych piaskownic online do tworzenia reprod
 
 ### Vite {#vite}
 
-[Vite](https://vitejs.dev/) to bardzo lekkie i szybkie narzędzie budowania projektu z pierwszorzędowym wsparciem dla Vue SFC. Zostało stworzone przez Evana You, który również jest autorem Vue!
+[Vite](https://vite.dev/) to bardzo lekkie i szybkie narzędzie budowania projektu z pierwszorzędowym wsparciem dla Vue SFC. Zostało stworzone przez Evana You, który również jest autorem Vue!
 
 Aby zacząć pracę z Vite + Vue, wywołaj polecenie:
 
@@ -51,7 +51,7 @@ $ bun create vue@latest
 
 To polecenie zainstaluje i wywoła [create-vue](https://github.com/vuejs/create-vue), oficjalne narzędzie do setupowania projektów.
 
-- Aby dowiedzieć się więcej o Vite, odwiedź [dokumentację Vite](https://vitejs.dev).
+- Aby dowiedzieć się więcej o Vite, odwiedź [dokumentację Vite](https://vite.dev).
 - Aby skonfigurować zachowanie Vue w projekcie Vite, na przykład, aby przekazać jakieś opcje do kompilatora Vue, odwiedź dokumentację dla [@vitejs/plugin-vue](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue#readme).
 
 Oba narzędzia przytoczony wyżej również wspierają pobieranie plików jako gotowego projektu Vite.

@@ -94,7 +94,7 @@ Tagi `<style>` w środku plików SFC są wstrzykiwane jako natywne tagi `<style>
 
 Możesz poeksperymentować z SFC i zbadać jak wynikowo wyglądają skompilowane w [Piaskownicy Vue SFC](https://play.vuejs.org/).
 
-W faktycznych projektach, najczęściej kompilator SFC jest integrowany przez narzędzie do budowania jak [Vite](https://vitejs.dev/) lub [Vue CLI](http://cli.vuejs.org/) (które oparte jest na [webpacku](https://webpack.js.org/)), a samo Vue dostarcza oficjalne narzędzia, aby móc pracować z SFC jak najłatwiej i najszybciej. Aby dowiedzieć się więcej, zobacz sekcję [Narzędzia SFC ](/guide/scaling-up/tooling).
+W faktycznych projektach, najczęściej kompilator SFC jest integrowany przez narzędzie do budowania jak [Vite](https://vite.dev/) lub [Vue CLI](http://cli.vuejs.org/) (które oparte jest na [webpacku](https://webpack.js.org/)), a samo Vue dostarcza oficjalne narzędzia, aby móc pracować z SFC jak najłatwiej i najszybciej. Aby dowiedzieć się więcej, zobacz sekcję [Narzędzia SFC ](/guide/scaling-up/tooling).
 
 ## Co z separacją zagadnień? {#what-about-separation-of-concerns}
 
