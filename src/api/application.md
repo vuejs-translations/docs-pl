@@ -400,6 +400,11 @@ Przypisanie globalnej metody obsługującej niewyłapane błędy propagujące si
   }
   ```
 
+- **Zachowanie Domyślne**
+
+  Domyślna metoda obsługi błędów ponownie wywoła throw na środowisku deweloperskim i będzie logować błędy na środowisku produkcyjnym.
+  Możesz skonfigurować to zachowanie używając własności [throwUnhandledErrorInProduction](#app-config-throwunhandlederrorinproduction).
+
 ## app.config.warnHandler {#app-config-warnhandler}
 
 Przypisanie niestandardowej obsługi ostrzeżeń runtime z Vue.
