@@ -302,7 +302,7 @@ Te ograniczenia są ważne, ponieważ są to konteksty, w których Vue jest w st
 
 1. Można było do niej rejestrować haki cyklu życia.
 
-2. Można było z nią łączyć obliczone właściwości i obserwatorów, aby można je było usunąć, gdy instancja jest odmontowywana, zapobiegając wyciekom pamięci.
+2. Można było z nią łączyć obserwatorów, aby można ich było usunąć, gdy instancja jest odmontowywana, zapobiegając wyciekom pamięci.
 
 :::tip
 `<script setup>` to jedyne miejsce, w którym można wywołać funkcje kompozycyjne **after** za pomocą `await`. Kompilator automatycznie przywraca aktywny kontekst instancji po operacji asynchronicznej.
