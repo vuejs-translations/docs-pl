@@ -216,7 +216,7 @@ function render() {
 }
 ```
 
-### Używanie Vnode'ów w `<template>`
+### Używanie Vnode'ów w `<template>` {#using-vnodes-in-template}
 
 ```vue
 <script setup>

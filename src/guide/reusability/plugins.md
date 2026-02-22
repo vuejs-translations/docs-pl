@@ -133,6 +133,6 @@ export default {
 
 </div>
 
-### Bundlowanie dla NPM
+### Bundlowanie dla NPM {#bundle-for-npm}
 
 Jeśli dalej chcesz zbudować i opublikować swoją wtyczkę do użycia przez innych, zobacz [sekcję Vite o trybie Library](https://vite.dev/guide/build.html#library-mode).
