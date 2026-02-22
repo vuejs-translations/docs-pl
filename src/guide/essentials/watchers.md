@@ -486,7 +486,7 @@ export default {
 
 </div>
 
-Działa to w wersjach przed 3.5. Dodatkowo, `onCleanup` przekazany jako argument funkcji jest powiązany z instancją obserwatora więc nie jest zależny od synchronicznych ograniczeń `onWatcherCleanup`.
+`onCleanup` przekazany jako argument funkcji jest powiązany z instancją obserwatora więc nie jest zależny od synchronicznych ograniczeń `onWatcherCleanup`.
 
 ## Czas wywołania funkcji zwrotnej {#callback-flush-timing}
 
