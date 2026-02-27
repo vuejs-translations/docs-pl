@@ -54,7 +54,7 @@ const props = defineProps<Props>()
 </script>
 ```
 
-To działa również, gdy `Props` jest importowany z zewnętrznego źródła. Ta funkcja wymaga, aby TypeScript był zależnością równorzędną (peer dependency) Vue.
+To działa również, gdy `Props` jest importowany z innego pliku, zaimportowany relatywnie, zaimportowany poprzez alias (np. `@/types`) albo zewnętrzną zależność (np. `node_modules`). Ta funkcja wymaga, aby TypeScript był zależnością równorzędną (peer dependency) Vue.
 
 ```vue
 <script setup lang="ts">
@@ -68,7 +68,7 @@ const props = defineProps<Props>()
 
 W wersji 3.2 i starszych, parametr typu generycznego dla `defineProps()` był ograniczony do literału typu lub odwołania do lokalnego interfejsu.
 
-To ograniczenie zostało rozwiązane w wersji 3.3. Najnowsza wersja Vue obsługuje odwoływanie się do importowanych i ograniczonego zestawu złożonych typów w pozycji parametru typu. Jednak ponieważ konwersja typu na czas wykonania jest wciąż oparta na AST, niektóre złożone typy, które wymagają rzeczywistej analizy typu, np. typy warunkowe, nie są obsługiwane. Możesz używać typów warunkowych dla typu pojedynczego propa, ale nie dla całego obiektu props.
+To ograniczeie zostało rozwiązane w wersji 3.3. Najnowsza wersja Vue obsługuje odwoływanie się do importowanych i ograniczonego zestawu złożonych typów w pozycji parametru typu. Jednak ponieważ konwersja typu na czas wykonania jest wciąż oparta na AST, niektóre złożone typy, które wymagają rzeczywistej analizy typu, np. typy warunkowe, nie są obsługiwane. Możesz używać typów warunkowych dla typu pojedynczego propa, ale nie dla całego obiektu props.
 
 ### Domyślne Wartości Propsów {#props-default-values}
 
