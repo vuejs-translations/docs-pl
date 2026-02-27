@@ -201,7 +201,7 @@ const emit = defineEmits<{
 
 - Podczas korzystania z deklaracji typu, równoważna deklaracja runtime jest automatycznie generowana z analizy statycznej, aby wyeliminować potrzebę podwójnej deklaracji i nadal zapewnić prawidłowe zachowanie w czasie wykonywania.
 
-  - W trybie deweloperskim kompilator spróbuje wywnioskować odpowiednią walidację środowiska uruchomieniowego z typów. Na przykład tutaj `foo: String` jest wywnioskowane z typu `foo: string`. Jeśli typ jest odniesieniem do importowanego typu, wynikiem będzie `foo: null` (równy typowi `any`), ponieważ kompilator nie posiada informacji o plikach zewnętrznych.
+  - W trybie deweloperskim kompilator spróbuje wywnioskować odpowiednią walidację środowiska uruchomieniowego z typów. Na przykład tutaj `foo: String` jest wywnioskowane z typu `foo: string`. Importowane typy również są uzgadniane, o ile TypeScript jest zainstalowany jako zależność równorzędna (peer dependency).
 
   - W trybie prod kompilator wygeneruje deklarację formatu tablicy, aby zmniejszyć rozmiar wiązki (rekwizyty tutaj zostaną skompilowane do `['foo', 'bar']`).
 
