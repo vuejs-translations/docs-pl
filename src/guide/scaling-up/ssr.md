@@ -226,11 +226,7 @@ Pełna implementacja byłaby dość skomplikowana i zależy od wybranego narzęd
 
 ### Vite SSR {#vite-ssr}
 
-<<<<<<< HEAD
-Vite zapewnia wbudowane [wsparcie dla renderowania po stronie serwera Vue](https://vitejs.dev/guide/ssr.html), ale jest to celowo rozwiązanie na niskim poziomie. Jeśli chcesz użyć Vite bezpośrednio, zapoznaj się z [vite-plugin-ssr](https://vite-plugin-ssr.com/), wtyczką społecznościową, która abstrahuje wiele trudnych szczegółów.
-=======
-Vite provides built-in [support for Vue server-side rendering](https://vite.dev/guide/ssr.html), but it is intentionally low-level. If you wish to go directly with Vite, check out [vite-plugin-ssr](https://vite-plugin-ssr.com/), a community plugin that abstracts away many challenging details for you.
->>>>>>> 7f0576d2 (docs: update all Vite links (#3337))
+Vite zapewnia wbudowane [wsparcie dla renderowania po stronie serwera Vue](https://vite.dev/guide/ssr.html), ale jest to celowo rozwiązanie na niskim poziomie. Jeśli chcesz użyć Vite bezpośrednio, zapoznaj się z [vite-plugin-ssr](https://vite-plugin-ssr.com/), wtyczką społecznościową, która abstrahuje wiele trudnych szczegółów.
 
 Możesz także znaleźć przykład projektu Vue + Vite SSR z ręczną konfiguracją [tutaj](https://github.com/vitejs/vite-plugin-vue/tree/main/playground/ssr-vue), który może służyć jako baza do dalszej budowy. Zauważ, że jest to zalecane tylko, jeśli masz doświadczenie z SSR / narzędziami do budowy i naprawdę chcesz mieć pełną kontrolę nad architekturą wyższego poziomu.
 

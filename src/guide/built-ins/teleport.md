@@ -150,7 +150,7 @@ const open = ref(false)
 Możesz połączyć `<Teleport>` z [`<Transition>`](./transition), aby stworzyć animowane modale - zobacz [przykład tutaj](/examples/#modal).
 
 :::tip
-Element docelowy `to` teleportu musi już istnieć w DOM w momencie, gdy komponent `<Teleport>` jest montowany. Idealnie byłoby, gdyby był to element znajdujący się poza całą aplikacją Vue. Jeśli elementem docelowym jest inny element renderowany przez Vue, musisz upewnić się, że ten element zostanie zamontowany przed `<Teleport>`.
+Element docelowy `to` teleportu musi już istnieć w DOM w momencie, gdy komponent `<Teleport>` jest montowany. Idealnie byłoby, gdyby był to element znajdujący się poza całą aplikacją Vue. Jeśli elementem docelowym jest inny element renderowany przez Vue, musisz upewnić się, że ten element zostanie zamontowany przed `<Teleport>`. Jeśli używasz SSR, zobacz [Obsługa teleportów w SSR](/guide/scaling-up/ssr#teleports).
 :::
 
 ## Używanie z komponentami {#using-with-components}
