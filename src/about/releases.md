@@ -56,9 +56,9 @@ Jest to problem tylko dla autorów bibliotek, ponieważ w aplikacjach wersja kom
 
 ## Wstępne wydania {#pre-releases}
 
-Wydania mniejsze zazwyczaj przechodzą przez nieustaloną liczbę wersji beta. Wydania główne przechodzą przez fazę alpha i fazę beta.
+Wydania mniejsze jak i główne zazwyczaj przechodzą przez serię faz wstępnych: **alpha**, **beta**, oraz **release candidate (RC)**. Ich ilość jak i typ zależy od zakresu zmian. Na przykład, wydanie mniejsze z ograniczoną ilością aktualizacji może mieć jedynie fazę beta, a wydanie główne zazwyczaj będzie zawierało wszystkie trzy fazy celem dokładnych testów i zebrania opinii od społeczności.
 
-Dodatkowo, co tydzień publikujemy wydania canary z `głównych` i `mniejszych` gałęzi na GitHubie. Są one publikowane jako różne paczki, aby uniknąć obciążania metadanych npm na stabilnym kanale. Możesz je zainstalować za pomocą `npx install-vue@canary` lub `npx install-vue@canary-minor`.
+Możesz zainstalować ostatnie wersje w fazach wstępnych z npm używając `npx install-vue@alpha`, `npx install-vue@beta`, albo `npx install-vue@rc`. Aby przetestować zmiany nieuwzględnione w otagowanych wydaniach, każdym commit do repozytorium [vuejs/core](https://github.com/vuejs/core) jest publikowany jako tymczasowe wydanie poglądowe, które możesz zainstalować używając `npx install-vue@edge`.
 
 Wstępne wydania są przeznaczone do testowania integracji / stabilności oraz dla wczesnych użytkowników, którzy chcą dostarczyć opinii na temat niestabilnych funkcji. Nie używaj wstępnych wydań w produkcji. Wszystkie wstępne wydania są uznawane za niestabilne i mogą zawierać zmiany, które mogą powodować problemy, więc zawsze przypinaj się do dokładnych wersji podczas używania wstępnych wydań.
 
