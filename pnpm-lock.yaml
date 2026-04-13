@@ -13,7 +13,7 @@ importers:
     dependencies:
       '@vue/repl':
         specifier: ^4.7.1
-        version: 4.7.1
+        version: 4.7.2
       '@vue/theme':
         specifier: ^2.4.0
         version: 2.4.0(@algolia/client-search@5.35.0)(search-insights@2.17.2)(vitepress@2.0.0-alpha.17(@types/node@25.6.0)(esbuild@0.27.2)(oxc-minify@0.124.0(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1))(postcss@8.5.9)(typescript@5.9.3))(vue@3.5.32(typescript@5.9.3))
@@ -723,8 +723,8 @@ packages:
   '@vue/reactivity@3.5.32':
     resolution: {integrity: sha512-/ORasxSGvZ6MN5gc+uE364SxFdJ0+WqVG0CENXaGW58TOCdrAW76WWaplDtECeS1qphvtBZtR+3/o1g1zL4xPQ==}
 
-  '@vue/repl@4.7.1':
-    resolution: {integrity: sha512-8w5Z3cyqBJ5ufzXO2eut2stzb7aX/ZnSva2d3ee8eEINEB7FG2JYwc14eAHHHGGuoXOGN5v4cyb5ti/YZGcwlg==}
+  '@vue/repl@4.7.2':
+    resolution: {integrity: sha512-6x0hisEd5XRYxhLit3fvPCfeUfXEjB3a8Z2Pl3scVa3kZjck4+ERQF4XCahC7PTabWb3He04u+j8q3MK4WZHrQ==}
 
   '@vue/runtime-core@3.5.32':
     resolution: {integrity: sha512-pDrXCejn4UpFDFmMd27AcJEbHaLemaE5o4pbb7sLk79SRIhc6/t34BQA7SGNgYtbMnvbF/HHOftYBgFJtUoJUQ==}
@@ -1351,8 +1351,8 @@ packages:
   tinyexec@1.0.1:
     resolution: {integrity: sha512-5uC6DDlmeqiOwCPmK9jMSdOuZTh8bU39Ys6yidB+UTt5hfZUPGAypSgFRiEp+jbi9qH40BLDvy85jIU88wKSqw==}
 
-  tinyglobby@0.2.15:
-    resolution: {integrity: sha512-j2Zq4NyQYG5XMST4cbs02Ak8iJUdxRM0XI5QyxXuZOzKOINmWurp3smXu3y5wDcJrptwpSjgXHzIQxR0omXljQ==}
+  tinyglobby@0.2.16:
+    resolution: {integrity: sha512-pn99VhoACYR8nFHhxqix+uvsbXineAasWm5ojXoN8xEwK5Kd3/TrhNn1wByuD52UxWRLy8pu+kRMniEi6Eq9Zg==}
     engines: {node: '>=12.0.0'}
 
   tokenx@1.3.0:
@@ -2101,7 +2101,7 @@ snapshots:
     dependencies:
       '@vue/shared': 3.5.32
 
-  '@vue/repl@4.7.1': {}
+  '@vue/repl@4.7.2': {}
 
   '@vue/runtime-core@3.5.32':
     dependencies:
@@ -2867,7 +2867,7 @@ snapshots:
 
   tinyexec@1.0.1: {}
 
-  tinyglobby@0.2.15:
+  tinyglobby@0.2.16:
     dependencies:
       fdir: 6.5.0(picomatch@4.0.4)
       picomatch: 4.0.4
@@ -2950,7 +2950,7 @@ snapshots:
       picomatch: 4.0.4
       postcss: 8.5.9
       rolldown: 1.0.0-rc.13
-      tinyglobby: 0.2.15
+      tinyglobby: 0.2.16
     optionalDependencies:
       '@types/node': 25.6.0
       esbuild: 0.27.2
